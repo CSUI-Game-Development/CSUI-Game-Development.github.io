@@ -1,0 +1,53 @@
+---
+site_name: Game Development @ Faculty of Computer Science Universitas Indonesia
+site_description: >-
+  The website of Game Development course at the Faculty of Computer Science
+  Universitas Indonesia.
+site_author: Daya Adianto
+copyright: Copyright &copy; 2021 Faculty of Computer Science Universitas Indonesia
+
+repo_url: https://gitlab.com/csui-gamedev/csui-gamedev.gitlab.io
+repo_name: GitLab
+edit_uri: ""
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  features:
+    - navigation.tabs
+    - navigation.indexes
+    - navigation.top
+  icon:
+    repo: fontawesome/brands/gitlab
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep orange
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep orange
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
+plugins:
+  - git-revision-date-localized:
+      type: iso_datetime
+      enable_creation_date: true
+  - print-site
+
+markdown_extensions:
+  - abbr
+  - pymdownx.highlight:
+      linenums: true
+  - pymdownx.superfences
+  - pymdownx.snippets
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+nav:
+  - Home: index.md
+  - Exam Issue Template: exam-issue-template.md
