@@ -79,5 +79,5 @@ ke Merge/Pull Request atau _branch_ `uas` di GitLab/GitHub proyek game individu.
 
 Selamat mengerjakan!
 
-/estimate 2h
+/estimate 150m
 ```

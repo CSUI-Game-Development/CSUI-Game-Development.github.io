@@ -1,4 +1,3 @@
-# Home
+# Beranda
 
-Hello there! Welcome to the website of Game Development course at the Faculty
-of Computer Science Universitas Indonesia.
+Halo semuanya! Selamat datang di situs web mata kuliah _Game Development_ yang diselenggarakan di Fakultas Ilmu Komputer Universitas Indonesia.

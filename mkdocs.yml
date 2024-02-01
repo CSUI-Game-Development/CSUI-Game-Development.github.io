@@ -4,10 +4,10 @@ site_description: >-
   The website of Game Development course at the Faculty of Computer Science
   Universitas Indonesia.
 site_author: Daya Adianto
-copyright: Copyright &copy; 2021 Faculty of Computer Science Universitas Indonesia
+copyright: Copyright &copy; 2024 Faculty of Computer Science Universitas Indonesia
 
-repo_url: https://gitlab.com/csui-gamedev/csui-gamedev.gitlab.io
-repo_name: GitLab
+repo_url: https://github.com/CSUI-Game-Development/CSUI-Game-Development.github.io
+repo_name: GitHub
 edit_uri: ""
 
 theme:
@@ -18,7 +18,7 @@ theme:
     - navigation.indexes
     - navigation.top
   icon:
-    repo: fontawesome/brands/gitlab
+    repo: fontawesome/brands/github
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -37,6 +37,7 @@ plugins:
   - git-revision-date-localized:
       type: iso_datetime
       enable_creation_date: true
+      fallback_to_build_date: true
   - print-site
 
 markdown_extensions:
@@ -50,4 +51,6 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Tutorials:
+    - Tutorial 1 - Game Design Workshop: tutorial-1/README.md
   - Exam Issue Template: exam-issue-template.md
