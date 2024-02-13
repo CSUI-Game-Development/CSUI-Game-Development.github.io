@@ -9,13 +9,9 @@ Git daring.
 
 Sekadar mengingatkan, pastikan kamu:
 
-- Telah mengunduh dan memasang [Godot v3.2.3](https://godotengine.org/download)
+- Telah mengunduh dan memasang [Godot v3.5.3](https://godotengine.org/download/3.x/)
   edisi **Standard** sesuai dengan _development environment_ yang kamu gunakan.
 - Telah menjadi anggota kelompok tugas proyek akhir.
-
-Apabila kamu belum membentuk atau bergabung ke kelompok tugas proyek akhir,
-jangan lupa untuk bergabung atau membentuk kelompok sebelum
-**10 September 2020 pukul 21:00**.
 
 ## Daftar Isi
 
@@ -26,19 +22,19 @@ jangan lupa untuk bergabung atau membentuk kelompok sebelum
   - [Antarmuka Godot Editor](#antarmuka-godot-editor)
   - [Konsep Node dan Scene](#konsep-node-dan-scene)
   - [Latihan: Inspeksi Node dan Scene](#latihan-inspeksi-node-dan-scene)
-  - [Latihan Ekstra: Membuat Node dan Scene](#latihan-ekstra-membuat-node-dan-scene)
+  - [Latihan: Membuat Node dan Scene](#latihan-membuat-node-dan-scene)
   - [Pengumpulan](#pengumpulan)
   - [Referensi](#referensi)
 
 ## Pengantar
 
 Tutorial ini disusun dengan mengambil beberapa referensi dari dokumentasi
-resmi [Godot v3.2](https://docs.godotengine.org/en/3.2/) dimana
+resmi [Godot v3.5](https://docs.godotengine.org/en/3.5/) dimana
 kamu akan mengikuti instruksi-instruksi di dalam dokumen ini untuk mengenal
 _game engine_ Godot dan menggunakannya untuk membuat sebuah game sangat
 sederhana. Namun beberapa gambar yang ada di tutorial ini diambil dari Godot v3.1.1.
 Jadi nanti ikuti tutorialnya harap teliti ya, bisa jadi ada sedikit tulisan yang berbeda
-antara perintah yang diberikan dan gambar visualisasinya. Terakhir, mungkin 
+antara perintah yang diberikan dan gambar visualisasinya. Terakhir, mungkin
 masih ada yang bertanya-tanya:
 "_Mengapa harus belajar menggunakan game engine seperti Godot, Unity, atau
 Unreal, untuk membuat game?_"
@@ -66,20 +62,7 @@ Singkat kata, atau **TL;DR: _Game engine_ akan mempermudah proses implementasi g
 Langkah-langkah awal yang perlu dilakukan dalam pengerjaan tutorial ini adalah
 sebagai berikut:
 
-1. Buat _fork_ dari repositori Git materi tutorial ini ke akun pribadi
-   [GitLab.com](https://gitlab.com) milikmu. Atur **Project Visibility** _fork_
-   milikmu menjadi **Public** agar bisa dicek dan dinilai oleh tim pengajar
-   kuliah.
-
-   > Catatan: Tutorial-tutorial selanjutnya akan dipublikasikan di repositori
-   > Git materi tutorial. Oleh karena itu, kamu juga perlu memastikan _fork_
-   > milikmu selalu diperbaharui setiap kali ada materi baru. Salah satu
-   > caranya adalah pengerjaan tutorial kamu dilakukan dalam sebuah _branch_
-   > selain `master` dan secara rutin melakukan `git pull` dari _branch_
-   > `master` repositori materi tutorial ke _branch_ `master` _fork_ milikmu.
-   > Silakan ingat kembali materi penggunaan Git dari kuliah Dasar-Dasar
-   > Pemrograman 2 dan/atau Pemrograman Lanjut.
-   > **TL;DR: Ikuti Git [_feature branch workflow_](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow) ketika mengerjakan tutorial dan pastikan _fork_ selalu up-to-date!**
+1. TODO: TBD.
 1. Jalankan Godot. Apabila Godot kamu merupakan instalasi baru (_fresh_), maka
    akan muncul _modal window_ yang menanyakan apakah kamu ingin membuka **Assets Library**.
    Pilih **Open Assets Library**, lalu tunggu beberapa saat hingga proses
@@ -88,6 +71,7 @@ sebagai berikut:
    > Catatan: **Assets Library** adalah repositori aset siap pakai yang dapat
    > digunakan dalam proyek game Godot. Bagi yang pernah menggunakan _game engine_
    > Unity, fungsinya serupa dengan Unity Assets Store.
+1. TODO: TBD.
 1. Impor proyek game `T2` dengan menggunakan fitur **Import** di tampilan
    Projects.
 
@@ -319,7 +303,9 @@ dan jawablah pertanyaan-pertanyaan berikut:
 > Catatan: Jangan lupa ada _shortcut_ Shift + F1 untuk memunculkan dokumentasi tipe-tipe
 > _node_ pada Godot.
 
-## Latihan Ekstra: Membuat Node dan Scene
+## Latihan: Membuat Node dan Scene
+
+TODO: Refine
 
 Apabila masih ada waktu atau kamu ingin lanjut berlatih mandiri, silakan baca
 referensi yang tersedia untuk belajar bagaimana caranya untuk membuat _node_ dan
@@ -327,17 +313,18 @@ _scene_ di Godot. Latihannya sederhana saja, yaitu membuat pesawat dan landasan
 baru di dalam game. Gunakan aset gambar pesawat dan landasan yang berbeda dari
 `BlueShip` dan `StonePlatform` untuk membuat pesawat dan landasan baru.
 
+## Latihan Ekstra: ???
+
+TODO: TBD.
+
 ## Pengumpulan
 
-Tulis jawaban dan hasil observasi kamu pada berkas teks yang terpisah bernama
-`T2_[NPM].md` dimana `[NPM]` adalah nomor NPM (misal: `T2_1706123456.md`). Teks
-ditulis dengan rapi menggunakan format [Markdown](https://docs.gitlab.com/ee/user/markdown.html).
-Kumpulkan dengan memasukkan berkasnya ke dalam Git dan _push_ ke _fork_ materi
-tutorial ini di repositori milik pribadi. Apabila kamu mengerjakan latihan
-ekstra, pastikan _scene_ pesawat dan landasan baru juga sudah masuk ke dalam
-Git dan telah di-_push_.
+Tulis jawaban dan hasil observasi kamu pada berkas teks yang terpisah bernama `T2_[NPM].md` dimana `[NPM]` adalah nomor NPM (misal: `T2_1706123456.md`).
+Teks ditulis dengan rapi menggunakan format [Markdown](https://docs.gitlab.com/ee/user/markdown.html).
+Kumpulkan dengan memasukkan berkasnya ke dalam Git dan _push_ ke repositori Git pengerjaan tutorial.
+Apabila kamu mengerjakan latihan ekstra, pastikan _scene_ dan _node_ sudah tercatat masuk ke dalam repositori Git.
 
-Tenggat waktu pengumpulan adalah **13 September 2021 pukul 21:00**.
+Tenggat waktu pengumpulan adalah **21 Februari 2024 pukul 21:00**.
 
 ## Referensi
 
