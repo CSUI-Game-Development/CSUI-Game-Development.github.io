@@ -375,7 +375,7 @@ Tenggat waktu pengumpulan adalah **21 Februari 2024 pukul 21:00**.
 
 ## Referensi
 
-- [Introduction to Godot's Editor](https://godot.readthedocs.io/en/3.1/getting_started/step_by_step/intro_to_the_editor_interface.html)
-- [Scenes and Nodes](https://godot.readthedocs.io/en/3.1/getting_started/step_by_step/scenes_and_nodes.html#introduction)
+- [Introduction to Godot](https://docs.godotengine.org/en/3.5/getting_started/introduction/index.html)
+- [Nodes and Scenes](https://docs.godotengine.org/en/3.5/getting_started/step_by_step/nodes_and_scenes.html)
 - Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
   gasal 2021/2022 Fakultas Ilmu Komputer Universitas Indonesia.
