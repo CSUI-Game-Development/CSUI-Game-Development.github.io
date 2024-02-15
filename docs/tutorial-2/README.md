@@ -229,7 +229,7 @@ Perhatikan bagian-bagian penting dari _scene_ yang sedang dibuka:
    dibuka. _Scene_ `MainLevel` memiliki sebuah _root node_ bernama `MainLevel`, dimana
    _node_ tersebut memiliki tiga buah _child node_, yaitu `PlatformBlue`,
    `BlueShip`, dan `ObjectiveArea`. Selanjutnya, masing-masing `PlatformBlue` dan `ObjectiveArea` juga memiliki dua _child node_.
-
+   >
    > Catatan: Kamu juga dapat mengetahui **Type** dari suatu _node_ dengan
    > menaruh pointer mouse di atas nama _node_. Akan muncul _popup_ yang
    > menampilkan tipe _node_ yang ada di bawah pointer.
@@ -242,7 +242,7 @@ Perhatikan bagian-bagian penting dari _scene_ yang sedang dibuka:
    ini ada kotak samar-samar dengan garis biru yang melambangkan area pandang
    game ketika game dijalankan kelak. Area dalam kotak bergaris biru di dalam
    Viewport akan divisualisasikan ke layar PC ketika permainan dimulai.
-
+   >
    > Catatan: Kamu juga dapat melihat ada semacam penggaris (_ruler_) di bagian
    > terluar Viewport. _Ruler_ tersebut memberikan informasi posisi koordinat
    > dalam _scene_. Satu hal lagi yang perlu kamu ketahui adalah titik `(0, 0)`
@@ -375,7 +375,7 @@ Tenggat waktu pengumpulan adalah **21 Februari 2024 pukul 21:00**.
 
 ## Referensi
 
-- [Introduction to Godot's Editor](https://godot.readthedocs.io/en/3.1/getting_started/step_by_step/intro_to_the_editor_interface.html)
-- [Scenes and Nodes](https://godot.readthedocs.io/en/3.1/getting_started/step_by_step/scenes_and_nodes.html#introduction)
+- [Introduction to Godot](https://docs.godotengine.org/en/3.5/getting_started/introduction/index.html)
+- [Nodes and Scenes](https://docs.godotengine.org/en/3.5/getting_started/step_by_step/nodes_and_scenes.html)
 - Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
   gasal 2021/2022 Fakultas Ilmu Komputer Universitas Indonesia.
