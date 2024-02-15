@@ -167,3 +167,5 @@ Harap kumpulkan:
 
 - Dokumen PDF berisi jawaban tertulis latihan-latihan selama tutorial, termasuk
   _scan_/foto corat-coret kertas di slot pengumpulan **khusus hasil tutorial** di Scele.
+
+Tenggat waktu pengumpulan adalah **7 Februari 2024 pukul 21:00**.
