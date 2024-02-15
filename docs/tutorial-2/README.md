@@ -229,7 +229,7 @@ Perhatikan bagian-bagian penting dari _scene_ yang sedang dibuka:
    dibuka. _Scene_ `MainLevel` memiliki sebuah _root node_ bernama `MainLevel`, dimana
    _node_ tersebut memiliki tiga buah _child node_, yaitu `PlatformBlue`,
    `BlueShip`, dan `ObjectiveArea`. Selanjutnya, masing-masing `PlatformBlue` dan `ObjectiveArea` juga memiliki dua _child node_.
-
+   >
    > Catatan: Kamu juga dapat mengetahui **Type** dari suatu _node_ dengan
    > menaruh pointer mouse di atas nama _node_. Akan muncul _popup_ yang
    > menampilkan tipe _node_ yang ada di bawah pointer.
@@ -242,7 +242,7 @@ Perhatikan bagian-bagian penting dari _scene_ yang sedang dibuka:
    ini ada kotak samar-samar dengan garis biru yang melambangkan area pandang
    game ketika game dijalankan kelak. Area dalam kotak bergaris biru di dalam
    Viewport akan divisualisasikan ke layar PC ketika permainan dimulai.
-
+   >
    > Catatan: Kamu juga dapat melihat ada semacam penggaris (_ruler_) di bagian
    > terluar Viewport. _Ruler_ tersebut memberikan informasi posisi koordinat
    > dalam _scene_. Satu hal lagi yang perlu kamu ketahui adalah titik `(0, 0)`
