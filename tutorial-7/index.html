@@ -1,0 +1,964 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="The website of Game Development course at the Faculty of Computer Science Universitas Indonesia.">
+      
+      
+        <meta name="author" content="Daya Adianto">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+    
+    
+      
+        <title>Tutorial 7 - Basic 3D Game Mechanics - Game Development @ Faculty of Computer Science Universitas Indonesia</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.35e1ed30.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/print-site.css">
+    
+      <link rel="stylesheet" href="../css/print-site-material.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorial-7-basic-3d-game-mechanics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Game Development @ Faculty of Computer Science Universitas Indonesia" class="md-header__button md-logo" aria-label="Game Development @ Faculty of Computer Science Universitas Indonesia" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Game Development @ Faculty of Computer Science Universitas Indonesia
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tutorial 7 - Basic 3D Game Mechanics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/CSUI-Game-Development/CSUI-Game-Development.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../tutorial-1/" class="md-tabs__link">
+          
+  
+    
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../exam-issue-template/" class="md-tabs__link">
+        
+  
+    
+  
+  Exam Issue Template
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Game Development @ Faculty of Computer Science Universitas Indonesia" class="md-nav__button md-logo" aria-label="Game Development @ Faculty of Computer Science Universitas Indonesia" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Game Development @ Faculty of Computer Science Universitas Indonesia
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/CSUI-Game-Development/CSUI-Game-Development.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../tutorial-1/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial 2 - Introduction to Game Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exam-issue-template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exam Issue Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#daftar-isi" class="md-nav__link">
+    Daftar isi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pengantar" class="md-nav__link">
+    Pengantar
+  </a>
+  
+    <nav class="md-nav" aria-label="Pengantar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2d-vs-3d" class="md-nav__link">
+    2D vs 3D
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objectives-prerequisites" class="md-nav__link">
+    Objectives &amp; Prerequisites
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-3d-plane-movement" class="md-nav__link">
+    Basic 3D Plane Movement
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#object-interaction" class="md-nav__link">
+    Object Interaction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bonus-to-do" class="md-nav__link">
+    Bonus To Do
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instruksi-pengerjaan" class="md-nav__link">
+    Instruksi Pengerjaan
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skema-penilaian" class="md-nav__link">
+    Skema Penilaian
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pengumpulan" class="md-nav__link">
+    Pengumpulan
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referensi" class="md-nav__link">
+    Referensi
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+    <a href="../print_page/" title="Print Site" class="md-content__button md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 3H6v4h12m1 5a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1m-3 7H8v-5h8m3-6H5a3 3 0 0 0-3 3v6h4v4h12v-4h4v-6a3 3 0 0 0-3-3Z"/></svg>
+    </a>
+
+
+
+                  
+
+
+<h1 id="tutorial-7-basic-3d-game-mechanics">Tutorial 7 - Basic 3D Game Mechanics</h1>
+<p>Selamat datang pada tutorial keenam kuliah Game Development. Pada tutorial
+kali ini, kamu akan mempelajari cara membuat game dalam bentuk tiga dimensi (3D).
+Di akhir tutorial ini, diharapkan kamu paham cara menggunakan <em>node</em> 3D,
+penggunaan matematika untuk mengembangkan game 3D,
+dan cara berinteraksi dengan objek lain dengan <em>raycast</em>.</p>
+<h2 id="daftar-isi">Daftar isi</h2>
+<ul>
+<li><a href="#tutorial-7---basic-3d-game-mechanics">Tutorial 7 - Basic 3D Game Mechanics</a></li>
+<li><a href="#daftar-isi">Daftar isi</a></li>
+<li><a href="#pengantar">Pengantar</a><ul>
+<li><a href="#2d-vs-3d">2D vs 3D</a></li>
+<li><a href="#objectives--prerequisites">Objectives &amp; Prerequisites</a></li>
+</ul>
+</li>
+<li><a href="#basic-3d-plane-movement">Basic 3D Plane Movement</a></li>
+<li><a href="#object-interaction">Object Interaction</a></li>
+<li><a href="#bonus-to-do">Bonus To Do</a></li>
+<li><a href="#instruksi-pengerjaan">Instruksi Pengerjaan</a></li>
+<li><a href="#skema-penilaian">Skema Penilaian</a></li>
+<li><a href="#pengumpulan">Pengumpulan</a></li>
+<li><a href="#referensi">Referensi</a></li>
+</ul>
+<h2 id="pengantar">Pengantar</h2>
+<blockquote>
+<p>Note: Tersedia template game untuk tutorial ini, namun tidak diwajibkan untuk menggunakannya.</p>
+</blockquote>
+<h3 id="2d-vs-3d">2D vs 3D</h3>
+<p>Pada tutorial yang dilakukan sebelum masa UTS, kita sudah membuat game dua dimensi (2D)
+dimana pemain dapat bergerak pada ruang dua dimensi. Pemain dapat bergerak ke atas,
+bawah, kiri, dan kanan. Pada game 3D, terdapat sumbu tambahan pada ruang koordinat,
+yaitu sumbu Z yang memberikan unsur kedalaman dan volume. Hal ini menyebabkan pengembangan
+game 3D agak berbeda dengan 2D. Menggambar objek tidak menggunakan <em>sprite</em>, tetapi menggunakan
+<em>tool</em> 3D khusus, yang kemudian di-<em>export</em> ke sebuah format agar dapat di-<em>import</em> ke Godot.
+<em>Physics</em> juga berbeda dalam penggunaannya karena menggunakan vektor 3D.</p>
+<p>Berikut adalah contoh perbedaan game 2D dan 3D.</p>
+<p><img alt="Risk of Rain" src="images/riskofrain.jpg" />
+<img alt="Risk of Rain 2" src="images/riskofrain2.jpg" /></p>
+<blockquote>
+<p>Risk of Rain (atas) dan Risk of Rain 2 (bawah)</p>
+</blockquote>
+<h3 id="objectives-prerequisites">Objectives &amp; Prerequisites</h3>
+<p>Pada tutorial ini kita akan membuat sebuah game <em>first-person</em> dimana pemain dapat bergerak,
+melompat, dan berinteraksi dengan objek.</p>
+<p>Dikarenakan pengembangan game 3D akan berbeda dengan 2D, perlu diketahui bahwa beberapa <em>node</em> yang sebelumnya
+digunakan pada pengembangan game 2D tidak akan bekerja pada space 3D, sehingga kalian harus menggunakan
+<em>node</em> yang dapat bekerja pada space 3D. Selain itu, kalian juga harus me-<em>review</em> kembali dasar-dasar
+pelajaran Aljabar Linear dan Fisika Dasar karena <em>physics</em> pada space 3D lebih kompleks dibandingkan
+dengan pada space 2D. Terakhir, terdapat koordinat baru, yaitu koordinat Z, yang digunakan untuk
+menunjukkan arah depan/belakang.</p>
+<h2 id="basic-3d-plane-movement">Basic 3D Plane Movement</h2>
+<p>Kita ingin membuat sebuah karakter yang dikendalikan oleh pemain di dunia 3D. Untuk itu,
+kita akan membuat sebuah objek <code>KinematicBody</code> (mirip dengan <code>Kinematic2D</code>) yang dapat bergerak ke semua arah dan dapat melompat.</p>
+<p>Buat sebuah <em>Scene</em> baru, tambahkan <em>node</em> <code>KinematicBody</code>, rename menjadi <em>Player</em>
+dan tambahkan <code>MeshInstance</code> dan <code>CollisionShape</code> sebagai <em>child node</em> dari <em>node</em>
+<em>Player</em>. Tambahkan satu lagi <em>child node</em> berupa <code>Spatial</code>, rename menjadi <em>Head</em>, dan
+tambahkan <code>Camera</code> sebagai <em>child node</em> dari <em>Head</em>.</p>
+<p><img alt="Susunan awal Player" src="images/playertreeworaycast.jpg" /></p>
+<p>Pada node <code>CollisionShape</code>, pada tab <em>Inspector</em>, berikan sebuah <code>Shape</code> yaitu <code>CapsuleShape</code> untuk
+memberi <em>collision</em> pada pemain, lalu putar sebesar 90 derajat pada sumbu x.</p>
+<p><img alt="Collision Shape" src="images/collisionshape.jpg" /></p>
+<p>Pada node <code>MeshInstance</code>, pada tab <em>Inspector</em>, berikan <em>mesh</em> dengan bentuk <code>CapsuleMesh</code> untuk
+memberi wujud pada pemain, lalu putar sebesar 90 derajat pada sumbu x.</p>
+<p><img alt="Mesh Instance" src="images/meshinstance.jpg" /></p>
+<p>Pindahkan/translasikan <em>node Head</em> agar berada di ujung atas objek.</p>
+<p>Agar pemain dapat bergerak, tambahkan <em>script</em> pada <em>node Player</em> dengan isi sebagai berikut:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code>extends KinematicBody
+
+export var speed = 10
+export var acceleration = 5
+export var gravity = 0.98
+export var jump_power = 30
+export var mouse_sensitivity = 0.3
+
+onready var head = $Head
+
+var velocity = Vector3()
+
+func _ready():
+    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _input(event):
+    pass
+
+func _process(delta):
+    if Input.is_action_just_pressed(&quot;ui_cancel&quot;):
+        Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func _physics_process(delta):
+    var head_basis = head.get_global_transform().basis
+
+    var movement_vector = Vector3()
+    if Input.is_action_pressed(&quot;movement_forward&quot;):
+        movement_vector -= head_basis.z
+    if Input.is_action_pressed(&quot;movement_backward&quot;):
+        movement_vector += head_basis.z
+    if Input.is_action_pressed(&quot;movement_left&quot;):
+        movement_vector -= head_basis.x
+    if Input.is_action_pressed(&quot;movement_right&quot;):
+        movement_vector += head_basis.x
+
+    movement_vector = movement_vector.normalized()
+
+    velocity = velocity.linear_interpolate(movement_vector * speed, acceleration * delta)
+    velocity.y -= gravity
+
+    if Input.is_action_just_pressed(&quot;jump&quot;) and is_on_floor():
+        velocity.y += jump_power
+
+    velocity = move_and_slide(velocity, Vector3.UP)
+</code></pre></div></td></tr></table></div>
+<p>Pada <em>Project</em> &gt; <em>Project Settings</em>, pada tab <em>Input Map</em>, tambahkan action <code>movement_forward</code>,
+<code>movement_backward</code>, <code>movement_left</code>, <code>movement_right</code>, <code>jump</code> dan <code>interact</code> sebagai berikut
+(akan digunakan nantinya):</p>
+<p><img alt="Input" src="images/input.jpg" /></p>
+<p>Perhatikan bahwa:</p>
+<ol>
+<li><code>head_basis</code> merupakan vektor yang menunjukkan arah dari kepala pemain, sehingga jika
+   menekan input untuk menggerakan pemain, <code>movement_vector</code> akan berisi
+   arah sumbu x dari kepala pemain ketika bergerak ke kiri atau kanan, dan sumbu z dari kepala pemain
+   ketika bergerak ke depan atau belakang.</li>
+<li>Kita mengubah <code>movement_vector</code> menjadi <code>movement_vector.normalized()</code>, karena
+   jika diberikan input pada dua arah seperti ke depan dan ke kiri, maka pemain tidak akan
+   maju dua kali lebih cepat.</li>
+<li>Fungsi <code>linear_interpolate</code> berguna agar pergerakan pemain mulus sesuai dengan
+   <em>acceleration</em> dari pemain ketika menekan input.</li>
+<li>Fungsi <code>move_and_slide</code> berfungsi untuk menggerakan pemain.</li>
+</ol>
+<p>Tambahkan <em>scene Player</em> ke <em>scene Level</em>, lalu coba jalankan <em>scene</em> tersebut. Pemain sudah dapat
+bergerak, namun pemain tidak dapat menggerakan kamera menggunakan <em>mouse</em> untuk menghadap arah lain. Untuk itu,
+tambahkan kode berikut:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code>...
+onready var head = $Head
+onready var camera = $Head/Camera
+
+var velocity = Vector3()
+var camera_x_rotation = 0
+
+...
+
+func _input(event):
+    if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+        head.rotate_y(deg2rad(-event.relative.x * mouse_sensitivity))
+
+        var x_delta = event.relative.y * mouse_sensitivity
+        if camera_x_rotation + x_delta &gt; -90 and camera_x_rotation + x_delta &lt; 90:
+            camera.rotate_x(deg2rad(-x_delta))
+            camera_x_rotation += x_delta
+...
+</code></pre></div></td></tr></table></div>
+<p>Kode tersebut berguna untuk merotasikan <em>node Head</em> ketika mouse bergerak, dan juga mencegah rotasi melebihi
+90 derajat ketika melihat ke atas atau bawah.</p>
+<h2 id="object-interaction">Object Interaction</h2>
+<p>Pada <em>scene Level</em>, terdapat sebuah node <em>switch</em> yang digunakan untuk menyalakan atau mematikan lampu <em>OmniLight</em>.
+Agar objek <em>switch</em> tersebut dapat dilakukan sebuah interaksi (seperti mematikan dan menyalakan), tambahkan 2 buah script berikut:</p>
+<blockquote>
+<p>Interactable.gd</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>extends Node
+
+class_name Interactable
+
+func interact():
+    pass
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>Switch.gd (attach script ini pada node StaticBody di Switch)</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code>extends Interactable
+
+export var light : NodePath
+export var on_by_default = true
+export var energy_when_on = 1
+export var energy_when_off = 0
+
+onready var light_node = get_node(light)
+
+var on = on_by_default
+
+func _ready():
+    light_node.set_param(Light.PARAM_ENERGY, energy_when_on)
+
+func interact():
+    on = !on
+    light_node.set_param(Light.PARAM_ENERGY, energy_when_on if on else energy_when_off)
+</code></pre></div></td></tr></table></div>
+<p>Perhatikan bahwa kita meng<em>extend class</em> <code>Interactable</code> pada <em>Switch</em>, agar kode dapat digunakan kembali
+jika ingin membuat objek <code>Interactable</code> lain.</p>
+<p>Pada bagian <em>inspector</em>, attach <em>OmniLight</em> sebagai isi dari variable <em>Light</em>, seperti berikut:</p>
+<p><img alt="Static Body" src="images/staticbody.jpg" /></p>
+<p>Agar pemain dapat berinteraksi dengan objek lain, kita dapat menggunakan <em>node</em> <code>RayCast</code>. <code>RayCast</code>
+merepresentasikan sebuah garis dari suatu titik ke titik lain, dan menkueri objek terdekat yang
+ditemuinya. Tambahkan <em>node</em> <code>RayCast</code> sebagai <em>child</em> dari <em>head</em> pemain. <strong>Pastikan
+<code>RayCast</code> menghadap arah yang sama dengan <code>Camera</code> dengan mengatur nilai <em>cast to</em> di <em>inspector</em> dan jangan lupa untuk meng-enable node <code>RayCast</code> melalui tab inspector.</strong></p>
+<p><img alt="Susunan Player" src="images/playertree.jpg" /></p>
+<p>Pada <em>node</em> <code>RayCast</code>, tambahkan <em>script</em> sebagai berikut:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>extends RayCast
+
+var current_collider
+
+func _ready():
+    pass
+
+func _process(delta):
+    var collider = get_collider()
+
+    if is_colliding() and collider is Interactable:
+        if Input.is_action_just_pressed(&quot;interact&quot;):
+            collider.interact()
+</code></pre></div></td></tr></table></div>
+<p>Fungsi ini mengecek jika <code>RayCast</code> menyentuh sebuah objek lain yang berupa <em>Interactable</em>,
+dan pemain dapat menekan tombol (misalnya E) untuk berinteraksi dengan objek tersebut. Dalam
+kasus ini, berinteraksi dengan <em>switch</em> akan mematikan atau menyalakan lampu.</p>
+<p>Selamat, kamu sudah menyelesaikan tutorial ini!</p>
+<h2 id="bonus-to-do">Bonus To Do</h2>
+<p>Apabila masih ada waktu atau ingin lanjut berlatih mandiri, silakan baca referensi yang tersedia untuk belajar mengimplementasikan mekanik tambahan.
+Tidak ada kriteria khusus untuk ini, kamu bebas menambahkan apapun yang kamu suka. Beberapa contoh yang dapat diimplementasikan:</p>
+<ul>
+<li>Item pickup</li>
+<li>Sprinting</li>
+<li>Crouching</li>
+<li>Estetika (User Interface dan penggunaan asset 3D)</li>
+<li>dll.</li>
+</ul>
+<p>Jika mengerjakan fitur tambahan, buat file baru bernama <code>T7_[NPM].md</code> dimana
+<code>[NPM]</code> adalah NPM kamu (misal: <code>T7_1506757913</code>) di folder yang sama dengan
+<a href="./"><code>README.md</code></a> ini. Tulis teks menggunakan format <a href="https://docs.gitlab.com/ee/user/markdown.html">Markdown</a>.</p>
+<h2 id="instruksi-pengerjaan">Instruksi Pengerjaan</h2>
+<ol>
+<li>Dalam repositori pribadi kamu, silakan sinkronisasi <em>branch</em> <code>master</code> dengan
+   repositori <em>upstream</em>. Instruksi lebih lanjut bisa dibaca <a href="https://help.github.com/en/articles/syncing-a-fork">disini</a>.</li>
+<li>Jika terdapat <em>conflict</em>, mohon diselesaikan secara damai. Jika tidak yakin
+   bagaimana caranya, silakan ambil mata kuliah <em>Advanced Programming</em> atau
+   baca <a href="https://help.github.com/en/articles/resolving-a-merge-conflict-using-the-command-line">ini</a>.</li>
+<li>Setelah semua selesai, buat <em>branch</em> baru dari <em>branch</em> <code>master</code> dengan nama
+   <code>tutorial-x</code> dimana <code>x</code> adalah nomor tutorial (misal: <code>tutorial-7</code>).</li>
+<li>Ganti <em>current branch</em> menjadi <code>tutorial-x</code> tersebut, silakan kerjakan
+   tutorial di dalam <em>branch</em> yang bersangkutan. Setiap <em>branch</em> tutorial
+   <strong>tidak perlu</strong> di <em>merge</em> ke <em>branch</em> <code>master</code>.</li>
+</ol>
+<h2 id="skema-penilaian">Skema Penilaian</h2>
+<p>Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:</p>
+<ol>
+<li><strong>A</strong> apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi
+   tim pengajar.</li>
+<li><strong>B</strong> apabila kamu hanya mengerjakan tutorial sesuai yang diminta oleh
+   deskripsi tutorial.</li>
+<li><strong>C</strong> apabila kamu mengerjakan tutorial secara minimalis atau tidak
+   lengkap/tuntas.</li>
+<li><strong>E</strong> apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.</li>
+</ol>
+<h2 id="pengumpulan">Pengumpulan</h2>
+<p>Kumpulkan dengan memasukkan berkasnya ke dalam Git dan <em>push</em> ke <em>fork</em> materi
+tutorial ini di repositori milik pribadi. <strong>Jangan <em>push</em> atau membuat Merge
+Request ke repositori <em>upstream</em> materi tutorial kecuali jika kamu ingin
+kontribusi materi atau memperbaiki materi yang sudah dipublikasikan!</strong></p>
+<p>Tenggat waktu pengumpulan adalah <strong>Jumat, 20 November 2020, pukul 21:00</strong>.</p>
+<h2 id="referensi">Referensi</h2>
+<ul>
+<li><a href="http://docs.godotengine.org/en/3.1/tutorials/3d/index.html">Godot 3D Tutorial</a></li>
+<li><a href="http://docs.godotengine.org/en/3.1/tutorials/3d/fps_tutorial/index.html">Godot FPS Tutorial</a></li>
+<li><a href="https://www.kenney.nl/assets?q=3d">Kenney 3D Assets</a></li>
+<li>Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
+  gasal 2020/2021 Fakultas Ilmu Komputer Universitas Indonesia.</li>
+</ul>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-02-15 02:25:53</span>
+      
+        <br>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-02-15 02:25:53</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Faculty of Computer Science Universitas Indonesia
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+        <script src="../js/print-site.js"></script>
+      
+    
+  </body>
+</html>
