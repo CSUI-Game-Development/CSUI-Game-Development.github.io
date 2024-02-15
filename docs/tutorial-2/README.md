@@ -15,14 +15,16 @@ Sekadar mengingatkan, pastikan kamu:
 
 ## Daftar Isi
 
-- [Tutorial 2 - Introduction to Game Engine & Version Control](#tutorial-2---introduction-to-game-engine--version-control)
+- [Tutorial 2 - Introduction to Game Engine & Version Control](#tutorial-2---introduction-to-game-engine)
   - [Daftar Isi](#daftar-isi)
   - [Pengantar](#pengantar)
   - [Persiapan Awal](#persiapan-awal)
   - [Antarmuka Godot Editor](#antarmuka-godot-editor)
   - [Konsep Node dan Scene](#konsep-node-dan-scene)
-  - [Latihan: Inspeksi Node dan Scene](#latihan-inspeksi-node-dan-scene)
-  - [Latihan: Membuat Node dan Scene](#latihan-membuat-node-dan-scene)
+  - [Inspeksi Node dan Scene](#inspeksi-node-dan-scene)
+  - [Latihan: Playtest](#latihan-playtest)
+  - [Latihan: Memanipulasi Node dan Scene](#latihan-membuat-node-dan-scene)
+  - [Latihan Mandiri: Membuat Level Baru](#latihan-mandiri-membuat-level-baru)
   - [Pengumpulan](#pengumpulan)
   - [Referensi](#referensi)
 
@@ -39,10 +41,9 @@ masih ada yang bertanya-tanya:
 "_Mengapa harus belajar menggunakan game engine seperti Godot, Unity, atau
 Unreal, untuk membuat game?_"
 
-Salah satu jawaban singkat dari pertanyaan di atas adalah **software/component
-reuse**. Dengan menggunakan _game engine_, pengembang game tidak harus
-mengimplementasikan ulang komponen-komponen penting di dalam game, seperti
-_game loop_, _audio system_, AI, _graphics/rendering system_, UI, dan lain-lain.
+Salah satu jawaban singkat dari pertanyaan di atas adalah **software/component reuse**.
+Dengan menggunakan _game engine_, pengembang game tidak harus mengimplementasikan ulang komponen-komponen penting di dalam game,
+seperti _game loop_, _audio system_, AI, _graphics/rendering system_, UI, dan lain-lain.
 _Game engine_ menyediakan komponen siap pakai dan memberikan keleluasaan bagi
 pengembang untuk mengimplementasikan hingga mengubah komponen yang ada sesuai
 dengan kebutuhan.
@@ -62,8 +63,12 @@ Singkat kata, atau **TL;DR: _Game engine_ akan mempermudah proses implementasi g
 Langkah-langkah awal yang perlu dilakukan dalam pengerjaan tutorial ini adalah
 sebagai berikut:
 
-1. TODO: TBD.
-1. Jalankan Godot. Apabila Godot kamu merupakan instalasi baru (_fresh_), maka
+1. Buka repositori [_template_ proyek Tutorial 2](https://github.com/CSUI-Game-Development/tutorial-2-template) di GitHub.
+   Pilih "Use this template" untuk membuat repositori baru berdasarkan _template_ tersebut ke dalam akun GitHub milikmu.
+2. Setelah membuat repositori Git baru berdasarkan _template_ proyek Tutorial 2, salin repositori Git proyek Tutorial 2 ke mesinmu.
+3. Unduh Godot dahulu. Pastikan kamu mengunduh Godot versi 3.5 (LTS).
+   Kemudian _extract_ ke suatu lokasi di dalam _filesyste_ komputer.
+4. Jalankan Godot. Apabila Godot kamu merupakan instalasi baru (_fresh_), maka
    akan muncul _modal window_ yang menanyakan apakah kamu ingin membuka **Assets Library**.
    Pilih **Open Assets Library**, lalu tunggu beberapa saat hingga proses
    _loading_ selesai dan pilih _tab_ **Projects**.
@@ -71,12 +76,11 @@ sebagai berikut:
    > Catatan: **Assets Library** adalah repositori aset siap pakai yang dapat
    > digunakan dalam proyek game Godot. Bagi yang pernah menggunakan _game engine_
    > Unity, fungsinya serupa dengan Unity Assets Store.
-1. TODO: TBD.
-1. Impor proyek game `T2`/`Tutorial 2` dengan menggunakan fitur **Import** di tampilan
+5. Impor proyek game `T2`/`Tutorial 2` dengan menggunakan fitur **Import** di tampilan
    Projects.
 
    ![Animasi impor proyek game](images/import_project.gif)
-1. Jika Godot sudah selesai impor proyek `T2`/`Tutorial 2`,
+6. Jika Godot sudah selesai impor proyek `T2`/`Tutorial 2`,
    maka akan muncul tampilan Godot Editor.
    Tampilan _default_ Godot Editor dapat dilihat pada cuplikan gambar berikut:
 
@@ -351,13 +355,13 @@ Pada level baru ini, diharapkan kamu dapat membuat:
 1. [ ] Objek pesawat baru.
 2. [ ] Objek landasan baru.
 3. [ ] Desain level yang berbeda dari level awal dengan menempatkan `ObjectiveArea` di pojok kanan atas atau pojok kana bawah area permainan di level baru.
-5. [ ] Silakan berkreasi jika ingin memoles level awal maupun level baru. Beberapa ide _polishing_:
-   - Implementasi reset kondisi level ketika pesawatnya jatuh ke luar area permainan.
-   - Implementasi transisi level awal ke level baru ketika pemain berhasil mencapai `ObjectiveArea`.
-     Misalnya menampilkan pesan kemenangan sesaat sebelum pindah level.
-   - Menambahkan gambar latar.
-   - Menambahkan rintangan objek statis pada level baru.
-   - Dan lain-lain. Silakan berkreasi!
+4. [ ] Silakan berkreasi jika ingin memoles level awal maupun level baru. Beberapa ide _polishing_:
+    - [ ] Implementasi reset kondisi level ketika pesawatnya jatuh ke luar area permainan.
+    - [ ] Implementasi transisi level awal ke level baru ketika pemain berhasil mencapai `ObjectiveArea`.
+      Misalnya menampilkan pesan kemenangan sesaat sebelum pindah level.
+    - [ ] Menambahkan gambar latar.
+    - [ ] Menambahkan rintangan objek statis pada level baru.
+    - Dan lain-lain. Silakan berkreasi!
 
 ## Pengumpulan
 
