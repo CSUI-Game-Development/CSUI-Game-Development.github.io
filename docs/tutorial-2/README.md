@@ -1,4 +1,4 @@
-# Tutorial 2 - Introduction to Game Engine & Version Control
+# Tutorial 2 - Introduction to Game Engine
 
 Selamat datang pada tutorial kedua kuliah Game Development! Pada tutorial
 kali ini, kamu akan berkenalan dengan _game engine_ Godot dan mencoba
