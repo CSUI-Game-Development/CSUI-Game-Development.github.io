@@ -72,13 +72,13 @@ sebagai berikut:
    > digunakan dalam proyek game Godot. Bagi yang pernah menggunakan _game engine_
    > Unity, fungsinya serupa dengan Unity Assets Store.
 1. TODO: TBD.
-1. Impor proyek game `T2` dengan menggunakan fitur **Import** di tampilan
+1. Impor proyek game `T2`/`Tutorial 2` dengan menggunakan fitur **Import** di tampilan
    Projects.
 
    ![Animasi impor proyek game](images/import_project.gif)
-1. Jika Godot sudah selesai impor proyek `T2`, maka akan muncul tampilan
-   Godot Editor. Tampilan _default_ Godot Editor dapat dilihat pada cuplikan
-   gambar berikut:
+1. Jika Godot sudah selesai impor proyek `T2`/`Tutorial 2`,
+   maka akan muncul tampilan Godot Editor.
+   Tampilan _default_ Godot Editor dapat dilihat pada cuplikan gambar berikut:
 
    ![Tampilan default Godot Editor](images/default_godot_editor.png)
 
@@ -206,9 +206,9 @@ sebuah _scene_ yang berbeda.
 Untuk memperjelas konsep _node_ dan _scene_, ada baiknya jika kamu langsung
 praktik melihat _node_ dan _scene_ yang sudah disiapkan.
 
-## Latihan: Inspeksi Node dan Scene
+## Inspeksi Node dan Scene
 
-Pada panel **FileSystem**, klik 2x berkas bernama `Main.tscn`. **Viewport** pada
+Pada panel **FileSystem**, klik 2x berkas bernama `MainLevel.tscn`. **Viewport** pada
 Godot Editor akan menampilkan visualisasi sebuah _scene_. Perhatikan juga panel
 panel **Scene** yang menampilkan hirarki _node_ pada _scene_ `Main` yang sedang
 dibuka.
@@ -218,13 +218,13 @@ Perhatikan bagian-bagian penting dari _scene_ yang sedang dibuka:
 ![Tampilan scene Main dengan keterangan](images/annotated_open_scene.png)
 
 1. Panel **FileSystem** menampilkan koleksi berkas yang ada di dalam proyek
-   `T2`. Saat ini, ada 3 buah berkas _scene_ yang berakhiran `.tscn` dan
-   ada folder berisi berkas-berkas gambar dengan format PNG. Perlu diingat
-   bahwa semua aset pada game Godot perlu ditaruh dalam folder proyek game.
+  `T2`/`Tutorial 2`. Saat ini, ada 3 buah berkas _scene_ yang berakhiran `.tscn`
+   di dalam folder `scenes` dan ada folder `assets` berisi berkas-berkas gambar dengan format PNG.
+   Perlu diingat bahwa semua aset pada game Godot perlu ditaruh dalam folder proyek game.
 2. Panel **Scene** menampilkan hirarki _node_ di dalam _scene_ yang sedang
-   dibuka. _Scene_ `Main` memiliki sebuah _root node_ bernama `Main`, dimana
-   _node_ tersebut memiliki dua buah _child node_, yaitu `PlatformBlue` dan
-   `BlueShip`. Selanjutnya, `PlatformBlue` juga memiliki dua _child node_.
+   dibuka. _Scene_ `MainLevel` memiliki sebuah _root node_ bernama `MainLevel`, dimana
+   _node_ tersebut memiliki tiga buah _child node_, yaitu `PlatformBlue`,
+   `BlueShip`, dan `ObjectiveArea`. Selanjutnya, masing-masing `PlatformBlue` dan `ObjectiveArea` juga memiliki dua _child node_.
 
    > Catatan: Kamu juga dapat mengetahui **Type** dari suatu _node_ dengan
    > menaruh pointer mouse di atas nama _node_. Akan muncul _popup_ yang
@@ -248,10 +248,44 @@ Perhatikan bagian-bagian penting dari _scene_ yang sedang dibuka:
 5. **Playtest Buttons** memiliki tombol untuk menjalankan _game loop_ pada
    proyek atau _scene_ yang sedang dibuka. Jika kamu menekan tombol **Play**
    (_shortcut_: F5), maka akan muncul _popup_ jika belum ada **Main Scene**.
-   Silakan mengikuti petunjuk untuk mengatur agar _scene_ `Main` menjadi
+   Silakan mengikuti petunjuk untuk mengatur agar _scene_ `MainLevel` menjadi
    **Main Scene** proyek game ini. Jika kamu ingin menjalankan _scene_ yang
-   dibuka terlapas apakah _scene_ tersebut berupa **Main Scene** atau tidak,
+   dibuka terlepas apakah _scene_ tersebut berupa **Main Scene** atau tidak,
    kamu bisa menggunakan tombol **Play Scene** (_shortcut_: F6).
+
+## Latihan: Playtest
+
+Coba jalankan contoh tutorial 2 ini dengan menekan tombol **Play**, kemudian tekan tombol panah Atas dan Bawah.
+Kamu dapat melihat objek landasan dapat bergerak ke atas dan ke bawah.
+Selain itu, objek pesawat juga akan ikut bergerak setelah terkena efek _physics_ ketika bergesekan dengan landasan.
+
+Saat ini contoh tutorial 2 sudah mengandung implementasi mekanika pergerakan landasan di sumbu vertikal.
+Pergerakan di sumbu vertikal ditangani menggunakan _scripting_ sederhana pada _scene_ `PlatformBlue`.
+Apabila pemain menekan tombol panah Atas, maka objek landasan akan bergerak ke atas.
+Sebaliknya, jika pemain menekan tombol panah Bawah, maka objek landasan akan bergerak ke bawah.
+Implementasi _event handling_ untuk penekanan tombol ini dapat dilihat di berkas `PlatformBlue.gd` yang sudah diasosiasikan ke _scene_ `PlatformBlue`.
+
+Sekarang coba gerakkan objek landasan ke atas sehingga objek pesawatnya hampir menyentuh batas atas area permainan/_window_.
+Kemudian jawablah pertanyaan-pertanyaan berikut:
+
+- Apa saja pesan _log_ yang dicetak pada panel **Output**?
+- Coba gerakkan landasan ke batas area bawah, lalu gerakkan kembali ke atas hingga hampir menyentuh batas atas.
+  Apa saja pesan _log_ yang dicetak pada panel **Output**?
+- Buka _scene_ `MainLevel` dengan tampilan _workspace_ 2D.
+  Apakah lokasi _scene_ `ObjectiveArea` memiliki kaitan dengan pesan _log_ yang dicetak pada panel **Output** pada percobaan sebelumnya?
+
+Dari latihan di atas, kamu baru saja melihat fitur lain dari _scripting_ pada Godot.
+`ObjectiveArea` menggunakan sistem **Signal** untuk mengimplementasikan _Observer Pattern_ untuk keperluan _event-handling_.
+Beberapa _event_ yang dapat dibuat oleh _node_ dapat diasosiasikan ke sebuah fungsi melalui sistem **Signal** milik Godot.
+Kamu dapat melihat contohnya pada _scene_ `ObjectiveArea`, tepatnya pada kumpulan _signal_ dari _node_ `Area2D` yang dimiliki _scene_ `ObjectiveArea`.
+Fungsi _event handler_-nya dapat dilihat pada berkas `ObjectiveArea.gd`.
+
+> Catatan: Pembahasan lebih lanjut mengenai _scripting_ akan diperkenalkan pada tutorial berikutnya mengenai **Game Programming**.
+
+Tuliskan hasil observasi kamu ke dalam berkas Markdown bernama `README.md` di repositori pengerjaan tutorial 2.
+Jangan lupa untuk membaca dokumentasi Godot untuk dapat mengelaborasikan jawaban dengan lebih rinci.
+
+## Latihan: Memanipulasi Node dan Scene
 
 Sekarang coba kamu buka _scene_ `BlueShip`. Tampilan Viewport dan beberapa
 panel lainnya akan berubah. Kamu akan melihat bahwa _scene_ `BlueShip`
@@ -263,8 +297,8 @@ dan fokus pada tampilan **Inspector**.
 
 **Inspector** menampilkan semua atribut yang dimiliki oleh _node_ `BlueShip`.
 Atribut-atribut yang dimiliki merupakan hasil dari hubungan _inheritance_
-dari hirarki tipe _node_. Jika kamu masih ingat _node_ `Main` di _scene_
-`Main`, _node_ tersebut adalah _node_ dengan tipe `Node` dimana atributnya
+dari hirarki tipe _node_. Jika kamu masih ingat _node_ `MainLevel` di _scene_
+`MainLevel`, _node_ tersebut adalah _node_ dengan tipe `Node` dimana atributnya
 hanya ada dua, yaitu `Pause` dan `Script`. Tipe `Node` adalah tipe _node_
 paling dasar pada hirarki tipe _node_ dalam Godot. Semua tipe _node_ pasti
 merupakan anak atau turunan dari tipe `Node`. Pada kasus _node_ `BlueShip`,
@@ -279,7 +313,7 @@ yaitu `Node`. Hirarkinya ditampilkan secara _reverse-order_ di dalam panel
 > `Node`. Jika ada kebutuhan objek abstrak untuk memiliki lokasi/posisi/rotasi,
 > maka bisa gunakan _node_ dengan tipe `Node2D` (atau ekuivalennya di game 3D).
 
-Sekarang coba kamu inspeksi _scene_ yang berbeda pada berkas `StonePlatform.tscn`
+Sekarang coba kamu inspeksi _scene_-_scene_ pada contoh proyek tutorial 2
 dan jawablah pertanyaan-pertanyaan berikut:
 
 - _Scene_ `BlueShip` dan `StonePlatform` sama-sama memiliki sebuah _child node_
@@ -288,14 +322,14 @@ dan jawablah pertanyaan-pertanyaan berikut:
   berbeda. `BlueShip` menggunakan tipe `RigidBody2D`, sedangkan `StonePlatform`
   menggunakan tipe `StaticBody2D`. Apa perbedaan dari masing-masing tipe _node_?
 - Ubah nilai atribut `Mass` dan `Weight` pada tipe `RigidBody2D` secara
-  bebas di _scene_ `BlueShip`, lalu coba jalankan _scene_ `Main`. Apa yang
+  bebas di _scene_ `BlueShip`, lalu coba jalankan _scene_ `MainLevel`. Apa yang
   terjadi?
 - Ubah nilai atribut `Disabled` pada tipe `CollisionShape2D` di _scene_
-  `StonePlatform`, lalu coba jalankan _scene_ `Main`. Apa yang terjadi?
-- Pada _scene_ `Main`, coba manipulasi atribut `Position`, `Rotation`, dan `Scale`
+  `StonePlatform`, lalu coba jalankan _scene_ `MainLevel`. Apa yang terjadi?
+- Pada _scene_ `MainLevel`, coba manipulasi atribut `Position`, `Rotation`, dan `Scale`
   milik _node_ `BlueShip` secara bebas. Apa yang terjadi pada visualisasi
   `BlueShip` di Viewport?
-- Pada _scene_ `Main`, perhatikan nilai atribut `Position` _node_ `PlatformBlue`,
+- Pada _scene_ `MainLevel`, perhatikan nilai atribut `Position` _node_ `PlatformBlue`,
   `StonePlatform`, dan `StonePlatform2`. Mengapa nilai `Position` _node_
   `StonePlatform` dan `StonePlatform2` tidak sesuai dengan posisinya di dalam
   _scene_ (menurut Inspector) namun visualisasinya berada di posisi yang tepat?
@@ -303,26 +337,35 @@ dan jawablah pertanyaan-pertanyaan berikut:
 > Catatan: Jangan lupa ada _shortcut_ Shift + F1 untuk memunculkan dokumentasi tipe-tipe
 > _node_ pada Godot.
 
-## Latihan: Membuat Node dan Scene
+Tuliskan hasil observasi kamu ke dalam berkas Markdown bernama `README.md` di repositori pengerjaan tutorial 2.
+Jangan lupa untuk membaca dokumentasi Godot untuk dapat mengelaborasikan jawaban dengan lebih rinci.
 
-TODO: Refine
+## Latihan Mandiri: Membuat Level Baru
 
-Apabila masih ada waktu atau kamu ingin lanjut berlatih mandiri, silakan baca
-referensi yang tersedia untuk belajar bagaimana caranya untuk membuat _node_ dan
-_scene_ di Godot. Latihannya sederhana saja, yaitu membuat pesawat dan landasan
-baru di dalam game. Gunakan aset gambar pesawat dan landasan yang berbeda dari
-`BlueShip` dan `StonePlatform` untuk membuat pesawat dan landasan baru.
+Silakan baca referensi yang tersedia untuk belajar bagaimana caranya untuk membuat _node_ dan _scene_ di Godot.
+Kemudian silakan berlatih untuk membuat level baru berisi tipe pesawat dan landasan yang berbeda dari level awal.
+Gunakan aset gambar pesawat dan landasan yang berbeda dari `BlueShip` dan `StonePlatform` untuk membuat tipe pesawat dan landasan baru.
 
-## Latihan Ekstra: ???
+Pada level baru ini, diharapkan kamu dapat membuat:
 
-TODO: TBD.
+1. [ ] Objek pesawat baru.
+2. [ ] Objek landasan baru.
+3. [ ] Desain level yang berbeda dari level awal dengan menempatkan `ObjectiveArea` di pojok kanan atas atau pojok kana bawah area permainan di level baru.
+5. [ ] Silakan berkreasi jika ingin memoles level awal maupun level baru. Beberapa ide _polishing_:
+   - Implementasi reset kondisi level ketika pesawatnya jatuh ke luar area permainan.
+   - Implementasi transisi level awal ke level baru ketika pemain berhasil mencapai `ObjectiveArea`.
+     Misalnya menampilkan pesan kemenangan sesaat sebelum pindah level.
+   - Menambahkan gambar latar.
+   - Menambahkan rintangan objek statis pada level baru.
+   - Dan lain-lain. Silakan berkreasi!
 
 ## Pengumpulan
 
-Tulis jawaban dan hasil observasi kamu pada berkas teks yang terpisah bernama `T2_[NPM].md` dimana `[NPM]` adalah nomor NPM (misal: `T2_1706123456.md`).
+Tulis jawaban dan hasil observasi kamu pada berkas teks `README.md`.
 Teks ditulis dengan rapi menggunakan format [Markdown](https://docs.gitlab.com/ee/user/markdown.html).
-Kumpulkan dengan memasukkan berkasnya ke dalam Git dan _push_ ke repositori Git pengerjaan tutorial.
-Apabila kamu mengerjakan latihan ekstra, pastikan _scene_ dan _node_ sudah tercatat masuk ke dalam repositori Git.
+Lalu jangan lupa untuk menyimpan hasil pengerjaan tutorial seperti _scene_ baru dan _script_ baru.
+Kumpulkan semua berkasnya berkasnya ke dalam Git dan _push_ ke repositori Git pengerjaan tutorial.
+Apabila kamu mengerjakan latihan mandiri, pastikan _scene_ dan _node_ sudah tercatat masuk ke dalam repositori Git.
 
 Tenggat waktu pengumpulan adalah **21 Februari 2024 pukul 21:00**.
 
