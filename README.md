@@ -2,9 +2,9 @@
 
 This is the course website of the Game Development course at the Faculty of Computer Science Universitas Indonesia.
 
-## Licesnse
+## License
 
-Copyright (c) 2023 Game Development Teaching Team at the Faculty of Computer Science Universitas Indonesia.
+Copyright (c) 2024 Game Development Teaching Team at the Faculty of Computer Science Universitas Indonesia.
 
 This project is licensed using two licenses: [Creative Commons Attribution Share-Alike 4.0 (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/)
 and [MIT](https://opensource.org/licenses/MIT).
