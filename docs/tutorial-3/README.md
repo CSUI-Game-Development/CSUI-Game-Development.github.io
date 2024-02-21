@@ -1,8 +1,9 @@
-# Tutorial 3 - Introduction to Scripting w/ GDScript for Implementing Basic 2D Game Mechanics
+# Tutorial 3 - Introduction to Game Programming with GDScript for Implementing Basic 2D Game Mechanics
 
-Selamat datang pada tutorial ketiga kuliah Game Development. Pada tutorial
-kali ini, kamu akan mempelajari dasar-dasar _syntax_ bahasa utama Godot Engine, GDScript beserta penggunaannya dalam konsep _node_ dan _object_ Godot Engine. Di akhir tutorial ini,
-diharapkan kamu paham dengan penggunaan GDScript serta penerapan mekanik dasar _2D Platformer_.
+Selamat datang pada tutorial ketiga mata kuliah Game Development.
+Pada tutorial kali ini, kamu akan mempelajari sintaks bahasa utama _engine_ Godot, yaitu GDScript,
+beserta penggunaannya dalam konsep _node_ dan _object_ pada _engine_ Godot.
+Di akhir tutorial ini, diharapkan kamu paham dengan penggunaan GDScript dan dapat menerapkannya untuk mengimplementasikan mekanik dasar permainan _2D Platformer_.
 
 ## Daftar Isi
 
@@ -301,13 +302,11 @@ Apabila masih ada waktu atau ingin lanjut berlatih mandiri, silakan baca referen
 
 Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:
 
-1. **A** apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi
-   tim pengajar.
-1. **B** apabila kamu hanya mengerjakan tutorial sesuai yang diminta oleh
-   deskripsi tutorial.
-1. **C** apabila kamu mengerjakan tutorial secara minimalis atau tidak
-   lengkap/tuntas.
-1. **E** apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.
+- **4** (_**A**_) apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi tim pengajar.
+- **3** (_**B**_) apabila kamu hanya mengerjakan tutorial dan latihan sesuai dengan instruksi.
+- **2** (_**C**_) apabila kamu hanya mengerjakan tutorial hingga tuntas.
+- **1** (_**D**_) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.
+- **0** (_**E**_) apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.
 
 ## Pengumpulan
 
@@ -316,7 +315,7 @@ tutorial ini di repositori milik pribadi. **Jangan _push_ atau membuat Merge
 Request ke repositori _upstream_ materi tutorial kecuali jika kamu ingin
 kontribusi materi atau memperbaiki materi yang sudah dipublikasikan!**
 
-Tenggat waktu pengumpulan adalah **20 September 2021 pukul 21:00**.
+Tenggat waktu pengumpulan adalah **28 Februari 2024 pukul 21:00**.
 
 ## Referensi
 
