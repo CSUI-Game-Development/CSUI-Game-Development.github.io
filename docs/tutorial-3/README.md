@@ -3,7 +3,7 @@
 Selamat datang pada tutorial ketiga mata kuliah Game Development.
 Pada tutorial kali ini, kamu akan mempelajari sintaks bahasa utama _engine_ Godot, yaitu GDScript,
 beserta penggunaannya dalam konsep _node_ dan _object_ pada _engine_ Godot.
-Di akhir tutorial ini, diharapkan kamu paham dengan penggunaan GDScript dan dapat menerapkannya untuk mengimplementasikan mekanik dasar permainan _2D Platformer_.
+Di akhir tutorial ini, diharapkan kamu paham dengan penggunaan GDScript dan dapat menerapkannya untuk mengimplementasikan mekanik dasar permainan _2D platformer_.
 
 ## Daftar Isi
 
@@ -168,7 +168,7 @@ Selanjutnya, _clone_ repositori _template_ proyek Tutorial 3 dari akun GitHub mi
 Kemudian buka proyeknya menggunakan Godot.
 
 Setelah berhasil membuka proyeknya menggunakan Godot, buka folder `scenes` dan buka _scene_ `Main.tscn`.
-Di dalam mode _workspace_ 2D, kamu dapat melihat ada _ground_ atau landasaran yang melayang di dalam _scene_.
+Di dalam mode _workspace_ 2D, kamu dapat melihat ada _ground_ atau landasan yang melayang di dalam _scene_.
 Kita akan menaruh objek yang dapat bergerak disana.
 
 ![Tampilan Main.tscn](images/main-scene.PNG)
@@ -202,7 +202,7 @@ Pada panel Scene, klik kanan pada node Player. Pilih Attach Script pada menu yan
 
 Karena script akan dipasang pada KinematicBody2D, script otomatis meng-_inherit_ class tersebut. Pada dasarnya, ini adalah skema dari GDScript, karena kita ingin menambahkan fungsionalitas baru pada node yang kita inginkan.
 
-Ubah nama script menjadi `Player.gd` kemudian simpan script pada folder script.
+Ubah nama script menjadi `Player.gd` kemudian simpan script pada folder `scenes`.
 
 ![Attach Script Box](images/attach-node-dialogue.png)
 
@@ -210,7 +210,8 @@ Script akan otomatis terbuka pada Godot Editor. Setiap script yang dibuat akan d
 
 ![Script editor](images/script-editor.png)
 
-Terdapat dua fungsi dasar yang hampir selalu ada pada bermacam-macam script: `_ready()` dan _process. Fungsi `_ready()` akan selalu dipanggil ketika sebuah node menjadi aktif pada sebuah scene. Fungsi `_process(delta)` akan dipanggil berkala pada setiap frame update.
+Terdapat dua fungsi dasar yang hampir selalu ada pada bermacam-macam script: `_ready()` dan `_process()`. Fungsi `_ready()` akan selalu dipanggil ketika sebuah node menjadi aktif pada sebuah _scene_.
+Fungsi `_process(delta)` akan dipanggil berkala pada setiap _frame update_.
 
 > Catatan: Game Engine memroses banyak frame dalam satu detik. Tergantung hardware, rata-rata komputer memiliki kecepatan proses 60 _frames per second_ (fps). Artinya, dalam satu detik fungsi `_process(delta)` dipanggil 60 kali.
 > Bagi yang sudah mengenal engine Unity dan/atau Unreal, kedua fungsi ini memiliki fungsi yang sama dengan `Awake()`/`Start()` dan `Update()`.
@@ -243,12 +244,12 @@ func _physics_process(delta):
 Jika kamu sedang mengambil atau pernah mengambil mata kuliah aljabar linier,
 maka kamu akan melihat salah satu manfaat dari ilmu yang dipelajari dari mata kuliah tersebut.
 
-"Dunia" di dalam permainan beserta objeknya akan memiliki tiga buah komponen utama untuk merepresentasikan wujud objek tersebut di dalam permainan.
+Objek di dalam "dunia" permainan akan memiliki tiga buah komponen utama untuk merepresentasikan wujud objek di dalam permainan.
 Tiga komponen tersebut adalah: posisi, rotasi, dan skala. Dalam bahasa Inggris, ketiga komponen tersebut biasa disebut sebagai _position_, _rotation_, dan _scale_.
 Ketiga komponen tersebut biasa direpresentasikan secara internal sebagai struktur vektor (game 2D) dan matriks (game 3D).
 Sehingga apabila kita akan menyimulasikan interaksi antar objek seperti pergerakan objek di dalam dunia permainan,
 maka kita akan menggunakan operasi-operasi di aljabar linier untuk dapat memanipulasi objek tersebut.
-Namun jangan khawatir, bukan berarti kamu harus mengimplementasikan operasi-operasi tersebut dari nol.
+Namun jangan khawatir, bukan berarti kamu harus mengimplementasikan struktur data dan operasi manipulasi vektor dari nol.
 _Game engine_ biasanya sudah menyertakan fungsi-fungsi terkait manipulasi objek di _standard library_.
 
 Mari mulai dengan contoh sederhana di tutorial ini, yaitu menggerakkan objek. Perhatikan hal-hal berikut:
@@ -262,7 +263,7 @@ Mari mulai dengan contoh sederhana di tutorial ini, yaitu menggerakkan objek. Pe
 
 > Catatan: _physics_process(delta) tidak jauh berbeda dari _process(delta). Fungsi ini dipanggil secara berkala, namun memiliki waktu panggil yang konstan tanpa bergantung pada fps.
 
-Jalankan Scene dan gunakan arrow keys. Player dapat bergerak secara horizontal.
+Jalankan _scene_ dan gunakan tombol panah arah. Player dapat bergerak secara horizontal.
 
 ### Latihan: Implementasi _Physics_ Sederhana (Gravitasi dan Loncat)
 
@@ -346,19 +347,31 @@ Selamat, kamu telah menyelesaikan tutorial ini!
 
 ## Latihan Mandiri: Mechanic Exploration
 
-Apabila masih ada waktu atau ingin lanjut berlatih mandiri, silakan baca referensi yang tersedia untuk belajar mengimplementasikan mekanik tambahan. Tidak ada kriteria khusus untuk ini, kamu bebas menambahkan apapun yang kamu suka. Beberapa contoh yang bisa diimplementasikan:
+Sebagai bagian dari latihan mandiri, kamu diminta untuk praktik mengembangkan lebih lanjut mekanika pergerakan karakter di game _platformer_.
+Beberapa ide fitur lanjutan terkait pergerakan karakter di game _platformer_:
 
-- Double Jump
-- Dashing
-- dll.
+- _Double jump_ - karakter pemain bisa melakukan aksi loncat sebanyak dua kali.
+- _Dashing_ - karakter pemain dapat bergerak lebih cepat dari kecepatan biasa secara sementara ketika pemain menekan tombol arah sebanyak dua kali.
+- _Crouching_ - karakter pemain dapat jongkok dimana _sprite_-nya terlihat lebih kecil (misal: _sprite_ karakter manusianya terlihat berjongkok) dan kecepatan pergerakannya menjadi lebih lambat ketika lagi jongkok
+- Dan lain-lain. Silakan cari contoh mekanika pergerakan 2D lainnya yang mungkin diimplementasikan di dalam permainan tipe _platformer_.
+
+Silakan pilih fitur lanjutan yang ingin dikerjakan.
+Kemudian jelaskan proses pengerjaannya di dalam sebuah dokumen teks `README.md`.
+Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelaskan proses implementasi.
 
 ## Skema Penilaian
 
 Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:
 
 - **4** (_**A**_) apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi tim pengajar.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan Latihan Mandiri, ditambah dengan memoles (_polishing_) lebih lanjut permainannya.
+  Misal, salah satu ide _polishing_ sederhana yang dapat dikerjakan adalah memperbaiki _sprite_ karakter sehingga tampilannya sesuai dengan arah jalannya karakter.
+  Ketika karakter jalan ke kiri, maka wajah dan badan di _sprite_ karakter juga menghadap ke kiri. Begitu pula sebaliknya.
+  Akan lebih baik lagi jika bisa mengimplementasikan animasi pada _sprite_, namun kamu perlu mengeksplorasi materi yang belum dibahas di tutorial ini.
 - **3** (_**B**_) apabila kamu hanya mengerjakan tutorial dan latihan sesuai dengan instruksi.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan Latihan Mandiri.
 - **2** (_**C**_) apabila kamu hanya mengerjakan tutorial hingga tuntas.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan namun tidak mengerjakan Latihan Mandiri.
 - **1** (_**D**_) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.
 - **0** (_**E**_) apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.
 
