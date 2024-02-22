@@ -52,6 +52,8 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Tutorials:
-    - Tutorial 1 - Game Design Workshop: tutorial-1/README.md
-    - Tutorial 2 - Introduction to Game Engine: tutorial-2/README.md
+    - tutorials/index.md
+    - Tutorial 1 - Game Design Workshop: tutorials/tutorial-1/README.md
+    - Tutorial 2 - Introduction to Game Engine: tutorials/tutorial-2/README.md
+    - Tutorial 3 - Introduction to Game Programming: tutorials/tutorial-3/README.md
   - Exam Issue Template: exam-issue-template.md
