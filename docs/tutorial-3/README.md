@@ -7,18 +7,17 @@ Di akhir tutorial ini, diharapkan kamu paham dengan penggunaan GDScript dan dapa
 
 ## Daftar Isi
 
-- [Tutorial 3 - Introduction to Scripting w/ GDScript for Implementing Basic 2D Game Mechanics](#tutorial-3---introduction-to-scripting-w-gdscript-for-implementing-basic-2d-game-mechanics)
+- [Tutorial 3 - Introduction to Game Programming with GDScript for Implementing Basic 2D Game Mechanics](#tutorial-3---introduction-to-game-programming-with-gdscript-for-implementing-basic-2d-game-mechanics)
   - [Daftar Isi](#daftar-isi)
   - [Pengantar](#pengantar)
     - [Is Scripting an Instrument?](#is-scripting-an-instrument)
     - [GDScript Example](#gdscript-example)
   - [Basic 2D Plane Movement](#basic-2d-plane-movement)
-    - [Setting things up](#setting-things-up)
+    - [Setting Things Up](#setting-things-up)
     - [Making a Script](#making-a-script)
-    - [Writing and Using a Script](#writing-and-using-a-script)
-    - [Gravity and Jumping](#gravity-and-jumping)
-    - [KinematicBody2D vs RigidBody2D](#kinematicbody2d-vs-rigidbody2d)
-  - [Extra: Mechanic Exploration](#extra-mechanic-exploration)
+    - [Latihan: Implementasi Pergerakan Horizontal Menggunakan Script](#latihan-implementasi-pergerakan-horizontal-menggunakan-script)
+    - [Latihan: Implementasi _Physics_ Sederhana (Gravitasi dan Loncat)](#latihan-implementasi-physics-sederhana-gravitasi-dan-loncat)
+  - [Latihan Mandiri: Eksplorasi Mekanika Pergerakan](#latihan-mandiri-eksplorasi-mekanika-pergerakan)
   - [Skema Penilaian](#skema-penilaian)
   - [Pengumpulan](#pengumpulan)
   - [Referensi](#referensi)
@@ -345,7 +344,7 @@ Selamat, kamu telah menyelesaikan tutorial ini!
 
 ![Melompat](images/jump.gif)
 
-## Latihan Mandiri: Mechanic Exploration
+## Latihan Mandiri: Eksplorasi Mekanika Pergerakan
 
 Sebagai bagian dari latihan mandiri, kamu diminta untuk praktik mengembangkan lebih lanjut mekanika pergerakan karakter di game _platformer_.
 Beberapa ide fitur lanjutan terkait pergerakan karakter di game _platformer_:
@@ -377,10 +376,9 @@ Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:
 
 ## Pengumpulan
 
-Kumpulkan dengan memasukkan berkasnya ke dalam Git dan _push_ ke _fork_ materi
-tutorial ini di repositori milik pribadi. **Jangan _push_ atau membuat Merge
-Request ke repositori _upstream_ materi tutorial kecuali jika kamu ingin
-kontribusi materi atau memperbaiki materi yang sudah dipublikasikan!**
+Kumpulkan semua berkas pengerjaan tutorial dan latihan ke dalam Git dan _push_ ke repositori Git pengerjaan tutorial 3.
+Apabila kamu mengerjakan latihan mandiri, pastikan _scene_ dan _node_ sudah tercatat masuk ke dalam repositori Git.
+Kemudian, kumpulkan tautan ke repositori Git hasil pengerjaan tutorial 3 kamu di slot pengumpulan yang tersedia di SCELE.
 
 Tenggat waktu pengumpulan adalah **28 Februari 2024 pukul 21:00**.
 
