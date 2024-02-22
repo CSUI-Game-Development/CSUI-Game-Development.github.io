@@ -171,7 +171,7 @@ Setelah berhasil membuka proyeknya menggunakan Godot, buka folder `scenes` dan b
 Di dalam mode _workspace_ 2D, kamu dapat melihat ada _ground_ atau landasan yang melayang di dalam _scene_.
 Kita akan menaruh objek yang dapat bergerak disana.
 
-![Tampilan Main.tscn](images/main-scene.PNG)
+![Tampilan Main.tscn](images/main_scene.png)
 
 Buat _scene_ baru dan tambahkan _root node_ `Kinematic2D` pada _scene_ tersebut.
 Ubah nama _node_ tersebut menjadi `Player`.
