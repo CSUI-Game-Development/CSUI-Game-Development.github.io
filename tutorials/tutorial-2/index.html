@@ -1,0 +1,1125 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="The website of Game Development course at the Faculty of Computer Science Universitas Indonesia.">
+      
+      
+        <meta name="author" content="Daya Adianto">
+      
+      
+      
+        <link rel="prev" href="../tutorial-1/">
+      
+      
+        <link rel="next" href="../tutorial-3/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+    
+    
+      
+        <title>Tutorial 2 - Introduction to Game Engine - Game Development @ Faculty of Computer Science Universitas Indonesia</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35e1ed30.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/print-site.css">
+    
+      <link rel="stylesheet" href="../../css/print-site-material.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorial-2-introduction-to-game-engine" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Game Development @ Faculty of Computer Science Universitas Indonesia" class="md-header__button md-logo" aria-label="Game Development @ Faculty of Computer Science Universitas Indonesia" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Game Development @ Faculty of Computer Science Universitas Indonesia
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tutorial 2 - Introduction to Game Engine
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/CSUI-Game-Development/CSUI-Game-Development.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+    
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../exam-issue-template/" class="md-tabs__link">
+        
+  
+    
+  
+  Exam Issue Template
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Game Development @ Faculty of Computer Science Universitas Indonesia" class="md-nav__button md-logo" aria-label="Game Development @ Faculty of Computer Science Universitas Indonesia" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Game Development @ Faculty of Computer Science Universitas Indonesia
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/CSUI-Game-Development/CSUI-Game-Development.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial 1 - Game Design Workshop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Tutorial 2 - Introduction to Game Engine
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial 2 - Introduction to Game Engine
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#daftar-isi" class="md-nav__link">
+    Daftar Isi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pengantar" class="md-nav__link">
+    Pengantar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persiapan-awal" class="md-nav__link">
+    Persiapan Awal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#antarmuka-godot-editor" class="md-nav__link">
+    Antarmuka Godot Editor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#konsep-node-dan-scene" class="md-nav__link">
+    Konsep Node dan Scene
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspeksi-node-dan-scene" class="md-nav__link">
+    Inspeksi Node dan Scene
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#latihan-playtest" class="md-nav__link">
+    Latihan: Playtest
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#latihan-memanipulasi-node-dan-scene" class="md-nav__link">
+    Latihan: Memanipulasi Node dan Scene
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#latihan-mandiri-membuat-level-baru" class="md-nav__link">
+    Latihan Mandiri: Membuat Level Baru
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pengumpulan" class="md-nav__link">
+    Pengumpulan
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referensi" class="md-nav__link">
+    Referensi
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial 3 - Introduction to Game Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exam-issue-template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exam Issue Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#daftar-isi" class="md-nav__link">
+    Daftar Isi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pengantar" class="md-nav__link">
+    Pengantar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persiapan-awal" class="md-nav__link">
+    Persiapan Awal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#antarmuka-godot-editor" class="md-nav__link">
+    Antarmuka Godot Editor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#konsep-node-dan-scene" class="md-nav__link">
+    Konsep Node dan Scene
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspeksi-node-dan-scene" class="md-nav__link">
+    Inspeksi Node dan Scene
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#latihan-playtest" class="md-nav__link">
+    Latihan: Playtest
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#latihan-memanipulasi-node-dan-scene" class="md-nav__link">
+    Latihan: Memanipulasi Node dan Scene
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#latihan-mandiri-membuat-level-baru" class="md-nav__link">
+    Latihan Mandiri: Membuat Level Baru
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pengumpulan" class="md-nav__link">
+    Pengumpulan
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referensi" class="md-nav__link">
+    Referensi
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+    <a href="../../print_page/" title="Print Site" class="md-content__button md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 3H6v4h12m1 5a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1m-3 7H8v-5h8m3-6H5a3 3 0 0 0-3 3v6h4v4h12v-4h4v-6a3 3 0 0 0-3-3Z"/></svg>
+    </a>
+
+
+
+                  
+
+
+<h1 id="tutorial-2-introduction-to-game-engine">Tutorial 2 - Introduction to Game Engine</h1>
+<p>Selamat datang pada tutorial kedua kuliah Game Development! Pada tutorial
+kali ini, kamu akan berkenalan dengan <em>game engine</em> Godot dan mencoba
+memahami fitur-fitur dasar Godot secara singkat. Di akhir tutorial ini,
+diharapkan kamu paham dengan penggunaan Godot Editor, penerapan konsep
+<em>node</em> dan <em>scene</em>, dan menyimpan hasil tutorialnya di sebuah repositori
+Git daring.</p>
+<p>Sekadar mengingatkan, pastikan kamu:</p>
+<ul>
+<li>Telah mengunduh dan memasang <a href="https://godotengine.org/download/3.x/">Godot v3.5.3</a>
+  edisi <strong>Standard</strong> sesuai dengan <em>development environment</em> yang kamu gunakan.</li>
+<li>Telah menjadi anggota kelompok tugas proyek akhir.</li>
+</ul>
+<h2 id="daftar-isi">Daftar Isi</h2>
+<ul>
+<li><a href="#tutorial-2---introduction-to-game-engine">Tutorial 2 - Introduction to Game Engine &amp; Version Control</a></li>
+<li><a href="#daftar-isi">Daftar Isi</a></li>
+<li><a href="#pengantar">Pengantar</a></li>
+<li><a href="#persiapan-awal">Persiapan Awal</a></li>
+<li><a href="#antarmuka-godot-editor">Antarmuka Godot Editor</a></li>
+<li><a href="#konsep-node-dan-scene">Konsep Node dan Scene</a></li>
+<li><a href="#inspeksi-node-dan-scene">Inspeksi Node dan Scene</a></li>
+<li><a href="#latihan-playtest">Latihan: Playtest</a></li>
+<li><a href="#latihan-membuat-node-dan-scene">Latihan: Memanipulasi Node dan Scene</a></li>
+<li><a href="#latihan-mandiri-membuat-level-baru">Latihan Mandiri: Membuat Level Baru</a></li>
+<li><a href="#pengumpulan">Pengumpulan</a></li>
+<li><a href="#referensi">Referensi</a></li>
+</ul>
+<h2 id="pengantar">Pengantar</h2>
+<p>Tutorial ini disusun dengan mengambil beberapa referensi dari dokumentasi
+resmi <a href="https://docs.godotengine.org/en/3.5/">Godot v3.5</a> dimana
+kamu akan mengikuti instruksi-instruksi di dalam dokumen ini untuk mengenal
+<em>game engine</em> Godot dan menggunakannya untuk membuat sebuah game sangat
+sederhana. Namun beberapa gambar yang ada di tutorial ini diambil dari Godot v3.1.1.
+Jadi nanti ikuti tutorialnya harap teliti ya, bisa jadi ada sedikit tulisan yang berbeda
+antara perintah yang diberikan dan gambar visualisasinya. Terakhir, mungkin
+masih ada yang bertanya-tanya:
+"<em>Mengapa harus belajar menggunakan game engine seperti Godot, Unity, atau
+Unreal, untuk membuat game?</em>"</p>
+<p>Salah satu jawaban singkat dari pertanyaan di atas adalah <strong>software/component reuse</strong>.
+Dengan menggunakan <em>game engine</em>, pengembang game tidak harus mengimplementasikan ulang komponen-komponen penting di dalam game,
+seperti <em>game loop</em>, <em>audio system</em>, AI, <em>graphics/rendering system</em>, UI, dan lain-lain.
+<em>Game engine</em> menyediakan komponen siap pakai dan memberikan keleluasaan bagi
+pengembang untuk mengimplementasikan hingga mengubah komponen yang ada sesuai
+dengan kebutuhan.</p>
+<p><em>Game engine</em> pada umumnya juga menyediakan <em>editor</em> yang perannya seperti IDE
+(Integrated Development Environment) yang biasa kamu gunakan di kuliah-kuliah
+pemrograman lainnya. Dalam hal ini, kemampuan <em>editor</em> dalam <em>game engine</em>
+tidak hanya sekadar sebagai <em>text editor</em>. <em>Editor</em> dalam <em>game engine</em> dapat
+digunakan juga untuk membuat aset, manajemen aset, hingga melakukan komposisi
+aset ke dalam dunia game. Hal ini yang akan kamu lihat dan coba lakukan di
+dalam tutorial ini.</p>
+<p>Singkat kata, atau <strong>TL;DR: <em>Game engine</em> akan mempermudah proses implementasi game.</strong></p>
+<h2 id="persiapan-awal">Persiapan Awal</h2>
+<p>Langkah-langkah awal yang perlu dilakukan dalam pengerjaan tutorial ini adalah
+sebagai berikut:</p>
+<ol>
+<li>Buka repositori <a href="https://github.com/CSUI-Game-Development/tutorial-2-template"><em>template</em> proyek Tutorial 2</a> di GitHub.
+   Pilih "Use this template" untuk membuat repositori baru berdasarkan <em>template</em> tersebut ke dalam akun GitHub milikmu.</li>
+<li>Setelah membuat repositori Git baru berdasarkan <em>template</em> proyek Tutorial 2, salin repositori Git proyek Tutorial 2 ke mesinmu.</li>
+<li>Unduh Godot dahulu. Pastikan kamu mengunduh Godot versi 3.5 (LTS).
+   Kemudian <em>extract</em> ke suatu lokasi di dalam <em>filesyste</em> komputer.</li>
+<li>Jalankan Godot. Apabila Godot kamu merupakan instalasi baru (<em>fresh</em>), maka
+   akan muncul <em>modal window</em> yang menanyakan apakah kamu ingin membuka <strong>Assets Library</strong>.
+   Pilih <strong>Open Assets Library</strong>, lalu tunggu beberapa saat hingga proses
+   <em>loading</em> selesai dan pilih <em>tab</em> <strong>Projects</strong>.</li>
+</ol>
+<blockquote>
+<p>Catatan: <strong>Assets Library</strong> adalah repositori aset siap pakai yang dapat
+digunakan dalam proyek game Godot. Bagi yang pernah menggunakan <em>game engine</em>
+Unity, fungsinya serupa dengan Unity Assets Store.
+5. Impor proyek game <code>T2</code>/<code>Tutorial 2</code> dengan menggunakan fitur <strong>Import</strong> di tampilan
+   Projects.</p>
+</blockquote>
+<p><img alt="Animasi impor proyek game" src="images/import_project.gif" />
+6. Jika Godot sudah selesai impor proyek <code>T2</code>/<code>Tutorial 2</code>,
+   maka akan muncul tampilan Godot Editor.
+   Tampilan <em>default</em> Godot Editor dapat dilihat pada cuplikan gambar berikut:</p>
+<p><img alt="Tampilan default Godot Editor" src="images/default_godot_editor.png" /></p>
+<p>Tampilan Godot Editor di atas menampilkan ruang kerja (<em>workspace</em>) 3D.
+   Untuk kebutuhan tutorial ini, ganti <em>workspace</em> ke mode 2D dengan tombol
+   <em>shortcut</em> F1 atau klik tombol 2D yang berada di bagian atas <em>editor</em>.</p>
+<p><img alt="Ilustrasi ganti mode workspace" src="images/switch_3d_2d.gif" /></p>
+<h2 id="antarmuka-godot-editor">Antarmuka Godot Editor</h2>
+<p><img alt="Tampilan Godot Editor dengan keterangan" src="images/annotated_godot_editor.png" /></p>
+<p>Tampilan Godot Editor terdiri dari beberapa panel yang akan dijelaskan
+sebagai berikut:</p>
+<ul>
+<li>Viewport
+  Jendela yang menampilkan <em>scene</em> dalam game, <em>code editor</em>, atau Asset
+  Library sesuai dengan apa yang dipilih pada Workspaces.</li>
+<li>Workspaces
+  Panel untuk mengganti apa yang ditampilkan pada Viewport. Ada 4 jenis:
+  2D, 3D, Script, dan AssetLib.</li>
+<li>2D menampilkan <em>scene</em> dengan tampilan dua dimensi.</li>
+<li>3D menampilkan <em>scene</em> dengan tampilan tiga dimensi.</li>
+<li>Script menampilkan <em>code editor</em> dan <em>debugger</em>.</li>
+<li>AssetLib menampilkan <em>library addons</em>, <em>scripts</em>, dan aset-aset gratis.</li>
+<li>Playtest Buttons
+  Panel untuk menjalankan proyek atau <em>scene</em>.</li>
+<li>FileSystem
+  <em>Tab</em> untuk mengatur dan menyusun berkas-berkas dan aset-aset di dalam proyek
+  yang sedang dibuka.</li>
+<li>Scene
+  <em>Tab</em> yang menampilkan hirarki dari objek-objek yang berada di dalam <em>scene</em>
+  yang sedang aktif.</li>
+<li>Import
+  Jendela untuk melakukan pengaturan <em>import</em> pada berkas aset yang sedang
+  dipilih.</li>
+<li>Inspector
+  Menampilkan rincian spesifik dari objek yang sedang dipilih dalam <em>scene</em>.
+  Pada umumnya terdapat komponen <strong>Transform</strong> yang mengatur posisi, rotasi,
+  dan skala dari objek yang dipilh. Selain itu, juga terdapat pengaturan
+  spesifik tergantung dari tipe objek yang sedang dipilih.</li>
+<li>Node
+  <em>Tab</em> terdiri dari dua bagian: <strong>Signals</strong> dan <strong>Groups</strong>. Signals mengandung
+  daftar <em>events</em> atau sinyal sesuai dengan tipe objek yang sedang dipilh.
+  Groups digunakan untuk mengelompokkan objek yang sedang dipilih ke dalam
+  kelompok tertentu supaya memudahkan untuk mencari atau mengatur beberapa
+  objek serupa dalam satu kelompok.</li>
+<li>Output
+  Menampilkan <em>console log</em> dari Godot Engine.</li>
+<li>Debugger
+  Mengandung beberapa <em>tools</em> yang dapat digunakan untuk melakukan <em>debugging</em>
+  ketika menemui masalah dalam pengembangan. <em>Tools</em> yang tersedia adalah:</li>
+<li>Debugger menampilkan proses <em>runtime</em>.</li>
+<li>Error menampilkan <em>error</em> yang muncul ketika menjalankan game.</li>
+<li>Profiler menampilkan <em>profile</em> dari setiap <em>function call</em> yang terjadi
+    di dalam game.</li>
+<li>Monitor menampilkan <em>performance parameter</em> dari game, seperti FPS (frame
+    per second), <em>physics collisions</em>, dan lain-lain.</li>
+<li>Video Mem menampilkan penggunaan memori dari game yang sedang berjalan.</li>
+<li>Misc menampilkan opsi-opsi <em>debug</em> lainnya.</li>
+<li>Audio
+  <em>Tab</em> yang membantu melakukan pengaturan audio dalam <em>game</em>.</li>
+<li>Animation
+  Jendela untuk membuat dan mengatur <em>timing</em> dan <em>keyframe</em> dari animasi
+  yang digunakan.</li>
+</ul>
+<p>Untuk mempercepat beberapa operasi pada Godot Editor, terdapat beberapa tombol
+<em>shortcut</em> yang dapat kamu gunakan, seperti:</p>
+<ul>
+<li>F1: Ganti <em>viewport</em> ke mode 2D.</li>
+<li>F2: Ganti <em>viewport</em> ke mode 3D.</li>
+<li>F3: Ganti <em>viewport</em> menjadi <em>script editor</em>.</li>
+<li>Shift + F1: Buka tampilan pencarian dokumentasi.</li>
+<li>Q: Ganti mode manipulasi menjadi <strong>Select</strong>.</li>
+<li>W: Ganti mode manipulasi menjadi <strong>Move</strong>.</li>
+<li>E: Ganti mode manipulasi menjadi <strong>Rotate</strong>.</li>
+<li>S: Ganti mode manipulasi menjadi <strong>Scale</strong>.</li>
+<li>R: Ganti mode manipulasi menjadi <strong>Ruler</strong></li>
+</ul>
+<p>Tombol-tombol <em>shortcut</em> lainnya dapat dilihat di menu Editor &gt; Editor
+Settings &gt; Shortcuts.</p>
+<p>Selanjutnya kamu akan berkenalan dengan konsep <strong>Node</strong> dan <strong>Scene</strong> yang
+merupakan komponen fundamental dalam game yang dibuat menggunakan Godot.</p>
+<h2 id="konsep-node-dan-scene">Konsep Node dan Scene</h2>
+<p>Salah satu alasan mengapa kuliah Game Development di Fasilkom UI membutuhkan
+kuliah Struktur Data &amp; Algoritma (SDA) sebagai prasyarat adalah agar dapat
+memahami bagaimana sebuah objek game dalam Godot terstruktur. Godot
+merepresentasikan dunia game beserta objek-objek di dalamnya dalam bentuk
+hirarki pohon (<em>tree</em>). Sebuah objek, abstrak maupun konkrit, dalam Godot
+direpresentasikan sebagai sebuah <strong>Node</strong>, dimana <em>node</em> tersebut bisa
+memiliki struktur hirarki yang rekursif layaknya <em>tree</em>.</p>
+<p><img alt="Ilustrasi hirarki node" src="images/node_hierarchy.png" /></p>
+<p>Sebuah <em>node</em> pada Godot Engine memiliki atribut/sifat berikut:</p>
+<ul>
+<li>Memiliki nama.</li>
+<li>Memiliki atribut-atribut (<em>properties</em>) yang dapat diubah.</li>
+<li>Dapat menerima fungsi <em>callback</em> untuk diproses per <em>frame</em> (atau dengan
+  kata lain: diproses setiap 1 kali iterasi <em>game loop</em>).</li>
+<li>Dapat di-<em>extend</em> untuk memiliki lebih banyak fungsi. Dengan kata lain,
+  sebuah <em>node</em> bisa memiliki hubungan seperti <em>inheritance</em> di paradigma
+  pemrograman objek (OOP).</li>
+<li>Dapat ditambahkan/dicangkokkan ke <em>node</em> lain sebagai anak <em>node</em>
+  (<em>child node</em>).</li>
+</ul>
+<p>Sebuah hirarki <em>node</em>, atau selanjutnya disebut sebagai <em>tree</em>, dapat membentuk
+sebuah <strong>Scene</strong> di dalam Godot. Sifat khusus dari <em>scene</em> yang berbeda dari
+<em>node</em> adalah sebuah <em>scene</em> dapat disimpan ke media penyimpan, dapat dibaca
+kembali dari media penyimpan, dan dapat dibuat menjadi <em>instance</em> baru di dalam
+sebuah <em>scene</em> yang berbeda.</p>
+<blockquote>
+<p>Catatan: Bagi kamu yang familiar dengan <em>game engine</em> Unity, konsep <em>scene</em>
+di Godot mirip dengan <em>prefab</em> dan <code>GameObject</code> pada Unity, dimana <em>scene</em>
+pada Godot dapat dikomposisikan sebagai anak sebuah <em>scene</em> lain. Selain
+itu, <em>scene</em> di Godot pada saat yang bersamaan juga seperti <em>scene</em> di Unity,
+yaitu representasi dari ruang dimana permainan berlangsung. Di Unity, <em>scene</em>
+digunakan lebih harfiah, yaitu untuk merepresentasikan 1 atau lebih
+<code>GameObject</code> sehingga membentuk ruang permainan.</p>
+</blockquote>
+<p>Untuk memperjelas konsep <em>node</em> dan <em>scene</em>, ada baiknya jika kamu langsung
+praktik melihat <em>node</em> dan <em>scene</em> yang sudah disiapkan.</p>
+<h2 id="inspeksi-node-dan-scene">Inspeksi Node dan Scene</h2>
+<p>Pada panel <strong>FileSystem</strong>, klik 2x berkas bernama <code>MainLevel.tscn</code>. <strong>Viewport</strong> pada
+Godot Editor akan menampilkan visualisasi sebuah <em>scene</em>. Perhatikan juga panel
+panel <strong>Scene</strong> yang menampilkan hirarki <em>node</em> pada <em>scene</em> <code>Main</code> yang sedang
+dibuka.</p>
+<p>Perhatikan bagian-bagian penting dari <em>scene</em> yang sedang dibuka:</p>
+<p><img alt="Tampilan scene Main dengan keterangan" src="images/annotated_open_scene.png" /></p>
+<ol>
+<li>Panel <strong>FileSystem</strong> menampilkan koleksi berkas yang ada di dalam proyek
+  <code>T2</code>/<code>Tutorial 2</code>. Saat ini, ada 3 buah berkas <em>scene</em> yang berakhiran <code>.tscn</code>
+   di dalam folder <code>scenes</code> dan ada folder <code>assets</code> berisi berkas-berkas gambar dengan format PNG.
+   Perlu diingat bahwa semua aset pada game Godot perlu ditaruh dalam folder proyek game.</li>
+<li>Panel <strong>Scene</strong> menampilkan hirarki <em>node</em> di dalam <em>scene</em> yang sedang
+   dibuka. <em>Scene</em> <code>MainLevel</code> memiliki sebuah <em>root node</em> bernama <code>MainLevel</code>, dimana
+   <em>node</em> tersebut memiliki tiga buah <em>child node</em>, yaitu <code>PlatformBlue</code>,
+   <code>BlueShip</code>, dan <code>ObjectiveArea</code>. Selanjutnya, masing-masing <code>PlatformBlue</code> dan <code>ObjectiveArea</code> juga memiliki dua <em>child node</em>.<blockquote>
+<p>Catatan: Kamu juga dapat mengetahui <strong>Type</strong> dari suatu <em>node</em> dengan
+menaruh pointer mouse di atas nama <em>node</em>. Akan muncul <em>popup</em> yang
+menampilkan tipe <em>node</em> yang ada di bawah pointer.</p>
+</blockquote>
+</li>
+<li>Panel <strong>Inspector</strong> dapat menampilkan atribut (<em>properties</em>) dari <em>node</em>
+   yang sedang dipilih melalui Viewport atau panel Scene. Pada gambar di atas,
+   panel Inspector menampilkan atribut dari <em>node</em> <code>Main</code>. Apabila kamu klik
+   <em>tab</em> <strong>Node</strong> di panel tersebut, maka akan muncul daftar fungsi <em>callback</em>
+   yang dimiliki oleh <em>node</em>.</li>
+<li><strong>Viewport</strong> menampilkan visualisasi dari <em>scene</em> yang sedang dibuka. Saat
+   ini ada kotak samar-samar dengan garis biru yang melambangkan area pandang
+   game ketika game dijalankan kelak. Area dalam kotak bergaris biru di dalam
+   Viewport akan divisualisasikan ke layar PC ketika permainan dimulai.<blockquote>
+<p>Catatan: Kamu juga dapat melihat ada semacam penggaris (<em>ruler</em>) di bagian
+terluar Viewport. <em>Ruler</em> tersebut memberikan informasi posisi koordinat
+dalam <em>scene</em>. Satu hal lagi yang perlu kamu ketahui adalah titik <code>(0, 0)</code>
+pada sistem yang menampilkan citra di komputer umumnya mulai dari pojok
+kiri atas bidang. Tidak seperti yang telah kamu pelajari dari matematika
+dasar, yaitu dari pojok kiri bawah bidang.</p>
+</blockquote>
+</li>
+<li><strong>Playtest Buttons</strong> memiliki tombol untuk menjalankan <em>game loop</em> pada
+   proyek atau <em>scene</em> yang sedang dibuka. Jika kamu menekan tombol <strong>Play</strong>
+   (<em>shortcut</em>: F5), maka akan muncul <em>popup</em> jika belum ada <strong>Main Scene</strong>.
+   Silakan mengikuti petunjuk untuk mengatur agar <em>scene</em> <code>MainLevel</code> menjadi
+   <strong>Main Scene</strong> proyek game ini. Jika kamu ingin menjalankan <em>scene</em> yang
+   dibuka terlepas apakah <em>scene</em> tersebut berupa <strong>Main Scene</strong> atau tidak,
+   kamu bisa menggunakan tombol <strong>Play Scene</strong> (<em>shortcut</em>: F6).</li>
+</ol>
+<h2 id="latihan-playtest">Latihan: Playtest</h2>
+<p>Coba jalankan contoh tutorial 2 ini dengan menekan tombol <strong>Play</strong>, kemudian tekan tombol panah Atas dan Bawah.
+Kamu dapat melihat objek landasan dapat bergerak ke atas dan ke bawah.
+Selain itu, objek pesawat juga akan ikut bergerak setelah terkena efek <em>physics</em> ketika bergesekan dengan landasan.</p>
+<p>Saat ini contoh tutorial 2 sudah mengandung implementasi mekanika pergerakan landasan di sumbu vertikal.
+Pergerakan di sumbu vertikal ditangani menggunakan <em>scripting</em> sederhana pada <em>scene</em> <code>PlatformBlue</code>.
+Apabila pemain menekan tombol panah Atas, maka objek landasan akan bergerak ke atas.
+Sebaliknya, jika pemain menekan tombol panah Bawah, maka objek landasan akan bergerak ke bawah.
+Implementasi <em>event handling</em> untuk penekanan tombol ini dapat dilihat di berkas <code>PlatformBlue.gd</code> yang sudah diasosiasikan ke <em>scene</em> <code>PlatformBlue</code>.</p>
+<p>Sekarang coba gerakkan objek landasan ke atas sehingga objek pesawatnya hampir menyentuh batas atas area permainan/<em>window</em>.
+Kemudian jawablah pertanyaan-pertanyaan berikut:</p>
+<ul>
+<li>Apa saja pesan <em>log</em> yang dicetak pada panel <strong>Output</strong>?</li>
+<li>Coba gerakkan landasan ke batas area bawah, lalu gerakkan kembali ke atas hingga hampir menyentuh batas atas.
+  Apa saja pesan <em>log</em> yang dicetak pada panel <strong>Output</strong>?</li>
+<li>Buka <em>scene</em> <code>MainLevel</code> dengan tampilan <em>workspace</em> 2D.
+  Apakah lokasi <em>scene</em> <code>ObjectiveArea</code> memiliki kaitan dengan pesan <em>log</em> yang dicetak pada panel <strong>Output</strong> pada percobaan sebelumnya?</li>
+</ul>
+<p>Dari latihan di atas, kamu baru saja melihat fitur lain dari <em>scripting</em> pada Godot.
+<code>ObjectiveArea</code> menggunakan sistem <strong>Signal</strong> untuk mengimplementasikan <em>Observer Pattern</em> untuk keperluan <em>event-handling</em>.
+Beberapa <em>event</em> yang dapat dibuat oleh <em>node</em> dapat diasosiasikan ke sebuah fungsi melalui sistem <strong>Signal</strong> milik Godot.
+Kamu dapat melihat contohnya pada <em>scene</em> <code>ObjectiveArea</code>, tepatnya pada kumpulan <em>signal</em> dari <em>node</em> <code>Area2D</code> yang dimiliki <em>scene</em> <code>ObjectiveArea</code>.
+Fungsi <em>event handler</em>-nya dapat dilihat pada berkas <code>ObjectiveArea.gd</code>.</p>
+<blockquote>
+<p>Catatan: Pembahasan lebih lanjut mengenai <em>scripting</em> akan diperkenalkan pada tutorial berikutnya mengenai <strong>Game Programming</strong>.</p>
+</blockquote>
+<p>Tuliskan hasil observasi kamu ke dalam berkas Markdown bernama <code>README.md</code> di repositori pengerjaan tutorial 2.
+Jangan lupa untuk membaca dokumentasi Godot untuk dapat mengelaborasikan jawaban dengan lebih rinci.</p>
+<h2 id="latihan-memanipulasi-node-dan-scene">Latihan: Memanipulasi Node dan Scene</h2>
+<p>Sekarang coba kamu buka <em>scene</em> <code>BlueShip</code>. Tampilan Viewport dan beberapa
+panel lainnya akan berubah. Kamu akan melihat bahwa <em>scene</em> <code>BlueShip</code>
+memiliki sebuah <em>root node</em> bernama <code>BlueShip</code> dan memiliki dua buah
+<em>child node</em>, yaitu <code>Sprite</code> dan <code>CollisionShape2D</code>. Pilih <em>node</em> <code>BlueShip</code>
+dan fokus pada tampilan <strong>Inspector</strong>.</p>
+<p><img alt="Contoh tampilan inspector BlueShip" src="images/inspector.png" /></p>
+<p><strong>Inspector</strong> menampilkan semua atribut yang dimiliki oleh <em>node</em> <code>BlueShip</code>.
+Atribut-atribut yang dimiliki merupakan hasil dari hubungan <em>inheritance</em>
+dari hirarki tipe <em>node</em>. Jika kamu masih ingat <em>node</em> <code>MainLevel</code> di <em>scene</em>
+<code>MainLevel</code>, <em>node</em> tersebut adalah <em>node</em> dengan tipe <code>Node</code> dimana atributnya
+hanya ada dua, yaitu <code>Pause</code> dan <code>Script</code>. Tipe <code>Node</code> adalah tipe <em>node</em>
+paling dasar pada hirarki tipe <em>node</em> dalam Godot. Semua tipe <em>node</em> pasti
+merupakan anak atau turunan dari tipe <code>Node</code>. Pada kasus <em>node</em> <code>BlueShip</code>,
+tipe <em>node</em> <code>BlueShip</code> adalah <code>RigidBody2D</code>, dimana <code>RigidBody2D</code> adalah
+subtipe dari <code>PhysicsBody2D</code>, dan seterusnya hingga mencapai tipe paling dasar,
+yaitu <code>Node</code>. Hirarkinya ditampilkan secara <em>reverse-order</em> di dalam panel
+<strong>Inspector</strong>.</p>
+<blockquote>
+<p>Catatan: Bagi kamu yang familiar dengan <em>game engine</em> Unity, kamu akan sadar
+bahwa tidak semua objek dalam Godot bisa memiliki komponen Transform. Objek
+abstrak pada Godot bisa direpresentasikan sebagai sebuah <em>node</em> bertipe
+<code>Node</code>. Jika ada kebutuhan objek abstrak untuk memiliki lokasi/posisi/rotasi,
+maka bisa gunakan <em>node</em> dengan tipe <code>Node2D</code> (atau ekuivalennya di game 3D).</p>
+</blockquote>
+<p>Sekarang coba kamu inspeksi <em>scene</em>-<em>scene</em> pada contoh proyek tutorial 2
+dan jawablah pertanyaan-pertanyaan berikut:</p>
+<ul>
+<li><em>Scene</em> <code>BlueShip</code> dan <code>StonePlatform</code> sama-sama memiliki sebuah <em>child node</em>
+  bertipe <code>Sprite</code>. Apa fungsi dari <em>node</em> bertipe <code>Sprite</code>?</li>
+<li><em>Root node</em> dari <em>scene</em> <code>BlueShip</code> dan <code>StonePlatform</code> menggunakan tipe yang
+  berbeda. <code>BlueShip</code> menggunakan tipe <code>RigidBody2D</code>, sedangkan <code>StonePlatform</code>
+  menggunakan tipe <code>StaticBody2D</code>. Apa perbedaan dari masing-masing tipe <em>node</em>?</li>
+<li>Ubah nilai atribut <code>Mass</code> dan <code>Weight</code> pada tipe <code>RigidBody2D</code> secara
+  bebas di <em>scene</em> <code>BlueShip</code>, lalu coba jalankan <em>scene</em> <code>MainLevel</code>. Apa yang
+  terjadi?</li>
+<li>Ubah nilai atribut <code>Disabled</code> pada tipe <code>CollisionShape2D</code> di <em>scene</em>
+  <code>StonePlatform</code>, lalu coba jalankan <em>scene</em> <code>MainLevel</code>. Apa yang terjadi?</li>
+<li>Pada <em>scene</em> <code>MainLevel</code>, coba manipulasi atribut <code>Position</code>, <code>Rotation</code>, dan <code>Scale</code>
+  milik <em>node</em> <code>BlueShip</code> secara bebas. Apa yang terjadi pada visualisasi
+  <code>BlueShip</code> di Viewport?</li>
+<li>Pada <em>scene</em> <code>MainLevel</code>, perhatikan nilai atribut <code>Position</code> <em>node</em> <code>PlatformBlue</code>,
+  <code>StonePlatform</code>, dan <code>StonePlatform2</code>. Mengapa nilai <code>Position</code> <em>node</em>
+  <code>StonePlatform</code> dan <code>StonePlatform2</code> tidak sesuai dengan posisinya di dalam
+  <em>scene</em> (menurut Inspector) namun visualisasinya berada di posisi yang tepat?</li>
+</ul>
+<blockquote>
+<p>Catatan: Jangan lupa ada <em>shortcut</em> Shift + F1 untuk memunculkan dokumentasi tipe-tipe
+<em>node</em> pada Godot.</p>
+</blockquote>
+<p>Tuliskan hasil observasi kamu ke dalam berkas Markdown bernama <code>README.md</code> di repositori pengerjaan tutorial 2.
+Jangan lupa untuk membaca dokumentasi Godot untuk dapat mengelaborasikan jawaban dengan lebih rinci.</p>
+<h2 id="latihan-mandiri-membuat-level-baru">Latihan Mandiri: Membuat Level Baru</h2>
+<p>Silakan baca referensi yang tersedia untuk belajar bagaimana caranya untuk membuat <em>node</em> dan <em>scene</em> di Godot.
+Kemudian silakan berlatih untuk membuat level baru berisi tipe pesawat dan landasan yang berbeda dari level awal.
+Gunakan aset gambar pesawat dan landasan yang berbeda dari <code>BlueShip</code> dan <code>StonePlatform</code> untuk membuat tipe pesawat dan landasan baru.</p>
+<p>Pada level baru ini, diharapkan kamu dapat membuat:</p>
+<ol class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Objek pesawat baru.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Objek landasan baru.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Desain level yang berbeda dari level awal dengan menempatkan <code>ObjectiveArea</code> di pojok kanan atas atau pojok kana bawah area permainan di level baru.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Silakan berkreasi jika ingin memoles level awal maupun level baru. Beberapa ide <em>polishing</em>:<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Implementasi reset kondisi level ketika pesawatnya jatuh ke luar area permainan.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Implementasi transisi level awal ke level baru ketika pemain berhasil mencapai <code>ObjectiveArea</code>.
+  Misalnya menampilkan pesan kemenangan sesaat sebelum pindah level.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Menambahkan gambar latar.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Menambahkan rintangan objek statis pada level baru.</li>
+<li>Dan lain-lain. Silakan berkreasi!</li>
+</ul>
+</li>
+</ol>
+<h2 id="pengumpulan">Pengumpulan</h2>
+<p>Tulis jawaban dan hasil observasi kamu pada berkas teks <code>README.md</code>.
+Teks ditulis dengan rapi menggunakan format <a href="https://docs.gitlab.com/ee/user/markdown.html">Markdown</a>.
+Lalu jangan lupa untuk menyimpan hasil pengerjaan tutorial seperti <em>scene</em> baru dan <em>script</em> baru.
+Kumpulkan semua berkasnya berkasnya ke dalam Git dan <em>push</em> ke repositori Git pengerjaan tutorial.
+Apabila kamu mengerjakan latihan mandiri, pastikan <em>scene</em> dan <em>node</em> sudah tercatat masuk ke dalam repositori Git.</p>
+<p>Tenggat waktu pengumpulan adalah <strong>21 Februari 2024 pukul 21:00</strong>.</p>
+<h2 id="referensi">Referensi</h2>
+<ul>
+<li><a href="https://docs.godotengine.org/en/3.5/getting_started/introduction/index.html">Introduction to Godot</a></li>
+<li><a href="https://docs.godotengine.org/en/3.5/getting_started/step_by_step/nodes_and_scenes.html">Nodes and Scenes</a></li>
+<li>Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
+  gasal 2021/2022 Fakultas Ilmu Komputer Universitas Indonesia.</li>
+</ul>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-02-22 02:38:22</span>
+      
+        <br>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-02-01 01:30:29</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Faculty of Computer Science Universitas Indonesia
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+        <script src="../../js/print-site.js"></script>
+      
+    
+  </body>
+</html>
