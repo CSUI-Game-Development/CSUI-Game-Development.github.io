@@ -26,17 +26,35 @@ diharapkan kamu paham dengan penggunaan GDScript serta penerapan mekanik dasar _
 
 ### Is Scripting an Instrument?
 
-Scripting Language merupakan istilah untuk bahasa pemrograman yang tidak perlu di-_compile_ sepenuhnya untuk dijalankan. Beberapa bahasa Scripting yang terkenal adalah Javascript dan Python.
+Pekan lalu kita telah mencoba membuat objek sederhana sebagai _scene_ yang terdiri dari komposisi satu atau lebih _node_.
+Objek di dalam permainan bisa saja berupa objek statik yang tidak memiliki peran apapun di dalam permainan, seperti menjadi hiasan atau rintangan.
+Namun pada umumnya, kita membutuhkan objek yang memiliki peran dan dapat berinteraksi dengan objek lainnya di dalam sistem permainan.
+Peran dan interaksi antar objek di dalam sistem permainan serta hubungannya dengan interaksi pemain dapat didefinisikan menggunakan pemrograman berbasis _scripting_.
 
-Dasarnya, ada empat (4) bahasa pemrograman yang dapat digunakan dalam Godot Engine (GDScript, Visual Script, C#, C++). Pada Matakuliah Game Development ini akan diajarkan salah satu dari bahasa yang disediakan, yakni GDScript. Bahasa ini digunakan karena:
+Pemrograman menggunakan _script_ biasanya mengacu pada penggunaan bahasa pemrograman yang langsung dijalankan (atau, diinterpretasikan) oleh sebuah _runtime_.
+Contoh pemrograman menggunakan _script_ yang terkenal antara lain adalah bahasa Python dan JavaScript.
+Jika kamu masih ingat pengalaman belajar bahasa Python di kuliah pemrograman dasar, maka kamu pasti ingat bahwa Python tidak membutuhkan _compiler_ apapun.
+Program Python dapat langsung berjalan tanpa melalui proses kompilasi terlebih dahulu.
+Contoh lain bahasa _script_ adalah JavaScript.
+Kode JavaScript akan dijalankan oleh _runtime_ seperti _engine_ JavaScript di dalam _browser_ atau _runtime_ khusus untuk menjalankan kode JavaScript di luar browser seperti Node atau Deno.
 
-- Integrasi penuh dengan Godot Engine dan Godot Editor
-- Sederhana dan cepat
-- Mirip dengan bahasa scripting (Python, Lua, dll.)
+_Engine_ Godot versi 3 mendukung empat (4) bahasa pemrograman: GDScript, Visual Script, C#, dan C++.
+Pada mata kuliah Game Development ini, kamu akan belajar sintaks dan cara penggunaan bahasa GDScript.
+Beberapa alasan mengapa GDScript dipilih sebagai bahasa pemrograman utama adalah:
+
+- Integrasi penuh dengan _engine_ Godot dan komponen editornya.
+- Sederhana dan cepat.
+- Sintaks yang mirip dengan bahasa _scripting_ populer lainnya seperti Python dan Lua.
+
+> Catatan: bagi pembaca yang sudah berpengalaman menggunakan bahasa C# dan _engine_ Unity,
+> sebenarnya Godot juga menyediakan varian _engine_ yang menerima bahasa C#.
+> Dukungannya juga sudah relatif stabil di versi Godot terkini.
+> Namun untuk keperluan pembelajaran bagi seluruh peserta kuliah,
+> kita akan fokus menggunakan bahasa GDScript selama satu semester ini.
 
 ### GDScript Example
 
-Contoh sebuah script dalam GDScript adalah berikut:
+Contoh sebuah _script_ yang dituliskan dalam GDScript adalah berikut:
 
 ```
 # example.gd
@@ -115,23 +133,48 @@ func _init():
     print(lv.a)
 ```
 
-> Catatan: Dokumentasi penuh ada pada link berikut:
-> https://docs.godotengine.org/en/3.1/getting_started/scripting/gdscript/gdscript_basics.html#doc-gdscript
+> Catatan: contoh di atas diambil dari dokumentasi resmi Godot berikut:
+> https://docs.godotengine.org/en/3.5/tutorials/scripting/gdscript/gdscript_basics.html
+
+Beberapa hal yang perlu kita bahas:
+
+- Bahasa GDScript memiliki paradigma _object-oriented_ (OO) dan _imperative_.
+  Sebuah _script_ akan memiliki hubungan _inheritance_ ke sebuah _superclass_.
+  Jika tidak mendeklarasikan _inheritance_ secara eksplisit, maka sebuah _class_ di GDScript secara implisit merupakan turunan dari sebuah _root superclass_ bernama [`Object`](https://docs.godotengine.org/en/3.5/classes/class_object.html).
+- Bahasa GDScript memiliki _type system_ yang bersifat _dynamic_.
+  Kamu bisa mendeklarasikan variabel ataupun fungsi tanpa tipe data.
+  Namun sangat disarankan untuk secara eksplisit tetap mendeklarasikan tipe data pada variabel dan fungsi.
+  Tujuannya untuk membantu _autocompletion_ dan dokumentasi yang disediakan oleh _editor_.
+- Standar penulisan GDScript menyerupai Python. Misalnya, blok kode dibedakan menggunakan _indent_.
+  Untuk lebih lengkapnya, silakan merujuk ke dokumen [GDScript style guide](https://docs.godotengine.org/en/3.5/tutorials/scripting/gdscript/gdscript_styleguide.html).
+  Untuk mempermudah konsistensi penulisan kode di lingkungan pengembangan, kamu dapat merujuk ke berkas `.editorconfig` yang tersedia di _template_ Tutorial 3 serta memanfaatkan program Python bernama [`gdtoolkit`](https://pypi.org/project/gdtoolkit/) yang menyediakan _linter_ dan _code formatter_ GDScript.
 
 ## Basic 2D Plane Movement
 
-Kita akan membuat sebuah objek Kinematic2D yang dapat bergerak ke kiri dan ke kanan serta melompat. Tutorial ini akan mendemonstrasikan:
+Pada tutorial ini, kita akan mengimplementasikan mekanika dasar sebuah permainan berjenis (_genre_) _platformer_.
+Pemain akan dapat menggerakkan sebuah objek ke kiri dan ke kanan serta melompat.
+Tutorial ini akan mendemonstrasikan:
 
-- Membuat sebuah objek Kinematic2D dengan child Collision2D dan Sprite
-- Membuat Script dan memasangkan Script tersebut ke suatu node
-- Implementasi Physics dasar
+- Membuat sebuah objek `Kinematic2D` dengan _child node_ `Collision2D` dan `Sprite`.
+- Membuat _script_ dan memasangkan _script_ tersebut ke objek di dalam permainan.
+- Implementasi _physics_ dasar.
 
-### Setting things up
+### Setting Things Up
 
-Buka Project Godot tutorial ini dalam Godot Editor, kemudian pada FileSystem buka folder Scenes. Buka scene ```Main.tscn```. Akan terdapat Ground yang melayang dalam scene tersebut. Kita akan menaruh sesuatu yang dapat bergerak disana.
+Mulai tutorial ini dengan membuat salinan [repositori Git _template_ proyek Tutorial 3](https://github.com/CSUI-Game-Development/tutorial-3-template).
+Buka laman GitHub repositori Git _template_ proyek Tutorial 3, lalu klik "Use this template" untuk membuat salinan _repositori_ Git tersebut ke dalam akun GitHub pribadi.
+Selanjutnya, _clone_ repositori _template_ proyek Tutorial 3 dari akun GitHub milikmu ke lingkungan pengembangan lokal.
+Kemudian buka proyeknya menggunakan Godot.
+
+Setelah berhasil membuka proyeknya menggunakan Godot, buka folder `scenes` dan buka _scene_ `Main.tscn`.
+Di dalam mode _workspace_ 2D, kamu dapat melihat ada _ground_ atau landasaran yang melayang di dalam _scene_.
+Kita akan menaruh objek yang dapat bergerak disana.
+
 ![Tampilan Main.tscn](images/main-scene.PNG)
 
-Buat Scene baru dan tambahkan Node Kinematic2D pada scene tersebut. Ubah nama node tersebut menjadi Player. Tambahkan child node Sprite dan CollisionShape2D dengan menggunakan menu Add Child Node.
+Buat _scene_ baru dan tambahkan _root node_ `Kinematic2D` pada _scene_ tersebut.
+Ubah nama _node_ tersebut menjadi `Player`.
+Tambahkan _child node_ `Sprite` dan `CollisionShape2D` dengan menggunakan menu Add Child Node.
 
 ![Dialogue box New Scene](images/new-scene-menu.png)
 ![Dialogue box Node Selection](images/node-selection.png)
@@ -147,10 +190,10 @@ Pilih node Sprite dan buka panel Inspector. Pada menu texture, pilih menu Load d
 ![Inspector Sprite](images/sprite-inspector.png)
 
 Save Scene tersebut dalam folder Scenes. Objek ini akan menjadi target scripting.
+
 > Catatan: Nama node, scene, dan pilihan sprite dibebaskan. Kamu diperbolehkan untuk menggunakan aset milik sendiri.
 
-Tampilan Godot Editor terdiri dari beberapa panel yang akan dijelaskan
-sebagai berikut:
+Tampilan Godot Editor terdiri dari beberapa panel yang akan dijelaskan pada subbab berikutnya.
 
 ### Making a Script
 
@@ -171,7 +214,7 @@ Terdapat dua fungsi dasar yang hampir selalu ada pada bermacam-macam script: `_r
 > Catatan: Game Engine memroses banyak frame dalam satu detik. Tergantung hardware, rata-rata komputer memiliki kecepatan proses 60 _frames per second_ (fps). Artinya, dalam satu detik fungsi `_process(delta)` dipanggil 60 kali.
 > Bagi yang sudah mengenal engine Unity dan/atau Unreal, kedua fungsi ini memiliki fungsi yang sama dengan `Awake()`/`Start()` dan `Update()`.
 
-### Writing and Using a Script
+### Latihan: Implementasi Pergerakan Horizontal Menggunakan Script
 
 Sebuah script jika dipasang ke suatu node akan memberikan node tersebut atribut tambahan. Script dapat digunakan untuk mengendalikan node tersebut dan semua child node yang ada.
 
@@ -196,7 +239,18 @@ func _physics_process(delta):
     velocity = move_and_slide(velocity)
 ```
 
-Perhatikan hal-hal berikut:
+Jika kamu sedang mengambil atau pernah mengambil mata kuliah aljabar linier,
+maka kamu akan melihat salah satu manfaat dari ilmu yang dipelajari dari mata kuliah tersebut.
+
+"Dunia" di dalam permainan beserta objeknya akan memiliki tiga buah komponen utama untuk merepresentasikan wujud objek tersebut di dalam permainan.
+Tiga komponen tersebut adalah: posisi, rotasi, dan skala. Dalam bahasa Inggris, ketiga komponen tersebut biasa disebut sebagai _position_, _rotation_, dan _scale_.
+Ketiga komponen tersebut biasa direpresentasikan secara internal sebagai struktur vektor (game 2D) dan matriks (game 3D).
+Sehingga apabila kita akan menyimulasikan interaksi antar objek seperti pergerakan objek di dalam dunia permainan,
+maka kita akan menggunakan operasi-operasi di aljabar linier untuk dapat memanipulasi objek tersebut.
+Namun jangan khawatir, bukan berarti kamu harus mengimplementasikan operasi-operasi tersebut dari nol.
+_Game engine_ biasanya sudah menyertakan fungsi-fungsi terkait manipulasi objek di _standard library_.
+
+Mari mulai dengan contoh sederhana di tutorial ini, yaitu menggerakkan objek. Perhatikan hal-hal berikut:
 
 1. `export (int) var speed = 400` merupakan deklarasi variabel. Export membuat variabel speed dapat diakses lewat visual editor.
 2. `var velocity = Vector2()` adalah deklarasi private variable Vector2. Vector2 adalah tipe data Vector built-in Godot yang memiliki dua arah (x,y).
@@ -209,13 +263,13 @@ Perhatikan hal-hal berikut:
 
 Jalankan Scene dan gunakan arrow keys. Player dapat bergerak secara horizontal.
 
-### Gravity and Jumping
+### Latihan: Implementasi _Physics_ Sederhana (Gravitasi dan Loncat)
 
-Jika dilihat, Player hanya bergerak horizontal dan tidak dipengaruhi gravitasi. Objek Player tetap diam diatas meskipun tidak berada pada suatu pijakan. Hal ini merupakan karakteristik dari KinematicBody2D, dimana node _tidak_ dipengaruhi oleh physics yang tersedia dari Game Engine.
+Jika dilihat, `Player` hanya bergerak horizontal dan tidak dipengaruhi gravitasi. Objek Player tetap diam diatas meskipun tidak berada pada suatu pijakan.
+Hal ini merupakan karakteristik dari `KinematicBody2D`, dimana _node_ **tidak** dipengaruhi oleh _physics_ yang tersedia dari _game engine_.
+Sedangkan untuk dapat membuat objek terpentaruh _physics_, maka seharusnya objek tersebut menggunakan _node_ lain bertipe `RigidBody2D`.
 
-### KinematicBody2D vs RigidBody2D
-
-Salah satu alasan mengapa kita tidak memakai RigidBody2D yang dapat dipengaruhi physics Game Engine adalah konsistensi. Dengan memakai KinematicBody2D, objek yang digerakan oleh pemain akan selalu merespon terhadap input yang diberikan, dimana objek RigidBody2D akan mudah terpengaruh oleh physics diluar kendali pemain.
+Salah satu alasan mengapa kita tidak memakai `RigidBody2D` yang dapat dipengaruhi physics Game Engine adalah konsistensi. Dengan memakai KinematicBody2D, objek yang digerakan oleh pemain akan selalu merespon terhadap input yang diberikan, dimana objek RigidBody2D akan mudah terpengaruh oleh physics diluar kendali pemain.
 
 Apabila kita ingin membuat Player kita melompat, maka kita harus bisa membuat Player dipengaruhi gravitasi. Setidaknya, Player harus bisa jatuh. Untuk itu, kita harus menambahkan fungsi physics sendiri, karena kita tidak bisa menggunakan gravitasi Game Engine. Tambahkan baris berikut pada `Player.gd`:
 
@@ -289,7 +343,7 @@ Selamat, kamu telah menyelesaikan tutorial ini!
 
 ![Melompat](images/jump.gif)
 
-## Extra: Mechanic Exploration
+## Latihan Mandiri: Mechanic Exploration
 
 Apabila masih ada waktu atau ingin lanjut berlatih mandiri, silakan baca referensi yang tersedia untuk belajar mengimplementasikan mekanik tambahan. Tidak ada kriteria khusus untuk ini, kamu bebas menambahkan apapun yang kamu suka. Beberapa contoh yang bisa diimplementasikan:
 
