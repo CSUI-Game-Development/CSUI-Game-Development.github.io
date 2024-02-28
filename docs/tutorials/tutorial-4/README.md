@@ -1,8 +1,10 @@
 # Tutorial 4 - Basic 2D Level Design
 
-Selamat datang pada tutorial keempat kuliah Game Development. Pada tutorial
-kali ini, kamu akan mempelajari cara membuat level sederhana menggunakan Godot Engine.
-Di akhir tutorial ini, diharapkan kamu paham dengan penggunaan _TileMap_ dan _Signals_
+Selamat datang pada tutorial keempat kuliah Game Development.
+Pada tutorial kali ini, kamu akan mempelajari cara membuat level sederhana pada bidang 2D menggunakan _engine_ Godot.
+Selain itu, kamu juga akan mempelajari mekanisme _event handling_ menggunakan sistem _signal_ di Godot
+dan implementasi objek _spawner_ untuk membuat rintangan di dalam permainan.
+Di akhir tutorial ini, diharapkan kamu paham dengan penggunaan _tilemap_, sistem _signal_, dan _timer_ di Godot.
 
 ## Daftar Isi
 
@@ -32,7 +34,7 @@ Di akhir tutorial ini, diharapkan kamu paham dengan penggunaan _TileMap_ dan _Si
 
 ### What Is a Level?
 
-Pada tutorial sebelumnya kita sudah membuat sebuah _player_ sederhana yang dapat bergerak ke kanan dan kiri dan juga dapat melompat. 
+Pada tutorial sebelumnya kita sudah membuat sebuah _player_ sederhana yang dapat bergerak ke kanan dan kiri dan juga dapat melompat.
 Namun tempat ia bergerak masih sangat terbatas, kita memerlukan sebuah _level_ supaya _player_ tidak hanya jatuh ke jurang tanpa dasar.
 
 Sebuah _level_ pada dasarnya adalah tempat dimana _player_ dapat melakukan _action_ dan mungkin memiliki sebuah _goal_.
@@ -99,7 +101,7 @@ Terdapat beberapa cara untuk membuat Tile Set:
 - _Atlas_ untuk _tile_ yang bertipe sejenis dan akan lebih mudah diorganisir daripada menggunakan _single tile_ berulang kali.
 
 Pada tutorial ini kita akan menggunakan _Atlas_.
-Klik ```New Atlas```, lalu drag area yang akan dijadikan Tile Set. 
+Klik ```New Atlas```, lalu drag area yang akan dijadikan Tile Set.
 > Tips: supaya hidup kamu mudah silakan menggunakan fitur ```snap to grid``` (Klik logo magnet).
 
 ![TileSet Window 3](images/TilesetDirtSelect.png)
