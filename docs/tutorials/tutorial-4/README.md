@@ -34,8 +34,9 @@ Di akhir tutorial ini, diharapkan kamu paham dengan penggunaan _tilemap_, sistem
 
 ### What Is a Level?
 
-Pada tutorial sebelumnya kita sudah membuat sebuah _player_ sederhana yang dapat bergerak ke kanan dan kiri dan juga dapat melompat.
-Namun tempat ia bergerak masih sangat terbatas, kita memerlukan sebuah _level_ supaya _player_ tidak hanya jatuh ke jurang tanpa dasar.
+Pada tutorial sebelumnya kita sudah membuat sebuah objek _player_ sederhana yang dapat bergerak ke kanan dan kiri dan juga dapat melompat.
+Namun tempat ia bergerak masih sangat terbatas dan belum memiliki tujuan (_objective_) di dalam permainan.
+Oleh karena itu, kita memerlukan sebuah _level_ supaya pemain memiliki tujuan di dalam permainan ketika mengendalikan objek _player_.
 
 Sebuah _level_ pada dasarnya adalah tempat dimana _player_ dapat melakukan _action_ dan mungkin memiliki sebuah _goal_.
 
@@ -47,19 +48,29 @@ Contoh sebuah level yang terlihat sederhana:
 
 > Super Mario Bros World 1-1, Nintendo 1985
 
-Kita akan membuat sebuah level 2D sederhana menggunakan salah satu fitur Godot Engine yaitu _TileMap_.
+Kita akan membuat sebuah level 2D sederhana menggunakan salah satu fitur _engine_ Godot yaitu _tile mapping_ menggunakan `TileMap`.
+
 Pada tutorial ini akan didemonstrasikan:
-- Membuat TileSet untuk TileMap
-- Membuat level menggunakan TileMap
-- Membuat kamera mengikuti player
-- Membuat trigger untuk lose dan win condition
+
+- Membuat `TileSet` untuk `TileMap`.
+- Membuat level menggunakan `TileMap`.
+- Membuat kamera mengikuti objek _player_.
+- Membuat pemicu kondisi (_trigger_) menang dan kalah.
 
 ## Creating A Simple Level using TileMap
 
 ### Preparation
 
-Buka template project di Godot Editor, kemudian buka scene ```Scenes/Level 1.tscn```.
-Dalam scene tersebut akan terdapat suatu mahluk yang hanya akan jatuh jika scene dimainkan.
+Mari memulai tutorial ini dengan membuat [salinan repositori Git _template_ proyek Tutorial 4](https://github.com/CSUI-Game-Development/tutorial-4-template).
+Buka laman GitHub repositori _template_ proyek Tutorial 4
+dan klik "Use this template" untuk membuat salinan repositori Git tersebut ke dalam akun GitHub pribadi.
+Kemudian atur _visibility_ repositori Git proyek Tutorial 4 kamu menjadi **Public**
+dan salin (`git clone`) repositori Git Tutorial 4 milikmu ke lingkungan pengembangan lokal.
+
+Jika sudah membuat salinan repositori Git proyek Tutorial 4 secara lokal,
+buka proyek Tutorial 4 menggunakan Godot.
+Kemudian buka _scene_ `Level1.tscn` dan coba jalankan _playtest_ pada _scene_ tersebut.
+Kamu akan melihat ada suatu makhluk yang akan langsung jatuh ketika _scene_ dimainkan.
 
 ![Tampilan Level 1.tscn](images/Level1Blank.png)
 
