@@ -4,28 +4,18 @@ Selamat datang pada tutorial keempat kuliah Game Development.
 Pada tutorial kali ini, kamu akan mempelajari cara membuat level sederhana pada bidang 2D menggunakan _engine_ Godot.
 Selain itu, kamu juga akan mempelajari mekanisme _event handling_ menggunakan sistem _signal_ di Godot
 dan implementasi objek _spawner_ untuk membuat rintangan di dalam permainan.
-Di akhir tutorial ini, diharapkan kamu paham dengan penggunaan _tilemap_, sistem _signal_, dan _timer_ di Godot.
+Di akhir tutorial ini, diharapkan kamu paham dengan penggunaan _tilemap_ dan sistem _signal_ di Godot.
 
 ## Daftar Isi
 
-- [Tutorial 4 - Basic 2D Level Design](#Tutorial-4---Basic-2D-Level-Design)
+- [Tutorial 4 - Basic 2D Level Design](#tutorial-4---basic-2d-level-design)
   - [Daftar Isi](#daftar-isi)
   - [Pengantar](#pengantar)
-    - [What Is a Level?](#What-Is-a-Level)
-    - [Level Example](#Level-Example)
-  - [Creating A Simple Level using TileMap](#Creating-A-Simple-Level-using-Tilemap)
-    - [Preparation](#Preparation)
-    - [Making Tile Set](#Making-Tile-Set)
-    - [Paint the TileMap](#Paint-the-TileMap)
-  - [Making the Camera Follows The Player](#Making-the-Camera-Follows-The-Player)
-    - [How Simple It Is](#How-Simple-It-Is)
-  - [Adding Area Trigger for Lose and Win Condition](#Adding-Area-Trigger-for-Lose-and-Win-Condition)
-    - [Set Up](#set-up)
-    - [What is Signals?](#What-is-Signals)
-    - [Using Signals](#Using-Signals)
-    - [Adding It to the Level](#Adding-It-to-the-Level)
-  - [Bonus To Do](#bonus-to-do)
-  - [Instruksi Pengerjaan](#Instruksi-Pengerjaan)
+  - [Latihan: Membuat Tile Map](#latihan-membuat-tile-map)
+  - [Latihan: Membuat Kamera](#latihan-membuat-kamera)
+  - [Latihan: Membuat Kondisi Akhir Permainan Menggunakan Signal](#latihan-membuat-kondisi-akhir-permainan-menggunakan-signal)
+  - [Latihan: Membuat Rintangan Membuat Spawner](#latihan-membuat-rintangan-menggunakan-spawner)
+  - [Latihan Mandiri: Membuat Level Baru Dengan Tile Map & Obstacle Berbeda](#latihan-mandiri-membuat-level-baru-dengan-tile-map--obstacle-berbeda)
   - [Skema Penilaian](#skema-penilaian)
   - [Pengumpulan](#pengumpulan)
   - [Referensi](#referensi)
@@ -74,39 +64,40 @@ Kamu akan melihat ada suatu makhluk yang akan langsung jatuh ketika _scene_ dima
 
 ![Tampilan Level 1.tscn](images/Level1Blank.png)
 
-Klik kanan pada node ```Level 1``` dan pilih ```Add Child Node```, kemudian pilih ```TileMap```.
+Klik kanan pada _node_ `Level1` dan pilih "Add Child Node", kemudian pilih `TileMap`.
 
-Setelah TileMap berhasil ditambahkan akan terlihat _grid_ berwarna oranye pada scene dan muncul 1 tab baru disebelah scene.
-(Jika tidak terjadi apa-apa, coba select node TileMap)
+Setelah `TileMap` berhasil ditambahkan akan terlihat _grid_ samar-samar berwarna oranye pada _scene_ dan muncul 1 tab baru disebelah _scene_.
+(Jika tidak terjadi apa-apa, coba pilih _node_ `TileMap`)
 
 ![Tampilan TileMap Kosong](images/Level1TilemapAdd.png)
 
-Pada tab Inspector, atur ```Size``` menjadi 128 untuk X dan Y.
+Pada tab Inspector, atur `Size` menjadi 128 untuk X dan Y.
 
 ![Tampilan TileMap Kosong](images/TilemapInspector.png)
 
-### Making Tile Set
+### Latihan: Membuat Tile Map
 
 Jika diibaratkan dengan melukis, kita baru saja mempersiapkan kanvas dan kuas. Kita masih kekurangan cat untuk melukis.
-Untuk mempersiapkan cat, pada tab Inspector klik dropdown menu ```Tile Set``` dan pilih ```New TileSet```.
+Untuk mempersiapkan cat, pada tab Inspector klik dropdown menu `TileSet` dan pilih `New TileSet`.
 
 ![New Tileset](images/TilemapNewTileset.png)
 
-Lalu klik lagi dropdown tadi dan pilih ```Edit```.
+Lalu klik lagi dropdown tadi dan pilih `Edit`.
 
 ![New Tileset](images/TilemapEditTileset.png)
 
-Akan muncul window baru dengan nama ```TileSet```.
+Akan muncul window baru dengan nama `TileSet`.
 
 ![TileSet Window](images/Level1TilesetEdit.png)
 
-Lalu klik ikon plus di kiri bawah window tersebut dan pilih ```Assets/kenney_platformerpack/Spritesheets/*```.
+Lalu klik ikon plus di kiri bawah window tersebut dan pilih `assets/kenney_platformerpack/Spritesheets/*`.
 Dalam contoh ini digunakan ```spritesheet_gr_dirt.png```, namun kamu bebas menggunakan yang tersedia atau menambah sendiri.
 Jika sudah maka akan tampil seperti berikut.
 
 ![TileSet Window 2](images/TilesetDirtNew.png)
 
 Terdapat beberapa cara untuk membuat Tile Set:
+
 - _Single Tile_ untuk _tile_ satuan jika ingin memasukan setiap _tile_ satu-persatu.
 - _Autotile_ untuk _tile_ yang bisa di automasikan pemilihannya berdasarkan _tile_ sekelilingnya, contohnya pada game dengan tipe _top-down perspective_.
 - _Atlas_ untuk _tile_ yang bertipe sejenis dan akan lebih mudah diorganisir daripada menggunakan _single tile_ berulang kali.
@@ -128,11 +119,10 @@ Untuk melakukannya klik ```Collision```, klik ke _subtile_ yang dituju, klik iko
 ![TileSet Window 4](images/TilesetDirtCollision.png)
 
 Untuk mengatur bentuk _collider_ silakan geser _vertex_ (lingkaran merah) sesuai keinginan.
-Ulangi langkah 2 sampai 4 untuk setiap _subtile_. Berikut contoh jadinya.
+Ulangi langkah 2 sampai 4 untuk setiap _subtile_.
+Berikut contoh hasil pengaturan bentuk-bentuk _collider_ pada setiap _subtile_:
 
 ![TileSet Window 4](images/TilesetDirtCollision2.png)
-
-### Paint the TileMap
 
 Jika sudah berhasil, klik node TileMap pada tab Scene dan Tile Set tadi akan tampil dan siap untuk digunakan. Selamat berkreasi.
 
@@ -141,16 +131,13 @@ Jika sudah berhasil, klik node TileMap pada tab Scene dan Tile Set tadi akan tam
 > Note : Node TileMap di scale menjadi 0.5 pada X dan Y agar ukuran tile tidak terlalu besar dibanding player.
 > (Tab Inspector > Transform > Scale)
 
-## Making the Camera Follows The Player
+## Latihan: Membuat Kamera
 
 Sekarang kita sudah memiliki sebuah level, namun jika scene di-_play_ kamera akan diam di tempat awal dan membatasi apa yang bisa dilihat.
 Oleh karena itu kita akan membuat kamera yang akan mengikuti kemanapun mahluk pink itu pergi.
 
-### How Simple It Is
-
-Buka scene ```Scenes/Player.tscn```, tambah node ```Camera2D``` sebagai child dari ```Player```.
-Kemudian pada tab Inspector centang ```Current```.
-That's it, you're done.
+Buka scene `scenes/Player.tscn`, tambah _node_ `Camera2D` sebagai _child node_ dari `Player`.
+Kemudian pada tab Inspector centang `Current`.
 
 ![Camera Inspector](images/CameraInspector.png)
 
@@ -158,24 +145,23 @@ Sekarang kamera akan selalu mengikuti mahluk itu kemanapun ia pergi.
 
 ![Camera Following](images/CameraFollowing.gif)
 
-## Adding Area Trigger for Lose and Win Condition
+## Latihan: Membuat Kondisi Akhir Permainan Menggunakan Signal
 
 Sebuah level tidak lengkap tanpa tujuan akhir, atau jika si mahluk terpleset dan jatuh ke jurang, dia hanya bisa berkontemplasi sampai akhir jaman.
-Supaya mahluk tersebut tidak bernasib sama seperti Kars, mari kita buat zona untuk _lose_ dan _win_ condition.
+Supaya mahluk tersebut tidak bernasib sama seperti [Kars](https://jojowiki.com/Kars), mari kita buat zona untuk _lose_ dan _win condition_.
 
-### Set Up
-
-Pertama buat scene baru (nama bebas) dengan ```Area2D``` sebagai root node.
+Pertama buat scene baru (nama bebas) dengan `Area2D` sebagai _root node_.
 
 ![New Area](images/AreaNew.png)
 
-Lalu tambahkan node ```CollisionShape2D``` sebagai child dari node ```Area2D``` tadi.
-Jangan lupa untuk membuat _collision shape_ pada node ```CollisionShape2D``` (Kamu seharusnya sudah pernah melakukannya pada tutorial sebelumnya).
+Lalu tambahkan node `CollisionShape2D` sebagai _child node_ `Area2D` tadi.
+Jangan lupa untuk membuat _collision shape_ pada node `CollisionShape2D` (Kamu seharusnya sudah pernah melakukannya pada tutorial sebelumnya).
 
 ![Area Hierarchy](images/AreaCollision.png)
 
-Kemudian _attach_ sebuah script pada node ```Area2D``` (penamaan bebas).
-Hapus semua baris kecuali baris pertama, kita akan menggunakan _Signals_ untuk fitur ini.
+Kemudian buat dan tempelkan sebuah _script_ pada _node_ `Area2D` (penamaan bebas, misal: `LoseCondition`, `LoseArea`).
+Hapus semua baris pada _script_ baru tersebut kecuali _statement_ `extends`.
+Kita akan menggunakan _Signals_ untuk fitur ini.
 
 ### What is Signals?
 
@@ -185,41 +171,42 @@ Jenis _Signals_ yang ada pada suatu node akan berbeda-beda tergantung tipe node 
 
 ### Using Signals
 
-Pertama select node ```Area2D``` lalu buka tab ```Node```.
+Pertama pilih node `Area2D` lalu buka tab `Node`.
 Lalu pada subtab ```Signals``` pilih ```body_entered(PhysicsBody2D body)``` dan klik tombol ```Connect``` di kanan bawah tab tersebut.
 
 ![Signals](images/AreaSignals.png)
 
 Pastikan ```Area2D``` terpilih pada bagian ```Connect To Node```, isi ```Method In Node``` dengan nama fungsi yang kamu inginkan atau biarkan default.
-Jika sudah tekan tombol ```Connect```
+Jika sudah tekan tombol `Connect`
 
 ![Connect Signal](images/AreaSignalAdd.png)
 
-Maka script pada ```Area2D``` akan ditambah fungsi tersebut.
+Maka script pada `Area2D` akan ditambah fungsi tersebut.
 
 ![Area Script](images/AreaSignalScript.png)
 
-Silakan tambah cuplikan dibawah pada script tersebut. (Jangan lupa ganti nama fungsi sesuai penamaan masing-masing)
+Silakan tambah cuplikan dibawah pada _script_ tersebut. (Jangan lupa ganti nama fungsi sesuai penamaan masing-masing)
+
 ```
 extends Area2D
 
-export (String) var sceneName = "Level 1"
+export var sceneName: String = "Level 1"
 
 func _on_Area_Trigger_body_entered(body):
     if body.get_name() == "Player":
-        get_tree().change_scene(str("res://Scenes/" + sceneName + ".tscn"))
+        get_tree().change_scene(str("res://scenes/" + sceneName + ".tscn"))
 ```
 
-Secara singkat fungsi tersebut akan tereksekusi setiap ada object dengan tipe ```PhysicsBody2D``` yang masuk area collision.
-Jika object tersebut adalah player, maka ubah root node (current scene) dengan variabel ```sceneName```.
+Secara singkat fungsi tersebut akan dipicu setiap kali ada objek dengan tipe `PhysicsBody2D` yang masuk area collision.
+Jika objek tersebut adalah `Player`, maka ubah _root node_ (_current scene_) dengan _scene_ bernama `sceneName` yang tersimpan di dalam folder `scenes`.
 
-### Adding It to the Level
+### Adding Signals to the Level
 
-Save scene dan script tersebut (Mulai sekarang disebut ```AreaTrigger```) dan buka kembali scene ```Level 1.tscn```.
-Supaya pemain dapat jelas melihat goal, tambah node dengan tipe ```Sprite``` sebagai child dari node ```Level 1``` dan ubah ```Texture``` menjadi ~~rektorat~~ roket atau bebas.
+Simpan _scene_ dan script tersebut (Mulai sekarang disebut `AreaTrigger`) dan buka kembali _scene_ `Level1.tscn`.
+Supaya pemain dapat jelas melihat goal, tambah node dengan tipe `Sprite` sebagai child dari node `Level1` dan ubah `Texture` menjadi ~~rektorat~~ roket atau bebas.
 
-Kemudian tambahkan scene ```AreaTrigger``` sebagai child dari sprite tersebut, silakan atur scaling sesuai keperluan.
-Jangan lupa ubah variable ```Scene Name``` menjadi "Win Screen".
+Kemudian tambahkan scene `AreaTrigger` sebagai _child_ dari _sprite_ tersebut, silakan atur _scaling_ sesuai keperluan.
+Jangan lupa ubah variabel `sceneName` menjadi nama _scene_ yang akan ditampilkan ketika pemain menang, misalnya `WinScreen`.
 
 ![Camera Inspector](images/AreaInspector.png)
 
@@ -230,49 +217,141 @@ Berikut contoh Level 1 yang sudah lengkap.
 
 ![Camera Inspector](images/Level1Final.png)
 
-Selamat, tutorial ini sudah selesai!
+## Latihan: Membuat Rintangan Menggunakan Spawner
 
-## Bonus To Do
+Saat ini level 1 hanya memiliki satu buah rintangan berupa jurang.
+Untuk menambah variasi rintangan serta mempraktikkan pemrograman lebih lanjut,
+maka bagian tutorial ini akan memperkenalkan kamu dengan implementasi _object spawner_.
+Objek ini biasa digunakan untuk membuat objek secara dinamis ketika permainan berjalan.
+Sebagai contoh, di permainan 2D _genre_ top-down shooter, _spawner_ biasa dipakai untuk membuat objek-objek peluru (_bullet_) yang berterbangan ke arah pemain.
 
-Apabila masih ada waktu atau ingin lanjut berlatih mandiri, silakan baca referensi yang tersedia untuk belajar mengimplementasikan fitur tambahan.
-Tidak ada kriteria khusus untuk ini, kamu bebas menambahkan apapun yang kamu suka. Beberapa contoh yang bisa diimplementasikan:
-- Background Image/Objects
-- 2nd Level
-- dll.
+Mari pikirkan rintangan yang akan ditambahkan ke dalam permainan.
+Misalnya kita membayangkan dunia permainan mengalami fenomena cuaca absurd dimana kadang-kadang ada ikan yang jatuh dari langit.
+Apabila pemain terkena ikan yang jatuh dari langit,
+maka pemain langsung kalah dari permainan.
 
-Jika mengerjakan fitur tambahan, buat file baru bernama ```T4_[NPM].md``` dimana ```[NPM]``` adalah NPM kamu (misal: ```t4_1506757913```) di folder yang sama dengan ```readme.md``` ini.
-Tulis teks menggunakan format [Markdown](https://docs.gitlab.com/ee/user/markdown.html).
+Dari uraian di atas, kamu akan membuat:
 
-## Instruksi Pengerjaan
+- [ ] Objek konkrit yang merepresentasikan ikan.
+- [ ] _Script_ untuk objek ikan tersebut yang akan memicu kondisi kalah pemain ketika terkena ikan.
 
-1. Dalam repositori pribadi kamu, silakan sinkronisasi _branch_ ```master``` dengan repositori _upstream_.
-   Instruksi lebih lanjut bisa dibaca [disini](https://help.github.com/en/articles/syncing-a-fork).
-2. Jika terdapat _conflict_, mohon diselesaikan secara damai.
-   Jika tidak yakin bagaimana caranya, silakan ambil mata kuliah *Advanced Programming* atau baca [ini](https://help.github.com/en/articles/resolving-a-merge-conflict-using-the-command-line).
-3. Setelah semua selesai, buat _branch_ baru dari _branch_ ```master``` dengan nama ```tutorial-x``` dimana ```x``` adalah nomor tutorial (misal: tutorial-4).
-4. Ganti _current branch_ menjadi ```tutorial-x``` tersebut, silakan kerjakan tutorial di dalam _branch_ yang bersangkutan.
-   Setiap _branch_ tutorial **tidak perlu** di _merge_ ke _branch_ ```master```.
+Buatlah _scene_ yang merepresentasikan objek ikan.
+Buat _scene_ baru dengan _root node_ bertipe `RigidBody2D`.
+Kemudian di dalam _scene_ tersebut, tampahkan _child node_ `Sprite` dan `CollisionShape2D`.
+Atur _texture_ pada `Sprite` agar menggunakan gambar ikan yang tersedia di kumpulan aset (misal: `assets/kenney_platformerpack/PNG/Enemies/fishBlue.png`).
+Kemudian atur bentuk _collider_ pada `CollisionShape2D` agar mencakup (_cover_) bentuk ikan.
+Hasil akhirnya akan serupa seperti _screenshot_ berikut:
+
+![Collider Shape](images/ColliderShape.png)
+
+Sekarang buatlah _script_ baru untuk diasosiasikan ke _scene_ objek ikan.
+Isi dari _script_ tersebut akan serupa dengan _script_ untuk kondisi kalah yang sudah pernah dibuat sebelumnya.
+Perbedaannya akan ada pada tipe objek yang bertabrakan.
+Pada implementasi kondisi kalah ketika terjatuh ke jurang,
+kondisi kalah akan dipicu ketika objek `Player` masuk ke dalam `Area2D` abstrak di dalam jurang.
+Sedangkan untuk kondisi kalah ketika terkena ikan,
+kondisi kalah akan dipicu ketika objek `Player` bertabrakan dengan objek ikan.
+
+Silakan coba pikirkan dan implementasikan sendiri _script_-nya,
+supaya lebih terbiasa dengan pemrograman di Godot.
+Jika butuh referensi, berikut ini adalah salah satu contoh _script_ yang mengimplementasikan kondisi kalah ketika `Player` bertabrakan dengan objek ikan:
+
+```gdscript
+extends Area2D
+
+export var sceneName = "LoseScreen"
+
+func _on_FallArea_body_entered(body):
+	if body.get_name() == "Player":
+		get_tree().change_scene(str("res://scenes/" + sceneName + ".tscn"))
+	else:
+		body.queue_free()
+```
+
+> Note: Jangan lupa untuk menempelkan (_attach_) _script_ yang baru kamu buat ke _scene_ objek ikan.
+
+### Membuat Spawner
+
+Objek _spawner_ akan berupa objek abstrak di dalam dunia permainan, serupa dengan objek yang merepresentasikan jurang di Level 1.
+Untuk membuat _spawner_, tambahkan _child node_ bertipe `Node2D` pada _scene_ Level 1.
+Beri nama _child node_ baru tersebut sebagai `Spawner`.
+Kemudian, atur posisi objek _spawner_ di dalam dunia Level 1 agar berada di langit-langit Level 1.
+Misalnya di titik koordinat `(820, -645)`, seperti yang digambarkan pada _screenshot_ berikut:
+
+![Spawner Location](images/SpawnerLocation.png)
+
+Setelah menempatkan objek _spawner_ di dalam Level 1,
+buatlah _script_ baru bernama `Spawner.gd` dan tempelkan ke objek _spawner_.
+Isi dari _script_ tersebut adalah sebagai berikut:
+
+```gdscript
+extends Node2D
+
+export (PackedScene) var obstacle
+
+func _ready():
+	repeat()
+
+func spawn():
+	var spawned = obstacle.instance()
+	get_parent().add_child(spawned)
+
+	var spawn_pos = global_position
+	spawn_pos.x = spawn_pos.x + rand_range(-1000, 1000)
+
+	spawned.global_position = spawn_pos
+
+func repeat():
+	spawn()
+	yield(get_tree().create_timer(1), "timeout")
+	repeat()
+```
+
+Penjelasan dari isi _script_:
+
+- `export (PackedScene) var obstacle` akan membuat variabel `obstacle` terdaftar di panel Inspector. Kamu nanti akan dapat mengisi variabel tersebut dengan _scene_ objek ikan.
+- Fungsi `_ready()` memanggil fungsi `repeat()`. Fungsi `repeat()` akan dipanggil berulang kali selama permainan berjalan dengan interval antar pemanggilan `repeat()` selama 1 detik.
+- Fungsi `repeat()` memanggil fungsi `spawn()`. Fungsi `spawn()` bertugas untuk melakukan instansiasi objek secara dinamis. Dalam hal ini, _scene_ yang dikandung oleh variabel `obstacle` akan diinstansiasi di sebuah posisi acak pada sumbu X.
+
+Apabila sudah mengisi _script_ dan menempelkannya ke objek _spawner_,
+silakan simpan perubahan dan coba _playtest_ permainannya.
+Seharusnya jika diimplementasikan dengan benar,
+objek ikan akan jatuh secara acak dan memicu kondisi kalah jika mengenai pemain.
+Apabila masih belum berhasil, silakan konsultasi dengan pengajar yang tersedia di ruang lab.
+
+## Latihan Mandiri: Membuat Level Baru Dengan Tile Map & Obstacle Berbeda
+
+Sebagai bagian dari latihan mandiri, kamu diminta untuk praktik membuat level baru yang berbeda dari level pertama.
+Kebutuhan minimum yang harus diimplementasikan pada level baru:
+
+- Level menggunakan _tile map_ yang berbeda dari level pertama.
+- Terdapat _spawner_ rintangan di level baru yang membuat objek berbeda dari ikan.
+- Memiliki rintangan berupa jurang dan objek yang berjatuhan secara periodik.
+
+Silakan berkreasi lebih lanjut untuk membuat level baru kamu makin menarik!
+Jangan lupa untuk menjelaskan proses pengerjaan level baru ini di dalam sebuah dokumen teks `README.md`.
+Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelaskan proses implementasi.
 
 ## Skema Penilaian
 
 Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:
 
-1. **A** apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi
-   tim pengajar.
-2. **B** apabila kamu hanya mengerjakan tutorial sesuai yang diminta oleh
-   deskripsi tutorial.
-3. **C** apabila kamu mengerjakan tutorial secara minimalis atau tidak
-   lengkap/tuntas.
-4. **E** apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.
+- **4** (_**A**_) apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi tim pengajar.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan Latihan Mandiri, ditambah dengan memoles (_polishing_) lebih lanjut permainannya.
+- **3** (_**B**_) apabila kamu hanya mengerjakan tutorial dan latihan sesuai dengan instruksi.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan Latihan Mandiri.
+- **2** (_**C**_) apabila kamu hanya mengerjakan tutorial hingga tuntas.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan namun tidak mengerjakan Latihan Mandiri.
+- **1** (_**D**_) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.
+- **0** (_**E**_) apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.
 
 ## Pengumpulan
 
-Kumpulkan dengan memasukkan berkasnya ke dalam Git dan _push_ ke _fork_ materi
-tutorial ini di repositori milik pribadi. **Jangan _push_ atau membuat Merge
-Request ke repositori _upstream_ materi tutorial kecuali jika kamu ingin
-kontribusi materi atau memperbaiki materi yang sudah dipublikasikan!**
+Kumpulkan semua berkas pengerjaan tutorial dan latihan ke dalam Git dan _push_ ke repositori Git pengerjaan tutorial 4.
+Apabila kamu mengerjakan latihan mandiri, pastikan _scene_ dan _node_ sudah tercatat masuk ke dalam repositori Git.
+Kemudian, kumpulkan tautan ke repositori Git hasil pengerjaan tutorial 4 kamu di slot pengumpulan yang tersedia di SCELE.
 
-Tenggat waktu pengumpulan adalah **27 September 2021 pukul 21:00**.
+Tenggat waktu pengumpulan adalah **6 Maret 2024 pukul 21:00**.
 
 ## Referensi
 
