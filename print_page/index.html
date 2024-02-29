@@ -323,6 +323,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -426,6 +430,26 @@
 
               
             
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tutorial-4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial 4 - Basic 2D Level Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -515,6 +539,13 @@
           <li class="md-nav__item">
   <a href="#tutorials-tutorial-3" class="md-nav__link">
     Tutorial 3 - Introduction to Game Programming
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorials-tutorial-4" class="md-nav__link">
+    Tutorial 4 - Basic 2D Level Design
   </a>
   
 </li>
@@ -1563,6 +1594,312 @@ Kemudian, kumpulkan tautan ke repositori Git hasil pengerjaan tutorial 3 kamu di
 <li><a href="https://docs.godotengine.org/en/3.1/getting_started/step_by_step/scripting.html#scripting-a-scene">Scripting</a></li>
 <li><a href="https://docs.godotengine.org/en/3.1/tutorials/2d/2d_movement.html">2D Movement Overview</a></li>
 <li><a href="https://kenney.nl/assets/platformer-characters-1">Kenney Assets</a></li>
+<li>Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
+  gasal 2020/2021 Fakultas Ilmu Komputer Universitas Indonesia.</li>
+</ul></section><section class="print-page" id="tutorials-tutorial-4"><h1 id="tutorials-tutorial-4-tutorial-4-basic-2d-level-design">Tutorial 4 - Basic 2D Level Design</h1>
+<p>Selamat datang pada tutorial keempat kuliah Game Development.
+Pada tutorial kali ini, kamu akan mempelajari cara membuat level sederhana pada bidang 2D menggunakan <em>engine</em> Godot.
+Selain itu, kamu juga akan mempelajari mekanisme <em>event handling</em> menggunakan sistem <em>signal</em> di Godot
+dan implementasi objek <em>spawner</em> untuk membuat rintangan di dalam permainan.
+Di akhir tutorial ini, diharapkan kamu paham dengan penggunaan <em>tilemap</em> dan sistem <em>signal</em> di Godot.</p>
+<h2 id="tutorials-tutorial-4-daftar-isi">Daftar Isi</h2>
+<ul>
+<li><a href="#tutorials-tutorial-4-tutorial-4---basic-2d-level-design">Tutorial 4 - Basic 2D Level Design</a></li>
+<li><a href="#tutorials-tutorial-4-daftar-isi">Daftar Isi</a></li>
+<li><a href="#tutorials-tutorial-4-pengantar">Pengantar</a></li>
+<li><a href="#tutorials-tutorial-4-latihan-membuat-tile-map">Latihan: Membuat Tile Map</a></li>
+<li><a href="#tutorials-tutorial-4-latihan-membuat-kamera">Latihan: Membuat Kamera</a></li>
+<li><a href="#tutorials-tutorial-4-latihan-membuat-kondisi-akhir-permainan-menggunakan-signal">Latihan: Membuat Kondisi Akhir Permainan Menggunakan Signal</a></li>
+<li><a href="#tutorials-tutorial-4-latihan-membuat-rintangan-menggunakan-spawner">Latihan: Membuat Rintangan Membuat Spawner</a></li>
+<li><a href="#tutorials-tutorial-4-latihan-mandiri-membuat-level-baru-dengan-tile-map--obstacle-berbeda">Latihan Mandiri: Membuat Level Baru Dengan Tile Map &amp; Obstacle Berbeda</a></li>
+<li><a href="#tutorials-tutorial-4-skema-penilaian">Skema Penilaian</a></li>
+<li><a href="#tutorials-tutorial-4-pengumpulan">Pengumpulan</a></li>
+<li><a href="#tutorials-tutorial-4-referensi">Referensi</a></li>
+</ul>
+<h2 id="tutorials-tutorial-4-pengantar">Pengantar</h2>
+<h3 id="tutorials-tutorial-4-what-is-a-level">What Is a Level?</h3>
+<p>Pada tutorial sebelumnya kita sudah membuat sebuah objek <em>player</em> sederhana yang dapat bergerak ke kanan dan kiri dan juga dapat melompat.
+Namun tempat ia bergerak masih sangat terbatas dan belum memiliki tujuan (<em>objective</em>) di dalam permainan.
+Oleh karena itu, kita memerlukan sebuah <em>level</em> supaya pemain memiliki tujuan di dalam permainan ketika mengendalikan objek <em>player</em>.</p>
+<p>Sebuah <em>level</em> pada dasarnya adalah tempat dimana <em>player</em> dapat melakukan <em>action</em> dan mungkin memiliki sebuah <em>goal</em>.</p>
+<h3 id="tutorials-tutorial-4-level-example">Level Example</h3>
+<p>Contoh sebuah level yang terlihat sederhana:</p>
+<p><img alt="Super Mario World 1-1" src="../tutorials/tutorial-4/images/Mario1-1.png" /></p>
+<blockquote>
+<p>Super Mario Bros World 1-1, Nintendo 1985</p>
+</blockquote>
+<p>Kita akan membuat sebuah level 2D sederhana menggunakan salah satu fitur <em>engine</em> Godot yaitu <em>tile mapping</em> menggunakan <code>TileMap</code>.</p>
+<p>Pada tutorial ini akan didemonstrasikan:</p>
+<ul>
+<li>Membuat <code>TileSet</code> untuk <code>TileMap</code>.</li>
+<li>Membuat level menggunakan <code>TileMap</code>.</li>
+<li>Membuat kamera mengikuti objek <em>player</em>.</li>
+<li>Membuat pemicu kondisi (<em>trigger</em>) menang dan kalah.</li>
+</ul>
+<h2 id="tutorials-tutorial-4-creating-a-simple-level-using-tilemap">Creating A Simple Level using TileMap</h2>
+<h3 id="tutorials-tutorial-4-preparation">Preparation</h3>
+<p>Mari memulai tutorial ini dengan membuat <a href="https://github.com/CSUI-Game-Development/tutorial-4-template">salinan repositori Git <em>template</em> proyek Tutorial 4</a>.
+Buka laman GitHub repositori <em>template</em> proyek Tutorial 4
+dan klik "Use this template" untuk membuat salinan repositori Git tersebut ke dalam akun GitHub pribadi.
+Kemudian atur <em>visibility</em> repositori Git proyek Tutorial 4 kamu menjadi <strong>Public</strong>
+dan salin (<code>git clone</code>) repositori Git Tutorial 4 milikmu ke lingkungan pengembangan lokal.</p>
+<p>Jika sudah membuat salinan repositori Git proyek Tutorial 4 secara lokal,
+buka proyek Tutorial 4 menggunakan Godot.
+Kemudian buka <em>scene</em> <code>Level1.tscn</code> dan coba jalankan <em>playtest</em> pada <em>scene</em> tersebut.
+Kamu akan melihat ada suatu makhluk yang akan langsung jatuh ketika <em>scene</em> dimainkan.</p>
+<p><img alt="Tampilan Level 1.tscn" src="../tutorials/tutorial-4/images/Level1Blank.png" /></p>
+<p>Klik kanan pada <em>node</em> <code>Level1</code> dan pilih "Add Child Node", kemudian pilih <code>TileMap</code>.</p>
+<p>Setelah <code>TileMap</code> berhasil ditambahkan akan terlihat <em>grid</em> samar-samar berwarna oranye pada <em>scene</em> dan muncul 1 tab baru disebelah <em>scene</em>.
+(Jika tidak terjadi apa-apa, coba pilih <em>node</em> <code>TileMap</code>)</p>
+<p><img alt="Tampilan TileMap Kosong" src="../tutorials/tutorial-4/images/Level1TilemapAdd.png" /></p>
+<p>Pada tab Inspector, atur <code>Size</code> menjadi 128 untuk X dan Y.</p>
+<p><img alt="Tampilan TileMap Kosong" src="../tutorials/tutorial-4/images/TilemapInspector.png" /></p>
+<h3 id="tutorials-tutorial-4-latihan-membuat-tile-map">Latihan: Membuat Tile Map</h3>
+<p>Jika diibaratkan dengan melukis, kita baru saja mempersiapkan kanvas dan kuas. Kita masih kekurangan cat untuk melukis.
+Untuk mempersiapkan cat, pada tab Inspector klik dropdown menu <code>TileSet</code> dan pilih <code>New TileSet</code>.</p>
+<p><img alt="New Tileset" src="../tutorials/tutorial-4/images/TilemapNewTileset.png" /></p>
+<p>Lalu klik lagi dropdown tadi dan pilih <code>Edit</code>.</p>
+<p><img alt="New Tileset" src="../tutorials/tutorial-4/images/TilemapEditTileset.png" /></p>
+<p>Akan muncul window baru dengan nama <code>TileSet</code>.</p>
+<p><img alt="TileSet Window" src="../tutorials/tutorial-4/images/Level1TilesetEdit.png" /></p>
+<p>Lalu klik ikon plus di kiri bawah window tersebut dan pilih <code>assets/kenney_platformerpack/Spritesheets/*</code>.
+Dalam contoh ini digunakan <code>spritesheet_gr_dirt.png</code>, namun kamu bebas menggunakan yang tersedia atau menambah sendiri.
+Jika sudah maka akan tampil seperti berikut.</p>
+<p><img alt="TileSet Window 2" src="../tutorials/tutorial-4/images/TilesetDirtNew.png" /></p>
+<p>Terdapat beberapa cara untuk membuat Tile Set:</p>
+<ul>
+<li><em>Single Tile</em> untuk <em>tile</em> satuan jika ingin memasukan setiap <em>tile</em> satu-persatu.</li>
+<li><em>Autotile</em> untuk <em>tile</em> yang bisa di automasikan pemilihannya berdasarkan <em>tile</em> sekelilingnya, contohnya pada game dengan tipe <em>top-down perspective</em>.</li>
+<li><em>Atlas</em> untuk <em>tile</em> yang bertipe sejenis dan akan lebih mudah diorganisir daripada menggunakan <em>single tile</em> berulang kali.</li>
+</ul>
+<p>Pada tutorial ini kita akan menggunakan <em>Atlas</em>.
+Klik <code>New Atlas</code>, lalu drag area yang akan dijadikan Tile Set.</p>
+<blockquote>
+<p>Tips: supaya hidup kamu mudah silakan menggunakan fitur <code>snap to grid</code> (Klik logo magnet).</p>
+</blockquote>
+<p><img alt="TileSet Window 3" src="../tutorials/tutorial-4/images/TilesetDirtSelect.png" /></p>
+<p>Kemudian pada tab Inspector silakan isi nama sesuka hati dan atur <code>Subtile Size</code> ke 128 untuk X dan Y.
+Jika sudah jangan lupa untuk men-<em>save</em> Tile Set (penamaan bebas).</p>
+<p><img alt="TileSet Inspector" src="../tutorials/tutorial-4/images/TilesetDirtInspector.png" /></p>
+<p>Supaya player dapat <em>collide</em> dengan tile, kita perlu menambahkan <em>collider</em> pada tile tersebut.
+Untuk melakukannya klik <code>Collision</code>, klik ke <em>subtile</em> yang dituju, klik ikon kotak (no 3)), dan akhirnya klik lagi <em>subtile</em> tersebut.</p>
+<p><img alt="TileSet Window 4" src="../tutorials/tutorial-4/images/TilesetDirtCollision.png" /></p>
+<p>Untuk mengatur bentuk <em>collider</em> silakan geser <em>vertex</em> (lingkaran merah) sesuai keinginan.
+Ulangi langkah 2 sampai 4 untuk setiap <em>subtile</em>.
+Berikut contoh hasil pengaturan bentuk-bentuk <em>collider</em> pada setiap <em>subtile</em>:</p>
+<p><img alt="TileSet Window 4" src="../tutorials/tutorial-4/images/TilesetDirtCollision2.png" /></p>
+<p>Jika sudah berhasil, klik node TileMap pada tab Scene dan Tile Set tadi akan tampil dan siap untuk digunakan. Selamat berkreasi.</p>
+<p><img alt="TileMap Painting" src="../tutorials/tutorial-4/images/TilemapPainting.gif" /></p>
+<blockquote>
+<p>Note : Node TileMap di scale menjadi 0.5 pada X dan Y agar ukuran tile tidak terlalu besar dibanding player.
+(Tab Inspector &gt; Transform &gt; Scale)</p>
+</blockquote>
+<h2 id="tutorials-tutorial-4-latihan-membuat-kamera">Latihan: Membuat Kamera</h2>
+<p>Sekarang kita sudah memiliki sebuah level, namun jika scene di-<em>play</em> kamera akan diam di tempat awal dan membatasi apa yang bisa dilihat.
+Oleh karena itu kita akan membuat kamera yang akan mengikuti kemanapun mahluk pink itu pergi.</p>
+<p>Buka scene <code>scenes/Player.tscn</code>, tambah <em>node</em> <code>Camera2D</code> sebagai <em>child node</em> dari <code>Player</code>.
+Kemudian pada tab Inspector centang <code>Current</code>.</p>
+<p><img alt="Camera Inspector" src="../tutorials/tutorial-4/images/CameraInspector.png" /></p>
+<p>Sekarang kamera akan selalu mengikuti mahluk itu kemanapun ia pergi.</p>
+<p><img alt="Camera Following" src="../tutorials/tutorial-4/images/CameraFollowing.gif" /></p>
+<h2 id="tutorials-tutorial-4-latihan-membuat-kondisi-akhir-permainan-menggunakan-signal">Latihan: Membuat Kondisi Akhir Permainan Menggunakan Signal</h2>
+<p>Sebuah level tidak lengkap tanpa tujuan akhir, atau jika si mahluk terpleset dan jatuh ke jurang, dia hanya bisa berkontemplasi sampai akhir jaman.
+Supaya mahluk tersebut tidak bernasib sama seperti <a href="https://jojowiki.com/Kars">Kars</a>, mari kita buat zona untuk <em>lose</em> dan <em>win condition</em>.</p>
+<p>Pertama buat scene baru (nama bebas) dengan <code>Area2D</code> sebagai <em>root node</em>.</p>
+<p><img alt="New Area" src="../tutorials/tutorial-4/images/AreaNew.png" /></p>
+<p>Lalu tambahkan node <code>CollisionShape2D</code> sebagai <em>child node</em> <code>Area2D</code> tadi.
+Jangan lupa untuk membuat <em>collision shape</em> pada node <code>CollisionShape2D</code> (Kamu seharusnya sudah pernah melakukannya pada tutorial sebelumnya).</p>
+<p><img alt="Area Hierarchy" src="../tutorials/tutorial-4/images/AreaCollision.png" /></p>
+<p>Kemudian buat dan tempelkan sebuah <em>script</em> pada <em>node</em> <code>Area2D</code> (penamaan bebas, misal: <code>LoseCondition</code>, <code>LoseArea</code>).
+Hapus semua baris pada <em>script</em> baru tersebut kecuali <em>statement</em> <code>extends</code>.
+Kita akan menggunakan <em>Signals</em> untuk fitur ini.</p>
+<h3 id="tutorials-tutorial-4-what-is-signals">What is Signals?</h3>
+<p>Sesuai dengan namanya, <em>Signals</em> berfungsi untuk memberikan "tanda" jika suatu kondisi khusus terpenuhi.
+Yang dimaksud dengan memberikan tanda disini adalah mengeksekusi suatu fungsi yang kita definisikan sendiri.
+Jenis <em>Signals</em> yang ada pada suatu node akan berbeda-beda tergantung tipe node tersebut.</p>
+<h3 id="tutorials-tutorial-4-using-signals">Using Signals</h3>
+<p>Pertama pilih node <code>Area2D</code> lalu buka tab <code>Node</code>.
+Lalu pada subtab <code>Signals</code> pilih <code>body_entered(PhysicsBody2D body)</code> dan klik tombol <code>Connect</code> di kanan bawah tab tersebut.</p>
+<p><img alt="Signals" src="../tutorials/tutorial-4/images/AreaSignals.png" /></p>
+<p>Pastikan <code>Area2D</code> terpilih pada bagian <code>Connect To Node</code>, isi <code>Method In Node</code> dengan nama fungsi yang kamu inginkan atau biarkan default.
+Jika sudah tekan tombol <code>Connect</code></p>
+<p><img alt="Connect Signal" src="../tutorials/tutorial-4/images/AreaSignalAdd.png" /></p>
+<p>Maka script pada <code>Area2D</code> akan ditambah fungsi tersebut.</p>
+<p><img alt="Area Script" src="../tutorials/tutorial-4/images/AreaSignalScript.png" /></p>
+<p>Silakan tambah cuplikan dibawah pada <em>script</em> tersebut. (Jangan lupa ganti nama fungsi sesuai penamaan masing-masing)</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>extends Area2D
+
+export var sceneName: String = &quot;Level 1&quot;
+
+func _on_Area_Trigger_body_entered(body):
+    if body.get_name() == &quot;Player&quot;:
+        get_tree().change_scene(str(&quot;res://scenes/&quot; + sceneName + &quot;.tscn&quot;))
+</code></pre></div></td></tr></table></div>
+<p>Secara singkat fungsi tersebut akan dipicu setiap kali ada objek dengan tipe <code>PhysicsBody2D</code> yang masuk area collision.
+Jika objek tersebut adalah <code>Player</code>, maka ubah <em>root node</em> (<em>current scene</em>) dengan <em>scene</em> bernama <code>sceneName</code> yang tersimpan di dalam folder <code>scenes</code>.</p>
+<h3 id="tutorials-tutorial-4-adding-signals-to-the-level">Adding Signals to the Level</h3>
+<p>Simpan <em>scene</em> dan script tersebut (Mulai sekarang disebut <code>AreaTrigger</code>) dan buka kembali <em>scene</em> <code>Level1.tscn</code>.
+Supaya pemain dapat jelas melihat goal, tambah node dengan tipe <code>Sprite</code> sebagai child dari node <code>Level1</code> dan ubah <code>Texture</code> menjadi ~~rektorat~~ roket atau bebas.</p>
+<p>Kemudian tambahkan scene <code>AreaTrigger</code> sebagai <em>child</em> dari <em>sprite</em> tersebut, silakan atur <em>scaling</em> sesuai keperluan.
+Jangan lupa ubah variabel <code>sceneName</code> menjadi nama <em>scene</em> yang akan ditampilkan ketika pemain menang, misalnya <code>WinScreen</code>.</p>
+<p><img alt="Camera Inspector" src="../tutorials/tutorial-4/images/AreaInspector.png" /></p>
+<p>Lakukan hal yang sama untuk area dibawah level namun dengan <code>Scene Name</code> diisi dengan "Level 1".
+Supaya ketika player jatuh ke jurang, scene akan di-reload.</p>
+<p>Berikut contoh Level 1 yang sudah lengkap.</p>
+<p><img alt="Camera Inspector" src="../tutorials/tutorial-4/images/Level1Final.png" /></p>
+<h2 id="tutorials-tutorial-4-latihan-membuat-rintangan-menggunakan-spawner">Latihan: Membuat Rintangan Menggunakan Spawner</h2>
+<p>Saat ini level 1 hanya memiliki satu buah rintangan berupa jurang.
+Untuk menambah variasi rintangan serta mempraktikkan pemrograman lebih lanjut,
+maka bagian tutorial ini akan memperkenalkan kamu dengan implementasi <em>object spawner</em>.
+Objek ini biasa digunakan untuk membuat objek secara dinamis ketika permainan berjalan.
+Sebagai contoh, di permainan 2D <em>genre</em> top-down shooter, <em>spawner</em> biasa dipakai untuk membuat objek-objek peluru (<em>bullet</em>) yang berterbangan ke arah pemain.</p>
+<p>Mari pikirkan rintangan yang akan ditambahkan ke dalam permainan.
+Misalnya kita membayangkan dunia permainan mengalami fenomena cuaca absurd dimana kadang-kadang ada ikan yang jatuh dari langit.
+Apabila pemain terkena ikan yang jatuh dari langit,
+maka pemain langsung kalah dari permainan.</p>
+<p>Dari uraian di atas, kamu akan membuat:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Objek konkrit yang merepresentasikan ikan.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <em>Script</em> untuk objek ikan tersebut yang akan memicu kondisi kalah pemain ketika terkena ikan.</li>
+</ul>
+<p>Buatlah <em>scene</em> yang merepresentasikan objek ikan.
+Buat <em>scene</em> baru dengan <em>root node</em> bertipe <code>RigidBody2D</code>.
+Kemudian di dalam <em>scene</em> tersebut, tampahkan <em>child node</em> <code>Sprite</code> dan <code>CollisionShape2D</code>.
+Atur <em>texture</em> pada <code>Sprite</code> agar menggunakan gambar ikan yang tersedia di kumpulan aset (misal: <code>assets/kenney_platformerpack/PNG/Enemies/fishBlue.png</code>).
+Kemudian atur bentuk <em>collider</em> pada <code>CollisionShape2D</code> agar mencakup (<em>cover</em>) bentuk ikan.
+Hasil akhirnya akan serupa seperti <em>screenshot</em> berikut:</p>
+<p><img alt="Collider Shape" src="../tutorials/tutorial-4/images/ColliderShape.png" /></p>
+<p>Sekarang buatlah <em>script</em> baru untuk diasosiasikan ke <em>scene</em> objek ikan.
+Isi dari <em>script</em> tersebut akan serupa dengan <em>script</em> untuk kondisi kalah yang sudah pernah dibuat sebelumnya.
+Perbedaannya akan ada pada tipe objek yang bertabrakan.
+Pada implementasi kondisi kalah ketika terjatuh ke jurang,
+kondisi kalah akan dipicu ketika objek <code>Player</code> masuk ke dalam <code>Area2D</code> abstrak di dalam jurang.
+Sedangkan untuk kondisi kalah ketika terkena ikan,
+kondisi kalah akan dipicu ketika objek <code>Player</code> bertabrakan dengan objek ikan.</p>
+<p>Silakan coba pikirkan dan implementasikan sendiri <em>script</em>-nya,
+supaya lebih terbiasa dengan pemrograman di Godot.
+Jika butuh referensi, berikut ini adalah salah satu contoh <em>script</em> yang mengimplementasikan kondisi kalah ketika <code>Player</code> bertabrakan dengan objek ikan:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">extends</span><span class="w"> </span><span class="n">Area2D</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">sceneName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;LoseScreen&quot;</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_on_FallArea_body_entered</span><span class="p">(</span><span class="n">body</span><span class="p">):</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">body</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;Player&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">change_scene</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="s2">&quot;res://scenes/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sceneName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;.tscn&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="k">else</span><span class="p">:</span>
+<span class="w">        </span><span class="n">body</span><span class="o">.</span><span class="n">queue_free</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>Note: Jangan lupa untuk menempelkan (<em>attach</em>) <em>script</em> yang baru kamu buat ke <em>scene</em> objek ikan.</p>
+</blockquote>
+<h3 id="tutorials-tutorial-4-membuat-spawner">Membuat Spawner</h3>
+<p>Objek <em>spawner</em> akan berupa objek abstrak di dalam dunia permainan, serupa dengan objek yang merepresentasikan jurang di Level 1.
+Untuk membuat <em>spawner</em>, tambahkan <em>child node</em> bertipe <code>Node2D</code> pada <em>scene</em> Level 1.
+Beri nama <em>child node</em> baru tersebut sebagai <code>Spawner</code>.
+Kemudian, atur posisi objek <em>spawner</em> di dalam dunia Level 1 agar berada di langit-langit Level 1.
+Misalnya di titik koordinat <code>(820, -645)</code>, seperti yang digambarkan pada <em>screenshot</em> berikut:</p>
+<p><img alt="Spawner Location" src="../tutorials/tutorial-4/images/SpawnerLocation.png" /></p>
+<p>Setelah menempatkan objek <em>spawner</em> di dalam Level 1,
+buatlah <em>script</em> baru bernama <code>Spawner.gd</code> dan tempelkan ke objek <em>spawner</em>.
+Isi dari <em>script</em> tersebut adalah sebagai berikut:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">extends</span><span class="w"> </span><span class="n">Node2D</span>
+
+<span class="k">export</span><span class="w"> </span><span class="p">(</span><span class="n">PackedScene</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">obstacle</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">():</span>
+<span class="w">    </span><span class="n">repeat</span><span class="p">()</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">spawn</span><span class="p">():</span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">spawned</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obstacle</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+<span class="w">    </span><span class="n">get_parent</span><span class="p">()</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">spawned</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">spawn_pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">global_position</span>
+<span class="w">    </span><span class="n">spawn_pos</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawn_pos</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">rand_range</span><span class="p">(</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">spawned</span><span class="o">.</span><span class="n">global_position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawn_pos</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">repeat</span><span class="p">():</span>
+<span class="w">    </span><span class="n">spawn</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">yield</span><span class="p">(</span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;timeout&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">repeat</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>Penjelasan dari isi <em>script</em>:</p>
+<ul>
+<li><code>export (PackedScene) var obstacle</code> akan membuat variabel <code>obstacle</code> terdaftar di panel Inspector. Kamu nanti akan dapat mengisi variabel tersebut dengan <em>scene</em> objek ikan.</li>
+<li>Fungsi <code>_ready()</code> memanggil fungsi <code>repeat()</code>. Fungsi <code>repeat()</code> akan dipanggil berulang kali selama permainan berjalan dengan interval antar pemanggilan <code>repeat()</code> selama 1 detik.</li>
+<li>Fungsi <code>repeat()</code> memanggil fungsi <code>spawn()</code>. Fungsi <code>spawn()</code> bertugas untuk melakukan instansiasi objek secara dinamis. Dalam hal ini, <em>scene</em> yang dikandung oleh variabel <code>obstacle</code> akan diinstansiasi di sebuah posisi acak pada sumbu X.</li>
+</ul>
+<p>Apabila sudah mengisi <em>script</em> dan menempelkannya ke objek <em>spawner</em>,
+silakan simpan perubahan dan coba <em>playtest</em> permainannya.
+Seharusnya jika diimplementasikan dengan benar,
+objek ikan akan jatuh secara acak dan memicu kondisi kalah jika mengenai pemain.
+Apabila masih belum berhasil, silakan konsultasi dengan pengajar yang tersedia di ruang lab.</p>
+<h2 id="tutorials-tutorial-4-latihan-mandiri-membuat-level-baru-dengan-tile-map-obstacle-berbeda">Latihan Mandiri: Membuat Level Baru Dengan Tile Map &amp; Obstacle Berbeda</h2>
+<p>Sebagai bagian dari latihan mandiri, kamu diminta untuk praktik membuat level baru yang berbeda dari level pertama.
+Kebutuhan minimum yang harus diimplementasikan pada level baru:</p>
+<ul>
+<li>Level menggunakan <em>tile map</em> yang berbeda dari level pertama.</li>
+<li>Terdapat <em>spawner</em> rintangan di level baru yang membuat objek berbeda dari ikan.</li>
+<li>Memiliki rintangan berupa jurang dan objek yang berjatuhan secara periodik.</li>
+</ul>
+<p>Silakan berkreasi lebih lanjut untuk membuat level baru kamu makin menarik!
+Jangan lupa untuk menjelaskan proses pengerjaan level baru ini di dalam sebuah dokumen teks <code>README.md</code>.
+Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelaskan proses implementasi.</p>
+<h2 id="tutorials-tutorial-4-skema-penilaian">Skema Penilaian</h2>
+<p>Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:</p>
+<ul>
+<li><strong>4</strong> (<em><strong>A</strong></em>) apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi tim pengajar.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan Latihan Mandiri, ditambah dengan memoles (<em>polishing</em>) lebih lanjut permainannya.</li>
+<li><strong>3</strong> (<em><strong>B</strong></em>) apabila kamu hanya mengerjakan tutorial dan latihan sesuai dengan instruksi.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan Latihan Mandiri.</li>
+<li><strong>2</strong> (<em><strong>C</strong></em>) apabila kamu hanya mengerjakan tutorial hingga tuntas.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan namun tidak mengerjakan Latihan Mandiri.</li>
+<li><strong>1</strong> (<em><strong>D</strong></em>) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.</li>
+<li><strong>0</strong> (<em><strong>E</strong></em>) apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.</li>
+</ul>
+<h2 id="tutorials-tutorial-4-pengumpulan">Pengumpulan</h2>
+<p>Kumpulkan semua berkas pengerjaan tutorial dan latihan ke dalam Git dan <em>push</em> ke repositori Git pengerjaan tutorial 4.
+Apabila kamu mengerjakan latihan mandiri, pastikan <em>scene</em> dan <em>node</em> sudah tercatat masuk ke dalam repositori Git.
+Kemudian, kumpulkan tautan ke repositori Git hasil pengerjaan tutorial 4 kamu di slot pengumpulan yang tersedia di SCELE.</p>
+<p>Tenggat waktu pengumpulan adalah <strong>6 Maret 2024 pukul 21:00</strong>.</p>
+<h2 id="tutorials-tutorial-4-referensi">Referensi</h2>
+<ul>
+<li><a href="https://docs.godotengine.org/en/3.1/tutorials/2d/using_tilemaps.html">Tilemaps</a></li>
+<li><a href="https://docs.godotengine.org/en/3.1/getting_started/step_by_step/signals.html">Signals</a></li>
+<li><a href="https://www.kenney.nl/assets/platformer-pack-redux">Kenney Assets</a></li>
 <li>Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
   gasal 2020/2021 Fakultas Ilmu Komputer Universitas Indonesia.</li>
 </ul></section><h1 class='nav-section-title-end'>Ended: Tutorials</h1><section class="print-page" id="exam-issue-template"><h1 id="exam-issue-template-exam-issue-template">Exam Issue Template</h1>
