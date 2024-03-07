@@ -327,6 +327,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -450,6 +454,26 @@
 
               
             
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tutorial-5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial 5 - Assets Creation & Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -546,6 +570,13 @@
           <li class="md-nav__item">
   <a href="#tutorials-tutorial-4" class="md-nav__link">
     Tutorial 4 - Basic 2D Level Design
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorials-tutorial-5" class="md-nav__link">
+    Tutorial 5 - Assets Creation & Integration
   </a>
   
 </li>
@@ -1899,6 +1930,321 @@ Kemudian, kumpulkan tautan ke repositori Git hasil pengerjaan tutorial 4 kamu di
 <ul>
 <li><a href="https://docs.godotengine.org/en/3.1/tutorials/2d/using_tilemaps.html">Tilemaps</a></li>
 <li><a href="https://docs.godotengine.org/en/3.1/getting_started/step_by_step/signals.html">Signals</a></li>
+<li><a href="https://www.kenney.nl/assets/platformer-pack-redux">Kenney Assets</a></li>
+<li>Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
+  gasal 2020/2021 Fakultas Ilmu Komputer Universitas Indonesia.</li>
+</ul></section><section class="print-page" id="tutorials-tutorial-5"><h1 id="tutorials-tutorial-5-tutorial-5-assets-creation-integration">Tutorial 5 - Assets Creation &amp; Integration</h1>
+<p>Selamat datang pada tutorial kelima kuliah Game Development.
+Pada tutorial kali ini, kamu akan mempelajari cara membuat <em>game asset</em> sederhana menggunakan <em>tools</em> yang sesuai kemudian mengintegrasikan ke game.
+Di akhir tutorial ini, diharapkan kamu paham dengan penggunaan <em>spritesheet</em> dan <em>audio</em> pada game 2D.</p>
+<h2 id="tutorials-tutorial-5-daftar-isi">Daftar Isi</h2>
+<ul>
+<li><a href="#tutorials-tutorial-5-tutorial-5---assets-creation--integration">Tutorial 5 - Assets Creation &amp; Integration</a></li>
+<li><a href="#tutorials-tutorial-5-daftar-isi">Daftar Isi</a></li>
+<li><a href="#tutorials-tutorial-5-pengantar">Pengantar</a></li>
+<li><a href="#tutorials-tutorial-5-persiapan">Persiapan</a></li>
+<li><a href="#tutorials-tutorial-5-animasi-sprite-sheet">Animasi Sprite Sheet</a></li>
+<li><a href="#tutorials-tutorial-5-aset-suara-audio">Aset Suara (Audio)</a></li>
+<li><a href="#tutorials-tutorial-5-latihan-mandiri-membuat-dan-menambah-variasi-aset">Latihan Mandiri: Membuat dan Menambah Variasi Aset</a></li>
+<li><a href="#tutorials-tutorial-5-skema-penilaian">Skema Penilaian</a></li>
+<li><a href="#tutorials-tutorial-5-pengumpulan">Pengumpulan</a></li>
+<li><a href="#tutorials-tutorial-5-referensi">Referensi</a></li>
+</ul>
+<h2 id="tutorials-tutorial-5-pengantar">Pengantar</h2>
+<h3 id="tutorials-tutorial-5-what-is-game-asset">What Is Game Asset?</h3>
+<p>Pada tutorial sebelumnya kita sudah membuat sebuah <em>level</em> sederhana menggunakaan <code>TileMap</code> beserta mekanik kamera dan <em>trigger area</em>.
+Namun sebelum membuat suatu <em>level</em> dalam game, dibutuhkan hal-hal yang menggambarkan tampilan dan suasana dalam game, yang lebih dikenal sebagai <em>Game Asset</em>.</p>
+<p>Game asset meliputi:</p>
+<ul>
+<li>Desain 2D/3D<ul>
+<li>Karakter</li>
+<li>Objek</li>
+<li>Environment</li>
+</ul>
+</li>
+<li>GUI<ul>
+<li>HUD</li>
+<li>Icons</li>
+</ul>
+</li>
+<li>Audio<ul>
+<li>BGM</li>
+<li>SFX</li>
+</ul>
+</li>
+</ul>
+<p>Sebagian besar <em>programmer</em> tidak bertugas untuk mendesain visual dan mengaransemen musik,
+tetapi <em>programmer</em> harus dapat mengimplementasikan <em>assets</em> ke dalam game.
+Maka dari itu, tutorial ini akan menjelaskan tentang:</p>
+<ul>
+<li>Apa itu <em>spritesheet</em> dan cara menggunakannya dalam animasi</li>
+<li>Penggunaan <em>audio clip</em> sebagai game sound effects</li>
+</ul>
+<h2 id="tutorials-tutorial-5-persiapan">Persiapan</h2>
+<p>Tutorial ini akan <strong>melanjutkan Tutorial 3</strong>.
+Oleh sebab itu, silakan buka kembali hasil pekerjaan Tutorial 3 kamu.
+Kemudian, salin satu berkas <em>spritesheet</em> dan satu berkas <em>audio</em> dari tautan berikut ini ke dalam folder <code>assets</code> Tutorial 3:</p>
+<ul>
+<li><a href="https://github.com/CSUI-Game-Development/tutorial-5-template/blob/main/assets/spritesheet/player_tilesheet.png"><em>Spritesheets</em></a></li>
+<li><a href="https://github.com/CSUI-Game-Development/tutorial-5-template/raw/main/assets/sound/bgm.wav"><em>Audio</em></a></li>
+</ul>
+<p>Jangan lupa untuk menyimpan hasil pekerjaan di akhir pengerjaan Tutorial 5 sebagai <em>commit</em> Git baru
+dan <em>push</em>  ke repositori daring Git kamu.</p>
+<h2 id="tutorials-tutorial-5-animasi-sprite-sheet">Animasi Sprite Sheet</h2>
+<p><code>Sprite Sheet</code> adalah file gambar <em>bitmap</em> yang berisi beberapa gambar yang lebih kecil dalam susunan <em>grid</em>.
+Dengan mengompilasi beberapa gambar menjadi satu berkas, kamu dapat membuat animasi hanya dengan memuat satu file.
+Efisiensi pemuatan ini dapat membantu dalam berbagai situasi, salah satunya <em>game development</em> dimana <em>performance</em> sangat penting dan sangat meminimalkan penggunaan <em>resource</em>.</p>
+<p><img alt="Spritesheet" src="../tutorials/tutorial-5/images/Spritesheet.png" /></p>
+<p>Pembuatan <em>sprite sheet</em> tidak bergantung pada <em>tools</em>. Namun, <em>sprite sheet</em> lebih menekankan pada peletakan koordinat gambar pada satu berkas.
+Jika penempatan gambar per <em>frame</em> tidak rapih, sprite yang dihasilkan juga akan tidak sesuai dan terlihat aneh.
+Berikut <em>tools</em> untuk membuat <em>game assets</em> untuk dimasukkan ke dalam <em>sprite sheet</em>.</p>
+<ul>
+<li>Pixel Art<ul>
+<li><a href="https://www.piskelapp.com/">PiskelApp</a></li>
+<li><a href="https://pixieengine.com/">Pixie</a></li>
+<li><a href="https://pixlr.com/">Pixlr</a></li>
+</ul>
+</li>
+<li>Vector Art<ul>
+<li><a href="https://www.adobe.com/sea/products/illustrator.html">Adobe Illustrator</a></li>
+<li><a href="https://www.figma.com/">Figma</a></li>
+</ul>
+</li>
+<li>Raster Art<ul>
+<li><a href="https://procreate.art/">Procreate</a></li>
+<li><a href="https://ibispaint.com">IbisPaint</a></li>
+</ul>
+</li>
+</ul>
+<p>Pembuatan aset secara manual tentu membutuhkan waktu dan keahlian.
+Saat ini sudah banyak tempat di Internet yang menyediakan aset-aset visual secara gratis.
+Walaupun gratis, jangan lupa membaca lisensi penggunaan aset tersebut!</p>
+<p>Berikut adalah beberapa web yang menyediakan asset visual secara gratis.</p>
+<ul>
+<li>https://kenney.nl/assets</li>
+<li>https://www.gameart2d.com/freebies.html</li>
+<li>https://craftpix.net/freebies/</li>
+</ul>
+<h3 id="tutorials-tutorial-5-animatedsprite-vs-animationplayer-animationtree">AnimatedSprite vs (AnimationPlayer + AnimationTree)</h3>
+<p>Terdapat dua metode untuk membuat animasi dalam Godot, yaitu dengan menggunakan <code>AnimatedSprite</code>
+atau dengan menggunakan <code>AnimationPlayer</code> bersama dengan <code>AnimationTree</code>.</p>
+<p><code>AnimatedSprite</code> memungkinkan kamu untuk membuat animasi dengan cara <strong>mengganti gambar secara cepat</strong>.
+Kecepatan pergantian <em>frame</em> gambar diatur dengan menggunakan satuan <em>frame per second</em>.
+Metode ini merupakan metode paling sederhana untuk membuat animasi di godot.
+Metode ini juga lebih sering digunakan untuk membuat animasi pada karakter atau <em>game objects</em>.</p>
+<p><img alt="Animated Sprite" src="../tutorials/tutorial-5/images/AnimatedSprite.png" /></p>
+<p>Di sisi lain <code>AnimationPlayer</code> digunakan untuk membuat animasi yang lebih kompleks. <code>AnimationPlayer</code> memungkinkan kamu untuk menyimpan perubahan <em>property</em>. Sebagai contoh, kamu dapat <em>load spritesheet</em> di node <code>Sprite</code> dan menyimpan perubahannya dalam bagian dari gambar yang saat ini sedang ditampilkan. Hal ini akan terlihat seperti kamu sedang menggunakan node <code>AnimatedSprite</code>.</p>
+<p><img alt="Animation Player" src="../tutorials/tutorial-5/images/AnimationPlayer.png" /></p>
+<p><code>AnimationTree</code> memungkinkan kamu untuk membuat <em>paths</em> di antara animation. Misalnya <em>path idle -&gt; walk -&gt; run</em>. Ketika karakter diam (<em>idle</em>) dan kemudian lari secara langsung, <code>AnimationTree</code> akan memainkan animasi <em>walk</em> terlebih dahulu sebelum <em>run</em>.</p>
+<p><img alt="Animation Tree" src="../tutorials/tutorial-5/images/AnimationTree.png" /></p>
+<h3 id="tutorials-tutorial-5-latihan-membuat-animasi-dengan-animatedsprite">Latihan: Membuat Animasi dengan AnimatedSprite</h3>
+<ol>
+<li>Buka kembali project Tutorial 3 di Godot.</li>
+<li>
+<p>Buat scene baru untuk membuat player dengan struktur seperti dibawah ini (jika sudah ada maka hanya perlu merubah node sprite menjadi <code>AnimatedSprite</code>).</p>
+<p><img alt="Struktur Player" src="../tutorials/tutorial-5/images/Struktur_Player.jpg" /></p>
+</li>
+<li>
+<p>Selanjutnya adalah membuat <strong>frame baru</strong> untuk menempatkan sprite-sprite menjadi sebuah animasi</p>
+<p><img alt="Frame Baru" src="../tutorials/tutorial-5/images/Frame_Baru.jpg" /></p>
+</li>
+<li>
+<p>Setelahnya akan keluar window dibagian bawah untuk membuat animasi. Beri nama pada animasi yang ingin kalian buat dengan menekan 2x pada tulisan default</p>
+<p><img alt="Tampilan Animation Window" src="../tutorials/tutorial-5/images/Tampilan_Animation_Window.jpg" /></p>
+</li>
+<li>
+<p>Di tutorial ini akan membuat contoh animasi berjalan menghadap kanan (nama animasinya jalan_kanan). Setelah memberi nama, selanjutnya adalah mengimport gambar untuk dijadikan animasi. Ada <strong>dua teknik</strong> yaitu dengan langsung memasukan file gambar yang berisi satu gambar utuh (button 1), atau dengan memasukan file spritesheet (button 2).</p>
+<p><img alt="Tampilan Button Load" src="../tutorials/tutorial-5/images/Tampilan_Button_Load.jpg" /></p>
+<blockquote>
+<p>Note:</p>
+<ul>
+<li>Import gambar dengan menggunakan button 1 hanya tinggal menekan button 1 dan memilih file gambar yang ingin di import (ingat, teknik ini akan mengimport keseluruhan gambar dalam file).</li>
+<li>Import gambar dengan button 2 sedikit berbeda. Disini pilih file yang berisi spritesheet dan akan muncul tampilan grid seperti dibawah ini.</li>
+</ul>
+<p><img alt="Import Texture Spritesheet" src="../tutorials/tutorial-5/images/Import_Texture_Spritesheet.jpg" /></p>
+</blockquote>
+<p>Disini kalian harus mengatur banyaknya grid yang agar setiap satu grid mewakili satu gambar yang akan di import. Pada kasus ini ubah horizontal menjadi 9 (karena jumlah gambar pada satu baris ada 9), dan vertikal menjadi 3 (karena terdapat 3 baris). Selanjutnya pilih gambar dengan menekan grid yang diinginkan (disini bisa memilih multiple gambar).</p>
+<p><img alt="Import Texture Spritesheet2" src="../tutorials/tutorial-5/images/Import_Texture_Spritesheet2.jpg" /></p>
+</li>
+<li>
+<p>Selanjutnya untuk mencoba apakah animasi sudah seperti yang diinginkan dengan menceklis box playing pada inspector node animatedSprite. (jika animasi terlalu lambat, bisa menambahkan fps di bagian pojok kiri bawah diatas tombol output. Untuk pengulangan animasi, bisa mengaktifkan loop dibawah fps)</p>
+<p><img alt="Playing FPS Loop" src="../tutorials/tutorial-5/images/Playing_FPS_Loop.jpg" /></p>
+</li>
+<li>
+<p>Animasi telah siap digunakan. Tetapi jika kalian lihat, saat menjalankan scene posisi player akan mengikuti texture pertama pada animasi jalan_kanan. Maka dari itu sebaiknya kalian membuat beberapa animasi untuk kasus lainnya. Untuk menyatakan animasi mana yang menjadi inisiasi player saat main scene dijalankan, bisa mengaturnya pada properti animations yang berapa pada inspector node animatedSprite. (disini scene playernya diberinama player.tscn, dengan root node bernama player)</p>
+<p><img alt="Scene Selesai" src="../tutorials/tutorial-5/images/Scene_Selesai.jpg" /></p>
+</li>
+<li>
+<p>Terakhir tentunya adalah membuat script untuk mengaktifkan animasi ini. Berikut adalah kode yang diambil dari Tutorial 3:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">extends</span><span class="w"> </span><span class="n">KinematicBody2D</span>
+
+<span class="k">export</span><span class="w"> </span><span class="p">(</span><span class="nb nb-Type">int</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">400</span>
+<span class="k">export</span><span class="w"> </span><span class="p">(</span><span class="nb nb-Type">int</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">jump_speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">600</span>
+<span class="k">export</span><span class="w"> </span><span class="p">(</span><span class="nb nb-Type">int</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">GRAVITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1200</span>
+
+<span class="k">const</span><span class="w"> </span><span class="n">UP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">Vector2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">velocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">Vector2</span><span class="p">()</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">get_input</span><span class="p">():</span>
+<span class="w">  </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">is_on_floor</span><span class="p">()</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_just_pressed</span><span class="p">(</span><span class="s1">&#39;up&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jump_speed</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">speed</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">speed</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_physics_process</span><span class="p">(</span><span class="n">delta</span><span class="p">):</span>
+<span class="w">  </span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">delta</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">GRAVITY</span>
+<span class="w">  </span><span class="n">get_input</span><span class="p">()</span>
+<span class="w">  </span><span class="n">velocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">move_and_slide</span><span class="p">(</span><span class="n">velocity</span><span class="p">,</span><span class="w"> </span><span class="n">UP</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>Fungsi utama untuk mengaktifkan animasi adalah dengan <code>[nama_node_animatedSprite.play("nama_animasi")</code>. Coba perbarui fungsi <code>get_input()</code> dengan kode ini dan jalankan lagi main scene dengan menekan tombol keyboard kanan untuk menjalankan player.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">get_input</span><span class="p">():</span>
+<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">animation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;diri_kanan&quot;</span>
+
+<span class="w">  </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">is_on_floor</span><span class="p">()</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_just_pressed</span><span class="p">(</span><span class="s1">&#39;up&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jump_speed</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">speed</span>
+<span class="w">    </span><span class="n">animation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;jalan_kanan&quot;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">speed</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">$</span><span class="n">AnimatedSprite</span><span class="o">.</span><span class="n">animation</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">animation</span><span class="p">:</span>
+<span class="w">    </span><span class="o">$</span><span class="n">AnimatedSprite</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">animation</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p><code>$AnimatedSprite</code> merupakan nama dari node dengan tipe <code>AnimatedSprite</code>. Kalian bisa melengkapi program diatas menjadi animasi lengkap sampai menunduk, lompat, atau animasi lainnya.</p>
+</li>
+</ol>
+<h2 id="tutorials-tutorial-5-aset-suara-audio">Aset Suara (Audio)</h2>
+<p>Suara di dalam game merupakan pelengkap yang harus ada dalam setiap game. Suara ini dapat menggambarkan suasana, seperti bahagia, sedih, mendebarkan, dan sebagainya. Dengan menambahkan suara yang sesuai, pengalaman pemain akan meningkat drastis.</p>
+<p>Suara dalam game biasa dibuat dengan menggunakan <em>sound editing tools</em>, seperti <a href="https://www.fmod.com/">FMOD</a>, <a href="https://www.audiokinetic.com/">Wwise</a>, dan <a href="https://www.audacityteam.org/">Audacity</a> (Open Source). Dengan menggunakan <em>sound editing tools</em>, <em>game music composer</em> dapat membuat <em>game asset</em> mulai dari efek suara hingga musik yang mendukung penggambaran suasana game.</p>
+<p>Seperti dalam pembuatan visual, penggunaan <em>sound editing tools</em> tentunya juga membutuhkan keahlian tersendiri. Maka dari itu, ada alternatif lain untuk <em>coder</em> yang ingin menambahkan SFX dalam game, yaitu dengan menggunakan <em>free sound</em> dari internet. Berikut website sumber efek suara yang gratis.</p>
+<ul>
+<li>https://kenney.nl/assets?q=audio</li>
+<li>https://freesound.org/</li>
+<li>http://soundbible.com/</li>
+</ul>
+<p>Walaupun kalian menggunakan suara gratis dari sumber-sumber di atas, jangan lupa berikan credit yang sesuai sebagai bentuk apresiasi kepada pembuat audio.</p>
+<h3 id="tutorials-tutorial-5-introduction-to-sound-editing-tools">Introduction to Sound Editing Tools</h3>
+<p>Sebelum mempelajari implementasi <em>sound</em> di Godot, pertama-tama kita pelajari dulu salah satu <em>sound editing tools</em>.
+Tools yang digunakan kali ini adalah <em>tools open source</em>, yaitu <strong>Audacity</strong>. Sebelum memulai tutorial bagian ini, <em>download</em> dan <em>install</em> Audacity terlebih dahulu melalui <a href="https://www.audacityteam.org/download/">link berikut</a>.</p>
+<p>Berikut tampilan dari Audacity:</p>
+<p><img alt="Tampilan Audacity" src="../tutorials/tutorial-5/images/Audacity.jpg" /></p>
+<p>Selanjutkan kita akan langsung praktik menyiapkan rekaman suara dan memasukkannya ke dalam Godot.</p>
+<h3 id="tutorials-tutorial-5-latihan-merekam-dan-menggubah-suara">Latihan: Merekam dan Menggubah Suara</h3>
+<p>Audacity dapat merekam suara menggunakan microphone, membuka audio file, trimming audio, serta mengaplikasikan efek ke audio. Pertama, buat <strong>audio track</strong> melalui tab track pada toolbar dan pilih add new -&gt; stereo track.</p>
+<p><img alt="Add Stereo Track" src="../tutorials/tutorial-5/images/Audacity_AddStereoTrack.jpg" /></p>
+<p>Track ini dapat diisi dengan suara hasil <strong>rekaman</strong>. Untuk memulai rekaman, tekan R atau tekan tombol rekaman. Jika sudah selesai merekam, tekan tombol stop.</p>
+<p><img alt="Record" src="../tutorials/tutorial-5/images/Audacity_Record.jpg" /></p>
+<p>Hasil rekaman akan otomatis terisi ke dalam track. Namun, saat ini suara tersebut masih penuh noise. Untuk mengurangi noise tersebut dapat menggunakan effect <strong><em>noise reduction</em></strong>. Pertama, select interval audio track yang akan diberi effect. Kemudian, pilih effects pada toolbar dan pilih noise reduction.</p>
+<p><img alt="Noise Reduction" src="../tutorials/tutorial-5/images/Audacity_NoiseReduction.jpg" /></p>
+<p>Selanjutnya tekan noise profile agar Audacity dapat mengetahui jenis noise yang akan difilter. Lalu pilih efek noise reduction lagi dari toolbar untuk memunculkan noise reduction settings dan atur sesuai kebutuhan. Jika sudah, klik OK. Audacity akan mengolah suara dan memfilter noise dari suara.</p>
+<p>Jika sudah selesai membuat audio, audio ini dapat diekspor ke bentuk yang dapat digunakan di Godot. Godot hanya support dua jenis audio file, yaitu <strong>wav</strong> dan <strong>ogg</strong>. Oleh karena itu, export audio dengan cara memilih file pada toolbar dan pilih export -&gt; export as wav.</p>
+<p><img alt="Export" src="../tutorials/tutorial-5/images/Audacity_Export.jpg" /></p>
+<p>Audio yang sudah diexport dapat disimpan ke dalam folder <code>assets</code> pada project Godot kalian.</p>
+<h3 id="tutorials-tutorial-5-latihan-menambahkan-audio-ke-game">Latihan: Menambahkan Audio ke Game</h3>
+<p>Selain SFX, terdapat juga audio yang dapat menggambarkan suasana game, yaitu <strong>Background Music</strong>. Berikut cara mengimplementasikan BGM dalam game. Pertama buka level scene yang telah kamu buat. Kemudian tambahkan node <code>AudioStreamPlayer</code> sebagai child dari root node.</p>
+<p><img alt="AudioStreamPlayer" src="../tutorials/tutorial-5/images/BGMStep1_AddNodeAudioStreamPlayer.jpg" /></p>
+<p>Lihat pada tab inspector di sebelah kanan. Untuk menambahkan audio ke dalam node <code>AudioStreamPlayer</code>, klik dropdown pada bagian stream dan pilih load.</p>
+<p><img alt="Load Audio" src="../tutorials/tutorial-5/images/BGMStep2_LoadAudio.jpg" /></p>
+<p>Godot akan memunculkan <em>prompt</em> untuk memilih file. Pilih file <code>bgm.wav</code> pada directory <code>res://assets/sound</code></p>
+<p><img alt="Locate Wav File" src="../tutorials/tutorial-5/images/BGMStep3_LocateWavFile.jpg" /></p>
+<p>Setelah file audio dipilih, audio wave akan muncul pada bagian stream di tab inspector.</p>
+<p><img alt="Audio Node Inspector Desc" src="../tutorials/tutorial-5/images/BGMStep4_AudioNodeInspectorDesc.jpg" /></p>
+<p>Terdapat beberapa konfigurasi lainnya, yaitu:</p>
+<ul>
+<li>Volume db: Mengatur volume audio.</li>
+<li>Pitch scale: Mengatur pitch audio.</li>
+<li>Playing: Jika on(true), audio akan diplay saat itu juga.</li>
+<li>Autoplay: Jika on(true), audio akan langsung diplay saat scene pertama kali dibuka.</li>
+<li>Stream paused: Jika on(true), playback akan dipause.</li>
+<li>Max Distance: Jarak maksimal hingga audio tidak bisa didengar (digunakan ketika <code>AudioStreamPlayer</code> merupakan child dari suatu <em>game object</em>).</li>
+<li>Attenuation: Memperkecil audio berdasarkan jarak secara eksponensial.</li>
+<li>Bus: Menentukan bus mana audio akan dimainkan.</li>
+</ul>
+<p>Untuk penjelasan lebih lanjut mengenai <code>AudioStreamPlayer</code> dapat diakses di <a href="https://docs.godotengine.org/en/stable/classes/class_audiostreamplayer2d.html">docs</a></p>
+<p>Saat ini <em>audio</em> masih berjalan tanpa <em>looping</em>. Untuk membuat <em>audio looping</em>, pilih file <code>bgm.wav</code> pada tab <code>FileSystem</code> di sebelah kiri bawah. Kemudian, buka tab <code>Import</code> di sebelah kiri atas. Berikut tampilan dari tab <code>Import</code>.</p>
+<p><img alt="Audio Import Settings" src="../tutorials/tutorial-5/images/BGMStep5_ImportSettings.jpg" /></p>
+<p>Klik <em>loop</em> lalu klik <em>reimport</em>. Godot akan mengimport audio ulang dengan menambahkan konfigurasi yang sudah dipilih sebelumnya. Tes apakah <em>audio</em> sudah <em>looping</em> dengan menjalankan <em>scene</em>.</p>
+<h2 id="tutorials-tutorial-5-latihan-mandiri-membuat-dan-menambah-variasi-aset">Latihan Mandiri: Membuat dan Menambah Variasi Aset</h2>
+<p>Silakan eksplorasi lebih lanjut mengenai animasi berdasarkan <em>spritesheet</em> dan audio.
+Untuk latihan mandiri yang dikerjakan di akhir tutorial,
+kamu diharapkan untuk:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Membuat minimal 1 (satu) objek baru di dalam permainan yang dilengkapi dengan animasi menggunakan <em>spritesheet</em> selain yang disediakan tutorial. Silakan cari <em>spritesheet</em> animasi di beberapa koleksi aset gratis seperti Kenney.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Membuat minimal 1 (satu) audio untuk efek suara (SFX) dan memasukkannya ke dalam permainan. Kamu dapat membuatnya sendiri atau mencari dari koleksi aset gratis.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Membuat minimal 1 (satu) musik latar (<em>background music</em>) dan memasukkannya ke dalam permainan. Kamu dapat membuatnya sendiri atau mencari dari koleksi aset gratis.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Implementasikan interaksi antara objek baru tersebut dengan objek yang dikendalikan pemain. Misalnya, pemain dapat menciptakan atau menghilangkan objek baru tersebut ketika menekan suatu tombol atau tabrakan dengan objek lain di dunia permainan.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Implementasikan <em>audio feedback</em> dari interaksi antara objek baru dengan objek pemain. Misalnya, muncul efek suara ketika pemain tabrakan dengan objek baru.</li>
+</ul>
+<p>Beberapa ide lain yang bisa kamu coba kerjakan di luar latihan mandiri:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Implementasi sistem audio yang relatif terhadap posisi objek. Misalnya, musik latar akan semakin terdengar samar ketika pemain semakin jauh dari posisi awal level.</li>
+</ul>
+<p>Silakan berkreasi lebih lanjut untuk membuat Tutorial 3 dan 5 kamu lebih menarik dari sebelumnya!
+Jangan lupa untuk menjelaskan proses pengerjaan tutorial ini di dalam berkas <code>README.md</code> yang sama dengan Tutorial 3. Silakan tambahkan subbab (<em>section</em>) baru yang berisi penjelasan proses pengerjaan Tutorial 5.
+Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelaskan proses implementasi.</p>
+<h2 id="tutorials-tutorial-5-skema-penilaian">Skema Penilaian</h2>
+<p>Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:</p>
+<ul>
+<li><strong>4</strong> (<em><strong>A</strong></em>) apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi tim pengajar.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan Latihan Mandiri, ditambah dengan memoles (<em>polishing</em>) lebih lanjut permainannya.</li>
+<li><strong>3</strong> (<em><strong>B</strong></em>) apabila kamu hanya mengerjakan tutorial dan latihan sesuai dengan instruksi.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan Latihan Mandiri.</li>
+<li><strong>2</strong> (<em><strong>C</strong></em>) apabila kamu hanya mengerjakan tutorial hingga tuntas.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan namun tidak mengerjakan Latihan Mandiri.</li>
+<li><strong>1</strong> (<em><strong>D</strong></em>) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.</li>
+<li><strong>0</strong> (<em><strong>E</strong></em>) apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.</li>
+</ul>
+<h2 id="tutorials-tutorial-5-pengumpulan">Pengumpulan</h2>
+<p>Kumpulkan dengan memasukkan berkasnya ke dalam Git dan <em>push</em> ke <em>fork</em> materi
+tutorial ini di repositori milik pribadi. <strong>Jangan <em>push</em> atau membuat Merge
+Request ke repositori <em>upstream</em> materi tutorial kecuali jika kamu ingin
+kontribusi materi atau memperbaiki materi yang sudah dipublikasikan!</strong></p>
+<p>Tenggat waktu pengumpulan adalah <strong>13 Maret 2024 pukul 21:00</strong>.</p>
+<h2 id="tutorials-tutorial-5-referensi">Referensi</h2>
+<ul>
 <li><a href="https://www.kenney.nl/assets/platformer-pack-redux">Kenney Assets</a></li>
 <li>Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
   gasal 2020/2021 Fakultas Ilmu Komputer Universitas Indonesia.</li>

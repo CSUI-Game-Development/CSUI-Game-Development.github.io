@@ -1,0 +1,1229 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="The website of Game Development course at the Faculty of Computer Science Universitas Indonesia.">
+      
+      
+        <meta name="author" content="Daya Adianto">
+      
+      
+      
+        <link rel="prev" href="../tutorial-4/">
+      
+      
+        <link rel="next" href="../../exam-issue-template/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+    
+    
+      
+        <title>Tutorial 5 - Assets Creation & Integration - Game Development @ Faculty of Computer Science Universitas Indonesia</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35e1ed30.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/print-site.css">
+    
+      <link rel="stylesheet" href="../../css/print-site-material.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorial-5-assets-creation-integration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Game Development @ Faculty of Computer Science Universitas Indonesia" class="md-header__button md-logo" aria-label="Game Development @ Faculty of Computer Science Universitas Indonesia" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Game Development @ Faculty of Computer Science Universitas Indonesia
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tutorial 5 - Assets Creation & Integration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/CSUI-Game-Development/CSUI-Game-Development.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+    
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../exam-issue-template/" class="md-tabs__link">
+        
+  
+    
+  
+  Exam Issue Template
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Game Development @ Faculty of Computer Science Universitas Indonesia" class="md-nav__button md-logo" aria-label="Game Development @ Faculty of Computer Science Universitas Indonesia" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Game Development @ Faculty of Computer Science Universitas Indonesia
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/CSUI-Game-Development/CSUI-Game-Development.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial 1 - Game Design Workshop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial 2 - Introduction to Game Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial 3 - Introduction to Game Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial 4 - Basic 2D Level Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Tutorial 5 - Assets Creation & Integration
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial 5 - Assets Creation & Integration
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#daftar-isi" class="md-nav__link">
+    Daftar Isi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pengantar" class="md-nav__link">
+    Pengantar
+  </a>
+  
+    <nav class="md-nav" aria-label="Pengantar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-game-asset" class="md-nav__link">
+    What Is Game Asset?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persiapan" class="md-nav__link">
+    Persiapan
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animasi-sprite-sheet" class="md-nav__link">
+    Animasi Sprite Sheet
+  </a>
+  
+    <nav class="md-nav" aria-label="Animasi Sprite Sheet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#animatedsprite-vs-animationplayer-animationtree" class="md-nav__link">
+    AnimatedSprite vs (AnimationPlayer + AnimationTree)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latihan-membuat-animasi-dengan-animatedsprite" class="md-nav__link">
+    Latihan: Membuat Animasi dengan AnimatedSprite
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aset-suara-audio" class="md-nav__link">
+    Aset Suara (Audio)
+  </a>
+  
+    <nav class="md-nav" aria-label="Aset Suara (Audio)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-sound-editing-tools" class="md-nav__link">
+    Introduction to Sound Editing Tools
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latihan-merekam-dan-menggubah-suara" class="md-nav__link">
+    Latihan: Merekam dan Menggubah Suara
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latihan-menambahkan-audio-ke-game" class="md-nav__link">
+    Latihan: Menambahkan Audio ke Game
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#latihan-mandiri-membuat-dan-menambah-variasi-aset" class="md-nav__link">
+    Latihan Mandiri: Membuat dan Menambah Variasi Aset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skema-penilaian" class="md-nav__link">
+    Skema Penilaian
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pengumpulan" class="md-nav__link">
+    Pengumpulan
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referensi" class="md-nav__link">
+    Referensi
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exam-issue-template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exam Issue Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#daftar-isi" class="md-nav__link">
+    Daftar Isi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pengantar" class="md-nav__link">
+    Pengantar
+  </a>
+  
+    <nav class="md-nav" aria-label="Pengantar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-game-asset" class="md-nav__link">
+    What Is Game Asset?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persiapan" class="md-nav__link">
+    Persiapan
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animasi-sprite-sheet" class="md-nav__link">
+    Animasi Sprite Sheet
+  </a>
+  
+    <nav class="md-nav" aria-label="Animasi Sprite Sheet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#animatedsprite-vs-animationplayer-animationtree" class="md-nav__link">
+    AnimatedSprite vs (AnimationPlayer + AnimationTree)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latihan-membuat-animasi-dengan-animatedsprite" class="md-nav__link">
+    Latihan: Membuat Animasi dengan AnimatedSprite
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aset-suara-audio" class="md-nav__link">
+    Aset Suara (Audio)
+  </a>
+  
+    <nav class="md-nav" aria-label="Aset Suara (Audio)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-sound-editing-tools" class="md-nav__link">
+    Introduction to Sound Editing Tools
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latihan-merekam-dan-menggubah-suara" class="md-nav__link">
+    Latihan: Merekam dan Menggubah Suara
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latihan-menambahkan-audio-ke-game" class="md-nav__link">
+    Latihan: Menambahkan Audio ke Game
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#latihan-mandiri-membuat-dan-menambah-variasi-aset" class="md-nav__link">
+    Latihan Mandiri: Membuat dan Menambah Variasi Aset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skema-penilaian" class="md-nav__link">
+    Skema Penilaian
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pengumpulan" class="md-nav__link">
+    Pengumpulan
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referensi" class="md-nav__link">
+    Referensi
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+    <a href="../../print_page/" title="Print Site" class="md-content__button md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 3H6v4h12m1 5a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1m-3 7H8v-5h8m3-6H5a3 3 0 0 0-3 3v6h4v4h12v-4h4v-6a3 3 0 0 0-3-3Z"/></svg>
+    </a>
+
+
+
+                  
+
+
+<h1 id="tutorial-5-assets-creation-integration">Tutorial 5 - Assets Creation &amp; Integration</h1>
+<p>Selamat datang pada tutorial kelima kuliah Game Development.
+Pada tutorial kali ini, kamu akan mempelajari cara membuat <em>game asset</em> sederhana menggunakan <em>tools</em> yang sesuai kemudian mengintegrasikan ke game.
+Di akhir tutorial ini, diharapkan kamu paham dengan penggunaan <em>spritesheet</em> dan <em>audio</em> pada game 2D.</p>
+<h2 id="daftar-isi">Daftar Isi</h2>
+<ul>
+<li><a href="#tutorial-5---assets-creation--integration">Tutorial 5 - Assets Creation &amp; Integration</a></li>
+<li><a href="#daftar-isi">Daftar Isi</a></li>
+<li><a href="#pengantar">Pengantar</a></li>
+<li><a href="#persiapan">Persiapan</a></li>
+<li><a href="#animasi-sprite-sheet">Animasi Sprite Sheet</a></li>
+<li><a href="#aset-suara-audio">Aset Suara (Audio)</a></li>
+<li><a href="#latihan-mandiri-membuat-dan-menambah-variasi-aset">Latihan Mandiri: Membuat dan Menambah Variasi Aset</a></li>
+<li><a href="#skema-penilaian">Skema Penilaian</a></li>
+<li><a href="#pengumpulan">Pengumpulan</a></li>
+<li><a href="#referensi">Referensi</a></li>
+</ul>
+<h2 id="pengantar">Pengantar</h2>
+<h3 id="what-is-game-asset">What Is Game Asset?</h3>
+<p>Pada tutorial sebelumnya kita sudah membuat sebuah <em>level</em> sederhana menggunakaan <code>TileMap</code> beserta mekanik kamera dan <em>trigger area</em>.
+Namun sebelum membuat suatu <em>level</em> dalam game, dibutuhkan hal-hal yang menggambarkan tampilan dan suasana dalam game, yang lebih dikenal sebagai <em>Game Asset</em>.</p>
+<p>Game asset meliputi:</p>
+<ul>
+<li>Desain 2D/3D<ul>
+<li>Karakter</li>
+<li>Objek</li>
+<li>Environment</li>
+</ul>
+</li>
+<li>GUI<ul>
+<li>HUD</li>
+<li>Icons</li>
+</ul>
+</li>
+<li>Audio<ul>
+<li>BGM</li>
+<li>SFX</li>
+</ul>
+</li>
+</ul>
+<p>Sebagian besar <em>programmer</em> tidak bertugas untuk mendesain visual dan mengaransemen musik,
+tetapi <em>programmer</em> harus dapat mengimplementasikan <em>assets</em> ke dalam game.
+Maka dari itu, tutorial ini akan menjelaskan tentang:</p>
+<ul>
+<li>Apa itu <em>spritesheet</em> dan cara menggunakannya dalam animasi</li>
+<li>Penggunaan <em>audio clip</em> sebagai game sound effects</li>
+</ul>
+<h2 id="persiapan">Persiapan</h2>
+<p>Tutorial ini akan <strong>melanjutkan Tutorial 3</strong>.
+Oleh sebab itu, silakan buka kembali hasil pekerjaan Tutorial 3 kamu.
+Kemudian, salin satu berkas <em>spritesheet</em> dan satu berkas <em>audio</em> dari tautan berikut ini ke dalam folder <code>assets</code> Tutorial 3:</p>
+<ul>
+<li><a href="https://github.com/CSUI-Game-Development/tutorial-5-template/blob/main/assets/spritesheet/player_tilesheet.png"><em>Spritesheets</em></a></li>
+<li><a href="https://github.com/CSUI-Game-Development/tutorial-5-template/raw/main/assets/sound/bgm.wav"><em>Audio</em></a></li>
+</ul>
+<p>Jangan lupa untuk menyimpan hasil pekerjaan di akhir pengerjaan Tutorial 5 sebagai <em>commit</em> Git baru
+dan <em>push</em>  ke repositori daring Git kamu.</p>
+<h2 id="animasi-sprite-sheet">Animasi Sprite Sheet</h2>
+<p><code>Sprite Sheet</code> adalah file gambar <em>bitmap</em> yang berisi beberapa gambar yang lebih kecil dalam susunan <em>grid</em>.
+Dengan mengompilasi beberapa gambar menjadi satu berkas, kamu dapat membuat animasi hanya dengan memuat satu file.
+Efisiensi pemuatan ini dapat membantu dalam berbagai situasi, salah satunya <em>game development</em> dimana <em>performance</em> sangat penting dan sangat meminimalkan penggunaan <em>resource</em>.</p>
+<p><img alt="Spritesheet" src="images/Spritesheet.png" /></p>
+<p>Pembuatan <em>sprite sheet</em> tidak bergantung pada <em>tools</em>. Namun, <em>sprite sheet</em> lebih menekankan pada peletakan koordinat gambar pada satu berkas.
+Jika penempatan gambar per <em>frame</em> tidak rapih, sprite yang dihasilkan juga akan tidak sesuai dan terlihat aneh.
+Berikut <em>tools</em> untuk membuat <em>game assets</em> untuk dimasukkan ke dalam <em>sprite sheet</em>.</p>
+<ul>
+<li>Pixel Art<ul>
+<li><a href="https://www.piskelapp.com/">PiskelApp</a></li>
+<li><a href="https://pixieengine.com/">Pixie</a></li>
+<li><a href="https://pixlr.com/">Pixlr</a></li>
+</ul>
+</li>
+<li>Vector Art<ul>
+<li><a href="https://www.adobe.com/sea/products/illustrator.html">Adobe Illustrator</a></li>
+<li><a href="https://www.figma.com/">Figma</a></li>
+</ul>
+</li>
+<li>Raster Art<ul>
+<li><a href="https://procreate.art/">Procreate</a></li>
+<li><a href="https://ibispaint.com">IbisPaint</a></li>
+</ul>
+</li>
+</ul>
+<p>Pembuatan aset secara manual tentu membutuhkan waktu dan keahlian.
+Saat ini sudah banyak tempat di Internet yang menyediakan aset-aset visual secara gratis.
+Walaupun gratis, jangan lupa membaca lisensi penggunaan aset tersebut!</p>
+<p>Berikut adalah beberapa web yang menyediakan asset visual secara gratis.</p>
+<ul>
+<li>https://kenney.nl/assets</li>
+<li>https://www.gameart2d.com/freebies.html</li>
+<li>https://craftpix.net/freebies/</li>
+</ul>
+<h3 id="animatedsprite-vs-animationplayer-animationtree">AnimatedSprite vs (AnimationPlayer + AnimationTree)</h3>
+<p>Terdapat dua metode untuk membuat animasi dalam Godot, yaitu dengan menggunakan <code>AnimatedSprite</code>
+atau dengan menggunakan <code>AnimationPlayer</code> bersama dengan <code>AnimationTree</code>.</p>
+<p><code>AnimatedSprite</code> memungkinkan kamu untuk membuat animasi dengan cara <strong>mengganti gambar secara cepat</strong>.
+Kecepatan pergantian <em>frame</em> gambar diatur dengan menggunakan satuan <em>frame per second</em>.
+Metode ini merupakan metode paling sederhana untuk membuat animasi di godot.
+Metode ini juga lebih sering digunakan untuk membuat animasi pada karakter atau <em>game objects</em>.</p>
+<p><img alt="Animated Sprite" src="images/AnimatedSprite.png" /></p>
+<p>Di sisi lain <code>AnimationPlayer</code> digunakan untuk membuat animasi yang lebih kompleks. <code>AnimationPlayer</code> memungkinkan kamu untuk menyimpan perubahan <em>property</em>. Sebagai contoh, kamu dapat <em>load spritesheet</em> di node <code>Sprite</code> dan menyimpan perubahannya dalam bagian dari gambar yang saat ini sedang ditampilkan. Hal ini akan terlihat seperti kamu sedang menggunakan node <code>AnimatedSprite</code>.</p>
+<p><img alt="Animation Player" src="images/AnimationPlayer.png" /></p>
+<p><code>AnimationTree</code> memungkinkan kamu untuk membuat <em>paths</em> di antara animation. Misalnya <em>path idle -&gt; walk -&gt; run</em>. Ketika karakter diam (<em>idle</em>) dan kemudian lari secara langsung, <code>AnimationTree</code> akan memainkan animasi <em>walk</em> terlebih dahulu sebelum <em>run</em>.</p>
+<p><img alt="Animation Tree" src="images/AnimationTree.png" /></p>
+<h3 id="latihan-membuat-animasi-dengan-animatedsprite">Latihan: Membuat Animasi dengan AnimatedSprite</h3>
+<ol>
+<li>Buka kembali project Tutorial 3 di Godot.</li>
+<li>
+<p>Buat scene baru untuk membuat player dengan struktur seperti dibawah ini (jika sudah ada maka hanya perlu merubah node sprite menjadi <code>AnimatedSprite</code>).</p>
+<p><img alt="Struktur Player" src="images/Struktur_Player.jpg" /></p>
+</li>
+<li>
+<p>Selanjutnya adalah membuat <strong>frame baru</strong> untuk menempatkan sprite-sprite menjadi sebuah animasi</p>
+<p><img alt="Frame Baru" src="images/Frame_Baru.jpg" /></p>
+</li>
+<li>
+<p>Setelahnya akan keluar window dibagian bawah untuk membuat animasi. Beri nama pada animasi yang ingin kalian buat dengan menekan 2x pada tulisan default</p>
+<p><img alt="Tampilan Animation Window" src="images/Tampilan_Animation_Window.jpg" /></p>
+</li>
+<li>
+<p>Di tutorial ini akan membuat contoh animasi berjalan menghadap kanan (nama animasinya jalan_kanan). Setelah memberi nama, selanjutnya adalah mengimport gambar untuk dijadikan animasi. Ada <strong>dua teknik</strong> yaitu dengan langsung memasukan file gambar yang berisi satu gambar utuh (button 1), atau dengan memasukan file spritesheet (button 2).</p>
+<p><img alt="Tampilan Button Load" src="images/Tampilan_Button_Load.jpg" /></p>
+<blockquote>
+<p>Note:</p>
+<ul>
+<li>Import gambar dengan menggunakan button 1 hanya tinggal menekan button 1 dan memilih file gambar yang ingin di import (ingat, teknik ini akan mengimport keseluruhan gambar dalam file).</li>
+<li>Import gambar dengan button 2 sedikit berbeda. Disini pilih file yang berisi spritesheet dan akan muncul tampilan grid seperti dibawah ini.</li>
+</ul>
+<p><img alt="Import Texture Spritesheet" src="images/Import_Texture_Spritesheet.jpg" /></p>
+</blockquote>
+<p>Disini kalian harus mengatur banyaknya grid yang agar setiap satu grid mewakili satu gambar yang akan di import. Pada kasus ini ubah horizontal menjadi 9 (karena jumlah gambar pada satu baris ada 9), dan vertikal menjadi 3 (karena terdapat 3 baris). Selanjutnya pilih gambar dengan menekan grid yang diinginkan (disini bisa memilih multiple gambar).</p>
+<p><img alt="Import Texture Spritesheet2" src="images/Import_Texture_Spritesheet2.jpg" /></p>
+</li>
+<li>
+<p>Selanjutnya untuk mencoba apakah animasi sudah seperti yang diinginkan dengan menceklis box playing pada inspector node animatedSprite. (jika animasi terlalu lambat, bisa menambahkan fps di bagian pojok kiri bawah diatas tombol output. Untuk pengulangan animasi, bisa mengaktifkan loop dibawah fps)</p>
+<p><img alt="Playing FPS Loop" src="images/Playing_FPS_Loop.jpg" /></p>
+</li>
+<li>
+<p>Animasi telah siap digunakan. Tetapi jika kalian lihat, saat menjalankan scene posisi player akan mengikuti texture pertama pada animasi jalan_kanan. Maka dari itu sebaiknya kalian membuat beberapa animasi untuk kasus lainnya. Untuk menyatakan animasi mana yang menjadi inisiasi player saat main scene dijalankan, bisa mengaturnya pada properti animations yang berapa pada inspector node animatedSprite. (disini scene playernya diberinama player.tscn, dengan root node bernama player)</p>
+<p><img alt="Scene Selesai" src="images/Scene_Selesai.jpg" /></p>
+</li>
+<li>
+<p>Terakhir tentunya adalah membuat script untuk mengaktifkan animasi ini. Berikut adalah kode yang diambil dari Tutorial 3:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">extends</span><span class="w"> </span><span class="n">KinematicBody2D</span>
+
+<span class="k">export</span><span class="w"> </span><span class="p">(</span><span class="nb nb-Type">int</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">400</span>
+<span class="k">export</span><span class="w"> </span><span class="p">(</span><span class="nb nb-Type">int</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">jump_speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">600</span>
+<span class="k">export</span><span class="w"> </span><span class="p">(</span><span class="nb nb-Type">int</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">GRAVITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1200</span>
+
+<span class="k">const</span><span class="w"> </span><span class="n">UP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">Vector2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">velocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">Vector2</span><span class="p">()</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">get_input</span><span class="p">():</span>
+<span class="w">  </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">is_on_floor</span><span class="p">()</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_just_pressed</span><span class="p">(</span><span class="s1">&#39;up&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jump_speed</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">speed</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">speed</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_physics_process</span><span class="p">(</span><span class="n">delta</span><span class="p">):</span>
+<span class="w">  </span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">delta</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">GRAVITY</span>
+<span class="w">  </span><span class="n">get_input</span><span class="p">()</span>
+<span class="w">  </span><span class="n">velocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">move_and_slide</span><span class="p">(</span><span class="n">velocity</span><span class="p">,</span><span class="w"> </span><span class="n">UP</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>Fungsi utama untuk mengaktifkan animasi adalah dengan <code>[nama_node_animatedSprite.play("nama_animasi")</code>. Coba perbarui fungsi <code>get_input()</code> dengan kode ini dan jalankan lagi main scene dengan menekan tombol keyboard kanan untuk menjalankan player.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">get_input</span><span class="p">():</span>
+<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">animation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;diri_kanan&quot;</span>
+
+<span class="w">  </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">is_on_floor</span><span class="p">()</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_just_pressed</span><span class="p">(</span><span class="s1">&#39;up&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jump_speed</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">speed</span>
+<span class="w">    </span><span class="n">animation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;jalan_kanan&quot;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">speed</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">$</span><span class="n">AnimatedSprite</span><span class="o">.</span><span class="n">animation</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">animation</span><span class="p">:</span>
+<span class="w">    </span><span class="o">$</span><span class="n">AnimatedSprite</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">animation</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p><code>$AnimatedSprite</code> merupakan nama dari node dengan tipe <code>AnimatedSprite</code>. Kalian bisa melengkapi program diatas menjadi animasi lengkap sampai menunduk, lompat, atau animasi lainnya.</p>
+</li>
+</ol>
+<h2 id="aset-suara-audio">Aset Suara (Audio)</h2>
+<p>Suara di dalam game merupakan pelengkap yang harus ada dalam setiap game. Suara ini dapat menggambarkan suasana, seperti bahagia, sedih, mendebarkan, dan sebagainya. Dengan menambahkan suara yang sesuai, pengalaman pemain akan meningkat drastis.</p>
+<p>Suara dalam game biasa dibuat dengan menggunakan <em>sound editing tools</em>, seperti <a href="https://www.fmod.com/">FMOD</a>, <a href="https://www.audiokinetic.com/">Wwise</a>, dan <a href="https://www.audacityteam.org/">Audacity</a> (Open Source). Dengan menggunakan <em>sound editing tools</em>, <em>game music composer</em> dapat membuat <em>game asset</em> mulai dari efek suara hingga musik yang mendukung penggambaran suasana game.</p>
+<p>Seperti dalam pembuatan visual, penggunaan <em>sound editing tools</em> tentunya juga membutuhkan keahlian tersendiri. Maka dari itu, ada alternatif lain untuk <em>coder</em> yang ingin menambahkan SFX dalam game, yaitu dengan menggunakan <em>free sound</em> dari internet. Berikut website sumber efek suara yang gratis.</p>
+<ul>
+<li>https://kenney.nl/assets?q=audio</li>
+<li>https://freesound.org/</li>
+<li>http://soundbible.com/</li>
+</ul>
+<p>Walaupun kalian menggunakan suara gratis dari sumber-sumber di atas, jangan lupa berikan credit yang sesuai sebagai bentuk apresiasi kepada pembuat audio.</p>
+<h3 id="introduction-to-sound-editing-tools">Introduction to Sound Editing Tools</h3>
+<p>Sebelum mempelajari implementasi <em>sound</em> di Godot, pertama-tama kita pelajari dulu salah satu <em>sound editing tools</em>.
+Tools yang digunakan kali ini adalah <em>tools open source</em>, yaitu <strong>Audacity</strong>. Sebelum memulai tutorial bagian ini, <em>download</em> dan <em>install</em> Audacity terlebih dahulu melalui <a href="https://www.audacityteam.org/download/">link berikut</a>.</p>
+<p>Berikut tampilan dari Audacity:</p>
+<p><img alt="Tampilan Audacity" src="images/Audacity.jpg" /></p>
+<p>Selanjutkan kita akan langsung praktik menyiapkan rekaman suara dan memasukkannya ke dalam Godot.</p>
+<h3 id="latihan-merekam-dan-menggubah-suara">Latihan: Merekam dan Menggubah Suara</h3>
+<p>Audacity dapat merekam suara menggunakan microphone, membuka audio file, trimming audio, serta mengaplikasikan efek ke audio. Pertama, buat <strong>audio track</strong> melalui tab track pada toolbar dan pilih add new -&gt; stereo track.</p>
+<p><img alt="Add Stereo Track" src="images/Audacity_AddStereoTrack.jpg" /></p>
+<p>Track ini dapat diisi dengan suara hasil <strong>rekaman</strong>. Untuk memulai rekaman, tekan R atau tekan tombol rekaman. Jika sudah selesai merekam, tekan tombol stop.</p>
+<p><img alt="Record" src="images/Audacity_Record.jpg" /></p>
+<p>Hasil rekaman akan otomatis terisi ke dalam track. Namun, saat ini suara tersebut masih penuh noise. Untuk mengurangi noise tersebut dapat menggunakan effect <strong><em>noise reduction</em></strong>. Pertama, select interval audio track yang akan diberi effect. Kemudian, pilih effects pada toolbar dan pilih noise reduction.</p>
+<p><img alt="Noise Reduction" src="images/Audacity_NoiseReduction.jpg" /></p>
+<p>Selanjutnya tekan noise profile agar Audacity dapat mengetahui jenis noise yang akan difilter. Lalu pilih efek noise reduction lagi dari toolbar untuk memunculkan noise reduction settings dan atur sesuai kebutuhan. Jika sudah, klik OK. Audacity akan mengolah suara dan memfilter noise dari suara.</p>
+<p>Jika sudah selesai membuat audio, audio ini dapat diekspor ke bentuk yang dapat digunakan di Godot. Godot hanya support dua jenis audio file, yaitu <strong>wav</strong> dan <strong>ogg</strong>. Oleh karena itu, export audio dengan cara memilih file pada toolbar dan pilih export -&gt; export as wav.</p>
+<p><img alt="Export" src="images/Audacity_Export.jpg" /></p>
+<p>Audio yang sudah diexport dapat disimpan ke dalam folder <code>assets</code> pada project Godot kalian.</p>
+<h3 id="latihan-menambahkan-audio-ke-game">Latihan: Menambahkan Audio ke Game</h3>
+<p>Selain SFX, terdapat juga audio yang dapat menggambarkan suasana game, yaitu <strong>Background Music</strong>. Berikut cara mengimplementasikan BGM dalam game. Pertama buka level scene yang telah kamu buat. Kemudian tambahkan node <code>AudioStreamPlayer</code> sebagai child dari root node.</p>
+<p><img alt="AudioStreamPlayer" src="images/BGMStep1_AddNodeAudioStreamPlayer.jpg" /></p>
+<p>Lihat pada tab inspector di sebelah kanan. Untuk menambahkan audio ke dalam node <code>AudioStreamPlayer</code>, klik dropdown pada bagian stream dan pilih load.</p>
+<p><img alt="Load Audio" src="images/BGMStep2_LoadAudio.jpg" /></p>
+<p>Godot akan memunculkan <em>prompt</em> untuk memilih file. Pilih file <code>bgm.wav</code> pada directory <code>res://assets/sound</code></p>
+<p><img alt="Locate Wav File" src="images/BGMStep3_LocateWavFile.jpg" /></p>
+<p>Setelah file audio dipilih, audio wave akan muncul pada bagian stream di tab inspector.</p>
+<p><img alt="Audio Node Inspector Desc" src="images/BGMStep4_AudioNodeInspectorDesc.jpg" /></p>
+<p>Terdapat beberapa konfigurasi lainnya, yaitu:</p>
+<ul>
+<li>Volume db: Mengatur volume audio.</li>
+<li>Pitch scale: Mengatur pitch audio.</li>
+<li>Playing: Jika on(true), audio akan diplay saat itu juga.</li>
+<li>Autoplay: Jika on(true), audio akan langsung diplay saat scene pertama kali dibuka.</li>
+<li>Stream paused: Jika on(true), playback akan dipause.</li>
+<li>Max Distance: Jarak maksimal hingga audio tidak bisa didengar (digunakan ketika <code>AudioStreamPlayer</code> merupakan child dari suatu <em>game object</em>).</li>
+<li>Attenuation: Memperkecil audio berdasarkan jarak secara eksponensial.</li>
+<li>Bus: Menentukan bus mana audio akan dimainkan.</li>
+</ul>
+<p>Untuk penjelasan lebih lanjut mengenai <code>AudioStreamPlayer</code> dapat diakses di <a href="https://docs.godotengine.org/en/stable/classes/class_audiostreamplayer2d.html">docs</a></p>
+<p>Saat ini <em>audio</em> masih berjalan tanpa <em>looping</em>. Untuk membuat <em>audio looping</em>, pilih file <code>bgm.wav</code> pada tab <code>FileSystem</code> di sebelah kiri bawah. Kemudian, buka tab <code>Import</code> di sebelah kiri atas. Berikut tampilan dari tab <code>Import</code>.</p>
+<p><img alt="Audio Import Settings" src="images/BGMStep5_ImportSettings.jpg" /></p>
+<p>Klik <em>loop</em> lalu klik <em>reimport</em>. Godot akan mengimport audio ulang dengan menambahkan konfigurasi yang sudah dipilih sebelumnya. Tes apakah <em>audio</em> sudah <em>looping</em> dengan menjalankan <em>scene</em>.</p>
+<h2 id="latihan-mandiri-membuat-dan-menambah-variasi-aset">Latihan Mandiri: Membuat dan Menambah Variasi Aset</h2>
+<p>Silakan eksplorasi lebih lanjut mengenai animasi berdasarkan <em>spritesheet</em> dan audio.
+Untuk latihan mandiri yang dikerjakan di akhir tutorial,
+kamu diharapkan untuk:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Membuat minimal 1 (satu) objek baru di dalam permainan yang dilengkapi dengan animasi menggunakan <em>spritesheet</em> selain yang disediakan tutorial. Silakan cari <em>spritesheet</em> animasi di beberapa koleksi aset gratis seperti Kenney.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Membuat minimal 1 (satu) audio untuk efek suara (SFX) dan memasukkannya ke dalam permainan. Kamu dapat membuatnya sendiri atau mencari dari koleksi aset gratis.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Membuat minimal 1 (satu) musik latar (<em>background music</em>) dan memasukkannya ke dalam permainan. Kamu dapat membuatnya sendiri atau mencari dari koleksi aset gratis.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Implementasikan interaksi antara objek baru tersebut dengan objek yang dikendalikan pemain. Misalnya, pemain dapat menciptakan atau menghilangkan objek baru tersebut ketika menekan suatu tombol atau tabrakan dengan objek lain di dunia permainan.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Implementasikan <em>audio feedback</em> dari interaksi antara objek baru dengan objek pemain. Misalnya, muncul efek suara ketika pemain tabrakan dengan objek baru.</li>
+</ul>
+<p>Beberapa ide lain yang bisa kamu coba kerjakan di luar latihan mandiri:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Implementasi sistem audio yang relatif terhadap posisi objek. Misalnya, musik latar akan semakin terdengar samar ketika pemain semakin jauh dari posisi awal level.</li>
+</ul>
+<p>Silakan berkreasi lebih lanjut untuk membuat Tutorial 3 dan 5 kamu lebih menarik dari sebelumnya!
+Jangan lupa untuk menjelaskan proses pengerjaan tutorial ini di dalam berkas <code>README.md</code> yang sama dengan Tutorial 3. Silakan tambahkan subbab (<em>section</em>) baru yang berisi penjelasan proses pengerjaan Tutorial 5.
+Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelaskan proses implementasi.</p>
+<h2 id="skema-penilaian">Skema Penilaian</h2>
+<p>Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:</p>
+<ul>
+<li><strong>4</strong> (<em><strong>A</strong></em>) apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi tim pengajar.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan Latihan Mandiri, ditambah dengan memoles (<em>polishing</em>) lebih lanjut permainannya.</li>
+<li><strong>3</strong> (<em><strong>B</strong></em>) apabila kamu hanya mengerjakan tutorial dan latihan sesuai dengan instruksi.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan Latihan Mandiri.</li>
+<li><strong>2</strong> (<em><strong>C</strong></em>) apabila kamu hanya mengerjakan tutorial hingga tuntas.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan namun tidak mengerjakan Latihan Mandiri.</li>
+<li><strong>1</strong> (<em><strong>D</strong></em>) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.</li>
+<li><strong>0</strong> (<em><strong>E</strong></em>) apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.</li>
+</ul>
+<h2 id="pengumpulan">Pengumpulan</h2>
+<p>Kumpulkan dengan memasukkan berkasnya ke dalam Git dan <em>push</em> ke <em>fork</em> materi
+tutorial ini di repositori milik pribadi. <strong>Jangan <em>push</em> atau membuat Merge
+Request ke repositori <em>upstream</em> materi tutorial kecuali jika kamu ingin
+kontribusi materi atau memperbaiki materi yang sudah dipublikasikan!</strong></p>
+<p>Tenggat waktu pengumpulan adalah <strong>13 Maret 2024 pukul 21:00</strong>.</p>
+<h2 id="referensi">Referensi</h2>
+<ul>
+<li><a href="https://www.kenney.nl/assets/platformer-pack-redux">Kenney Assets</a></li>
+<li>Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
+  gasal 2020/2021 Fakultas Ilmu Komputer Universitas Indonesia.</li>
+</ul>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-03-07 01:39:17</span>
+      
+        <br>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-03-07 01:39:17</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Faculty of Computer Science Universitas Indonesia
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+        <script src="../../js/print-site.js"></script>
+      
+    
+  </body>
+</html>
