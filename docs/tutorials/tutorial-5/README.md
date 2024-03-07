@@ -314,13 +314,12 @@ Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:
 - **1** (_**D**_) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.
 - **0** (_**E**_) apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.
 
-
 ## Pengumpulan
 
-Kumpulkan dengan memasukkan berkasnya ke dalam Git dan _push_ ke _fork_ materi
-tutorial ini di repositori milik pribadi. **Jangan _push_ atau membuat Merge
-Request ke repositori _upstream_ materi tutorial kecuali jika kamu ingin
-kontribusi materi atau memperbaiki materi yang sudah dipublikasikan!**
+Kumpulkan semua berkas pengerjaan tutorial dan latihan ke dalam Git dan push ke repositori Git **pengerjaan tutorial 3**,
+karena **tutorial 5 ini melanjutkan pengerjaan tutorial 3**.
+Apabila kamu mengerjakan latihan mandiri, pastikan scene dan node sudah tercatat masuk ke dalam repositori Git.
+Kumpulkan tautan ke repositori Git hasil pengerjaan tutorial 5 kamu di slot pengumpulan yang tersedia di SCELE.
 
 Tenggat waktu pengumpulan adalah **13 Maret 2024 pukul 21:00**.
 
