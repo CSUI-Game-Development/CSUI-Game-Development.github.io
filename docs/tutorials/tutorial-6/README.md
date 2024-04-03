@@ -17,7 +17,7 @@ serta unsur-unsur lain untuk menyusun menu dan antar muka dalam _game_.
 > **ATAU** melanjutkan dari pengerjaan proyek tutorial sebelumnya.
 > Jika melanjutkan proyek tutorial sebelumnya, silakan mengerjakan di repositori Git pengerjaan tutorial tersebut dan membuat _branch_ baru (misal: _branch_ `tutorial-6`).
 
-## Menu Utama
+## Tampilan Antar Muka
 
 Saat kamu pertama kali memulai suatu game, apa yang pertama kali muncul?
 _Splash screen_ dengan gambar logo perusahaan pembuat game tersebut?
@@ -65,56 +65,92 @@ Pada tutorial ini kita akan melakukan hal berikut:
 - Membuat indikator nyawa (_life counter_)
 - Membuat layar kalah (_game over screen_)
 
-## Creating a Main Menu Screen
+## Membuat Menu Utama
 
-### Visualization
+### Visualisasi
 
-Untuk menghasilkan sebuah UI yang baik, sebaiknya kita membuat sebuah mockup terlebih dahulu. Apa saja yang ingin kita tampilkan di menu utama, dan posisi segala hal yang ingin kita tampilkan. Visualisasi boleh digambar di kertas, dan tidak harus bagus-bagus. Cukup untuk memberikan gambaran kasar apa yang ingin kita buat. Berikut adalah contoh visualisasi main menu:
+Untuk menghasilkan sebuah UI yang baik, sebaiknya kita membuat sebuah _mockup_ terlebih dahulu.
+Apa saja yang ingin kita tampilkan di menu utama, dan posisi segala hal yang ingin kita tampilkan.
+Visualisasi boleh digambar di kertas, dan tidak harus bagus-bagus.
+Cukup untuk memberikan gambaran kasar apa yang ingin kita buat.
 
-![My Visualization of a Menu Screen](images/Visualization.png)
+Berikut adalah contoh visualisasi main menu:
 
-### Containers, Labels, and Buttons
+![An example of visualization of a menu screen](images/Visualization.png)
 
-Salah satu cara untuk menyusun sebuah menu dengan rapi adalah menggunakan containers. Beberapa container yang terdapat di Godot Engine antara lain:
-- ```MarginContainer``` untuk menyusun elemen dengan padding
-- ```HBoxContainer``` untuk menyusun elemen secara horizontal
-- ```VBoxContainer``` untuk menyusun elemen secara vertikal
-- ```CenterContainer``` untuk menyusun elemen secara centered
+### Latihan: Membuat Containers, Labels, dan Buttons
+
+Salah satu cara untuk menyusun sebuah menu dengan rapi adalah menggunakan containers.
+_Container_ pada konteks desain UI pada game merupakan elemen yang akan menampung komposisi elemen UI.
+
+Jika kamu familiar dengan desain Web, anggaplah _container_ serupa dengan _tag_ `<div>` yang sering dipakai untuk membungkus elemen-elemen HTML pada sebuah halaman Web.
+_Container_ di Godot akan membungkus elemen-elemen UI pada permainan yang dikembangkan.
+
+Beberapa _container_ yang terdapat di _engine_ Godot antara lain:
+
+- `MarginContainer` untuk menyusun elemen dengan _padding_
+- `HBoxContainer` untuk menyusun elemen secara horizontal
+- `VBoxContainer` untuk menyusun elemen secara vertikal
+- `CenterContainer` untuk menyusun elemen secara _centered_
 
 Sesuai dengan visualisasi yang telah dilakukan di atas, kita dapat menyusun main menu ini dengan susunan container sebagai berikut:
-Kotak terbesar seukuran _game window_, dan terdapat padding di bagian ujung window. Oleh karena itu kita menggunakan parent ```MarginContainer```. Kemudian layar dibagi dua kiri kanan, maka menggunakan ```HBoxContainer```. Di bagian kiri ada judul dan button, maka ada ```VBoxContainer```. Button sendiri akan kita susun dengan ```VBoxContainer``` juga. Sedangkan sebelah kanan cukup kita berikan ```CenterContainer``` untuk gambar.
+
+Kotak terbesar seukuran _game window_, dan terdapat padding di bagian ujung window.
+Oleh karena itu kita menggunakan parent `MarginContainer`.
+Kemudian layar dibagi dua kiri kanan, maka menggunakan `HBoxContainer`.
+
+Di bagian kiri ada judul dan button, maka ada `VBoxContainer`.
+_Button_ sendiri akan kita susun dengan `VBoxContainer` juga.
+Sedangkan sebelah kanan cukup kita berikan `CenterContainer` untuk gambar.
 
 ![My Visualiation of Menu Screen Containers](images/VisualizationContainers.png)
 
-> Note: Kamu tidak harus mengikuti struktur dan layout persis sama seperti di atas. Bahkan diperbolehkan jika kamu tidak ingin menggunakan container sama sekali untuk menu utama. Namun container sangat membantu untuk visualisasi dan kerapihan.
+> Catatan: Kamu tidak harus mengikuti struktur dan _layout_ persis sama seperti di atas.
+> Bahkan diperbolehkan jika kamu tidak ingin menggunakan container sama sekali untuk menu utama.
+> Namun container sangat membantu untuk visualisasi dan kerapihan.
 
-Mulai dengan membuat scene baru. Karena root node UI yang kita inginkan adalah container paling luar, atur root node menjadi sebuah ```MarginContainer```. Jangan lupa save scene tersebut, berikan nama ```MainMenu.tscn```.
+Mulai dengan membuat _scene_ baru. Karena _root node_ UI yang kita inginkan adalah container paling luar,
+atur _root node_ menjadi sebuah `MarginContainer`.
+Jangan lupa simpan (_save_) _scene_ tersebut, berikan nama `MainMenu.tscn`.
 
 ![New Margin Container for Main Menu](images/MarginContainer.PNG)
 
-Pada tab Inspector, atur ```Custom Constants``` sebagai berikut:
+Pada tab Inspector, atur **Custom Constants** sebagai berikut:
 
 ![Edit Custom Constants](images/CustomConstants.PNG)
 
-Kemudian pada Viewport, tekan menu ```Layout``` dan pilih opsi ```Full Rect```. Ini dilakukan agar ukuran container menyesuai ukuran window.
+Kemudian pada Viewport, tekan menu **Layout** dan pilih opsi **Full Rect**.
+Ini dilakukan agar ukuran _container_ menyesuai ukuran _window_.
 
 ![Full Rect](images/FullRect.png)
 
-Sekarang kita masukkan elemen text dan gambar ke dalam ```MarginContainer```. Untuk text menggunakan node ```Label```, dan untuk gambar dapat menggunakan node ```TextureRect```. Untuk contoh ini ada dua tombol, "New Game" dan "Stage Select", yang akan diimplementasikan menggunakan node ```LinkButton```.
+Sekarang masukkan elemen teks dan gambar ke dalam `MarginContainer`.
+Untuk teks, gunakan _node_ `Label`, dan untuk gambar gunakan node `TextureRect`.
+Untuk contoh ini ada dua tombol, "New Game" dan "Stage Select", yang akan diimplementasikan menggunakan node `LinkButton`.
 
-Untuk menambahkan text pada ```Label``` atau ```LinkButton``` cukup menulis di tab Inspector bagian ```Text```.
-Untuk menambahkan gambar kepada ```TextureRect```, sama seperti menambahkan texture di ```Sprite``` yaitu di tab Inspector bagian ```Texture```.
-Saat selesai, mungkin struktur scene dan workspace kamu akan terlihat seperti ini.
+Untuk menambahkan teks pada `Label` atau `LinkButton` cukup menulis di tab Inspector bagian **Text**.
+Untuk menambahkan gambar kepada `TextureRect`, sama seperti menambahkan _texture_ di `Sprite` yaitu di tab Inspector bagian **Texture**.
+Saat selesai, mungkin struktur _scene_ dan _workspace_ kamu akan terlihat seperti _screenshot_ berikut:
 
 ![Main Menu but no Font](images/MainMenuBeforeFont.PNG)
 
-You may have noticed: Tulisan pada ```Label``` dan ```LinkButton``` kecil sekali, dan di tab Inspector tidak ada pilihan ukuran atau jenis font. Ini dikarenakan pada Godot Engine **tidak ada fitur untuk mengubah ukuran dan jenis font secara langsung**. _So what do we do?_
+Mungkin kamu akan menyadari bahwa tulisan pada `Label` dan `LinkButton` terlihat sangat kecil.
+Selain itu, _tab_ **Inspector** tidak memiliki pilihan ukuran atau jenis _font_.
+Hal ini disebabkan karena _engine_ Godot versi 3.5 **tidak memiliki fitur untuk mengubah ukuran dan jenis _font_ secara langsung**.
 
-### Creating Custom Fonts
+_So, what do we do?_
 
-Pada Godot Game Engine, untuk mengatur font dan ukuran sebuah tulisan dalam sebuah node, misal node ```Label```, kita harus menggunakan objek custom font. Untuk tutorial ini, kita akan membuat ```DynamicFont``` menggunakan font dengan ekstensi ```.ttf```. Sudah disediakan beberapa file ```.ttf``` di folder Assets/Fonts/Raw (jika ingin mencari font sendiri dipersilakan, bisa melalui website font gratis seperti [di sini](https://www.1001fonts.com/free-fonts-for-commercial-use.html).
+### Latihan: Membuat Custom Fonts
 
-Pertama, tekan tombol create resource pada tab Inspector. Kemudian buat sebuah ```DynamicFont```.
+Pada _engine_ Godot, kita harus menggunakan _custom font_ agar dapat mengatur _font_ dan ukurannya pada sebuah tulisan di dalam sebuah _node_.
+Misalnya pada _node_ `Label`, kita harus menggunakan objek _custom font_.
+
+Untuk tutorial ini, kita akan membuat `DynamicFont` menggunakan _font_ dengan ekstensi `.ttf`.
+Sudah disediakan beberapa berkas `.ttf` di folder `assets/Fonts/Raw/` pada templat proyek Tutorial 6.
+
+> Catatan: Jika ingin mencari _font_ sendiri, bisa melalui situs web _font_ gratis seperti [di sini](https://www.1001fonts.com/free-fonts-for-commercial-use.html).
+
+Pertama, tekan tombol create resource pada tab Inspector. Kemudian buat sebuah `DynamicFont`.
 
 ![Create Resource 1](images/CreateResource.png)
 ![Create Resource 2](images/CreateResource2.PNG)
