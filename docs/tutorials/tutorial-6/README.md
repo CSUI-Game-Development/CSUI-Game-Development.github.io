@@ -1,6 +1,6 @@
 # Tutorial 6 - Menu and In-Game Graphical User Interface
 
-Selamat datang pada tutorial kelima kuliah Game Development. Pada tutorial
+Selamat datang pada tutorial keenam kuliah Game Development. Pada tutorial
 kali ini, kamu akan mempelajari cara membuat _menu screen_, _game over screen_,
 dan _in-game GUI_. Di akhir tutorial ini, diharapkan kamu paham cara menggunakan
 _Container_, _Label_, _Button_, serta unsur-unsur lain untuk menyusun menu dalam
@@ -47,7 +47,7 @@ misal sisa nyawa pemain, total jumlah uang pemain, dan lain-lain. Kemudian yang
 tidak kalah penting adalah tampilan saat pemain kalah atau gagal, yakni
 _game over screen_.
 
-Pada tutorial sebelumnya kita sudah berhasil membuat game platformer 2D yang cukup dasar. Namun saat menjalankan project, scene yang dijalankan langsung level 1. Tidak ada menu yang muncul terlebih dahulu. 
+Pada tutorial sebelumnya kita sudah berhasil membuat game platformer 2D yang cukup dasar. Namun saat menjalankan project, scene yang dijalankan langsung level 1. Tidak ada menu yang muncul terlebih dahulu.
 
 ### Menu Screens, Game Over Screens, Game GUI
 
@@ -68,7 +68,7 @@ Pada tutorial ini kita akan melakukan hal berikut:
 
 ### Visualization
 
-Untuk menghasilkan sebuah UI yang baik, sebaiknya kita membuat sebuah mockup terlebih dahulu. Apa saja yang ingin kita tampilkan di menu utama, dan posisi segala hal yang ingin kita tampilkan. Visualisasi boleh digambar di kertas, dan tidak harus bagus-bagus. Cukup untuk memberikan gambaran kasar apa yang ingin kita buat. Berikut adalah contoh visualisasi main menu: 
+Untuk menghasilkan sebuah UI yang baik, sebaiknya kita membuat sebuah mockup terlebih dahulu. Apa saja yang ingin kita tampilkan di menu utama, dan posisi segala hal yang ingin kita tampilkan. Visualisasi boleh digambar di kertas, dan tidak harus bagus-bagus. Cukup untuk memberikan gambaran kasar apa yang ingin kita buat. Berikut adalah contoh visualisasi main menu:
 
 ![My Visualization of a Menu Screen](images/Visualization.png)
 
@@ -99,9 +99,9 @@ Kemudian pada Viewport, tekan menu ```Layout``` dan pilih opsi ```Full Rect```. 
 
 ![Full Rect](images/FullRect.png)
 
-Sekarang kita masukkan elemen text dan gambar ke dalam ```MarginContainer```. Untuk text menggunakan node ```Label```, dan untuk gambar dapat menggunakan node ```TextureRect```. Untuk contoh ini ada dua tombol, "New Game" dan "Stage Select", yang akan diimplementasikan menggunakan node ```LinkButton```. 
+Sekarang kita masukkan elemen text dan gambar ke dalam ```MarginContainer```. Untuk text menggunakan node ```Label```, dan untuk gambar dapat menggunakan node ```TextureRect```. Untuk contoh ini ada dua tombol, "New Game" dan "Stage Select", yang akan diimplementasikan menggunakan node ```LinkButton```.
 
-Untuk menambahkan text pada ```Label``` atau ```LinkButton``` cukup menulis di tab Inspector bagian ```Text```. 
+Untuk menambahkan text pada ```Label``` atau ```LinkButton``` cukup menulis di tab Inspector bagian ```Text```.
 Untuk menambahkan gambar kepada ```TextureRect```, sama seperti menambahkan texture di ```Sprite``` yaitu di tab Inspector bagian ```Texture```.
 Saat selesai, mungkin struktur scene dan workspace kamu akan terlihat seperti ini.
 
@@ -171,7 +171,7 @@ _"Mengapa saat saya tekan play (F5) yang jalan pertama bukan main menu?"_ Karena
 
 ![Change Main Scene](images/SetMainScene.png)
 
-## Creating a Life Counter 
+## Creating a Life Counter
 
 Kemarin kita sudah membuat kondisi dimana saat player jatuh, scene akan di reload dengan player kembali ke tempat semula. Namun tidak ada penalti sama sekali untuk jatuh. Sekarang kita akan mencoba membuat kondisi dimana setiap kali player jatuh, akan kehilangan satu nyawa. Saat sudah tidak ada nyawa lagi, maka terjadi **GAME OVER**.
 
@@ -248,7 +248,7 @@ func _on_Area_Trigger_body_entered(body):
 
 ![Level 1 Life Loss](images/Level1LifeLoss.gif)
 
-Sekarang nyawa player berkurang saat mati. Namun kita belum memasukkan kondisi dimana nyawa player 0, yaitu **GAME OVER**. 
+Sekarang nyawa player berkurang saat mati. Namun kita belum memasukkan kondisi dimana nyawa player 0, yaitu **GAME OVER**.
 
 ## Creating a Game Over Screen
 
