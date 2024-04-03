@@ -1,68 +1,69 @@
 # Tutorial 6 - Menu and In-Game Graphical User Interface
 
-Selamat datang pada tutorial keenam kuliah Game Development. Pada tutorial
-kali ini, kamu akan mempelajari cara membuat _menu screen_, _game over screen_,
-dan _in-game GUI_. Di akhir tutorial ini, diharapkan kamu paham cara menggunakan
-_Container_, _Label_, _Button_, serta unsur-unsur lain untuk menyusun menu dalam
-_game_.
+Selamat datang pada tutorial keenam kuliah Game Development.
+Pada tutorial kali ini, kamu akan mempelajari cara membuat _menu screen_, _game over screen_,
+dan _in-game GUI_.
 
-## Daftar isi
+Di akhir tutorial ini, diharapkan kamu paham cara menggunakan _Container_, _Label_, _Button_,
+serta unsur-unsur lain untuk menyusun menu dan antar muka dalam _game_.
 
-- [Tutorial 6 - Menu and In-Game Graphical User Interface](#tutorial-6---menu-and-in-game-graphical-user-interface)
-  - [Daftar Isi](#daftar-isi)
-  - [Pengantar](#pengantar)
-    - [Let The Games Begin](#let-the-games-begin)
-    - [Menu Screens, Game Over Screens, Game GUI](#menu-screens-game-over-screens-game-gui)
-  - [Creating a Main Menu Screen](#creating-a-main-menu-screen)
-    - [Visualization](#visualization)
-    - [Containers, Labels, and Buttons](#containers-labels-buttons)
-    - [Creating Custom Fonts](#creating-custom-fonts)
-    - [Clickable Menu](#clickable-menu)
-  - [Creating a Life Counter](#creating-a-life-counter)
-    - [Global Variables](#global-variables)
-    - [Adding the GUI](#adding-the-gui)
-  - [Creating a Game Over Screen](#creating-a-game-over-screen)
-    - [Using Background Coloring](#using-background-coloring)
-  - [Bonus To Do](#bonus-to-do)
-  - [Instruksi Pengerjaan](#Instruksi-Pengerjaan)
-  - [Skema Penilaian](#skema-penilaian)
-  - [Pengumpulan](#pengumpulan)
-  - [Referensi](#referensi)
+## Daftar Isi
 
+> TODO: Generate the table of contents written in Markdown format with proper links to each section & subsection
 
 ## Pengantar
 
-> IMPORTANT: Untuk tutorial kali ini, diperbolehkan menggunakan template game yang telah disediakan **ATAU** melanjutkan dari yang sudah dikerjakan di tutorial 4 kemarin. Jika ingin melanjutkan proyek kemarin, cukup mengcopy isi folder T4 kamu ke dalam folder T6 sebelum mulai.
+> Penting! Untuk tutorial kali ini, diperbolehkan menggunakan [templat proyek yang telah disediakan di GitHub](https://github.com/CSUI-Game-Development/tutorial-6-template)
+> **ATAU** melanjutkan dari pengerjaan proyek tutorial sebelumnya.
+> Jika melanjutkan proyek tutorial sebelumnya, silakan mengerjakan di repositori Git pengerjaan tutorial tersebut dan membuat _branch_ baru (misal: _branch_ `tutorial-6`).
 
-### Let The Games Begin
+## Menu Utama
 
-Saat kamu pertama kali memulai suatu game, apa yang pertama kali muncul? Logo
-perusahaan pembuat game tersebut? Logo [Bushimo](https://bushiroad.com/)?
-Tentunya semua game ada yang namanya _main-menu_. _Main Menu_ adalah layar
-utama saat kita memulai bermain game. Biasanya terdapat tombol untuk memulai
-permainan pada menu utama ini. Selain menu utama, di dalam game juga dapat
-menampilkan informasi yang terkait dengan kondisi permainan sekarang. Itu yang
-dinamakan game GUI (Graphical User Interface). GUI dapat menampilkan banyak hal,
-misal sisa nyawa pemain, total jumlah uang pemain, dan lain-lain. Kemudian yang
-tidak kalah penting adalah tampilan saat pemain kalah atau gagal, yakni
-_game over screen_.
+Saat kamu pertama kali memulai suatu game, apa yang pertama kali muncul?
+_Splash screen_ dengan gambar logo perusahaan pembuat game tersebut?
 
-Pada tutorial sebelumnya kita sudah berhasil membuat game platformer 2D yang cukup dasar. Namun saat menjalankan project, scene yang dijalankan langsung level 1. Tidak ada menu yang muncul terlebih dahulu.
+![Logo SEGA (Sumber: https://en.wikipedia.org/wiki/Sega#/media/File:SEGA_logo.svg)](./images/SEGA_logo.svg.png)
 
-### Menu Screens, Game Over Screens, Game GUI
+Atau _splash screen_ dengan ilustrasi tokoh dari game tersebut?
 
-Berikut adalah contoh Menu Screen, Game Over Screen, dan GUI pada beberapa
-game populer:
+![Sonic (Sumber: https://www.youtube.com/watch?v=CqOlpQ7sepE)](./images/sonic.jpg)
+
+Pada umumnya, mayoritas game akan memiliki menu utama (_main menu_).
+_Main menu_ adalah layar utama yang muncul pertama kali ketika mulai bermain game.
+Biasanya terdapat tombol atau instruksi untuk memulai permainan pada _main menu_.
+
+Selain _main menu_, di dalam game juga terdapat tampilan antar muka yang menampilkan informasi terkait kondisi permainan sekarang secara visual.
+Tampilan antar muka tersebut dinamakan sebagai _game_ GUI (_Graphical User Interface_).
+GUI digunakan untuk menampilkan banyak hal, seperti:
+
+- Jumlah sumber daya (misal: darah tokoh, uang virtual) yang dimiliki pemain.
+- Kondisi pemain relatif terhadap lawan-lawannya (misal: peringkat ketika balapan, posisi pemain pada dunia permainan).
+- Pilihan untuk masuk ke menu lain terkait permainan (biasanya pada game _mobile_, misal: tombol untuk membuka daftar tokoh yang bisa dikendalikan pemain).
+- Dan lain-lain.
+
+Kemudian yang tidak kalah penting adalah tampilan saat pemain mencapai kondisi akhir permainan,
+seperti layar yang menampilkan kondisi menang atau kondisi kalah.
+
+Pada tutorial sebelumnya, kita sudah berhasil membuat game _platformer_ 2D yang cukup dasar.
+Namun saat menjalankan proyek, _scene_ yang dijalankan langsung level 1 dan tidak ada menu yang muncul terlebih dahulu.
+
+### Contoh Layar Menu Utama, Layar Kondisi Menang/Kalah, dan GUI
+
+Berikut ini adalah beberapa contoh layar menu, layar kondisi akhir permainan,
+dan GUI pada beberapa game populer:
 
 ![The Legend of Zelda NES Main Menu](images/zeldamenu.jpg)
 ![Undertale Game Over Screen](images/undertaledead.jpg)
 ![Shovel Knight GUI](images/ShovelKnight.png)
 
+Tentu saja contoh-contoh di atas hanyalah representasi kecil dari sekian banyak contoh layar permainan.
+Apabila kamu ada contoh lain yang menarik, silakan cerita ketika sesi tutorial berlangsung. 😃
+
 Pada tutorial ini kita akan melakukan hal berikut:
 
-- Membuat Main Menu Screen
-- Membuat Life Counter
-- Membuat Game Over Screen
+- Membuat layar menu utama (_main menu_)
+- Membuat indikator nyawa (_life counter_)
+- Membuat layar kalah (_game over screen_)
 
 ## Creating a Main Menu Screen
 
@@ -331,3 +332,14 @@ Tenggat waktu pengumpulan adalah **Jumat, 23 Oktober 2020, pukul 21:00**.
 - [Kenney Assets](https://www.kenney.nl/assets/platformer-pack-redux)
 - Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
   gasal 2020/2021 Fakultas Ilmu Komputer Universitas Indonesia.
+
+## Selingan Menarik (Intermezzo)
+
+Berikut ini adalah gambar _meme_ yang diambil dari [sebuah _thread_ di Reddit](https://www.reddit.com/r/gachagaming/comments/13z8fva/when_you_play_too_many_gachas/):
+
+![GUI Berbagai Game Gacha](./images/gacha_guis.png)
+
+Gambar tersebut menampilkan _screenshot_ dari sebuah game yang digubah sehingga mengandung elemen-elemen GUI dari banyak game lain.
+Apa saja judul game yang bisa kamu kenali dari elemen GUI-nya pada _meme_ tersebut?
+
+> Catatan: Pertanyaan di atas tidak perlu dijawab dan tidak akan masuk sebagai bahan ujian. 😅
