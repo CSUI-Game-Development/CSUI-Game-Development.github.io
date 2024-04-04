@@ -9,7 +9,18 @@ serta unsur-unsur lain untuk menyusun menu dan antar muka dalam _game_.
 
 ## Daftar Isi
 
-> TODO: Generate the table of contents written in Markdown format with proper links to each section & subsection
+- [Tutorial 6 - Menu and In-Game Graphical User Interface](#tutorial-6---menu-and-in-game-graphical-user-interface)
+    - [Daftar Isi](#daftar-isi)
+    - [Pengantar](#pengantar)
+    - [Tampilan Antar Muka](#tampilan-antar-muka)
+    - [Latihan: Membuat Menu Utama](#latihan-membuat-menu-utama)
+    - [Latihan: Membuat GUI Life Counter](#latihan-membuat-gui-life-counter)
+    - [Latihan: Membuat Layar Game Over](#latihan-membuat-layar-game-over)
+    - [Latihan Mandiri: Fitur Tambahan](#latihan-mandiri-fitur-tambahan)
+    - [Skema Penilaian](#skema-penilaian)
+    - [Pengumpulan](#pengumpulan)
+    - [Referensi](#referensi)
+    - [Selingan Menarik (Intermezzo)](#selingan-menarik-intermezzo)
 
 ## Pengantar
 
@@ -65,7 +76,7 @@ Pada tutorial ini kita akan melakukan hal berikut:
 - Membuat indikator nyawa (_life counter_)
 - Membuat layar kalah (_game over screen_)
 
-## Membuat Menu Utama
+## Latihan: Membuat Menu Utama
 
 ### Visualisasi
 
@@ -78,7 +89,7 @@ Berikut adalah contoh visualisasi main menu:
 
 ![An example of visualization of a menu screen](images/Visualization.png)
 
-### Latihan: Membuat Containers, Labels, dan Buttons
+### Membuat Containers, Labels, dan Buttons
 
 Salah satu cara untuk menyusun sebuah menu dengan rapi adalah menggunakan containers.
 _Container_ pada konteks desain UI pada game merupakan elemen yang akan menampung komposisi elemen UI.
@@ -150,122 +161,155 @@ Sudah disediakan beberapa berkas `.ttf` di folder `assets/Fonts/Raw/` pada templ
 
 > Catatan: Jika ingin mencari _font_ sendiri, bisa melalui situs web _font_ gratis seperti [di sini](https://www.1001fonts.com/free-fonts-for-commercial-use.html).
 
-Pertama, tekan tombol create resource pada tab Inspector. Kemudian buat sebuah `DynamicFont`.
+Pertama, tekan tombol **Create Resource** pada tab Inspector.
+Kemudian buat sebuah `DynamicFont`, seperti yang tergambarkan pada _screenshot_ berikut:
 
 ![Create Resource 1](images/CreateResource.png)
 ![Create Resource 2](images/CreateResource2.PNG)
 
-Masih pada tab Inspector, cari pilihan ```Font Data```, lalu tekan load dan cari file ```.ttf``` yang ingin digunakan. Setelah itu, kamu dapat mengatur size sesuka hati pada opsi ```Size```. Tekan save, dan simpan sebagai file ```.tres``` di folder Assets/Fonts. Selamat! Anda telah berhasil membuat sebuah ```DynamicFont```.
+Masih pada tab Inspector, cari pilihan **Font Data**, lalu tekan **Load** dan cari berkas `.ttf` yang ingin digunakan.
+Setelah itu, kamu dapat mengatur size sesuka hati pada opsi **Size** Tekan **Save**,
+dan simpan sebagai berkas `.tres` di folder `assets/Fonts` pengerjaan Tutorial 6.
 
 ![Create Resource 3](images/CreateResource3.png)
 
-Untuk menggunakan font tersebut, cari opsi ```Custom Font``` di tab Inspector pada node ```Label``` atau ```LinkButton```, lalu load resource yang baru saja dibuat. **IMPORTANT:** Seperti yang telah dijelaskan sebelumnya, tidak ada cara mengatur ukuran dan jenis font secara langsung, jadi jika ingin membuat font dengan tipe atau ukuran yang berbeda, harus membuat ```DynamicFont``` yang berbeda.
+Untuk menggunakan _font_ tersebut, cari opsi **Custom Font** di tab Inspector pada _node_ `Label` atau `LinkButton`, lalu **Load Resource** yang baru saja dibuat.
 
-Setelah menggunakan ```DynamicFont``` pada judul dan tombol kita, hasilnya terlihat seperti ini (tombol new game dan stage select diberi warna merah menggunakan ```Custom Colors``` pada tab Inspector):
+> Catatan: Seperti yang telah dijelaskan sebelumnya, tidak ada cara mengatur ukuran dan jenis _font_ secara langsung di _engine_ Godot versi 3.
+> Jika ingin membuat _font_ dengan tipe atau ukuran yang berbeda, harus membuat `DynamicFont` yang berbeda.
+
+Setelah menggunakan `DynamicFont` pada judul dan tombol, hasilnya terlihat seperti _screenshot_ berikut.
+Tombol **New Game** dan **Stage Select** diberi warna merah menggunakan `Custom Colors` pada tab Inspector:
 
 ![Main Menu After Custom Font](images/MainMenuAfterFont.PNG)
 
-Masih belum terlihat rapi. Sekarang kita tambahkan container sesuai visualisasi di atas tadi. Struktur node dan workspace anda harusnya menjadi lebih rapi:
+Masih belum terlihat rapi. Sekarang tambahkan _container_ sesuai visualisasi di atas tadi.
+Struktur _node_ dan _workspace_ seharusnya akan terlihat lebih rapi dan menyerupai _screenshot_ berikut:
 
 ![Main Menu After Containers](images/MainMenuAfterContainer.PNG)
 
-Agar judul dan button tidak terlalu berhimpitan, ubah ```Margin``` pada ```VBoxContainer``` parent. Kemudian, ubah ```Alignment``` , pilih opsi ```Expand``` pada vertical di ```Size Flags```, lalu atur ```Separation``` pada ```Custom Constants```.
+Agar judul dan tombol tidak terlalu berhimpitan, ubah **Margin** pada `VBoxContainer` _parent_.
+Kemudian, ubah **Alignment** , pilih opsi **Expand** pada _vertical_ di **Size Flags**.
+Lalu atur **Separation** pada **Custom Constants**.
 
 ![Fix Bottom Margin](images/BottomMargin.png)
 
 ![Fixing the Buttons](images/VBoxFixing.PNG)
 
-Selamat! Menu Screen kamu sudah terlihat cukup rapi!
+Selamat! Layar menu utama kamu sudah terlihat cukup rapi!
 
 ![Main Menu Not Clickable Yet](images/MainMenuNoClick.gif)
 
- Tapi masih belum clickable tentunya. Bagaimana caranya agar saat kita menekan tombol "New Game" dia akan melempar kita ke level 1?
+ Tapi masih belum _clickable_ tentunya.
+ Bagaimana caranya agar saat kita menekan tombol "New Game" dia akan melempar kita ke level 1?
 
-### Clickable Menu
+### Latihan: Clickable Menu
 
-Kita ingin agar saat tombol "New Game" ditekan, game akan menjalankan scene level pertama. Kemarin kita sudah belajar menggunakan _Signals_. Sekarang kita akan menggunakan _Signal_ lagi yaitu ```pressed()```.
+Kita ingin agar saat tombol "New Game" ditekan, game akan menjalankan _scene_ level pertama.
+Pada tutorial sebelumnya, kita sudah belajar menggunakan **Signal**.
+Sekarang kita akan menggunakannya lagi untuk menangani _event handler_ ketika ada aksi menekan tombol, yaitu `pressed()`.
 
-Gunakan cuplikan script berikut pada script ```LinkButton```
-```
+Gunakan cuplikan _script__ berikut sebagai _script_ yang ditempelkan pada `LinkButton`:
+
+```gdscript
 extends LinkButton
 
 export(String) var scene_to_load
 
 func _on_New_Game_pressed():
-	get_tree().change_scene(str("res://Scenes/" + scene_to_load + ".tscn"))
+	get_tree().change_scene(str("res://scenes/" + scene_to_load + ".tscn"))
 
 ```
 
-Kemudian isi variabel ```scene_to_load``` pada tab Inspector dengan value "Level 1"
+Kemudian pastikan `LinkButton` sedang dipilih dan lihat tab Inspector.
+Isi variabel `scene_to_load` pada tab Inspector dengan value "Level 1"
 
 ![Load Level 1](images/SceneToLoad.png)
 
-Berhasil! Sekarang tombol "New Game" kamu akan langsung membawa pemain ke level 1
+Berhasil! Sekarang tombol "New Game" kamu akan langsung membawa pemain ke level 1.
 
 ![Main Menu New Game Complete](images/MainMenu.gif)
 
-_"Mengapa saat saya tekan play (F5) yang jalan pertama bukan main menu?"_ Karena ```MainMenu.tscn``` belum di-set sebagai Main Scene. Main Scene dapat diubah di Project Settings -> Application -> Run -> Main Scene.
+_"Mengapa saat saya tekan play (F5) yang jalan pertama bukan main menu?"_
+Karena `MainMenu.tscn` belum diatur sebagai **Main Scene**.
+**Main Scene** dapat diubah di Project Settings -> Application -> Run -> Main Scene.
 
 ![Change Main Scene](images/SetMainScene.png)
 
-## Creating a Life Counter
+## Latihan: Membuat GUI Life Counter
 
-Kemarin kita sudah membuat kondisi dimana saat player jatuh, scene akan di reload dengan player kembali ke tempat semula. Namun tidak ada penalti sama sekali untuk jatuh. Sekarang kita akan mencoba membuat kondisi dimana setiap kali player jatuh, akan kehilangan satu nyawa. Saat sudah tidak ada nyawa lagi, maka terjadi **GAME OVER**.
+Sebelumnya kita sudah membuat kondisi dimana saat player jatuh, maka _scene_ akan di-_reload_ dengan player kembali ke tempat semula.
+Namun tidak ada penalti sama sekali untuk jatuh. Sekarang kita akan mencoba membuat kondisi dimana setiap kali player jatuh, player akan kehilangan satu nyawa.
+Saat sudah tidak ada nyawa lagi, maka permainan usai (_game over_).
 
 ### Global Variables
 
-Jika kamu pernah menyentuh bahasa pemrograman apapun (obviously), pasti sudah familiar dengan yang namanya _Global Variable_. _Global Variable_ adalah sebuah variabel yang terlihat (visible) oleh seluruh program. Kita menggunakan _Global Variable_ untuk mendefinisikan nyawa player, yang akan _persist_ walaupun scene baru dipanggil atau diulang-ulang. Variabel ini dapat dipanggil dari script manapun.
+Jika kamu pernah menyentuh bahasa pemrograman apapun, pasti sudah familiar dengan yang namanya _global variable_.
+_Global Variable_ adalah sebuah variabel yang terlihat (_visible_) oleh seluruh program.
+Kita menggunakan _global variable_ untuk mendefinisikan nyawa player.
+Nyawa player akan disimpan permanen (_persist_) walaupun _scene_ baru dipanggil atau diulang-ulang.
+Variabel ini dapat dipanggil dari _script_ manapun.
 
-Pertama, klik kanan folder Scripts lalu tekan New Script...
+Pertama, klik kanan folder `scripts` lalu tekan **New Script**:
 
 ![Create New Script](images/NewScript.PNG)
 
-Beri nama script tersebut ```global.gd``` lalu isi dengan script berikut:
+Beri nama berkas _script_ tersebut `global.gd` lalu isi dengan _script_ berikut:
 
-```
+```gdscript
 extends Node
 
 var lives = 3
 ```
 
-Pada Project Settings, cari tab Autoload, lalu tambahkan script ```global.gd``` (tekan icon folder di sebelah tulisan Node Name lalu cari scriptnya). Setelah ditambahkan, akan muncul di list. Pastikan kolom ```Singleton``` dalam kondisi ```enabled```.
+Pada Project Settings, cari tab Autoload, lalu tambahkan script `global.gd` (tekan _icon_ folder di sebelah tulisan **Node Name** lalu cari berkas _script_-nya).
+Setelah ditambahkan, akan muncul di dalam daftar. Pastikan kolom `Singleton` dalam kondisi aktif (_enabled_).
 
 ![Set Global Autoload](images/Autoload.PNG)
 
-Sekarang kita punya variable nyawa yang dapat diakses kapan saja. Mari kita tampilkan menggunakan label.
+Sekarang kita punya variable nyawa yang dapat diakses kapan saja. Mari kita tampilkan menggunakan _label_.
 
-> Side note buat yang bertanya mengapa menggunakan global variable untuk contoh ini, alasannya karena tiap kali reload scene, player juga ikut reload. Maka ```lives``` disimpan dalam global agar tidak reset saat scene reload.
+> Catatan: Bagi yang penasaran mengapa menggunakan _global variable_ untuk contoh ini,
+> alasannya karena tiap kali _reload scene_, player juga ikut _reload_.
+> Maka `lives` disimpan dalam _global variable_ agar tidak reset saat _scene reload_.
 
-### Adding the GUI
+### GUI Scene
 
-Buat sebuah scene baru dan beri nama ```Life Counter.tscn``` dengan root node sebuah ```MarginContainer```. Buat sebuah child node ```Label```, lalu berikan script. Jangan lupa berikan **custom font** kepada node ```Label```.
+Buat sebuah scene baru dan beri nama `Life Counter.tscn` dengan _root node_ sebuah `MarginContainer`.
+Buat sebuah _child node_ `Label`, lalu berikan _script_.
+Jangan lupa berikan _custom font_ kepada _node_ `Label`.
 
-```
+```gdscript
 extends Label
 
 func _process(delta):
 	self.text = "Lives : " + str(global.lives)
 ```
 
-Struktur akan terlihat seperti ini (```MarginContainer``` di rename menjadi "GUI"):
+Struktur akan terlihat seperti ini (`MarginContainer` telah di-_rename_ menjadi "GUI"):
 
 ![GUI Structure](images/GUI.PNG)
 
-Pada ```Level 1.tscn```, tambahkan sebuah ```CanvasLayer``` node sebagai child node dari node utama. ```CanvasLayer``` merupakan node yang membuat sebuah layer 2D tersendiri untuk seluruh child nya. ```CanvasLayer``` berguna untuk membuat background untuk level, atau user interface seperti yang akan kita buat sekarang.
+Pada `Level 1.tscn`, tambahkan sebuah `CanvasLayer` _node_ sebagai _child node_ dari _node_ utama.
+`CanvasLayer` merupakan _node_ yang membuat sebuah layer 2D tersendiri untuk seluruh _child_-nya.
+`CanvasLayer` berguna untuk membuat _background_ untuk level, atau _user interface_ seperti yang akan kita buat sekarang.
 
-Tambahkan ```Life Counter.tscn``` yang tadi kita buat sebagai child node dari ```CanvasLayer```. Struktur ```Level 1.tscn``` anda akan terlihat seperti ini:
+Tambahkan `Life Counter.tscn` yang tadi kita buat sebagai _child node_ dari `CanvasLayer`.
+Struktur `Level 1.tscn` akan terlihat seperti _screenshot_ berikut:
 
 ![Level with GUI](images/LevelStructure.PNG)
 
-Coba jalankan ```Level 1.tscn``` kamu. Sekarang sudah muncul tampilan life counter di kiri atas yang mengikuti bentuk window yang ada.
+Coba jalankan `Level 1.tscn` kamu.
+Sekarang sudah muncul tampilan _life counter_ di kiri atas yang mengikuti bentuk window yang ada.
 
 ![Level 1 No Life Loss](images/Level1NoLifeLoss.gif)
 
-Namun nyawa player belum berkurang saat mati. Waktunya melakukan sedikit scripting!
+Namun nyawa player belum berkurang ketika pemain mati.
+Waktunya melakukan sedikit _scripting_!
 
-Ubah script di ```Area Trigger.gd``` dengan kode berikut:
+Ubah script di `Area Trigger.gd` dengan kode berikut:
 
-```
+```gdscript
 extends Area2D
 
 export (String) var sceneName = "Level 1"
@@ -278,88 +322,83 @@ func _on_Area_Trigger_body_entered(body):
 		if (global.lives == 0):
 			pass
 		else:
-			get_tree().change_scene(str("res://Scenes/" + sceneName + ".tscn"))
+			get_tree().change_scene(str("res://scenes/" + sceneName + ".tscn"))
 ```
 
-> _What's happening above?_ Karena transisi dari level 1 ke 2 menggunakan function yang sama, pertama kita periksa terlebih dahulu scene yang memanggil fungsi apakah sama dengan target scene (maka reload). Jika iya, nyawa berkurang satu. Baris ```pass``` di kondisi ```global.lives``` == 0 akan kita isi sebentar lagi (_you could probably already guess what goes there though_).
+> _What's happening above?_ Karena transisi dari level 1 ke 2 menggunakan fungsi yang sama,
+> pertama kita periksa terlebih dahulu scene yang memanggil fungsi apakah sama dengan target scene (maka reload).
+> Jika iya, nyawa berkurang satu. Baris `pass` di kondisi `global.lives == 0` akan kita isi sebentar lagi.
+> (_you could probably already guess what goes there though_).
 
 ![Level 1 Life Loss](images/Level1LifeLoss.gif)
 
-Sekarang nyawa player berkurang saat mati. Namun kita belum memasukkan kondisi dimana nyawa player 0, yaitu **GAME OVER**.
+Sekarang nyawa player berkurang saat mati. Namun kita belum memasukkan kondisi dimana nyawa player 0, yaitu _game over_.
 
-## Creating a Game Over Screen
+## Latihan: Membuat Layar Game Over
 
-### Using Background Coloring
+Untuk membuat layar _game over_, langkah-langkahnya sama dengan membuat layar menu utama.
+Visualisasi layar _game over_ di contoh tutorial ini berupa tulisan `GAME OVER` dengan warna latar merah.
+Jika ingin menambahkan warna latar, kita dapat menggunakan _node_ `ColorRect`.
 
-Untuk membuat Game Over screen, step by step nya sama dengan membuat Main Menu. Visualisasi game over saya adalah tulisan game over dengan warna latar merah. Jika ingin menambahkan warna latar, kita dapat menggunakan node ```ColorRect```.
-
-Buatlah sebuah scene baru, beri nama ```Game Over.tscn```, lalu set sebuah ```ColorRect``` sebagai root node. Mirip seperti ```MarginContainer``` tadi, agar kotak mengikuti ukuran window, pada Viewport tekan menu ```Layout``` dan pilih ```Full Rect```. Ubah warna sesuka hati.
+Buatlah sebuah _scene_ baru dan beri nama `Game Over.tscn`, lalu atur sebuah `ColorRect` sebagai _root node_ di _scene_ tersebut.
+Mirip seperti `MarginContainer` sebelumnya, pilih menu **Layout** pada _viewport_ dan pilih **Full Rect** agar kotak mengikuti ukuran _window_.
+Silakan ubah warna sesuka hati.
 
 ![Setting Up Background Color](images/BackgroundColor.png)
 
-Tambahkan label bertuliskan "GAME OVER", dengan DynamicFont yang menurut kamu cocok, kemudian atur posisinya. Selesailah Game Over screen kita!
+Tambahkan label bertuliskan "GAME OVER", dengan `DynamicFont` yang menurut kamu cocok, kemudian atur posisinya.
+Selesailah Game Over screen kita!
 
 ![Game Over Screen Finished](images/GameOverDesu.png)
 
-Sekarang bagaimana caranya agar saat nyawa pemain 0 akan menampilkan layar ini? Pada ```Area Trigger.gd``` ubah script ```pass``` menjadi:
+Sekarang bagaimana caranya agar saat nyawa pemain 0 akan menampilkan layar ini? Pada `Area Trigger.gd` ubah baris `pass` menjadi:
 
-```
-get_tree().change_scene(str("res://Scenes/Game Over.tscn"))
+```gdscript
+get_tree().change_scene(str("res://scenes/Game Over.tscn"))
 ```
 
-Berhasil! Sekarang saat player nyawanya habis, GAME OVER screen akan muncul.
+Berhasil! Sekarang saat player nyawanya habis, layar _game over_ akan muncul.
 
 ![Game Over Desu](images/GameOverDesu.gif)
 
 Selamat, tutorial ini sudah selesai!
 
-## Bonus To Do
+## Latihan Mandiri: Fitur Tambahan
 
-Apabila masih ada waktu atau ingin lanjut berlatih mandiri, silakan baca
-referensi yang tersedia untuk belajar mengimplementasikan fitur tambahan.
-Tidak ada kriteria khusus untuk ini, kamu bebas menambahkan apapun yang kamu
-suka. Beberapa contoh yang bisa dikerjakan:
+Silakan baca referensi yang tersedia untuk membantu pengerjaan latihan mandiri.
+Di akhir tutorial, kamu diharapkan untuk mengerjakan minimal 2 (dua) dari beberapa contoh fitur tambahan berikut:
 
-- Button pada Game Over Screen untuk kembali ke Main Menu
-- Fitur Select Stage (yang konon sudah ada _button_-nya di main menu namun
-  tidak dihiraukan)
-- Transition screen antara stage 1 dan stage 2
-- dll. _Get creative!_
+- [ ] Tombol pada layar _game over_ untuk kembali ke menu utama.
+- [ ] Fitur Select Stage (yang konon sudah ada _button_-nya di main menu namun tidak dihiraukan).
+- [ ] Layar dan efek transisi antar level, dari level 1 ke level 2.
+- [ ] Dan lain-lain (bebas), selama fitur tersebut melibatkan implementasi menu dan GUI di dalam game. _Get creative!_
 
-Jika mengerjakan fitur tambahan, buat file baru bernama `T6_[NPM].md` dimana
-`[NPM]` adalah NPM kamu (misal: `t6_1506757913`) di folder yang sama dengan
-[`README.md`](README.md) ini. Tulis teks menggunakan format [Markdown](https://docs.gitlab.com/ee/user/markdown.html).
-
-## Instruksi Pengerjaan
-
-1. Dalam repositori pribadi kamu, silakan sinkronisasi _branch_ ```master``` dengan repositori _upstream_.
-   Instruksi lebih lanjut bisa dibaca [disini](https://help.github.com/en/articles/syncing-a-fork).
-2. Jika terdapat _conflict_, mohon diselesaikan secara damai.
-   Jika tidak yakin bagaimana caranya, silakan ambil mata kuliah *Advanced Programming* atau baca [ini](https://help.github.com/en/articles/resolving-a-merge-conflict-using-the-command-line).
-3. Setelah semua selesai, buat _branch_ baru dari _branch_ ```master``` dengan nama ```tutorial-x``` dimana ```x``` adalah nomor tutorial (misal: tutorial-6).
-4. Ganti _current branch_ menjadi ```tutorial-x``` tersebut, silakan kerjakan tutorial di dalam _branch_ yang bersangkutan.
-   Setiap _branch_ tutorial **tidak perlu** di _merge_ ke _branch_ ```master```.
+Jangan lupa untuk menjelaskan proses pengerjaan tutorial ini di dalam berkas `README.md`. Jika kamu melanjutkan tutorial sebelumnya, silakan tambahkan subbab (_section_) baru di berkas `README.md` yang berisi penjelasan proses pengerjaan Tutorial 6.
+Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelaskan proses implementasi.
 
 ## Skema Penilaian
 
 Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:
 
-1. **A** apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi
-   tim pengajar.
-2. **B** apabila kamu hanya mengerjakan tutorial sesuai yang diminta oleh
-   deskripsi tutorial.
-3. **C** apabila kamu mengerjakan tutorial secara minimalis atau tidak
-   lengkap/tuntas.
-4. **E** apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.
+- **4** (_**A**_) apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi tim pengajar.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan 2 (dua) fitur tambahan yang merupakan bagian dari Latihan Mandiri, ditambah dengan memoles (_polishing_) lebih lanjut permainannya.
+- **3** (_**B**_) apabila kamu hanya mengerjakan tutorial dan latihan sesuai dengan instruksi.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan 2 (dua) fitur tambahan yang merupakan bagian dari Latihan Mandiri.
+- **2** (_**C**_) apabila kamu hanya mengerjakan tutorial hingga tuntas.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan namun tidak mengerjakan Latihan Mandiri.
+- **1** (_**D**_) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.
+  Nilai ini dapat dicapai apabila belum tuntas mengerjakan Latihan.
+- **0** (_**E**_) apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.
 
 ## Pengumpulan
 
-Kumpulkan dengan memasukkan berkasnya ke dalam Git dan _push_ ke _fork_ materi
-tutorial ini di repositori milik pribadi. **Jangan _push_ atau membuat Merge
-Request ke repositori _upstream_ materi tutorial kecuali jika kamu ingin
-kontribusi materi atau memperbaiki materi yang sudah dipublikasikan!**
+Kumpulkan dengan memasukkan berkasnya ke dalam Git dan _push_ ke repositori Git pengerjaan tutorial 6.
+Ingat kembali instruksi di awal tutorial 6, kamu dapat memilih membuat repositori baru khusus untuk pengerjaan tutorial 6 **atau** menggunakan repositori tutorial sebelumnya sebagai awalan untuk mengerjakan tutorial 6.
 
-Tenggat waktu pengumpulan adalah **Jumat, 23 Oktober 2020, pukul 21:00**.
+Apabila kamu mengerjakan latihan mandiri, pastikan _scene_ dan _node_ yang kamu buat dan ubah telah tercatat masuk ke dalam repositori Git.
+Kumpulkan tautan ke repositori Git hasil pengerjaan tutorial 6 kamu di slot pengumpulan yang tersedia di SCELE.
+
+Tenggat waktu pengumpulan adalah **Rabu, 17 April 2024, pukul 21:00**.
 
 ## Referensi
 
@@ -375,7 +414,9 @@ Berikut ini adalah gambar _meme_ yang diambil dari [sebuah _thread_ di Reddit](h
 
 ![GUI Berbagai Game Gacha](./images/gacha_guis.png)
 
-Gambar tersebut menampilkan _screenshot_ dari sebuah game yang digubah sehingga mengandung elemen-elemen GUI dari banyak game lain.
+Gambar tersebut menampilkan _screenshot_ dari sebuah game yang diubah sehingga mengandung elemen-elemen GUI dari banyak game lain.
 Apa saja judul game yang bisa kamu kenali dari elemen GUI-nya pada _meme_ tersebut?
+Jika kamu mengenali satu atau lebih elemen GUI di _screenshot_ tersebut, apa fungsi elemen GUI tersebut di game aslinya?
 
-> Catatan: Pertanyaan di atas tidak perlu dijawab dan tidak akan masuk sebagai bahan ujian. 😅
+> Catatan: Pertanyaan di atas tidak perlu dijawab karena hanya berupa pertanyaan santai.
+> Silakan didiskusikan dengan rekan-rekan sekelas ketika membahas materi mengenai _Interface_ pada game, atau dijadikan bahan obrolan santai di grup pertemanan masing-masing.

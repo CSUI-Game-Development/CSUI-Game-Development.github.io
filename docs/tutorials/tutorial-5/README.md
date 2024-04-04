@@ -273,9 +273,9 @@ Terdapat beberapa konfigurasi lainnya, yaitu:
 * Attenuation: Memperkecil audio berdasarkan jarak secara eksponensial.
 * Bus: Menentukan bus mana audio akan dimainkan.
 
-Untuk penjelasan lebih lanjut mengenai ```AudioStreamPlayer``` dapat diakses di [docs](https://docs.godotengine.org/en/stable/classes/class_audiostreamplayer2d.html)
+Untuk penjelasan lebih lanjut mengenai `AudioStreamPlayer` dapat diakses di [docs](https://docs.godotengine.org/en/stable/classes/class_audiostreamplayer2d.html)
 
-Saat ini *audio* masih berjalan tanpa *looping*. Untuk membuat *audio looping*, pilih file ```bgm.wav``` pada tab ```FileSystem``` di sebelah kiri bawah. Kemudian, buka tab ```Import``` di sebelah kiri atas. Berikut tampilan dari tab ```Import```.
+Saat ini *audio* masih berjalan tanpa *looping*. Untuk membuat *audio looping*, pilih berkas `bgm.wav` pada tab **FileSystem** di sebelah kiri bawah. Kemudian, buka tab **Import** di sebelah kiri atas. Berikut tampilan dari tab **Import**:
 
 ![Audio Import Settings](images/BGMStep5_ImportSettings.jpg)
 
