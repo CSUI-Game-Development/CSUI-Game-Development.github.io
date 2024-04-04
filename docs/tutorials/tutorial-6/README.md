@@ -393,9 +393,11 @@ Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:
 
 ## Pengumpulan
 
-Kumpulkan dengan memasukkan berkasnya ke dalam Git dan _push_ ke repositori Git pengerjaan Tutorial 6.
+Kumpulkan semua berkas pengerjaan tutorial dan latihan ke repositori Git.
+Kemudian, _push_ riwayat _commit_-nya ke repositori Git pengerjaan Tutorial 6.
 Ingat kembali instruksi di awal Tutorial 6, kamu dapat memilih membuat repositori baru khusus untuk pengerjaan Tutorial 6
-**atau** menggunakan repositori Tutorial 4 sebagai awalan untuk mengerjakan Tutorial 6.
+**atau** menggunakan repositori Tutorial 4 sebagai templat untuk mengerjakan Tutorial 6.
+Jika melanjutkan Tutorial 4, jangan lupa untuk mengambil aset yang dibutuhkan dari templat proyek Tutorial 6.
 
 Apabila kamu mengerjakan latihan mandiri, pastikan _scene_ dan _node_ yang kamu buat dan ubah telah tercatat masuk ke dalam repositori Git.
 Kumpulkan tautan ke repositori Git hasil pengerjaan Tutorial 6 kamu di slot pengumpulan yang tersedia di SCELE.
