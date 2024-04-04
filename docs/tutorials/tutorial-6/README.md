@@ -24,9 +24,9 @@ serta unsur-unsur lain untuk menyusun menu dan antar muka dalam _game_.
 
 ## Pengantar
 
-> Penting! Untuk tutorial kali ini, diperbolehkan menggunakan [templat proyek yang telah disediakan di GitHub](https://github.com/CSUI-Game-Development/tutorial-6-template)
-> **ATAU** melanjutkan dari pengerjaan proyek tutorial sebelumnya.
-> Jika melanjutkan proyek tutorial sebelumnya, silakan mengerjakan di repositori Git pengerjaan tutorial tersebut dan membuat _branch_ baru (misal: _branch_ `tutorial-6`).
+> Penting! Untuk tutorial kali ini, silakan menggunakan [templat proyek yang telah disediakan di GitHub](https://github.com/CSUI-Game-Development/tutorial-6-template)
+> **ATAU** melanjutkan dari pengerjaan proyek **Tutorial 4**.
+> Jika melanjutkan proyek **Tutorial 4**, silakan mengerjakan di repositori Git pengerjaan tutorial tersebut dan membuat _branch_ baru (misal: _branch_ `tutorial-6`).
 
 ## Tampilan Antar Muka
 
@@ -49,13 +49,13 @@ GUI digunakan untuk menampilkan banyak hal, seperti:
 
 - Jumlah sumber daya (misal: darah tokoh, uang virtual) yang dimiliki pemain.
 - Kondisi pemain relatif terhadap lawan-lawannya (misal: peringkat ketika balapan, posisi pemain pada dunia permainan).
-- Pilihan untuk masuk ke menu lain terkait permainan (biasanya pada game _mobile_, misal: tombol untuk membuka daftar tokoh yang bisa dikendalikan pemain).
+- Pilihan untuk masuk ke menu lain terkait permainan (biasanya pada game _mobile_ yang dapat merespon aksi _tap_/sentuh layar, misal: tombol untuk membuka daftar tokoh yang bisa dikendalikan pemain).
 - Dan lain-lain.
 
 Kemudian yang tidak kalah penting adalah tampilan saat pemain mencapai kondisi akhir permainan,
 seperti layar yang menampilkan kondisi menang atau kondisi kalah.
 
-Pada tutorial sebelumnya, kita sudah berhasil membuat game _platformer_ 2D yang cukup dasar.
+Pada Tutorial 4, kita sudah berhasil membuat game _platformer_ 2D yang cukup dasar.
 Namun saat menjalankan proyek, _scene_ yang dijalankan langsung level 1 dan tidak ada menu yang muncul terlebih dahulu.
 
 ### Contoh Layar Menu Utama, Layar Kondisi Menang/Kalah, dan GUI
@@ -157,7 +157,7 @@ Pada _engine_ Godot, kita harus menggunakan _custom font_ agar dapat mengatur _f
 Misalnya pada _node_ `Label`, kita harus menggunakan objek _custom font_.
 
 Untuk tutorial ini, kita akan membuat `DynamicFont` menggunakan _font_ dengan ekstensi `.ttf`.
-Sudah disediakan beberapa berkas `.ttf` di folder `assets/Fonts/Raw/` pada templat proyek Tutorial 6.
+Sudah disediakan beberapa berkas `.ttf` di folder `assets/Fonts/Raw/` pada [templat proyek Tutorial 6](https://github.com/CSUI-Game-Development/tutorial-6-template).
 
 > Catatan: Jika ingin mencari _font_ sendiri, bisa melalui situs web _font_ gratis seperti [di sini](https://www.1001fonts.com/free-fonts-for-commercial-use.html).
 
@@ -206,7 +206,7 @@ Selamat! Layar menu utama kamu sudah terlihat cukup rapi!
 ### Latihan: Clickable Menu
 
 Kita ingin agar saat tombol "New Game" ditekan, game akan menjalankan _scene_ level pertama.
-Pada tutorial sebelumnya, kita sudah belajar menggunakan **Signal**.
+Pada Tutorial 4, kita sudah belajar menggunakan **Signal**.
 Sekarang kita akan menggunakannya lagi untuk menangani _event handler_ ketika ada aksi menekan tombol, yaitu `pressed()`.
 
 Gunakan cuplikan _script__ berikut sebagai _script_ yang ditempelkan pada `LinkButton`:
@@ -373,7 +373,8 @@ Di akhir tutorial, kamu diharapkan untuk mengerjakan minimal 2 (dua) dari bebera
 - [ ] Layar dan efek transisi antar level, dari level 1 ke level 2.
 - [ ] Dan lain-lain (bebas), selama fitur tersebut melibatkan implementasi menu dan GUI di dalam game. _Get creative!_
 
-Jangan lupa untuk menjelaskan proses pengerjaan tutorial ini di dalam berkas `README.md`. Jika kamu melanjutkan tutorial sebelumnya, silakan tambahkan subbab (_section_) baru di berkas `README.md` yang berisi penjelasan proses pengerjaan Tutorial 6.
+Jangan lupa untuk menjelaskan proses pengerjaan tutorial ini di dalam berkas `README.md`.
+Jika kamu melanjutkan Tutorial 4, silakan tambahkan subbab (_section_) baru di berkas `README.md` yang berisi penjelasan proses pengerjaan Tutorial 6.
 Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelaskan proses implementasi.
 
 ## Skema Penilaian
@@ -392,11 +393,12 @@ Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:
 
 ## Pengumpulan
 
-Kumpulkan dengan memasukkan berkasnya ke dalam Git dan _push_ ke repositori Git pengerjaan tutorial 6.
-Ingat kembali instruksi di awal tutorial 6, kamu dapat memilih membuat repositori baru khusus untuk pengerjaan tutorial 6 **atau** menggunakan repositori tutorial sebelumnya sebagai awalan untuk mengerjakan tutorial 6.
+Kumpulkan dengan memasukkan berkasnya ke dalam Git dan _push_ ke repositori Git pengerjaan Tutorial 6.
+Ingat kembali instruksi di awal Tutorial 6, kamu dapat memilih membuat repositori baru khusus untuk pengerjaan Tutorial 6
+**atau** menggunakan repositori Tutorial 4 sebagai awalan untuk mengerjakan Tutorial 6.
 
 Apabila kamu mengerjakan latihan mandiri, pastikan _scene_ dan _node_ yang kamu buat dan ubah telah tercatat masuk ke dalam repositori Git.
-Kumpulkan tautan ke repositori Git hasil pengerjaan tutorial 6 kamu di slot pengumpulan yang tersedia di SCELE.
+Kumpulkan tautan ke repositori Git hasil pengerjaan Tutorial 6 kamu di slot pengumpulan yang tersedia di SCELE.
 
 Tenggat waktu pengumpulan adalah **Rabu, 17 April 2024, pukul 21:00**.
 
@@ -418,5 +420,4 @@ Gambar tersebut menampilkan _screenshot_ dari sebuah game yang diubah sehingga m
 Apa saja judul game yang bisa kamu kenali dari elemen GUI-nya pada _meme_ tersebut?
 Jika kamu mengenali satu atau lebih elemen GUI di _screenshot_ tersebut, apa fungsi elemen GUI tersebut di game aslinya?
 
-> Catatan: Pertanyaan di atas tidak perlu dijawab karena hanya berupa pertanyaan santai.
 > Silakan didiskusikan dengan rekan-rekan sekelas ketika membahas materi mengenai _Interface_ pada game, atau dijadikan bahan obrolan santai di grup pertemanan masing-masing.
