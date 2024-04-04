@@ -126,9 +126,9 @@ Jangan lupa simpan (_save_) _scene_ tersebut, berikan nama `MainMenu.tscn`.
 
 ![New Margin Container for Main Menu](images/MarginContainer.PNG)
 
-Pada tab Inspector, atur **Custom Constants** sebagai berikut:
+Pada tab Inspector, atur **Constants** pada **Theme Overrides** sebagai berikut:
 
-![Edit Custom Constants](images/CustomConstants.PNG)
+![Edit Custom Constants](./images/theme_overrides_constants.png)
 
 Kemudian pada Viewport, tekan menu **Layout** dan pilih opsi **Full Rect**.
 Ini dilakukan agar ukuran _container_ menyesuai ukuran _window_.
@@ -190,7 +190,7 @@ Struktur _node_ dan _workspace_ seharusnya akan terlihat lebih rapi dan menyerup
 
 Agar judul dan tombol tidak terlalu berhimpitan, ubah **Margin** pada `VBoxContainer` _parent_.
 Kemudian, ubah **Alignment** , pilih opsi **Expand** pada _vertical_ di **Size Flags**.
-Lalu atur **Separation** pada **Custom Constants**.
+Lalu atur **Separation** pada **Theme Overrides** --> **Constants**.
 
 ![Fix Bottom Margin](images/BottomMargin.png)
 
