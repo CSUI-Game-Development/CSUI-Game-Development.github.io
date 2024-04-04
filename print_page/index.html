@@ -331,6 +331,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -474,6 +478,26 @@
 
               
             
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tutorial-6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial 6 - Menu & In-Game GUI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -577,6 +601,13 @@
           <li class="md-nav__item">
   <a href="#tutorials-tutorial-5" class="md-nav__link">
     Tutorial 5 - Assets Creation & Integration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorials-tutorial-6" class="md-nav__link">
+    Tutorial 6 - Menu & In-Game GUI
   </a>
   
 </li>
@@ -2204,7 +2235,7 @@ Tools yang digunakan kali ini adalah <em>tools open source</em>, yaitu <strong>A
 <li>Bus: Menentukan bus mana audio akan dimainkan.</li>
 </ul>
 <p>Untuk penjelasan lebih lanjut mengenai <code>AudioStreamPlayer</code> dapat diakses di <a href="https://docs.godotengine.org/en/stable/classes/class_audiostreamplayer2d.html">docs</a></p>
-<p>Saat ini <em>audio</em> masih berjalan tanpa <em>looping</em>. Untuk membuat <em>audio looping</em>, pilih file <code>bgm.wav</code> pada tab <code>FileSystem</code> di sebelah kiri bawah. Kemudian, buka tab <code>Import</code> di sebelah kiri atas. Berikut tampilan dari tab <code>Import</code>.</p>
+<p>Saat ini <em>audio</em> masih berjalan tanpa <em>looping</em>. Untuk membuat <em>audio looping</em>, pilih berkas <code>bgm.wav</code> pada tab <strong>FileSystem</strong> di sebelah kiri bawah. Kemudian, buka tab <strong>Import</strong> di sebelah kiri atas. Berikut tampilan dari tab <strong>Import</strong>:</p>
 <p><img alt="Audio Import Settings" src="../tutorials/tutorial-5/images/BGMStep5_ImportSettings.jpg" /></p>
 <p>Klik <em>loop</em> lalu klik <em>reimport</em>. Godot akan mengimport audio ulang dengan menambahkan konfigurasi yang sudah dipilih sebelumnya. Tes apakah <em>audio</em> sudah <em>looping</em> dengan menjalankan <em>scene</em>.</p>
 <h2 id="tutorials-tutorial-5-latihan-mandiri-membuat-dan-menambah-variasi-aset">Latihan Mandiri: Membuat dan Menambah Variasi Aset</h2>
@@ -2248,7 +2279,340 @@ Kumpulkan tautan ke repositori Git hasil pengerjaan tutorial 5 kamu di slot peng
 <li><a href="https://www.kenney.nl/assets/platformer-pack-redux">Kenney Assets</a></li>
 <li>Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
   gasal 2020/2021 Fakultas Ilmu Komputer Universitas Indonesia.</li>
-</ul></section><h1 class='nav-section-title-end'>Ended: Tutorials</h1><section class="print-page" id="exam-issue-template"><h1 id="exam-issue-template-exam-issue-template">Exam Issue Template</h1>
+</ul></section><section class="print-page" id="tutorials-tutorial-6"><h1 id="tutorials-tutorial-6-tutorial-6-menu-and-in-game-graphical-user-interface">Tutorial 6 - Menu and In-Game Graphical User Interface</h1>
+<p>Selamat datang pada tutorial keenam kuliah Game Development.
+Pada tutorial kali ini, kamu akan mempelajari cara membuat <em>menu screen</em>, <em>game over screen</em>,
+dan <em>in-game GUI</em>.</p>
+<p>Di akhir tutorial ini, diharapkan kamu paham cara menggunakan <em>Container</em>, <em>Label</em>, <em>Button</em>,
+serta unsur-unsur lain untuk menyusun menu dan antar muka dalam <em>game</em>.</p>
+<h2 id="tutorials-tutorial-6-daftar-isi">Daftar Isi</h2>
+<ul>
+<li><a href="#tutorials-tutorial-6-tutorial-6---menu-and-in-game-graphical-user-interface">Tutorial 6 - Menu and In-Game Graphical User Interface</a><ul>
+<li><a href="#tutorials-tutorial-6-daftar-isi">Daftar Isi</a></li>
+<li><a href="#tutorials-tutorial-6-pengantar">Pengantar</a></li>
+<li><a href="#tutorials-tutorial-6-tampilan-antar-muka">Tampilan Antar Muka</a></li>
+<li><a href="#tutorials-tutorial-6-latihan-membuat-menu-utama">Latihan: Membuat Menu Utama</a></li>
+<li><a href="#tutorials-tutorial-6-latihan-membuat-gui-life-counter">Latihan: Membuat GUI Life Counter</a></li>
+<li><a href="#tutorials-tutorial-6-latihan-membuat-layar-game-over">Latihan: Membuat Layar Game Over</a></li>
+<li><a href="#tutorials-tutorial-6-latihan-mandiri-fitur-tambahan">Latihan Mandiri: Fitur Tambahan</a></li>
+<li><a href="#tutorials-tutorial-6-skema-penilaian">Skema Penilaian</a></li>
+<li><a href="#tutorials-tutorial-6-pengumpulan">Pengumpulan</a></li>
+<li><a href="#tutorials-tutorial-6-referensi">Referensi</a></li>
+<li><a href="#tutorials-tutorial-6-selingan-menarik-intermezzo">Selingan Menarik (Intermezzo)</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="tutorials-tutorial-6-pengantar">Pengantar</h2>
+<blockquote>
+<p>Penting! Untuk tutorial kali ini, silakan menggunakan <a href="https://github.com/CSUI-Game-Development/tutorial-6-template">templat proyek yang telah disediakan di GitHub</a>
+<strong>ATAU</strong> melanjutkan dari pengerjaan proyek <strong>Tutorial 4</strong>.
+Jika melanjutkan proyek <strong>Tutorial 4</strong>, silakan mengerjakan di repositori Git pengerjaan tutorial tersebut dan membuat <em>branch</em> baru (misal: <em>branch</em> <code>tutorial-6</code>).</p>
+</blockquote>
+<h2 id="tutorials-tutorial-6-tampilan-antar-muka">Tampilan Antar Muka</h2>
+<p>Saat kamu pertama kali memulai suatu game, apa yang pertama kali muncul?
+<em>Splash screen</em> dengan gambar logo perusahaan pembuat game tersebut?</p>
+<p><img alt="Logo SEGA (Sumber: https://en.wikipedia.org/wiki/Sega#/media/File:SEGA_logo.svg)" src="../tutorials/tutorial-6/images/SEGA_logo.svg.png" /></p>
+<p>Atau <em>splash screen</em> dengan ilustrasi tokoh dari game tersebut?</p>
+<p><img alt="Sonic (Sumber: https://www.youtube.com/watch?v=CqOlpQ7sepE)" src="../tutorials/tutorial-6/images/sonic.jpg" /></p>
+<p>Pada umumnya, mayoritas game akan memiliki menu utama (<em>main menu</em>).
+<em>Main menu</em> adalah layar utama yang muncul pertama kali ketika mulai bermain game.
+Biasanya terdapat tombol atau instruksi untuk memulai permainan pada <em>main menu</em>.</p>
+<p>Selain <em>main menu</em>, di dalam game juga terdapat tampilan antar muka yang menampilkan informasi terkait kondisi permainan sekarang secara visual.
+Tampilan antar muka tersebut dinamakan sebagai <em>game</em> GUI (<em>Graphical User Interface</em>).
+GUI digunakan untuk menampilkan banyak hal, seperti:</p>
+<ul>
+<li>Jumlah sumber daya (misal: darah tokoh, uang virtual) yang dimiliki pemain.</li>
+<li>Kondisi pemain relatif terhadap lawan-lawannya (misal: peringkat ketika balapan, posisi pemain pada dunia permainan).</li>
+<li>Pilihan untuk masuk ke menu lain terkait permainan (biasanya pada game <em>mobile</em> yang dapat merespon aksi <em>tap</em>/sentuh layar, misal: tombol untuk membuka daftar tokoh yang bisa dikendalikan pemain).</li>
+<li>Dan lain-lain.</li>
+</ul>
+<p>Kemudian yang tidak kalah penting adalah tampilan saat pemain mencapai kondisi akhir permainan,
+seperti layar yang menampilkan kondisi menang atau kondisi kalah.</p>
+<p>Pada Tutorial 4, kita sudah berhasil membuat game <em>platformer</em> 2D yang cukup dasar.
+Namun saat menjalankan proyek, <em>scene</em> yang dijalankan langsung level 1 dan tidak ada menu yang muncul terlebih dahulu.</p>
+<h3 id="tutorials-tutorial-6-contoh-layar-menu-utama-layar-kondisi-menangkalah-dan-gui">Contoh Layar Menu Utama, Layar Kondisi Menang/Kalah, dan GUI</h3>
+<p>Berikut ini adalah beberapa contoh layar menu, layar kondisi akhir permainan,
+dan GUI pada beberapa game populer:</p>
+<p><img alt="The Legend of Zelda NES Main Menu" src="../tutorials/tutorial-6/images/zeldamenu.jpg" />
+<img alt="Undertale Game Over Screen" src="../tutorials/tutorial-6/images/undertaledead.jpg" />
+<img alt="Shovel Knight GUI" src="../tutorials/tutorial-6/images/ShovelKnight.png" /></p>
+<p>Tentu saja contoh-contoh di atas hanyalah representasi kecil dari sekian banyak contoh layar permainan.
+Apabila kamu ada contoh lain yang menarik, silakan cerita ketika sesi tutorial berlangsung. 😃</p>
+<p>Pada tutorial ini kita akan melakukan hal berikut:</p>
+<ul>
+<li>Membuat layar menu utama (<em>main menu</em>)</li>
+<li>Membuat indikator nyawa (<em>life counter</em>)</li>
+<li>Membuat layar kalah (<em>game over screen</em>)</li>
+</ul>
+<h2 id="tutorials-tutorial-6-latihan-membuat-menu-utama">Latihan: Membuat Menu Utama</h2>
+<h3 id="tutorials-tutorial-6-visualisasi">Visualisasi</h3>
+<p>Untuk menghasilkan sebuah UI yang baik, sebaiknya kita membuat sebuah <em>mockup</em> terlebih dahulu.
+Apa saja yang ingin kita tampilkan di menu utama, dan posisi segala hal yang ingin kita tampilkan.
+Visualisasi boleh digambar di kertas, dan tidak harus bagus-bagus.
+Cukup untuk memberikan gambaran kasar apa yang ingin kita buat.</p>
+<p>Berikut adalah contoh visualisasi main menu:</p>
+<p><img alt="An example of visualization of a menu screen" src="../tutorials/tutorial-6/images/Visualization.png" /></p>
+<h3 id="tutorials-tutorial-6-membuat-containers-labels-dan-buttons">Membuat Containers, Labels, dan Buttons</h3>
+<p>Salah satu cara untuk menyusun sebuah menu dengan rapi adalah menggunakan containers.
+<em>Container</em> pada konteks desain UI pada game merupakan elemen yang akan menampung komposisi elemen UI.</p>
+<p>Jika kamu familiar dengan desain Web, anggaplah <em>container</em> serupa dengan <em>tag</em> <code>&lt;div&gt;</code> yang sering dipakai untuk membungkus elemen-elemen HTML pada sebuah halaman Web.
+<em>Container</em> di Godot akan membungkus elemen-elemen UI pada permainan yang dikembangkan.</p>
+<p>Beberapa <em>container</em> yang terdapat di <em>engine</em> Godot antara lain:</p>
+<ul>
+<li><code>MarginContainer</code> untuk menyusun elemen dengan <em>padding</em></li>
+<li><code>HBoxContainer</code> untuk menyusun elemen secara horizontal</li>
+<li><code>VBoxContainer</code> untuk menyusun elemen secara vertikal</li>
+<li><code>CenterContainer</code> untuk menyusun elemen secara <em>centered</em></li>
+</ul>
+<p>Sesuai dengan visualisasi yang telah dilakukan di atas, kita dapat menyusun main menu ini dengan susunan container sebagai berikut:</p>
+<p>Kotak terbesar seukuran <em>game window</em>, dan terdapat padding di bagian ujung window.
+Oleh karena itu kita menggunakan parent <code>MarginContainer</code>.
+Kemudian layar dibagi dua kiri kanan, maka menggunakan <code>HBoxContainer</code>.</p>
+<p>Di bagian kiri ada judul dan button, maka ada <code>VBoxContainer</code>.
+<em>Button</em> sendiri akan kita susun dengan <code>VBoxContainer</code> juga.
+Sedangkan sebelah kanan cukup kita berikan <code>CenterContainer</code> untuk gambar.</p>
+<p><img alt="My Visualiation of Menu Screen Containers" src="../tutorials/tutorial-6/images/VisualizationContainers.png" /></p>
+<blockquote>
+<p>Catatan: Kamu tidak harus mengikuti struktur dan <em>layout</em> persis sama seperti di atas.
+Bahkan diperbolehkan jika kamu tidak ingin menggunakan container sama sekali untuk menu utama.
+Namun container sangat membantu untuk visualisasi dan kerapihan.</p>
+</blockquote>
+<p>Mulai dengan membuat <em>scene</em> baru. Karena <em>root node</em> UI yang kita inginkan adalah container paling luar,
+atur <em>root node</em> menjadi sebuah <code>MarginContainer</code>.
+Jangan lupa simpan (<em>save</em>) <em>scene</em> tersebut, berikan nama <code>MainMenu.tscn</code>.</p>
+<p><img alt="New Margin Container for Main Menu" src="../tutorials/tutorial-6/images/MarginContainer.PNG" /></p>
+<p>Pada tab Inspector, atur <strong>Custom Constants</strong> sebagai berikut:</p>
+<p><img alt="Edit Custom Constants" src="../tutorials/tutorial-6/images/CustomConstants.PNG" /></p>
+<p>Kemudian pada Viewport, tekan menu <strong>Layout</strong> dan pilih opsi <strong>Full Rect</strong>.
+Ini dilakukan agar ukuran <em>container</em> menyesuai ukuran <em>window</em>.</p>
+<p><img alt="Full Rect" src="../tutorials/tutorial-6/images/FullRect.png" /></p>
+<p>Sekarang masukkan elemen teks dan gambar ke dalam <code>MarginContainer</code>.
+Untuk teks, gunakan <em>node</em> <code>Label</code>, dan untuk gambar gunakan node <code>TextureRect</code>.
+Untuk contoh ini ada dua tombol, "New Game" dan "Stage Select", yang akan diimplementasikan menggunakan node <code>LinkButton</code>.</p>
+<p>Untuk menambahkan teks pada <code>Label</code> atau <code>LinkButton</code> cukup menulis di tab Inspector bagian <strong>Text</strong>.
+Untuk menambahkan gambar kepada <code>TextureRect</code>, sama seperti menambahkan <em>texture</em> di <code>Sprite</code> yaitu di tab Inspector bagian <strong>Texture</strong>.
+Saat selesai, mungkin struktur <em>scene</em> dan <em>workspace</em> kamu akan terlihat seperti <em>screenshot</em> berikut:</p>
+<p><img alt="Main Menu but no Font" src="../tutorials/tutorial-6/images/MainMenuBeforeFont.PNG" /></p>
+<p>Mungkin kamu akan menyadari bahwa tulisan pada <code>Label</code> dan <code>LinkButton</code> terlihat sangat kecil.
+Selain itu, <em>tab</em> <strong>Inspector</strong> tidak memiliki pilihan ukuran atau jenis <em>font</em>.
+Hal ini disebabkan karena <em>engine</em> Godot versi 3.5 <strong>tidak memiliki fitur untuk mengubah ukuran dan jenis <em>font</em> secara langsung</strong>.</p>
+<p><em>So, what do we do?</em></p>
+<h3 id="tutorials-tutorial-6-latihan-membuat-custom-fonts">Latihan: Membuat Custom Fonts</h3>
+<p>Pada <em>engine</em> Godot, kita harus menggunakan <em>custom font</em> agar dapat mengatur <em>font</em> dan ukurannya pada sebuah tulisan di dalam sebuah <em>node</em>.
+Misalnya pada <em>node</em> <code>Label</code>, kita harus menggunakan objek <em>custom font</em>.</p>
+<p>Untuk tutorial ini, kita akan membuat <code>DynamicFont</code> menggunakan <em>font</em> dengan ekstensi <code>.ttf</code>.
+Sudah disediakan beberapa berkas <code>.ttf</code> di folder <code>assets/Fonts/Raw/</code> pada <a href="https://github.com/CSUI-Game-Development/tutorial-6-template">templat proyek Tutorial 6</a>.</p>
+<blockquote>
+<p>Catatan: Jika ingin mencari <em>font</em> sendiri, bisa melalui situs web <em>font</em> gratis seperti <a href="https://www.1001fonts.com/free-fonts-for-commercial-use.html">di sini</a>.</p>
+</blockquote>
+<p>Pertama, tekan tombol <strong>Create Resource</strong> pada tab Inspector.
+Kemudian buat sebuah <code>DynamicFont</code>, seperti yang tergambarkan pada <em>screenshot</em> berikut:</p>
+<p><img alt="Create Resource 1" src="../tutorials/tutorial-6/images/CreateResource.png" />
+<img alt="Create Resource 2" src="../tutorials/tutorial-6/images/CreateResource2.PNG" /></p>
+<p>Masih pada tab Inspector, cari pilihan <strong>Font Data</strong>, lalu tekan <strong>Load</strong> dan cari berkas <code>.ttf</code> yang ingin digunakan.
+Setelah itu, kamu dapat mengatur size sesuka hati pada opsi <strong>Size</strong> Tekan <strong>Save</strong>,
+dan simpan sebagai berkas <code>.tres</code> di folder <code>assets/Fonts</code> pengerjaan Tutorial 6.</p>
+<p><img alt="Create Resource 3" src="../tutorials/tutorial-6/images/CreateResource3.png" /></p>
+<p>Untuk menggunakan <em>font</em> tersebut, cari opsi <strong>Custom Font</strong> di tab Inspector pada <em>node</em> <code>Label</code> atau <code>LinkButton</code>, lalu <strong>Load Resource</strong> yang baru saja dibuat.</p>
+<blockquote>
+<p>Catatan: Seperti yang telah dijelaskan sebelumnya, tidak ada cara mengatur ukuran dan jenis <em>font</em> secara langsung di <em>engine</em> Godot versi 3.
+Jika ingin membuat <em>font</em> dengan tipe atau ukuran yang berbeda, harus membuat <code>DynamicFont</code> yang berbeda.</p>
+</blockquote>
+<p>Setelah menggunakan <code>DynamicFont</code> pada judul dan tombol, hasilnya terlihat seperti <em>screenshot</em> berikut.
+Tombol <strong>New Game</strong> dan <strong>Stage Select</strong> diberi warna merah menggunakan <code>Custom Colors</code> pada tab Inspector:</p>
+<p><img alt="Main Menu After Custom Font" src="../tutorials/tutorial-6/images/MainMenuAfterFont.PNG" /></p>
+<p>Masih belum terlihat rapi. Sekarang tambahkan <em>container</em> sesuai visualisasi di atas tadi.
+Struktur <em>node</em> dan <em>workspace</em> seharusnya akan terlihat lebih rapi dan menyerupai <em>screenshot</em> berikut:</p>
+<p><img alt="Main Menu After Containers" src="../tutorials/tutorial-6/images/MainMenuAfterContainer.PNG" /></p>
+<p>Agar judul dan tombol tidak terlalu berhimpitan, ubah <strong>Margin</strong> pada <code>VBoxContainer</code> <em>parent</em>.
+Kemudian, ubah <strong>Alignment</strong> , pilih opsi <strong>Expand</strong> pada <em>vertical</em> di <strong>Size Flags</strong>.
+Lalu atur <strong>Separation</strong> pada <strong>Custom Constants</strong>.</p>
+<p><img alt="Fix Bottom Margin" src="../tutorials/tutorial-6/images/BottomMargin.png" /></p>
+<p><img alt="Fixing the Buttons" src="../tutorials/tutorial-6/images/VBoxFixing.PNG" /></p>
+<p>Selamat! Layar menu utama kamu sudah terlihat cukup rapi!</p>
+<p><img alt="Main Menu Not Clickable Yet" src="../tutorials/tutorial-6/images/MainMenuNoClick.gif" /></p>
+<p>Tapi masih belum <em>clickable</em> tentunya.
+ Bagaimana caranya agar saat kita menekan tombol "New Game" dia akan melempar kita ke level 1?</p>
+<h3 id="tutorials-tutorial-6-latihan-clickable-menu">Latihan: Clickable Menu</h3>
+<p>Kita ingin agar saat tombol "New Game" ditekan, game akan menjalankan <em>scene</em> level pertama.
+Pada Tutorial 4, kita sudah belajar menggunakan <strong>Signal</strong>.
+Sekarang kita akan menggunakannya lagi untuk menangani <em>event handler</em> ketika ada aksi menekan tombol, yaitu <code>pressed()</code>.</p>
+<p>Gunakan cuplikan <em>script__ berikut sebagai _script</em> yang ditempelkan pada <code>LinkButton</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">extends</span><span class="w"> </span><span class="n">LinkButton</span>
+
+<span class="k">export</span><span class="p">(</span><span class="nb nb-Type">String</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">scene_to_load</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_on_New_Game_pressed</span><span class="p">():</span>
+<span class="w">    </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">change_scene</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="s2">&quot;res://scenes/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">scene_to_load</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;.tscn&quot;</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+<p>Kemudian pastikan <code>LinkButton</code> sedang dipilih dan lihat tab Inspector.
+Isi variabel <code>scene_to_load</code> pada tab Inspector dengan value "Level 1"</p>
+<p><img alt="Load Level 1" src="../tutorials/tutorial-6/images/SceneToLoad.png" /></p>
+<p>Berhasil! Sekarang tombol "New Game" kamu akan langsung membawa pemain ke level 1.</p>
+<p><img alt="Main Menu New Game Complete" src="../tutorials/tutorial-6/images/MainMenu.gif" /></p>
+<p><em>"Mengapa saat saya tekan play (F5) yang jalan pertama bukan main menu?"</em>
+Karena <code>MainMenu.tscn</code> belum diatur sebagai <strong>Main Scene</strong>.
+<strong>Main Scene</strong> dapat diubah di Project Settings -&gt; Application -&gt; Run -&gt; Main Scene.</p>
+<p><img alt="Change Main Scene" src="../tutorials/tutorial-6/images/SetMainScene.png" /></p>
+<h2 id="tutorials-tutorial-6-latihan-membuat-gui-life-counter">Latihan: Membuat GUI Life Counter</h2>
+<p>Sebelumnya kita sudah membuat kondisi dimana saat player jatuh, maka <em>scene</em> akan di-<em>reload</em> dengan player kembali ke tempat semula.
+Namun tidak ada penalti sama sekali untuk jatuh. Sekarang kita akan mencoba membuat kondisi dimana setiap kali player jatuh, player akan kehilangan satu nyawa.
+Saat sudah tidak ada nyawa lagi, maka permainan usai (<em>game over</em>).</p>
+<h3 id="tutorials-tutorial-6-global-variables">Global Variables</h3>
+<p>Jika kamu pernah menyentuh bahasa pemrograman apapun, pasti sudah familiar dengan yang namanya <em>global variable</em>.
+<em>Global Variable</em> adalah sebuah variabel yang terlihat (<em>visible</em>) oleh seluruh program.
+Kita menggunakan <em>global variable</em> untuk mendefinisikan nyawa player.
+Nyawa player akan disimpan permanen (<em>persist</em>) walaupun <em>scene</em> baru dipanggil atau diulang-ulang.
+Variabel ini dapat dipanggil dari <em>script</em> manapun.</p>
+<p>Pertama, klik kanan folder <code>scripts</code> lalu tekan <strong>New Script</strong>:</p>
+<p><img alt="Create New Script" src="../tutorials/tutorial-6/images/NewScript.PNG" /></p>
+<p>Beri nama berkas <em>script</em> tersebut <code>global.gd</code> lalu isi dengan <em>script</em> berikut:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">extends</span><span class="w"> </span><span class="n">Node</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">lives</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
+</code></pre></div></td></tr></table></div>
+<p>Pada Project Settings, cari tab Autoload, lalu tambahkan script <code>global.gd</code> (tekan <em>icon</em> folder di sebelah tulisan <strong>Node Name</strong> lalu cari berkas <em>script</em>-nya).
+Setelah ditambahkan, akan muncul di dalam daftar. Pastikan kolom <code>Singleton</code> dalam kondisi aktif (<em>enabled</em>).</p>
+<p><img alt="Set Global Autoload" src="../tutorials/tutorial-6/images/Autoload.PNG" /></p>
+<p>Sekarang kita punya variable nyawa yang dapat diakses kapan saja. Mari kita tampilkan menggunakan <em>label</em>.</p>
+<blockquote>
+<p>Catatan: Bagi yang penasaran mengapa menggunakan <em>global variable</em> untuk contoh ini,
+alasannya karena tiap kali <em>reload scene</em>, player juga ikut <em>reload</em>.
+Maka <code>lives</code> disimpan dalam <em>global variable</em> agar tidak reset saat <em>scene reload</em>.</p>
+</blockquote>
+<h3 id="tutorials-tutorial-6-gui-scene">GUI Scene</h3>
+<p>Buat sebuah scene baru dan beri nama <code>Life Counter.tscn</code> dengan <em>root node</em> sebuah <code>MarginContainer</code>.
+Buat sebuah <em>child node</em> <code>Label</code>, lalu berikan <em>script</em>.
+Jangan lupa berikan <em>custom font</em> kepada <em>node</em> <code>Label</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">extends</span><span class="w"> </span><span class="n">Label</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_process</span><span class="p">(</span><span class="n">delta</span><span class="p">):</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lives : &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">global</span><span class="o">.</span><span class="n">lives</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Struktur akan terlihat seperti ini (<code>MarginContainer</code> telah di-<em>rename</em> menjadi "GUI"):</p>
+<p><img alt="GUI Structure" src="../tutorials/tutorial-6/images/GUI.PNG" /></p>
+<p>Pada <code>Level 1.tscn</code>, tambahkan sebuah <code>CanvasLayer</code> <em>node</em> sebagai <em>child node</em> dari <em>node</em> utama.
+<code>CanvasLayer</code> merupakan <em>node</em> yang membuat sebuah layer 2D tersendiri untuk seluruh <em>child</em>-nya.
+<code>CanvasLayer</code> berguna untuk membuat <em>background</em> untuk level, atau <em>user interface</em> seperti yang akan kita buat sekarang.</p>
+<p>Tambahkan <code>Life Counter.tscn</code> yang tadi kita buat sebagai <em>child node</em> dari <code>CanvasLayer</code>.
+Struktur <code>Level 1.tscn</code> akan terlihat seperti <em>screenshot</em> berikut:</p>
+<p><img alt="Level with GUI" src="../tutorials/tutorial-6/images/LevelStructure.PNG" /></p>
+<p>Coba jalankan <code>Level 1.tscn</code> kamu.
+Sekarang sudah muncul tampilan <em>life counter</em> di kiri atas yang mengikuti bentuk window yang ada.</p>
+<p><img alt="Level 1 No Life Loss" src="../tutorials/tutorial-6/images/Level1NoLifeLoss.gif" /></p>
+<p>Namun nyawa player belum berkurang ketika pemain mati.
+Waktunya melakukan sedikit <em>scripting</em>!</p>
+<p>Ubah script di <code>Area Trigger.gd</code> dengan kode berikut:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">extends</span><span class="w"> </span><span class="n">Area2D</span>
+
+<span class="k">export</span><span class="w"> </span><span class="p">(</span><span class="nb nb-Type">String</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">sceneName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Level 1&quot;</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_on_Area_Trigger_body_entered</span><span class="p">(</span><span class="n">body</span><span class="p">):</span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">current_scene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">get_current_scene</span><span class="p">()</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">body</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;Player&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">current_scene</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">sceneName</span><span class="p">:</span>
+<span class="w">            </span><span class="n">global</span><span class="o">.</span><span class="n">lives</span><span class="w"> </span><span class="o">-=</span><span class="mi">1</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">global</span><span class="o">.</span><span class="n">lives</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">):</span>
+<span class="w">            </span><span class="k">pass</span>
+<span class="w">        </span><span class="k">else</span><span class="p">:</span>
+<span class="w">            </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">change_scene</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="s2">&quot;res://scenes/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sceneName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;.tscn&quot;</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p><em>What's happening above?</em> Karena transisi dari level 1 ke 2 menggunakan fungsi yang sama,
+pertama kita periksa terlebih dahulu scene yang memanggil fungsi apakah sama dengan target scene (maka reload).
+Jika iya, nyawa berkurang satu. Baris <code>pass</code> di kondisi <code>global.lives == 0</code> akan kita isi sebentar lagi.
+(<em>you could probably already guess what goes there though</em>).</p>
+</blockquote>
+<p><img alt="Level 1 Life Loss" src="../tutorials/tutorial-6/images/Level1LifeLoss.gif" /></p>
+<p>Sekarang nyawa player berkurang saat mati. Namun kita belum memasukkan kondisi dimana nyawa player 0, yaitu <em>game over</em>.</p>
+<h2 id="tutorials-tutorial-6-latihan-membuat-layar-game-over">Latihan: Membuat Layar Game Over</h2>
+<p>Untuk membuat layar <em>game over</em>, langkah-langkahnya sama dengan membuat layar menu utama.
+Visualisasi layar <em>game over</em> di contoh tutorial ini berupa tulisan <code>GAME OVER</code> dengan warna latar merah.
+Jika ingin menambahkan warna latar, kita dapat menggunakan <em>node</em> <code>ColorRect</code>.</p>
+<p>Buatlah sebuah <em>scene</em> baru dan beri nama <code>Game Over.tscn</code>, lalu atur sebuah <code>ColorRect</code> sebagai <em>root node</em> di <em>scene</em> tersebut.
+Mirip seperti <code>MarginContainer</code> sebelumnya, pilih menu <strong>Layout</strong> pada <em>viewport</em> dan pilih <strong>Full Rect</strong> agar kotak mengikuti ukuran <em>window</em>.
+Silakan ubah warna sesuka hati.</p>
+<p><img alt="Setting Up Background Color" src="../tutorials/tutorial-6/images/BackgroundColor.png" /></p>
+<p>Tambahkan label bertuliskan "GAME OVER", dengan <code>DynamicFont</code> yang menurut kamu cocok, kemudian atur posisinya.
+Selesailah Game Over screen kita!</p>
+<p><img alt="Game Over Screen Finished" src="../tutorials/tutorial-6/images/GameOverDesu.png" /></p>
+<p>Sekarang bagaimana caranya agar saat nyawa pemain 0 akan menampilkan layar ini? Pada <code>Area Trigger.gd</code> ubah baris <code>pass</code> menjadi:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">change_scene</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="s2">&quot;res://scenes/Game Over.tscn&quot;</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+<p>Berhasil! Sekarang saat player nyawanya habis, layar <em>game over</em> akan muncul.</p>
+<p><img alt="Game Over Desu" src="../tutorials/tutorial-6/images/GameOverDesu.gif" /></p>
+<p>Selamat, tutorial ini sudah selesai!</p>
+<h2 id="tutorials-tutorial-6-latihan-mandiri-fitur-tambahan">Latihan Mandiri: Fitur Tambahan</h2>
+<p>Silakan baca referensi yang tersedia untuk membantu pengerjaan latihan mandiri.
+Di akhir tutorial, kamu diharapkan untuk mengerjakan minimal 2 (dua) dari beberapa contoh fitur tambahan berikut:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tombol pada layar <em>game over</em> untuk kembali ke menu utama.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Fitur Select Stage (yang konon sudah ada <em>button</em>-nya di main menu namun tidak dihiraukan).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Layar dan efek transisi antar level, dari level 1 ke level 2.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Dan lain-lain (bebas), selama fitur tersebut melibatkan implementasi menu dan GUI di dalam game. <em>Get creative!</em></li>
+</ul>
+<p>Jangan lupa untuk menjelaskan proses pengerjaan tutorial ini di dalam berkas <code>README.md</code>.
+Jika kamu melanjutkan Tutorial 4, silakan tambahkan subbab (<em>section</em>) baru di berkas <code>README.md</code> yang berisi penjelasan proses pengerjaan Tutorial 6.
+Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelaskan proses implementasi.</p>
+<h2 id="tutorials-tutorial-6-skema-penilaian">Skema Penilaian</h2>
+<p>Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:</p>
+<ul>
+<li><strong>4</strong> (<em><strong>A</strong></em>) apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi tim pengajar.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan 2 (dua) fitur tambahan yang merupakan bagian dari Latihan Mandiri, ditambah dengan memoles (<em>polishing</em>) lebih lanjut permainannya.</li>
+<li><strong>3</strong> (<em><strong>B</strong></em>) apabila kamu hanya mengerjakan tutorial dan latihan sesuai dengan instruksi.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan 2 (dua) fitur tambahan yang merupakan bagian dari Latihan Mandiri.</li>
+<li><strong>2</strong> (<em><strong>C</strong></em>) apabila kamu hanya mengerjakan tutorial hingga tuntas.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan namun tidak mengerjakan Latihan Mandiri.</li>
+<li><strong>1</strong> (<em><strong>D</strong></em>) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.
+  Nilai ini dapat dicapai apabila belum tuntas mengerjakan Latihan.</li>
+<li><strong>0</strong> (<em><strong>E</strong></em>) apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.</li>
+</ul>
+<h2 id="tutorials-tutorial-6-pengumpulan">Pengumpulan</h2>
+<p>Kumpulkan dengan memasukkan berkasnya ke dalam Git dan <em>push</em> ke repositori Git pengerjaan Tutorial 6.
+Ingat kembali instruksi di awal Tutorial 6, kamu dapat memilih membuat repositori baru khusus untuk pengerjaan Tutorial 6
+<strong>atau</strong> menggunakan repositori Tutorial 4 sebagai awalan untuk mengerjakan Tutorial 6.</p>
+<p>Apabila kamu mengerjakan latihan mandiri, pastikan <em>scene</em> dan <em>node</em> yang kamu buat dan ubah telah tercatat masuk ke dalam repositori Git.
+Kumpulkan tautan ke repositori Git hasil pengerjaan Tutorial 6 kamu di slot pengumpulan yang tersedia di SCELE.</p>
+<p>Tenggat waktu pengumpulan adalah <strong>Rabu, 17 April 2024, pukul 21:00</strong>.</p>
+<h2 id="tutorials-tutorial-6-referensi">Referensi</h2>
+<ul>
+<li><a href="https://docs.godotengine.org/en/3.1/getting_started/step_by_step/ui_main_menu.html">Main Menu</a></li>
+<li><a href="https://docs.godotengine.org/en/3.1/getting_started/step_by_step/ui_game_user_interface.html">GUI Design</a></li>
+<li><a href="https://www.kenney.nl/assets/platformer-pack-redux">Kenney Assets</a></li>
+<li>Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
+  gasal 2020/2021 Fakultas Ilmu Komputer Universitas Indonesia.</li>
+</ul>
+<h2 id="tutorials-tutorial-6-selingan-menarik-intermezzo">Selingan Menarik (Intermezzo)</h2>
+<p>Berikut ini adalah gambar <em>meme</em> yang diambil dari <a href="https://www.reddit.com/r/gachagaming/comments/13z8fva/when_you_play_too_many_gachas/">sebuah <em>thread</em> di Reddit</a>:</p>
+<p><img alt="GUI Berbagai Game Gacha" src="../tutorials/tutorial-6/images/gacha_guis.png" /></p>
+<p>Gambar tersebut menampilkan <em>screenshot</em> dari sebuah game yang diubah sehingga mengandung elemen-elemen GUI dari banyak game lain.
+Apa saja judul game yang bisa kamu kenali dari elemen GUI-nya pada <em>meme</em> tersebut?
+Jika kamu mengenali satu atau lebih elemen GUI di <em>screenshot</em> tersebut, apa fungsi elemen GUI tersebut di game aslinya?</p>
+<blockquote>
+<p>Silakan didiskusikan dengan rekan-rekan sekelas ketika membahas materi mengenai <em>Interface</em> pada game, atau dijadikan bahan obrolan santai di grup pertemanan masing-masing.</p>
+</blockquote></section><h1 class='nav-section-title-end'>Ended: Tutorials</h1><section class="print-page" id="exam-issue-template"><h1 id="exam-issue-template-exam-issue-template">Exam Issue Template</h1>
 <p>The following is the issue template for describing the programming task during
 the final exam. Each student will receive the issue on their own GitLab/GitHub
 repository.</p>
