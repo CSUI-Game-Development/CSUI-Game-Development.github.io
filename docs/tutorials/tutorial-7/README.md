@@ -1,29 +1,31 @@
 # Tutorial 7 - Basic 3D Game Mechanics & Level Design
 
-Selamat datang pada tutorial keenam kuliah Game Development. Pada tutorial
-kali ini, kamu akan mempelajari cara membuat game dalam bentuk tiga dimensi (3D).
+Selamat datang pada tutorial ketujuh kuliah Game Development.
+Pada tutorial kali ini, kamu akan mempelajari cara membuat game dalam bentuk tiga dimensi (3D).
+Spesifiknya, kamu akan belajar mengimplementasikan _game mechanics_ dan desain level sederhana di game 3D.
+
 Di akhir tutorial ini, diharapkan kamu paham cara menggunakan *node* 3D,
-penggunaan matematika untuk mengembangkan game 3D,
-dan cara berinteraksi dengan objek lain dengan *raycast*.
+mengimplementasikan interaksi objek di bidang 3D menggunakan teknik *raycast*,
+dan membuat level bidang 3D sederhana.
 
 ## Daftar Isi
 
-- [Tutorial 7 - Basic 3D Game Mechanics](#tutorial-7---basic-3d-game-mechanics)
+- [Tutorial 7 - Basic 3D Game Mechanics & Level Design](#tutorial-7---basic-3d-game-mechanics--level-design)
   - [Daftar Isi](#daftar-isi)
   - [Pengantar](#pengantar)
     - [2D vs 3D](#2d-vs-3d)
     - [Objectives & Prerequisites](#objectives--prerequisites)
   - [Latihan: Basic 3D Plane Movement](#latihan-basic-3d-plane-movement)
   - [Latihan: Object Interaction](#latihan-object-interaction)
-  - [TBD](#latihan-mandiri-bonus-to-do)
-  - [Instruksi Pengerjaan](#instruksi-pengerjaan)
+  - [Latihan: Membuat Level 3D Menggunakan CSG](#latihan-membuat-level-3d-menggunakan-csg)
+  - [Latihan Mandiri: Eksplorasi Mechanics 3D](#latihan-mandiri-eksplorasi-mechanics-3d)
   - [Skema Penilaian](#skema-penilaian)
   - [Pengumpulan](#pengumpulan)
   - [Referensi](#referensi)
 
 ## Pengantar
 
-> Note: Tersedia template game untuk tutorial ini, namun tidak diwajibkan untuk menggunakannya.
+> Note: [Templat proyek tutorial 7 tersedia di GitHub (klik)](https://github.com/CSUI-Game-Development/tutorial-7-template).
 
 ### 2D vs 3D
 
@@ -248,56 +250,212 @@ Fungsi ini mengecek jika ```RayCast``` menyentuh sebuah objek lain yang berupa *
 dan pemain dapat menekan tombol (misalnya E) untuk berinteraksi dengan objek tersebut. Dalam
 kasus ini, berinteraksi dengan *switch* akan mematikan atau menyalakan lampu.
 
-Selamat, kamu sudah menyelesaikan tutorial ini!
+## Membuat Level 3D Menggunakan Constructive Solid Geometry
 
-## Latihan Mandiri: Bonus To Do
+Sekarang mari melihat sebuah fitur _engine_ Godot yang dapat digunakan untuk membuat level 3D.
+Godot memiliki fitur Constructive Solid Geometry (CSG) yang dapat digunakan untuk membuat komposisi bentuk-bentuk 3D sederhana sehingga menghasilkan objek 3D.
 
-Apabila masih ada waktu atau ingin lanjut berlatih mandiri, silakan baca referensi yang tersedia untuk belajar mengimplementasikan mekanik tambahan.
-Tidak ada kriteria khusus untuk ini, kamu bebas menambahkan apapun yang kamu suka. Beberapa contoh yang dapat diimplementasikan:
+Godot menyediakan _node_ CSG yang mempunyai 3 operasi boolean, diantaranya:
 
-- Item pickup
-- Sprinting
-- Crouching
-- Estetika (User Interface dan penggunaan asset 3D)
-- dll.
+- Union: Penggabungan bentuk primitif dengan menghilangkan intersection.
+- Intersection: Membuat sisa bentuk hasil penggabungan, sisanya dihilangkan.
+- Substraction: Bentuk primitif kedua hasil gabungan dihilangkan dari yang
+pertama dengan bagian yang menempel pada bentuk 1 juga hilang.
 
-Jika mengerjakan fitur tambahan, buat file baru bernama `T7_[NPM].md` dimana
-`[NPM]` adalah NPM kamu (misal: `T7_1506757913`) di folder yang sama dengan
-[`README.md`](README.md) ini. Tulis teks menggunakan format [Markdown](https://docs.gitlab.com/ee/user/markdown.html).
+Contoh 3D level design dalam beberapa game:
 
-## Instruksi Pengerjaan
+![Legend of Zelda: Breath of The Wild](images/BOTW.jpg)
+![Kingdom Hearts III](images/KHIII.jpg)
 
-1. Dalam repositori pribadi kamu, silakan sinkronisasi _branch_ `master` dengan
-   repositori _upstream_. Instruksi lebih lanjut bisa dibaca [disini](https://help.github.com/en/articles/syncing-a-fork).
-2. Jika terdapat _conflict_, mohon diselesaikan secara damai. Jika tidak yakin
-   bagaimana caranya, silakan ambil mata kuliah *Advanced Programming* atau
-   baca [ini](https://help.github.com/en/articles/resolving-a-merge-conflict-using-the-command-line).
-3. Setelah semua selesai, buat _branch_ baru dari _branch_ `master` dengan nama
-   `tutorial-x` dimana `x` adalah nomor tutorial (misal: `tutorial-7`).
-4. Ganti _current branch_ menjadi `tutorial-x` tersebut, silakan kerjakan
-   tutorial di dalam _branch_ yang bersangkutan. Setiap _branch_ tutorial
-   **tidak perlu** di _merge_ ke _branch_ `master`.
+Untuk keperluan tutorial kali ini, CSG sudah cukup untuk membuat level 3D secara sederhana atau sekedar membuat _prototype_ level 3D.
+Pada pengembangan game 3D yang lebih serius, CSG biasanya hanya digunakan untuk _blocking out_, atau membuat desain kasar dari sebuah level 3D.
+(Anggaplah seperti membuat _wireframe_, namun untuk desain levelnya).
+Barulah setelah itu, model 3D dari level sesungguhnya dimasukkan ke dalam level, menggantikan objek 3D primitf yang dibuat menggunakan CSG.
+
+## Latihan: Membuat Level 3D Menggunakan CSG
+
+Buka kembali _scene_ yang dikerjakan sebelumnya ketika berlatih mengimplementasikan _game mechanics_ 3D.
+Dalam _scene_ tersebut akan terdapat player dengan _script_ yang sudah kalian implementasikan.
+
+![Tampilan Level 1.tscn](images/Level1Blank.jpg)
+
+Klik kanan pada node ```Level 1``` dan pilih ```Add Child Node```, kemudian pilih ```Spatial```
+dan rename node tersebut menjadi ```World 1```.
+
+Setelah World 1 selesai dibuat, save node tersebut menjadi sebuah scene baru dengan klik kanan
+pada node World 1 lalu klik ```Save Branch As Scene``` dengan nama ```World 1.tscn```.
+
+### Empty Room
+
+Masuk ke Editor Scene untuk World 1, disini kita akan memanfaatkan CSG untuk membuat ruangan kosong.
+Pada Node World 1, buat child node baru dengan memilih ```CSGBox``` dan beri nama ```Room 1```.
+
+Pada tab Inspector cek ```Invert Faces``` untuk membuat mesh menjadi inverted seperti tampilan Box Kosong dan
+juga Cek ```Use Collision``` agar player tidak jatuh ketika berada di dalam ruangan, untuk sekarang Operation
+pada CSG yang kita buat masih menggunakan mode ```Union```.
+
+Masih pada tab Inspector, ubah ```Width```, ```Height```, dan ```Width``` dalam CSGBox sesuai keinginanmu lalu
+atur posisi box pada *Viewport*.
+
+![Example Room](images/ExampleRoom.jpg)
+
+Save Scene tersebut lalu kembali ke Scene ```Level 1``` dan coba Play.
+
+> Note: Anda dapat menambahkan Node OmniLight atau DirectionalLight untuk memudahkan pencahayaan pada saat membuat objek 3D.
+
+### Making 3D Objects
+
+Saat ini game terlihat membosankan, tidak ada gimmick apapun dan hanya ada ruang kosong. Kali ini kita akan mencoba
+untuk membuat objek 3D untuk menghias room yang telah kita buat.
+
+Untuk memudahkan penglihatan pada *viewport*, anda dapat mengubah proyeksi menjadi *Orthogonal* dengan mengklik menu
+pojok kiri atas dalam *viewport*.
+
+![Changing Projection](images/ChangeProjection.jpg)
+
+Buat sebuah 3D Scene baru dan beri nama ```ObjLamp```. Tambahkan child node baru dengan memilih ```CSGCombiner``` dan
+beri nama ```lamp```. ```CSGCombiner``` berfungsi sebagai tempat untuk mengatur komponen CSG di dalamnya, jangan lupa
+mencentang ```Use Collision``` karena objek yang akan dibuat merupakan benda padat.
+
+Dalam ```lamp``` masukkan child note untuk membentuk bagian lampu.
+
+- Buat ```CSGCylinder``` dengan cek *cone* pada tab Inspector untuk bagian bawah lampu.
+- Buat ```CSGCylinder``` dan atur ukuran pada tab Inspector untuk menjadi tiang lampu.
+- Buat ```CSGPolygon``` dengan memilih Mode *Spin* pada tab Inspector, lalu ubah proyeksi menjadi *Front View* dan atur
+
+Titik pada polygon hingga membentuk trapesium untuk membentuk penutup lampu.
+
+![CSGPolygon Inspector](images/PolygonInspector.jpg)
+![CSGPolygon Trapezoid](images/PolygonTrapezoid.jpg)
+
+Setelah jadi, atur ketiga child node sehingga membentuk sebuah lampu! Save lalu masukkan Scene tersebut ke dalam Scene
+ World 1 dengan klik kanan pada Node World 1 pilih ```Instance Child Scene```.
+
+### Coloring 3D Objects
+
+Masuk kembali pada Scene ```ObjLamp```. Untuk mewarnai penutup lampu, pilih CSGPolygon yang sudah dibuat lalu pada tab
+Inspector klik dropdown ```Material``` dan pilih ```New SpatialMaterial```.
+
+![Inspector Material](images/NewSpatialMaterial.jpg)
+
+Setelah SpatialMaterial dipilih, klik gambar bola yang muncul pada menu ```Material```. Disini anda dapat mengatur tekstur
+dari CSG yang dibuat, untuk sekarang klik menu ```Albedo``` dan ganti warna sesuai yang kalian inginkan.
+
+![Albedo Change Color](images/AlbedoColor.jpg)
+
+Cara pewarnaan ini berlaku untuk semua objek CSG yang kalian buat kecuali ```CSGCombiner```.
+
+### Adding Obstacles
+
+Misalkan kita ingin menambahkan halangan untuk player dapat menuju goal seperti field yang berlubang atau jurang yang hanya dapat dilewati menggunakan function jump yang telah anda buat sebelumnya.
+
+Buka Scene ```World 1```, lalu buat ```CSGCombiner``` baru dan centang ```Use Collision``` pada tab Inspector. Lalu masukkan Node ```Room 1``` ke dalam CSGCombiner yang telah dibuat. Tambahkan 2 ```CSGBox``` ke dalam CSGCombiner masing-masing akan menjadi room yang baru dan lubang. Atur sedemikian rupa menggunakan operation ```Union``` untuk membuat ruang baru dan lubang.
+
+![Obstacle Mapping](images/ObstacleMap.jpg)
+![Obstacle](images/obstacle.jpg)
+
+Lalu tambahkan ```CSGBox``` lagi diluar CSGCombiner agar player bisa melompati lubang untuk menyebrang.
+
+![Jumping Path](images/path.jpg)
+
+### Adding Goal Condition
+
+Sebelumnya kamu telah telah belajar menggunakan signals pada 2D level, kali ini kita akan mencoba menggunakan signals kembali untuk menambahkan goal condition.
+
+Pertama buat scene baru (nama bebas) dengan ```Area``` sebagai root node.
+
+![New Area](images/AreaNode.jpg)
+
+Lalu tambahkan node ```CollisionShape``` sebagai child dari node ```Area``` tadi.
+Jangan lupa untuk membuat _collision shape_ pada node ```CollisionShape``` (Kamu seharusnya sudah pernah melakukannya pada tutorial sebelumnya) kali ini buat bentuk *Sphere*.
+
+![Area Hierarchy](images/AreaMap.jpg)
+
+Kemudian _attach_ sebuah script pada node ```Area``` (penamaan bebas).
+Hapus semua baris kecuali baris pertama, kita akan menggunakan _Signals_ untuk fitur ini.
+
+### Using Signals
+
+Pertama select node ```Area``` lalu buka tab ```Node```.
+Lalu pada subtab ```Signals``` pilih ```body_entered(Node body)``` dan klik tombol ```Connect``` di kanan bawah tab tersebut.
+
+![Signals](images/AreaSignals.jpg)
+
+Pastikan ```Area``` terpilih pada bagian ```Connect To Node```, isi ```Method In Node``` dengan nama fungsi yang kamu inginkan atau biarkan default.
+Jika sudah tekan tombol ```Connect```
+
+![Connect Signal](images/AreaSignalAdd.jpg)
+
+Maka script pada ```Area``` akan ditambah fungsi tersebut.
+
+![Area Script](images/AreaTriggerScript.jpg)
+
+Silakan tambah cuplikan dibawah pada script tersebut. (Jangan lupa ganti nama fungsi sesuai penamaan masing-masing)
+
+```
+extends Area
+
+export (String) var sceneName = "Level 1"
+
+func _on_Area_Trigger_body_entered(body):
+    if body.get_name() == "Player":
+        get_tree().change_scene(str("res://Scenes/" + sceneName + ".tscn"))
+```
+
+Secara singkat fungsi tersebut akan tereksekusi setiap ada object dengan tipe ```Node``` yang masuk area collision.
+Jika object tersebut adalah player, maka ubah root node (current scene) dengan variabel ```sceneName```.
+
+### Adding It to the Level
+
+Save scene dan script tersebut (Mulai sekarang disebut ```AreaTrigger```) dan buka kembali scene ```Level 1.tscn```.
+
+Kemudian tambahkan scene ```AreaTrigger``` sebagai child dari sprite tersebut, silakan atur scaling sesuai keperluan.
+Jangan lupa ubah variable ```Scene Name``` menjadi "Win Screen".
+
+![Camera Inspector](images/AreaInspector.jpg)
+
+Lakukan hal yang sama untuk area lubang namun dengan ```Scene Name``` diisi dengan "Level 1".
+Supaya ketika player jatuh ke jurang, scene akan di-reload.
+
+Selamat, tutorial ini sudah selesai!
+
+## Latihan Mandiri: Eksplorasi Mechanics 3D
+
+Silakan lanjutkan pengerjaan tutorial dengan mengeksplorasi bagaimana mengimplementasikan _game mechanics_ populer di game 3D.
+Berhubung game yang dicontohkan di tutorial ini adalah game dengan _genre_ FPS (First-Person Shooter), maka silakan coba implementasikan salah satu dari _mechanics_ berikut:
+
+- [ ] Pick up item & inventory system -- Player dapat mengambil sebuah objek pada level dan menyimpannya dalam sebuah sistem inventori
+- [ ] Sprinting & crouching -- Player dapat memilih untuk jalan dengan kecepatan normal, berlari, atau berjalan sambil jongkok dengan kecepatan yang lebih lambat dari biasanya
+
+Jika masih ada waktu atau masih penasaran, beberapa hal yang bisa coba kamu implementasikan:
+
+- [ ] Membuat animasi objek 3D
+- [ ] Membuat level 2 dari hasil pengerjaan tutorial
+- [ ] Memoles estetika dari permainan (misal: menambahkan HUD, menambahkan aset 3D dari luar)
+- Dan lain-lain. Silakan berkreasi!
 
 ## Skema Penilaian
 
 Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:
 
-1. **A** apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi
-   tim pengajar.
-2. **B** apabila kamu hanya mengerjakan tutorial sesuai yang diminta oleh
-   deskripsi tutorial.
-3. **C** apabila kamu mengerjakan tutorial secara minimalis atau tidak
-   lengkap/tuntas.
-4. **E** apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.
+- **4** (_**A**_) apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi tim pengajar.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan 2 (dua) _game mechanics_ tambahan yang merupakan bagian dari Latihan Mandiri, ditambah dengan memoles (_polishing_) lebih lanjut permainannya.
+- **3** (_**B**_) apabila kamu hanya mengerjakan tutorial dan latihan sesuai dengan instruksi.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan 1 (satu) _game mechanics_ tambahan yang merupakan bagian dari Latihan Mandiri.
+- **2** (_**C**_) apabila kamu hanya mengerjakan tutorial hingga tuntas.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan namun tidak mengerjakan Latihan Mandiri.
+- **1** (_**D**_) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.
+  Nilai ini dapat dicapai apabila belum tuntas mengerjakan Latihan.
+- **0** (_**E**_) apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.
 
 ## Pengumpulan
 
-Kumpulkan dengan memasukkan berkasnya ke dalam Git dan _push_ ke _fork_ materi
-tutorial ini di repositori milik pribadi. **Jangan _push_ atau membuat Merge
-Request ke repositori _upstream_ materi tutorial kecuali jika kamu ingin
-kontribusi materi atau memperbaiki materi yang sudah dipublikasikan!**
+Kumpulkan semua berkas pengerjaan tutorial dan latihan ke repositori Git.
+Jangan lupa untuk menjelaskan proses pengerjaan tutorial ini di dalam berkas `README.md` yang tersimpan di repositori Git yang sama dengan pengerjaan tutorial.
+Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelaskan proses implementasi.
+Kemudian, _push_ riwayat _commit_-nya ke repositori Git pengerjaan Tutorial 7 dan kumpulkan tautan (URL) repositori Git kamu di slot pengumpulan yang tersedia di SCELE.
 
-Tenggat waktu pengumpulan adalah **Jumat, 20 November 2020, pukul 21:00**.
+Tenggat waktu pengumpulan adalah **Rabu, 24 April 2024, pukul 21:00**.
 
 ## Referensi
 

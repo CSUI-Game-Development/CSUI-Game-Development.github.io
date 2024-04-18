@@ -30,8 +30,8 @@ Di akhir tutorial ini, diharapkan kamu paham dengan penggunaan CSG.
 
 ## Pengantar
 
-Pada tutorial sebelumnya, kita sudah mencoba untuk mengimplementasikan 
-mekanik game 3D sederhanda menggunakan *node* 3D. Kali ini, kita akan mencoba
+Pada tutorial sebelumnya, kita sudah mencoba untuk mengimplementasikan
+mekanik game 3D sederhana menggunakan *node* 3D. Kali ini, kita akan mencoba
 membuat level 3D menggunakan CSG (Constructive Solid Geometry).
 
 > IMPORTANT: Pada tutorial ini diperbolehkan untuk melanjutkan dari tutorial
@@ -40,7 +40,7 @@ kemarin. Cukup copy folder T7 ke dalam folder T8 sebelum mulai.
 ### Apa itu CSG?
 
 CSG atau *Constructive Solid Geometry* merupakan sebuah tool dalam Godot Engine
- untuk menggabungkan bentuk-bentuk 3D dasar/primitif seperti *Box* atau *Sphere* 
+ untuk menggabungkan bentuk-bentuk 3D dasar/primitif seperti *Box* atau *Sphere*
  agar tercipta suatu bentuk kompleks.
 
 ### Fitur CSG
@@ -49,7 +49,7 @@ Node CSG dalam Godot mempunyai 3 operasi boolean diantaranya:
 
 - Union: Penggabungan bentuk primitif dengan menghilangkan intersection.
 - Intersection: Membuat sisa bentuk hasil penggabungan, sisanya dihilangkan.
-- Substraction: Bentuk primitif kedua hasil gabungan dihilangkan dari yang 
+- Substraction: Bentuk primitif kedua hasil gabungan dihilangkan dari yang
 pertama dengan bagian yang menempel pada bentuk 1 juga hilang.
 
 ### 3D Level Example
@@ -84,13 +84,13 @@ pada node World 1 lalu klik ```Save Branch As Scene``` dengan nama ```World 1.ts
 ### Empty Room
 
 Masuk ke Editor Scene untuk World 1, disini kita akan memanfaatkan CSG untuk membuat ruangan kosong.
-Pada Node World 1, buat child node baru dengan memilih ```CSGBox``` dan beri nama ```Room 1```. 
+Pada Node World 1, buat child node baru dengan memilih ```CSGBox``` dan beri nama ```Room 1```.
 
 Pada tab Inspector cek ```Invert Faces``` untuk membuat mesh menjadi inverted seperti tampilan Box Kosong dan
 juga Cek ```Use Collision``` agar player tidak jatuh ketika berada di dalam ruangan, untuk sekarang Operation
-pada CSG yang kita buat masih menggunakan mode ```Union```. 
+pada CSG yang kita buat masih menggunakan mode ```Union```.
 
-Masih pada tab Inspector, ubah ```Width```, ```Height```, dan ```Width``` dalam CSGBox sesuai keinginanmu lalu 
+Masih pada tab Inspector, ubah ```Width```, ```Height```, dan ```Width``` dalam CSGBox sesuai keinginanmu lalu
 atur posisi box pada *Viewport*.
 
 ![Example Room](images/ExampleRoom.jpg)
