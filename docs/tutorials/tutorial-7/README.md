@@ -1,4 +1,4 @@
-# Tutorial 7 - Basic 3D Game Mechanics
+# Tutorial 7 - Basic 3D Game Mechanics & Level Design
 
 Selamat datang pada tutorial keenam kuliah Game Development. Pada tutorial
 kali ini, kamu akan mempelajari cara membuat game dalam bentuk tiga dimensi (3D).
@@ -6,16 +6,16 @@ Di akhir tutorial ini, diharapkan kamu paham cara menggunakan *node* 3D,
 penggunaan matematika untuk mengembangkan game 3D,
 dan cara berinteraksi dengan objek lain dengan *raycast*.
 
-## Daftar isi
+## Daftar Isi
 
 - [Tutorial 7 - Basic 3D Game Mechanics](#tutorial-7---basic-3d-game-mechanics)
-  - [Daftar isi](#daftar-isi)
+  - [Daftar Isi](#daftar-isi)
   - [Pengantar](#pengantar)
     - [2D vs 3D](#2d-vs-3d)
     - [Objectives & Prerequisites](#objectives--prerequisites)
-  - [Basic 3D Plane Movement](#basic-3d-plane-movement)
-  - [Object Interaction](#object-interaction)
-  - [Bonus To Do](#bonus-to-do)
+  - [Latihan: Basic 3D Plane Movement](#latihan-basic-3d-plane-movement)
+  - [Latihan: Object Interaction](#latihan-object-interaction)
+  - [TBD](#latihan-mandiri-bonus-to-do)
   - [Instruksi Pengerjaan](#instruksi-pengerjaan)
   - [Skema Penilaian](#skema-penilaian)
   - [Pengumpulan](#pengumpulan)
@@ -54,7 +54,7 @@ pelajaran Aljabar Linear dan Fisika Dasar karena *physics* pada space 3D lebih k
 dengan pada space 2D. Terakhir, terdapat koordinat baru, yaitu koordinat Z, yang digunakan untuk
 menunjukkan arah depan/belakang.
 
-## Basic 3D Plane Movement
+## Latihan: Basic 3D Plane Movement
 
 Kita ingin membuat sebuah karakter yang dikendalikan oleh pemain di dunia 3D. Untuk itu,
 kita akan membuat sebuah objek ```KinematicBody``` (mirip dengan ```Kinematic2D```) yang dapat bergerak ke semua arah dan dapat melompat.
@@ -105,7 +105,7 @@ func _process(delta):
 
 func _physics_process(delta):
     var head_basis = head.get_global_transform().basis
-    
+
     var movement_vector = Vector3()
     if Input.is_action_pressed("movement_forward"):
         movement_vector -= head_basis.z
@@ -115,15 +115,15 @@ func _physics_process(delta):
         movement_vector -= head_basis.x
     if Input.is_action_pressed("movement_right"):
         movement_vector += head_basis.x
-    
+
     movement_vector = movement_vector.normalized()
-    
+
     velocity = velocity.linear_interpolate(movement_vector * speed, acceleration * delta)
     velocity.y -= gravity
-    
+
     if Input.is_action_just_pressed("jump") and is_on_floor():
         velocity.y += jump_power
-    
+
     velocity = move_and_slide(velocity, Vector3.UP)
 ```
 
@@ -163,7 +163,7 @@ var camera_x_rotation = 0
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		head.rotate_y(deg2rad(-event.relative.x * mouse_sensitivity))
-		
+
 		var x_delta = event.relative.y * mouse_sensitivity
 		if camera_x_rotation + x_delta > -90 and camera_x_rotation + x_delta < 90:
 			camera.rotate_x(deg2rad(-x_delta))
@@ -174,7 +174,7 @@ func _input(event):
 Kode tersebut berguna untuk merotasikan *node Head* ketika mouse bergerak, dan juga mencegah rotasi melebihi
 90 derajat ketika melihat ke atas atau bawah.
 
-## Object Interaction
+## Latihan: Object Interaction
 
 Pada *scene Level*, terdapat sebuah node *switch* yang digunakan untuk menyalakan atau mematikan lampu *OmniLight*.
 Agar objek *switch* tersebut dapat dilakukan sebuah interaksi (seperti mematikan dan menyalakan), tambahkan 2 buah script berikut:
@@ -238,7 +238,7 @@ func _ready():
 
 func _process(delta):
     var collider = get_collider()
-    
+
     if is_colliding() and collider is Interactable:
         if Input.is_action_just_pressed("interact"):
             collider.interact()
@@ -250,7 +250,7 @@ kasus ini, berinteraksi dengan *switch* akan mematikan atau menyalakan lampu.
 
 Selamat, kamu sudah menyelesaikan tutorial ini!
 
-## Bonus To Do
+## Latihan Mandiri: Bonus To Do
 
 Apabila masih ada waktu atau ingin lanjut berlatih mandiri, silakan baca referensi yang tersedia untuk belajar mengimplementasikan mekanik tambahan.
 Tidak ada kriteria khusus untuk ini, kamu bebas menambahkan apapun yang kamu suka. Beberapa contoh yang dapat diimplementasikan:
