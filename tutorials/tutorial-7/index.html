@@ -13,21 +13,25 @@
       
       
       
+        <link rel="prev" href="../tutorial-6/">
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+        <link rel="next" href="../../exam-issue-template/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
     
     
       
-        <title>Tutorial 7 - Basic 3D Game Mechanics - Game Development @ Faculty of Computer Science Universitas Indonesia</title>
+        <title>Tutorial 7 - Basic 3D Game Mechanics & Level Design - Game Development @ Faculty of Computer Science Universitas Indonesia</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.35e1ed30.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35e1ed30.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
       
       
 
@@ -46,11 +50,11 @@
       
     
     
-      <link rel="stylesheet" href="../css/print-site.css">
+      <link rel="stylesheet" href="../../css/print-site.css">
     
-      <link rel="stylesheet" href="../css/print-site-material.css">
+      <link rel="stylesheet" href="../../css/print-site-material.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -79,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tutorial-7-basic-3d-game-mechanics" class="md-skip">
+        <a href="#tutorial-7-basic-3d-game-mechanics-level-design" class="md-skip">
           Skip to content
         </a>
       
@@ -93,7 +97,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Game Development @ Faculty of Computer Science Universitas Indonesia" class="md-header__button md-logo" aria-label="Game Development @ Faculty of Computer Science Universitas Indonesia" data-md-component="logo">
+    <a href="../.." title="Game Development @ Faculty of Computer Science Universitas Indonesia" class="md-header__button md-logo" aria-label="Game Development @ Faculty of Computer Science Universitas Indonesia" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -113,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Tutorial 7 - Basic 3D Game Mechanics
+              Tutorial 7 - Basic 3D Game Mechanics & Level Design
             
           </span>
         </div>
@@ -180,7 +184,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
     
@@ -195,11 +199,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../tutorials/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
     
@@ -217,7 +223,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../exam-issue-template/" class="md-tabs__link">
+      <a href="../../exam-issue-template/" class="md-tabs__link">
         
   
     
@@ -251,7 +257,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Game Development @ Faculty of Computer Science Universitas Indonesia" class="md-nav__button md-logo" aria-label="Game Development @ Faculty of Computer Science Universitas Indonesia" data-md-component="logo">
+    <a href="../.." title="Game Development @ Faculty of Computer Science Universitas Indonesia" class="md-nav__button md-logo" aria-label="Game Development @ Faculty of Computer Science Universitas Indonesia" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -280,7 +286,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -297,6 +303,8 @@
       
   
   
+    
+  
   
     
     
@@ -329,6 +337,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -336,17 +348,17 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../tutorials/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -363,7 +375,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Tutorials
@@ -378,7 +390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tutorial-1/" class="md-nav__link">
+      <a href="../tutorial-1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -398,7 +410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tutorial-2/" class="md-nav__link">
+      <a href="../tutorial-2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -418,7 +430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tutorial-3/" class="md-nav__link">
+      <a href="../tutorial-3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -438,7 +450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tutorial-4/" class="md-nav__link">
+      <a href="../tutorial-4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -458,7 +470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tutorial-5/" class="md-nav__link">
+      <a href="../tutorial-5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -478,7 +490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tutorial-6/" class="md-nav__link">
+      <a href="../tutorial-6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -487,6 +499,211 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Tutorial 7 - Basic 3D Game Mechanics & Level Design
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial 7 - Basic 3D Game Mechanics & Level Design
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#daftar-isi" class="md-nav__link">
+    Daftar Isi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pengantar" class="md-nav__link">
+    Pengantar
+  </a>
+  
+    <nav class="md-nav" aria-label="Pengantar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2d-vs-3d" class="md-nav__link">
+    2D vs 3D
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objectives-prerequisites" class="md-nav__link">
+    Objectives &amp; Prerequisites
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#latihan-basic-3d-plane-movement" class="md-nav__link">
+    Latihan: Basic 3D Plane Movement
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#latihan-object-interaction" class="md-nav__link">
+    Latihan: Object Interaction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#membuat-level-3d-menggunakan-constructive-solid-geometry" class="md-nav__link">
+    Membuat Level 3D Menggunakan Constructive Solid Geometry
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#latihan-membuat-level-3d-menggunakan-csg" class="md-nav__link">
+    Latihan: Membuat Level 3D Menggunakan CSG
+  </a>
+  
+    <nav class="md-nav" aria-label="Latihan: Membuat Level 3D Menggunakan CSG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#empty-room" class="md-nav__link">
+    Empty Room
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-3d-objects" class="md-nav__link">
+    Making 3D Objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coloring-3d-objects" class="md-nav__link">
+    Coloring 3D Objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-obstacles" class="md-nav__link">
+    Adding Obstacles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-goal-condition" class="md-nav__link">
+    Adding Goal Condition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-signals" class="md-nav__link">
+    Using Signals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-it-to-the-level" class="md-nav__link">
+    Adding It to the Level
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#latihan-mandiri-eksplorasi-mechanics-3d" class="md-nav__link">
+    Latihan Mandiri: Eksplorasi Mechanics 3D
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skema-penilaian" class="md-nav__link">
+    Skema Penilaian
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pengumpulan" class="md-nav__link">
+    Pengumpulan
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referensi" class="md-nav__link">
+    Referensi
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -505,7 +722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../exam-issue-template/" class="md-nav__link">
+      <a href="../../exam-issue-template/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -546,7 +763,7 @@
       
         <li class="md-nav__item">
   <a href="#daftar-isi" class="md-nav__link">
-    Daftar isi
+    Daftar Isi
   </a>
   
 </li>
@@ -579,29 +796,91 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#basic-3d-plane-movement" class="md-nav__link">
-    Basic 3D Plane Movement
+  <a href="#latihan-basic-3d-plane-movement" class="md-nav__link">
+    Latihan: Basic 3D Plane Movement
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#object-interaction" class="md-nav__link">
-    Object Interaction
+  <a href="#latihan-object-interaction" class="md-nav__link">
+    Latihan: Object Interaction
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bonus-to-do" class="md-nav__link">
-    Bonus To Do
+  <a href="#membuat-level-3d-menggunakan-constructive-solid-geometry" class="md-nav__link">
+    Membuat Level 3D Menggunakan Constructive Solid Geometry
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#instruksi-pengerjaan" class="md-nav__link">
-    Instruksi Pengerjaan
+  <a href="#latihan-membuat-level-3d-menggunakan-csg" class="md-nav__link">
+    Latihan: Membuat Level 3D Menggunakan CSG
+  </a>
+  
+    <nav class="md-nav" aria-label="Latihan: Membuat Level 3D Menggunakan CSG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#empty-room" class="md-nav__link">
+    Empty Room
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-3d-objects" class="md-nav__link">
+    Making 3D Objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coloring-3d-objects" class="md-nav__link">
+    Coloring 3D Objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-obstacles" class="md-nav__link">
+    Adding Obstacles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-goal-condition" class="md-nav__link">
+    Adding Goal Condition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-signals" class="md-nav__link">
+    Using Signals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-it-to-the-level" class="md-nav__link">
+    Adding It to the Level
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#latihan-mandiri-eksplorasi-mechanics-3d" class="md-nav__link">
+    Latihan Mandiri: Eksplorasi Mechanics 3D
   </a>
   
 </li>
@@ -641,7 +920,7 @@
                 
 
 
-    <a href="../print_page/" title="Print Site" class="md-content__button md-icon">
+    <a href="../../print_page/" title="Print Site" class="md-content__button md-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 3H6v4h12m1 5a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1m-3 7H8v-5h8m3-6H5a3 3 0 0 0-3 3v6h4v4h12v-4h4v-6a3 3 0 0 0-3-3Z"/></svg>
     </a>
 
@@ -650,32 +929,33 @@
                   
 
 
-<h1 id="tutorial-7-basic-3d-game-mechanics">Tutorial 7 - Basic 3D Game Mechanics</h1>
-<p>Selamat datang pada tutorial keenam kuliah Game Development. Pada tutorial
-kali ini, kamu akan mempelajari cara membuat game dalam bentuk tiga dimensi (3D).
-Di akhir tutorial ini, diharapkan kamu paham cara menggunakan <em>node</em> 3D,
-penggunaan matematika untuk mengembangkan game 3D,
-dan cara berinteraksi dengan objek lain dengan <em>raycast</em>.</p>
-<h2 id="daftar-isi">Daftar isi</h2>
+<h1 id="tutorial-7-basic-3d-game-mechanics-level-design">Tutorial 7 - Basic 3D Game Mechanics &amp; Level Design</h1>
+<p>Selamat datang pada tutorial ketujuh kuliah Game Development.
+Pada tutorial kali ini, kamu akan mempelajari cara membuat game dalam bentuk tiga dimensi (3D).
+Spesifiknya, kamu akan belajar mengimplementasikan <em>game mechanics</em> dan desain level sederhana di game 3D.</p>
+<p>Di akhir tutorial ini, diharapkan kamu paham cara menggunakan <em>node</em> 3D,
+mengimplementasikan interaksi objek di bidang 3D menggunakan teknik <em>raycast</em>,
+dan membuat level bidang 3D sederhana.</p>
+<h2 id="daftar-isi">Daftar Isi</h2>
 <ul>
-<li><a href="#tutorial-7---basic-3d-game-mechanics">Tutorial 7 - Basic 3D Game Mechanics</a></li>
-<li><a href="#daftar-isi">Daftar isi</a></li>
+<li><a href="#tutorial-7---basic-3d-game-mechanics--level-design">Tutorial 7 - Basic 3D Game Mechanics &amp; Level Design</a></li>
+<li><a href="#daftar-isi">Daftar Isi</a></li>
 <li><a href="#pengantar">Pengantar</a><ul>
 <li><a href="#2d-vs-3d">2D vs 3D</a></li>
 <li><a href="#objectives--prerequisites">Objectives &amp; Prerequisites</a></li>
 </ul>
 </li>
-<li><a href="#basic-3d-plane-movement">Basic 3D Plane Movement</a></li>
-<li><a href="#object-interaction">Object Interaction</a></li>
-<li><a href="#bonus-to-do">Bonus To Do</a></li>
-<li><a href="#instruksi-pengerjaan">Instruksi Pengerjaan</a></li>
+<li><a href="#latihan-basic-3d-plane-movement">Latihan: Basic 3D Plane Movement</a></li>
+<li><a href="#latihan-object-interaction">Latihan: Object Interaction</a></li>
+<li><a href="#latihan-membuat-level-3d-menggunakan-csg">Latihan: Membuat Level 3D Menggunakan CSG</a></li>
+<li><a href="#latihan-mandiri-eksplorasi-mechanics-3d">Latihan Mandiri: Eksplorasi Mechanics 3D</a></li>
 <li><a href="#skema-penilaian">Skema Penilaian</a></li>
 <li><a href="#pengumpulan">Pengumpulan</a></li>
 <li><a href="#referensi">Referensi</a></li>
 </ul>
 <h2 id="pengantar">Pengantar</h2>
 <blockquote>
-<p>Note: Tersedia template game untuk tutorial ini, namun tidak diwajibkan untuk menggunakannya.</p>
+<p>Note: <a href="https://github.com/CSUI-Game-Development/tutorial-7-template">Templat proyek tutorial 7 tersedia di GitHub (klik)</a>.</p>
 </blockquote>
 <h3 id="2d-vs-3d">2D vs 3D</h3>
 <p>Pada tutorial yang dilakukan sebelum masa UTS, kita sudah membuat game dua dimensi (2D)
@@ -700,7 +980,7 @@ digunakan pada pengembangan game 2D tidak akan bekerja pada space 3D, sehingga k
 pelajaran Aljabar Linear dan Fisika Dasar karena <em>physics</em> pada space 3D lebih kompleks dibandingkan
 dengan pada space 2D. Terakhir, terdapat koordinat baru, yaitu koordinat Z, yang digunakan untuk
 menunjukkan arah depan/belakang.</p>
-<h2 id="basic-3d-plane-movement">Basic 3D Plane Movement</h2>
+<h2 id="latihan-basic-3d-plane-movement">Latihan: Basic 3D Plane Movement</h2>
 <p>Kita ingin membuat sebuah karakter yang dikendalikan oleh pemain di dunia 3D. Untuk itu,
 kita akan membuat sebuah objek <code>KinematicBody</code> (mirip dengan <code>Kinematic2D</code>) yang dapat bergerak ke semua arah dan dapat melompat.</p>
 <p>Buat sebuah <em>Scene</em> baru, tambahkan <em>node</em> <code>KinematicBody</code>, rename menjadi <em>Player</em>
@@ -862,7 +1142,7 @@ func _input(event):
 </code></pre></div></td></tr></table></div>
 <p>Kode tersebut berguna untuk merotasikan <em>node Head</em> ketika mouse bergerak, dan juga mencegah rotasi melebihi
 90 derajat ketika melihat ke atas atau bawah.</p>
-<h2 id="object-interaction">Object Interaction</h2>
+<h2 id="latihan-object-interaction">Latihan: Object Interaction</h2>
 <p>Pada <em>scene Level</em>, terdapat sebuah node <em>switch</em> yang digunakan untuk menyalakan atau mematikan lampu <em>OmniLight</em>.
 Agar objek <em>switch</em> tersebut dapat dilakukan sebuah interaksi (seperti mematikan dan menyalakan), tambahkan 2 buah script berikut:</p>
 <blockquote>
@@ -956,50 +1236,155 @@ func _process(delta):
 <p>Fungsi ini mengecek jika <code>RayCast</code> menyentuh sebuah objek lain yang berupa <em>Interactable</em>,
 dan pemain dapat menekan tombol (misalnya E) untuk berinteraksi dengan objek tersebut. Dalam
 kasus ini, berinteraksi dengan <em>switch</em> akan mematikan atau menyalakan lampu.</p>
-<p>Selamat, kamu sudah menyelesaikan tutorial ini!</p>
-<h2 id="bonus-to-do">Bonus To Do</h2>
-<p>Apabila masih ada waktu atau ingin lanjut berlatih mandiri, silakan baca referensi yang tersedia untuk belajar mengimplementasikan mekanik tambahan.
-Tidak ada kriteria khusus untuk ini, kamu bebas menambahkan apapun yang kamu suka. Beberapa contoh yang dapat diimplementasikan:</p>
+<h2 id="membuat-level-3d-menggunakan-constructive-solid-geometry">Membuat Level 3D Menggunakan Constructive Solid Geometry</h2>
+<p>Sekarang mari melihat sebuah fitur <em>engine</em> Godot yang dapat digunakan untuk membuat level 3D.
+Godot memiliki fitur Constructive Solid Geometry (CSG) yang dapat digunakan untuk membuat komposisi bentuk-bentuk 3D sederhana sehingga menghasilkan objek 3D.</p>
+<p>Godot menyediakan <em>node</em> CSG yang mempunyai 3 operasi boolean, diantaranya:</p>
 <ul>
-<li>Item pickup</li>
-<li>Sprinting</li>
-<li>Crouching</li>
-<li>Estetika (User Interface dan penggunaan asset 3D)</li>
-<li>dll.</li>
+<li>Union: Penggabungan bentuk primitif dengan menghilangkan intersection.</li>
+<li>Intersection: Membuat sisa bentuk hasil penggabungan, sisanya dihilangkan.</li>
+<li>Substraction: Bentuk primitif kedua hasil gabungan dihilangkan dari yang
+pertama dengan bagian yang menempel pada bentuk 1 juga hilang.</li>
 </ul>
-<p>Jika mengerjakan fitur tambahan, buat file baru bernama <code>T7_[NPM].md</code> dimana
-<code>[NPM]</code> adalah NPM kamu (misal: <code>T7_1506757913</code>) di folder yang sama dengan
-<a href="./"><code>README.md</code></a> ini. Tulis teks menggunakan format <a href="https://docs.gitlab.com/ee/user/markdown.html">Markdown</a>.</p>
-<h2 id="instruksi-pengerjaan">Instruksi Pengerjaan</h2>
-<ol>
-<li>Dalam repositori pribadi kamu, silakan sinkronisasi <em>branch</em> <code>master</code> dengan
-   repositori <em>upstream</em>. Instruksi lebih lanjut bisa dibaca <a href="https://help.github.com/en/articles/syncing-a-fork">disini</a>.</li>
-<li>Jika terdapat <em>conflict</em>, mohon diselesaikan secara damai. Jika tidak yakin
-   bagaimana caranya, silakan ambil mata kuliah <em>Advanced Programming</em> atau
-   baca <a href="https://help.github.com/en/articles/resolving-a-merge-conflict-using-the-command-line">ini</a>.</li>
-<li>Setelah semua selesai, buat <em>branch</em> baru dari <em>branch</em> <code>master</code> dengan nama
-   <code>tutorial-x</code> dimana <code>x</code> adalah nomor tutorial (misal: <code>tutorial-7</code>).</li>
-<li>Ganti <em>current branch</em> menjadi <code>tutorial-x</code> tersebut, silakan kerjakan
-   tutorial di dalam <em>branch</em> yang bersangkutan. Setiap <em>branch</em> tutorial
-   <strong>tidak perlu</strong> di <em>merge</em> ke <em>branch</em> <code>master</code>.</li>
-</ol>
+<p>Contoh 3D level design dalam beberapa game:</p>
+<p><img alt="Legend of Zelda: Breath of The Wild" src="images/BOTW.jpg" />
+<img alt="Kingdom Hearts III" src="images/KHIII.jpg" /></p>
+<p>Untuk keperluan tutorial kali ini, CSG sudah cukup untuk membuat level 3D secara sederhana atau sekedar membuat <em>prototype</em> level 3D.
+Pada pengembangan game 3D yang lebih serius, CSG biasanya hanya digunakan untuk <em>blocking out</em>, atau membuat desain kasar dari sebuah level 3D.
+(Anggaplah seperti membuat <em>wireframe</em>, namun untuk desain levelnya).
+Barulah setelah itu, model 3D dari level sesungguhnya dimasukkan ke dalam level, menggantikan objek 3D primitf yang dibuat menggunakan CSG.</p>
+<h2 id="latihan-membuat-level-3d-menggunakan-csg">Latihan: Membuat Level 3D Menggunakan CSG</h2>
+<p>Buka kembali <em>scene</em> yang dikerjakan sebelumnya ketika berlatih mengimplementasikan <em>game mechanics</em> 3D.
+Dalam <em>scene</em> tersebut akan terdapat player dengan <em>script</em> yang sudah kalian implementasikan.</p>
+<p><img alt="Tampilan Level 1.tscn" src="images/Level1Blank.jpg" /></p>
+<p>Klik kanan pada node <code>Level 1</code> dan pilih <code>Add Child Node</code>, kemudian pilih <code>Spatial</code>
+dan rename node tersebut menjadi <code>World 1</code>.</p>
+<p>Setelah World 1 selesai dibuat, save node tersebut menjadi sebuah scene baru dengan klik kanan
+pada node World 1 lalu klik <code>Save Branch As Scene</code> dengan nama <code>World 1.tscn</code>.</p>
+<h3 id="empty-room">Empty Room</h3>
+<p>Masuk ke Editor Scene untuk World 1, disini kita akan memanfaatkan CSG untuk membuat ruangan kosong.
+Pada Node World 1, buat child node baru dengan memilih <code>CSGBox</code> dan beri nama <code>Room 1</code>.</p>
+<p>Pada tab Inspector cek <code>Invert Faces</code> untuk membuat mesh menjadi inverted seperti tampilan Box Kosong dan
+juga Cek <code>Use Collision</code> agar player tidak jatuh ketika berada di dalam ruangan, untuk sekarang Operation
+pada CSG yang kita buat masih menggunakan mode <code>Union</code>.</p>
+<p>Masih pada tab Inspector, ubah <code>Width</code>, <code>Height</code>, dan <code>Width</code> dalam CSGBox sesuai keinginanmu lalu
+atur posisi box pada <em>Viewport</em>.</p>
+<p><img alt="Example Room" src="images/ExampleRoom.jpg" /></p>
+<p>Save Scene tersebut lalu kembali ke Scene <code>Level 1</code> dan coba Play.</p>
+<blockquote>
+<p>Note: Anda dapat menambahkan Node OmniLight atau DirectionalLight untuk memudahkan pencahayaan pada saat membuat objek 3D.</p>
+</blockquote>
+<h3 id="making-3d-objects">Making 3D Objects</h3>
+<p>Saat ini game terlihat membosankan, tidak ada gimmick apapun dan hanya ada ruang kosong. Kali ini kita akan mencoba
+untuk membuat objek 3D untuk menghias room yang telah kita buat.</p>
+<p>Untuk memudahkan penglihatan pada <em>viewport</em>, anda dapat mengubah proyeksi menjadi <em>Orthogonal</em> dengan mengklik menu
+pojok kiri atas dalam <em>viewport</em>.</p>
+<p><img alt="Changing Projection" src="images/ChangeProjection.jpg" /></p>
+<p>Buat sebuah 3D Scene baru dan beri nama <code>ObjLamp</code>. Tambahkan child node baru dengan memilih <code>CSGCombiner</code> dan
+beri nama <code>lamp</code>. <code>CSGCombiner</code> berfungsi sebagai tempat untuk mengatur komponen CSG di dalamnya, jangan lupa
+mencentang <code>Use Collision</code> karena objek yang akan dibuat merupakan benda padat.</p>
+<p>Dalam <code>lamp</code> masukkan child note untuk membentuk bagian lampu.</p>
+<ul>
+<li>Buat <code>CSGCylinder</code> dengan cek <em>cone</em> pada tab Inspector untuk bagian bawah lampu.</li>
+<li>Buat <code>CSGCylinder</code> dan atur ukuran pada tab Inspector untuk menjadi tiang lampu.</li>
+<li>Buat <code>CSGPolygon</code> dengan memilih Mode <em>Spin</em> pada tab Inspector, lalu ubah proyeksi menjadi <em>Front View</em> dan atur</li>
+</ul>
+<p>Titik pada polygon hingga membentuk trapesium untuk membentuk penutup lampu.</p>
+<p><img alt="CSGPolygon Inspector" src="images/PolygonInspector.jpg" />
+<img alt="CSGPolygon Trapezoid" src="images/PolygonTrapezoid.jpg" /></p>
+<p>Setelah jadi, atur ketiga child node sehingga membentuk sebuah lampu! Save lalu masukkan Scene tersebut ke dalam Scene
+ World 1 dengan klik kanan pada Node World 1 pilih <code>Instance Child Scene</code>.</p>
+<h3 id="coloring-3d-objects">Coloring 3D Objects</h3>
+<p>Masuk kembali pada Scene <code>ObjLamp</code>. Untuk mewarnai penutup lampu, pilih CSGPolygon yang sudah dibuat lalu pada tab
+Inspector klik dropdown <code>Material</code> dan pilih <code>New SpatialMaterial</code>.</p>
+<p><img alt="Inspector Material" src="images/NewSpatialMaterial.jpg" /></p>
+<p>Setelah SpatialMaterial dipilih, klik gambar bola yang muncul pada menu <code>Material</code>. Disini anda dapat mengatur tekstur
+dari CSG yang dibuat, untuk sekarang klik menu <code>Albedo</code> dan ganti warna sesuai yang kalian inginkan.</p>
+<p><img alt="Albedo Change Color" src="images/AlbedoColor.jpg" /></p>
+<p>Cara pewarnaan ini berlaku untuk semua objek CSG yang kalian buat kecuali <code>CSGCombiner</code>.</p>
+<h3 id="adding-obstacles">Adding Obstacles</h3>
+<p>Misalkan kita ingin menambahkan halangan untuk player dapat menuju goal seperti field yang berlubang atau jurang yang hanya dapat dilewati menggunakan function jump yang telah anda buat sebelumnya.</p>
+<p>Buka Scene <code>World 1</code>, lalu buat <code>CSGCombiner</code> baru dan centang <code>Use Collision</code> pada tab Inspector. Lalu masukkan Node <code>Room 1</code> ke dalam CSGCombiner yang telah dibuat. Tambahkan 2 <code>CSGBox</code> ke dalam CSGCombiner masing-masing akan menjadi room yang baru dan lubang. Atur sedemikian rupa menggunakan operation <code>Union</code> untuk membuat ruang baru dan lubang.</p>
+<p><img alt="Obstacle Mapping" src="images/ObstacleMap.jpg" />
+<img alt="Obstacle" src="images/obstacle.jpg" /></p>
+<p>Lalu tambahkan <code>CSGBox</code> lagi diluar CSGCombiner agar player bisa melompati lubang untuk menyebrang.</p>
+<p><img alt="Jumping Path" src="images/path.jpg" /></p>
+<h3 id="adding-goal-condition">Adding Goal Condition</h3>
+<p>Sebelumnya kamu telah telah belajar menggunakan signals pada 2D level, kali ini kita akan mencoba menggunakan signals kembali untuk menambahkan goal condition.</p>
+<p>Pertama buat scene baru (nama bebas) dengan <code>Area</code> sebagai root node.</p>
+<p><img alt="New Area" src="images/AreaNode.jpg" /></p>
+<p>Lalu tambahkan node <code>CollisionShape</code> sebagai child dari node <code>Area</code> tadi.
+Jangan lupa untuk membuat <em>collision shape</em> pada node <code>CollisionShape</code> (Kamu seharusnya sudah pernah melakukannya pada tutorial sebelumnya) kali ini buat bentuk <em>Sphere</em>.</p>
+<p><img alt="Area Hierarchy" src="images/AreaMap.jpg" /></p>
+<p>Kemudian <em>attach</em> sebuah script pada node <code>Area</code> (penamaan bebas).
+Hapus semua baris kecuali baris pertama, kita akan menggunakan <em>Signals</em> untuk fitur ini.</p>
+<h3 id="using-signals">Using Signals</h3>
+<p>Pertama select node <code>Area</code> lalu buka tab <code>Node</code>.
+Lalu pada subtab <code>Signals</code> pilih <code>body_entered(Node body)</code> dan klik tombol <code>Connect</code> di kanan bawah tab tersebut.</p>
+<p><img alt="Signals" src="images/AreaSignals.jpg" /></p>
+<p>Pastikan <code>Area</code> terpilih pada bagian <code>Connect To Node</code>, isi <code>Method In Node</code> dengan nama fungsi yang kamu inginkan atau biarkan default.
+Jika sudah tekan tombol <code>Connect</code></p>
+<p><img alt="Connect Signal" src="images/AreaSignalAdd.jpg" /></p>
+<p>Maka script pada <code>Area</code> akan ditambah fungsi tersebut.</p>
+<p><img alt="Area Script" src="images/AreaTriggerScript.jpg" /></p>
+<p>Silakan tambah cuplikan dibawah pada script tersebut. (Jangan lupa ganti nama fungsi sesuai penamaan masing-masing)</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>extends Area
+
+export (String) var sceneName = &quot;Level 1&quot;
+
+func _on_Area_Trigger_body_entered(body):
+    if body.get_name() == &quot;Player&quot;:
+        get_tree().change_scene(str(&quot;res://Scenes/&quot; + sceneName + &quot;.tscn&quot;))
+</code></pre></div></td></tr></table></div>
+<p>Secara singkat fungsi tersebut akan tereksekusi setiap ada object dengan tipe <code>Node</code> yang masuk area collision.
+Jika object tersebut adalah player, maka ubah root node (current scene) dengan variabel <code>sceneName</code>.</p>
+<h3 id="adding-it-to-the-level">Adding It to the Level</h3>
+<p>Save scene dan script tersebut (Mulai sekarang disebut <code>AreaTrigger</code>) dan buka kembali scene <code>Level 1.tscn</code>.</p>
+<p>Kemudian tambahkan scene <code>AreaTrigger</code> sebagai child dari sprite tersebut, silakan atur scaling sesuai keperluan.
+Jangan lupa ubah variable <code>Scene Name</code> menjadi "Win Screen".</p>
+<p><img alt="Camera Inspector" src="images/AreaInspector.jpg" /></p>
+<p>Lakukan hal yang sama untuk area lubang namun dengan <code>Scene Name</code> diisi dengan "Level 1".
+Supaya ketika player jatuh ke jurang, scene akan di-reload.</p>
+<p>Selamat, tutorial ini sudah selesai!</p>
+<h2 id="latihan-mandiri-eksplorasi-mechanics-3d">Latihan Mandiri: Eksplorasi Mechanics 3D</h2>
+<p>Silakan lanjutkan pengerjaan tutorial dengan mengeksplorasi bagaimana mengimplementasikan <em>game mechanics</em> populer di game 3D.
+Berhubung game yang dicontohkan di tutorial ini adalah game dengan <em>genre</em> FPS (First-Person Shooter), maka silakan coba implementasikan salah satu dari <em>mechanics</em> berikut:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Pick up item &amp; inventory system -- Player dapat mengambil sebuah objek pada level dan menyimpannya dalam sebuah sistem inventori</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Sprinting &amp; crouching -- Player dapat memilih untuk jalan dengan kecepatan normal, berlari, atau berjalan sambil jongkok dengan kecepatan yang lebih lambat dari biasanya</li>
+</ul>
+<p>Jika masih ada waktu atau masih penasaran, beberapa hal yang bisa coba kamu implementasikan:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Membuat animasi objek 3D</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Membuat level 2 dari hasil pengerjaan tutorial</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Memoles estetika dari permainan (misal: menambahkan HUD, menambahkan aset 3D dari luar)</li>
+<li>Dan lain-lain. Silakan berkreasi!</li>
+</ul>
 <h2 id="skema-penilaian">Skema Penilaian</h2>
 <p>Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:</p>
-<ol>
-<li><strong>A</strong> apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi
-   tim pengajar.</li>
-<li><strong>B</strong> apabila kamu hanya mengerjakan tutorial sesuai yang diminta oleh
-   deskripsi tutorial.</li>
-<li><strong>C</strong> apabila kamu mengerjakan tutorial secara minimalis atau tidak
-   lengkap/tuntas.</li>
-<li><strong>E</strong> apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.</li>
-</ol>
+<ul>
+<li><strong>4</strong> (<em><strong>A</strong></em>) apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi tim pengajar.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan 2 (dua) <em>game mechanics</em> tambahan yang merupakan bagian dari Latihan Mandiri, ditambah dengan memoles (<em>polishing</em>) lebih lanjut permainannya.</li>
+<li><strong>3</strong> (<em><strong>B</strong></em>) apabila kamu hanya mengerjakan tutorial dan latihan sesuai dengan instruksi.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan 1 (satu) <em>game mechanics</em> tambahan yang merupakan bagian dari Latihan Mandiri.</li>
+<li><strong>2</strong> (<em><strong>C</strong></em>) apabila kamu hanya mengerjakan tutorial hingga tuntas.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan namun tidak mengerjakan Latihan Mandiri.</li>
+<li><strong>1</strong> (<em><strong>D</strong></em>) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.
+  Nilai ini dapat dicapai apabila belum tuntas mengerjakan Latihan.</li>
+<li><strong>0</strong> (<em><strong>E</strong></em>) apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.</li>
+</ul>
 <h2 id="pengumpulan">Pengumpulan</h2>
-<p>Kumpulkan dengan memasukkan berkasnya ke dalam Git dan <em>push</em> ke <em>fork</em> materi
-tutorial ini di repositori milik pribadi. <strong>Jangan <em>push</em> atau membuat Merge
-Request ke repositori <em>upstream</em> materi tutorial kecuali jika kamu ingin
-kontribusi materi atau memperbaiki materi yang sudah dipublikasikan!</strong></p>
-<p>Tenggat waktu pengumpulan adalah <strong>Jumat, 20 November 2020, pukul 21:00</strong>.</p>
+<p>Kumpulkan semua berkas pengerjaan tutorial dan latihan ke repositori Git.
+Jangan lupa untuk menjelaskan proses pengerjaan tutorial ini di dalam berkas <code>README.md</code> yang tersimpan di repositori Git yang sama dengan pengerjaan tutorial.
+Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelaskan proses implementasi.
+Kemudian, <em>push</em> riwayat <em>commit</em>-nya ke repositori Git pengerjaan Tutorial 7 dan kumpulkan tautan (URL) repositori Git kamu di slot pengumpulan yang tersedia di SCELE.</p>
+<p>Tenggat waktu pengumpulan adalah <strong>Rabu, 24 April 2024, pukul 21:00</strong>.</p>
 <h2 id="referensi">Referensi</h2>
 <ul>
 <li><a href="http://docs.godotengine.org/en/3.1/tutorials/3d/index.html">Godot 3D Tutorial</a></li>
@@ -1014,11 +1399,11 @@ kontribusi materi atau memperbaiki materi yang sudah dipublikasikan!</strong></p
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-02-01 01:30:29</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-04-18 01:36:57</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-02-01 01:30:29</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-04-18 01:36:57</span>
       
     
   </small>
@@ -1072,12 +1457,12 @@ kontribusi materi atau memperbaiki materi yang sudah dipublikasikan!</strong></p
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.aecac24b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
       
-        <script src="../js/print-site.js"></script>
+        <script src="../../js/print-site.js"></script>
       
     
   </body>
