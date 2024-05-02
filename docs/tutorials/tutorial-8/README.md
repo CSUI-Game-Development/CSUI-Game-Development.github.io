@@ -1,22 +1,21 @@
-# Tutorial 9 - Game Polishing dan Game Balancing
+# Tutorial 8 - Game Polishing & Balancing
 
 Selamat datang pada tutorial kelima kuliah Game Development. Pada tutorial kali ini, kamu akan mempelajari cara apa yang dimaksud dengan ***Game Polishing*** dan juga ***Game Balancing***. Dalam ***Game Polishing*** kamu akan belajar mengenai ***Particles***. Sedangkan dalam ***Game Balancing*** kamu akan mencoba untuk melakukan *balancing* sederhana.
 
 ## Daftar isi
 
-- [Tutorial 9 - Game Polishing dan Game Balancing](#tutorial-9---game-polishing-dan-game-Balancing)
+- [Tutorial 8 - Game Polishing & Balancing](#tutorial-8---game-polishing--balancing)
   - [Daftar Isi](#daftar-isi)
   - [Pengantar](#pengantar)
     - [Game Polishing](#game-polishing)
     - [Game Balancing](#game-balancing)
-  - [Creating Particles](#creating-particles)
+  - [Latihan: Creating Particles](#latihan-creating-particles)
     - [Particles](#particles)
     - [Creating an Environment Particle](#creating-an-environment-particle)
     - [Creating a Trail Particle](#creating-a-trail-particle)
-  - [Game Balancing](#game-balancing)
+  - [Latihan: Game Balancing](#latihan-game-balancing)
     - [Balancing Spawn Rate](#balancing-spawn-rate)
-  - [Bonus To Do](#bonus-to-do)
-  - [Instruksi Pengerjaan](#Instruksi-Pengerjaan)
+  - [Latihan Mandiri: Rencana Polishing & Balancing Pada Game Proyek Kelompok](#latihan-mandiri-rencana-polishing--balancing-pada-game-proyek-kelompok)
   - [Skema Penilaian](#skema-penilaian)
   - [Pengumpulan](#pengumpulan)
   - [Referensi](#referensi)
@@ -24,7 +23,9 @@ Selamat datang pada tutorial kelima kuliah Game Development. Pada tutorial kali 
 
 ## Pengantar
 
-> IMPORTANT: Untuk tutorial kali ini, diperbolehkan menggunakan template game yang telah disediakan **ATAU** melanjutkan dari yang sudah dikerjakan di tutorial 6 kemarin. Jika ingin melanjutkan proyek kemarin, cukup mengcopy isi folder T6 kamu ke dalam folder T9 sebelum mulai.
+> IMPORTANT: Untuk tutorial kali ini, diperbolehkan menggunakan kode templat proyek game yang telah disediakan
+> **ATAU** melanjutkan dari yang sudah dikerjakan di tutorial 6 kemarin. Jika ingin melanjutkan tutorial 6 kemarin,
+> silakan buat _branch_ baru di repositori Git tutorial 6 yang akan berisi hasil pengerjaan tutorial ini.
 
 ### Game Polishing
 
@@ -54,7 +55,7 @@ Dalam permainan League of Legends, balancing dilakukan setiap saat karena permai
 
 ![League of Legends Patch Notes](images/patch-notes.png)
 
-## Creating Particles
+## Latihan: Creating Particles
 
 ### Particles
 
@@ -66,7 +67,7 @@ Particles merupakan teknik dalam game development untuk menampilkan atau mensimu
 
 ### Creating an Environment Particle
 
-Pertama, buka template Level 1 yang telah disediakan (atau gunakan level yang sudah kamu buat di tutorial-6 sebelumnya), lalu tambahkan node Particles2D kepada root Node yang ada.
+Pertama, buka template Level 1 yang telah disediakan (atau gunakan level yang sudah kamu buat di tutorial 6 sebelumnya), lalu tambahkan node Particles2D kepada root Node yang ada.
 
 ![Add Node Particles2D](images/new-particles2d.png)
 
@@ -74,7 +75,8 @@ Ketika berhasil ditambahkan, node Particles2D akan menampilkan warning, hal ini 
 
 ![New Particles Material](images/particles_material.png)
 
-Sekarang kamu dapat melihat particlemu bejalan, namun hanya berupa titik-titik kecil yang berjatuhan, sekarang kita akan mengubah particle ini agar menjadi hujan abu yang kita inginkan. Karena kita ingin membuat hujan abu, kita ingin agar titik-titik particle yang kita punya berjumlah banyak, dan bertahan lama di layar. Untuk melakukan itu pada tab inspector, ubah ```Amount``` menjadi 500, ```Lifetime``` menjadi 4, dan ```Speed Scale``` menjadi 0.5. 
+Sekarang kamu dapat melihat particlemu bejalan, namun hanya berupa titik-titik kecil yang berjatuhan, sekarang kita akan mengubah particle ini agar menjadi hujan abu yang kita inginkan. Karena kita ingin membuat hujan abu, kita ingin agar titik-titik particle yang kita punya berjumlah banyak, dan bertahan lama di layar. Untuk melakukan itu pada tab inspector, ubah ```Amount``` menjadi 500, ```Lifetime``` menjadi 4, dan ```Speed Scale``` menjadi 0.5.
+
 - Properti ```Amount``` melambangkan banyaknya titik particle yang ingin kita punya.
 - Properti ```Lifetime``` melambangkan lamanya suatu titik particle akan hidup di dunia game kita.
 - Properti ```Speed Scale``` melambangkan kecepatan jalannya waktu untuk particle kita.
@@ -82,6 +84,7 @@ Sekarang kamu dapat melihat particlemu bejalan, namun hanya berupa titik-titik k
 ![Amount, Lifetime and Speed Scale](images/amount-lifetime-speed-scale.png)
 
 Selanjutnya, kita ingin agar titik particle kita dapat terlihat dari kamera, sehingga kita perlu untuk mengubah ukuran dari particle kita. Klik ```ParticlesMaterial``` yang sudah kita tambahkan sebelumnya, lalu pada tab ```Scale``` ubah ```Scale``` menjadi 10 dan agar kita mendapat variasi ukuran, ubah ```Scale Random``` menjadi 0.5.
+
 - Properti ```Scale``` melambangkan ukuran dari suatu titik particle.
 - Properti ```Scale Random``` melabangkan range random dari titik particle yang akan dibuat. 0 menandakan tidak ada random scale, 1 menandakan banyak random scale.
 
@@ -96,6 +99,7 @@ Selanjutnya, agar particle yang kita punya terlihat seperti hujan abu, kita dapa
 ![Color](images/color.png)
 
 Selanjutnya, kita ingin agar hujan abu kita memiliki kecepatan yang lebih cepat agar menghasilkan ilusi hujan abu yang lebat. Untuk melakukan ini, pada tab ```Direction```, ubah ```Spread``` menjadi 20 agar persebaran particle tidak terlalu jauh. Lalu pada tab ```Gravity``` ubah gravity x menjadi -500 dan gravity y menjadi 500 agar particle kita terpengaruh gravitasi ke arah kiri bawah. Lalu, pada tab ```Initial Velocity```, ubah ```Velocity``` menjadi 500 agar particle kita sudah cepat dari awal mulai animasi particle.
+
 - Properti ```Spread``` melambangkan derajat persebaran particle. 180 derajat menandakan particle akan keluar ke segala arah.
 - Properti ```Gravity``` melambangkan besarang gravitasi yang diterima oleh titik particle kita.
 - Properti ```Velocity``` melambangkan kecepatan awal titik particle ketika muncul di game.
@@ -103,6 +107,7 @@ Selanjutnya, kita ingin agar hujan abu kita memiliki kecepatan yang lebih cepat 
 ![Spread, Gravity, and Velocity](images/spread-gravity-velocity.jpg)
 
 Hmmm, kenapa particle yang sekarang ada pada awalnya muncul ke arah kanan terlebih dahulu? Itu karena dengan kita mengubah nilai ```Velocity``` menjadi lebih dari 0, particle yang kita punya akan dikenakan kecepatan sesuai dengan nilai ```Velocity``` ke arah kanan saja. Oleh karena itu kita harus merotasi particle kita agar arah particle ke arah kiri. Pada tab ```Transform``` pada Node2D, ubah rotation degrees menjadi 180. Lalu, pada tab ```Drawing```, ubah ```Local Coord``` menjadi off.
+
 - Properti ```Transform``` merupakan posisi dari Node2D.
 - Properti ```Local Coords``` melambangkan sifat dari particle, dimana jika ```on``` particle akan begerak sesuai dengan pergerakan node, sedangkan jika ```off``` particle yang sudah dinyalakan akan tetap berjalan sesuai physics yang ada dengan menghiraukan posisi node.
 
@@ -114,13 +119,15 @@ Sepertinya particle yang sudah kita buat sudah mirip dengan hujan abu, coba kita
 ![Missing Particle](images/missing-particle-camera.gif)
 
 Loh? kok ketika kita gerak particlenya hilang? Itu karena particle hanya akan ditampilkan jika drawing areanya berada di camera. Oleh karena itu kita harus mengubah drawing area particle kita dan juga posisinya. Pada tab ```Drawing``` ubah ```Visibilty Rect``` menjadi (-2000, -1000, 4000, 1000) untuk mengubah ukuran drawing area particle dan titik tengahnya. Lalu pada tab ```Transform``` ubah posisi x menjadi 1700 dan posisi y menjadi -200 agar particle berada di tengah level.
+
 - Properti ```Visibility Rect``` melambangkan ukuran drawing area (visibility area) dari particle kita.
 
 ![Visibility Rect](images/visibility-rect.png)
 ![Transform](images/transform-2.png)
 
-Sekarang, tinggal beberapa detail lagi yang akan kita buat. Yaitu merotasi titik particle agar tidak terlihat seperti kotak, dan membuat particle tidak menutupi sprite level ktia. Pada tab ```Angle``` ubah ```Angle``` menjadi 45, untuk merotasi kotak particle sebanyak 45 derajat. Lalu pada tab ```Canvas Item```, ```Visibility``` ubah ```Show behind parent``` menjadi ```on``` agar particle kita berada di belakang sprite parent. 
-- Properti ```Angle``` melabangkan rotasi dari titik particle kita.
+Sekarang, tinggal beberapa detail lagi yang akan kita buat. Yaitu merotasi titik particle agar tidak terlihat seperti kotak, dan membuat particle tidak menutupi sprite level ktia. Pada tab ```Angle``` ubah ```Angle``` menjadi 45, untuk merotasi kotak particle sebanyak 45 derajat. Lalu pada tab ```Canvas Item```, ```Visibility``` ubah ```Show behind parent``` menjadi ```on``` agar particle kita berada di belakang sprite parent.
+
+- Properti ```Angle``` melambangkan rotasi dari titik particle kita.
 - Properti ```Show behind parent``` merupakan properti dari CanvasItem untuk membuat sprite berada di belakang sprite parent.
 
 ![Angle](images/angle.png)
@@ -150,7 +157,7 @@ Selanjutya, agar particle tidak hanya muncul dari satu titik, ubah ```Emission S
 ![Emission Shape](images/trail-emission-shape.png)
 ![Transform](images/trail-transform.png)
 
-Selanjutnya, agar particle tidak terus mengikuti player, ubah ```Local Coord``` menjadi ```off```. 
+Selanjutnya, agar particle tidak terus mengikuti player, ubah ```Local Coord``` menjadi ```off```.
 
 ![Local Coord](images/trail-local-coord.png)
 
@@ -158,13 +165,15 @@ Sekarang, karena sepertinya sudah terlihat bagus, kita coba mainkan di in-game.
 
 ![Trail is Always On](images/trail-always-on.gif)
 
-Sepertinya sudah terlihat cukup bagus, sekarang masalahnya particle selalu berjalan, sedangkan kita hanya ingin particle berjalan ketika player berada di lantai dan sedang berjalan. Untuk melakukan itu kita dapat menggunakan script untuk mengatur kapan particle berjalan dengan mengganti atribut ```Emission```, dimana atribut ini melambangkan keadaa particle berjalan atau tidak (mengeluarkan particle atau tidak). Untuk itu kita perlu mengubah script ```Player.gd```. Tambahkan baris ini di bagian deklarasi variable:
-```
+Sepertinya sudah terlihat cukup bagus, sekarang masalahnya particle selalu berjalan, sedangkan kita hanya ingin particle berjalan ketika player berada di lantai dan sedang berjalan. Untuk melakukan itu kita dapat menggunakan script untuk mengatur kapan particle berjalan dengan mengganti atribut ```Emission```, dimana atribut ini melambangkan keadaan particle berjalan atau tidak (mengeluarkan particle atau tidak). Untuk itu kita perlu mengubah script ```Player.gd```. Tambahkan baris ini di bagian deklarasi variable:
+
+```gdscript
 onready var particle = self.get_node("Particles2D")
 ```
 
 Lalu tambahkan baris ini di fungsi ```_process```:
-```
+
+```gdscript
 if is_on_floor() and (Input.is_action_pressed("left") or Input.is_action_pressed("right")):
 		particle.set_emitting(true)
 	else:
@@ -175,7 +184,7 @@ if is_on_floor() and (Input.is_action_pressed("left") or Input.is_action_pressed
 
 Done! Sekarang particle sudah terlihat seperti trail jalan player!
 
-## Game Balancing
+## Latihan: Game Balancing
 
 ### Balancing Spawn Rate
 
@@ -183,7 +192,7 @@ Sekarang kita akan mencoba untuk melakukan balancing pada game yang sudah kita b
 
 ![Unbalanced](images/unbalanced.gif)
 
-Dapat dilihat bahwa kita sebagai pemain tidak dapat menyelesaikan permainan dikarenakan spawner terlalu banyak memunculkan musuh, sehingga pemain tidak dapat melompati tikus-tikus yang ada untuk menuju akhir level. Oleh karena itu perlu dilakukan game balancing terhadap game ini. Coba kamu mainkan lagi dan coba pikirkan apa yang kira kira membuat pemain tidak bisa melompati tikus-tikus yang ada. Setelah memainkan beberapa kali, semoga kamu menyadari bahwa karena terlalu banyak tikus dan ***Spawn Rate** antar tikus terlalu kecil, membuat tidak ada celah yang dapat dimanfaatkan pemain untuk melewati rintangan tersebut. Dan jika kamu sudah melihat tab inspector pada Spawner, sudah disedikan variable ```Spawn Rate``` yang dapat diubah, coba ubah menjadi 2 detik dan coba mainkan kembali.
+Dapat dilihat bahwa kita sebagai pemain tidak dapat menyelesaikan permainan dikarenakan spawner terlalu banyak memunculkan musuh, sehingga pemain tidak dapat melompati tikus-tikus yang ada untuk menuju akhir level. Oleh karena itu perlu dilakukan game balancing terhadap game ini. Coba kamu mainkan lagi dan coba pikirkan apa yang kira kira membuat pemain tidak bisa melompati tikus-tikus yang ada. Setelah memainkan beberapa kali, semoga kamu menyadari bahwa karena terlalu banyak tikus dan **Spawn Rate** antar tikus terlalu kecil, membuat tidak ada celah yang dapat dimanfaatkan pemain untuk melewati rintangan tersebut. Dan jika kamu sudah melihat tab inspector pada Spawner, sudah disedikan variable ```Spawn Rate``` yang dapat diubah, coba ubah menjadi 2 detik dan coba mainkan kembali.
 
 ![Too Easy](images/too-easy.gif)
 
@@ -193,53 +202,45 @@ Hmm pemain sudah bisa melewati rintangan untuk mencapai akhir level. Namun seper
 
 Selamat, tutorial ini sudah selesai!
 
-## Bonus To Do
+## Latihan Mandiri: Rencana Polishing & Balancing Pada Game Proyek Kelompok
 
-Apabila masih ada waktu atau ingin lanjut berlatih mandiri, silakan baca
-referensi yang tersedia untuk belajar mengimplementasikan fitur tambahan.
-Tidak ada kriteria khusus untuk ini, kamu bebas menambahkan apapun yang kamu
-suka. Karena materi tutorial ini dibagi dua, game polishing dan game balancing,
-kamu harus mengeksplorasi keduanya. Beberapa contoh yang bisa dikerjakan:
+Pada tutorial kali ini, tidak ada latihan mandiri spesifik untuk berlatih mengenai _polishing_ dan _balancing_.
+Namun sebagai gantinya, kamu diminta untuk merefleksikan kegiatan _playtesting_ terbuka yang diadakan di area kantin gedung baru Fasilkom UI pekan lalu.
 
-- Menambah particle lagi.
-- Menambah efect saat player mati.
-- Melakukan level design agar level balanced.
-- dll. _Get creative!_
+Silakan ingat kembali pengalaman kamu pada kegiatan _playtesting_ pekan lalu dan evaluasi hasil _playtesting_ yang telah kamu kumpulkan bersama tim.
+Kemudian harap jawab pertanyaan-pertanyaan berikut:
 
-Jika mengerjakan fitur tambahan, buat file baru bernama `T9_[NPM].md` dimana
-`[NPM]` adalah NPM kamu (misal: `t9_1506757913`) di folder yang sama dengan
-[`README.md`](README.md) ini. Tulis teks menggunakan format [Markdown](https://docs.gitlab.com/ee/user/markdown.html).
-
-## Instruksi Pengerjaan
-
-1. Dalam repositori pribadi kamu, silakan sinkronisasi _branch_ ```master``` dengan repositori _upstream_.
-   Instruksi lebih lanjut bisa dibaca [disini](https://help.github.com/en/articles/syncing-a-fork).
-2. Jika terdapat _conflict_, mohon diselesaikan secara damai.
-   Jika tidak yakin bagaimana caranya, silakan ambil mata kuliah *Advanced Programming* atau baca [ini](https://help.github.com/en/articles/resolving-a-merge-conflict-using-the-command-line).
-3. Setelah semua selesai, buat _branch_ baru dari _branch_ ```master``` dengan nama ```tutorial-x``` dimana ```x``` adalah nomor tutorial (misal: tutorial-4).
-4. Ganti _current branch_ menjadi ```tutorial-x``` tersebut, silakan kerjakan tutorial di dalam _branch_ yang bersangkutan.
-   Setiap _branch_ tutorial **tidak perlu** di _merge_ ke _branch_ ```master```.
+1. Apa saja hal-hal positif yang kamu identifikasi dari pengalaman para pemain ketika mencoba game kelompok?
+2. Apa saja hal-hal negatif (atau, _pain points_) yang kamu identifikasi dari pengalaman para pemain ketika mencoba game kelompok?
+3. Dari _feedback_-_feedback_ yang telah diperoleh, apakah ada isu yang terkait pencapaian kondisi _flow_ oleh pemain?
+    - Misalnya, apakah ada tantangan di dalam game yang masih kurang tepat dengan kemampuan pemain pada level tertentu?
+    - Atau, apakah ada rancangan level di dalam game yang dirasa terlalu membosankan bagi pemain?
+4. Dari jawaban kamu terhadap pertanyaan 1 hingga 3, tuliskan secara singkat, dalam bentuk _bullet points_, apa saja hal yang ingin kamu _polish_ dan _balance_?
+5. Untuk masing-masing poin di jawaban pertanyaan 4, jabarkan secara singkat (1 - 3 kalimat) mengenai rencana kerja kamu untuk mengimplementasikan usulan tersebut.
 
 ## Skema Penilaian
 
 Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:
 
-1. **A** apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi
-   tim pengajar.
-2. **B** apabila kamu hanya mengerjakan tutorial sesuai yang diminta oleh
-   deskripsi tutorial.
-3. **C** apabila kamu mengerjakan tutorial secara minimalis atau tidak
-   lengkap/tuntas.
-4. **E** apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.
+- **4** (_**A**_) apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi tim pengajar.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan menjawab seluruh pertanaan pada Latihan Mandiri.
+- **3** (_**B**_) apabila kamu hanya mengerjakan tutorial dan latihan sesuai dengan instruksi.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan menjawab pertanyaan 1 - 3 pada Latihan Mandiri.
+- **2** (_**C**_) apabila kamu hanya mengerjakan tutorial hingga tuntas.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan namun tidak mengerjakan Latihan Mandiri.
+- **1** (_**D**_) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.
+  Nilai ini dapat dicapai apabila belum tuntas mengerjakan Latihan.
+- **0** (_**E**_) apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.
 
 ## Pengumpulan
 
-Kumpulkan dengan memasukkan berkasnya ke dalam Git dan _push_ ke _fork_ materi
-tutorial ini di repositori milik pribadi. **Jangan _push_ atau membuat Merge
-Request ke repositori _upstream_ materi tutorial kecuali jika kamu ingin
-kontribusi materi atau memperbaiki materi yang sudah dipublikasikan!**
+Kumpulkan semua berkas pengerjaan tutorial dan latihan ke repositori Git.
+Jangan lupa untuk menjelaskan proses pengerjaan tutorial ini di dalam berkas `README.md` yang tersimpan di repositori Git.
+Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelaskan proses implementasi.
+Kemudian, _push_ riwayat _commit_-nya ke repositori Git pengerjaan tutorial 8 dan kumpulkan tautan (URL) repositori Git kamu di slot pengumpulan yang tersedia di SCELE.
+Jika kamu menggunakan kembali repositori Git tutorial 6, maka pastikan pekerjaan tutorial ini kamu taruh di dalam _branch_ baru!
 
-Tenggat waktu pengumpulan adalah **Jumat, 4 Desember 2020, pukul 21:00**.
+Tenggat waktu pengumpulan adalah **Rabu, 7 Mei 2024, pukul 21:00**.
 
 ## Referensi
 
