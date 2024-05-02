@@ -23,7 +23,7 @@ Selamat datang pada tutorial kelima kuliah Game Development. Pada tutorial kali 
 
 ## Pengantar
 
-> IMPORTANT: Untuk tutorial kali ini, diperbolehkan menggunakan kode templat proyek game yang telah disediakan
+> IMPORTANT: Untuk tutorial kali ini, diperbolehkan menggunakan [kode templat proyek game yang telah disediakan di GitHub (klik)](https://github.com/CSUI-Game-Development/tutorial-8-template)
 > **ATAU** melanjutkan dari yang sudah dikerjakan di tutorial 6 kemarin. Jika ingin melanjutkan tutorial 6 kemarin,
 > silakan buat _branch_ baru di repositori Git tutorial 6 yang akan berisi hasil pengerjaan tutorial ini.
 
