@@ -34,8 +34,9 @@ digunakan dalam kuliah ini adalah [GitHub.com](https://github.com).
 > ikuti tutorial penggunaan Git di [situs Atlassian](https://www.atlassian.com/git).
 
 Pranala untuk masuk ke server Discord kuliah Game Development dapat dilihat di
-Scele. Silakan masuk ke server, lalu pahami tata tertib di server dan ambil
-_role_ `Mahasiswa`.
+Scele. Silakan masuk ke server.
+<!-- , lalu pahami tata tertib di server dan ambil
+_role_ `Mahasiswa`. -->
 
 ## Game Design Sederhana
 
@@ -47,7 +48,8 @@ _role_ `Mahasiswa`.
 > - Kamera/_scanner_ untuk mengambil foto corat-coret (tulisan, gambar) di
 >   kertas
 
-Pada kuliah Game Development ini, kamu akan dilatih untuk berpikir dan menyelesaikan masalah dengan pendekatan yang bisa dibilang agak
+Pada kuliah Game Development ini, kamu akan dilatih untuk berpikir dan menyelesaikan
+masalah dengan pendekatan yang bisa dibilang agak
 _out-of-the-box_. Kuliah ini bukan seperti kuliah pemrograman-pemrograman
 dasar yang mengharuskan peserta kuliah membuat program untuk mengolah masukan
 dan mencetak keluaran sama persis seperti yang tercantum di dokumen spesifikasi
@@ -159,7 +161,7 @@ Masih ada beberapa hal yang belum sempat didiskusikan melalui sesi tutorial ini,
 - Perencanaan proyek dan fase-fase pengerjaan game.
 - Dan lain-lain.
 
-Jika masih penasaran, silakan finalisasi pengisian IRS di SIAK dan selamat bergabung di kuliah Game Development!
+<!-- Jika masih penasaran, silakan finalisasi pengisian IRS di SIAK dan selamat bergabung di kuliah Game Development! -->
 
 ## Pengumpulan
 
@@ -168,4 +170,4 @@ Harap kumpulkan:
 - Dokumen PDF berisi jawaban tertulis latihan-latihan selama tutorial, termasuk
   _scan_/foto corat-coret kertas di slot pengumpulan **khusus hasil tutorial** di Scele.
 
-Tenggat waktu pengumpulan adalah **7 Februari 2024 pukul 21:00**.
+Tenggat waktu pengumpulan adalah **14 Februari 2025 pukul 21:00**.
