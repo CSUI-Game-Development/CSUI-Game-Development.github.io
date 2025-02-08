@@ -9,8 +9,8 @@ Git daring.
 
 Sekadar mengingatkan, pastikan kamu:
 
-- Telah mengunduh dan memasang [Godot v3.5.3](https://godotengine.org/download/3.x/)
-  edisi **Standard** sesuai dengan _development environment_ yang kamu gunakan.
+- Telah mengunduh dan memasang [Godot v4.3](https://godotengine.org/download/windows/)
+  edisi **Stable** sesuai dengan _development environment_ yang kamu gunakan.
 - Telah menjadi anggota kelompok tugas proyek akhir.
 
 ## Daftar Isi
@@ -31,10 +31,10 @@ Sekadar mengingatkan, pastikan kamu:
 ## Pengantar
 
 Tutorial ini disusun dengan mengambil beberapa referensi dari dokumentasi
-resmi [Godot v3.5](https://docs.godotengine.org/en/3.5/) dimana
+resmi [Godot v4.3](https://docs.godotengine.org/en/4.3) dimana
 kamu akan mengikuti instruksi-instruksi di dalam dokumen ini untuk mengenal
 _game engine_ Godot dan menggunakannya untuk membuat sebuah game sangat
-sederhana. Namun beberapa gambar yang ada di tutorial ini diambil dari Godot v3.1.1.
+sederhana. Namun beberapa gambar yang ada di tutorial ini diambil dari Godot v4.3-stable.
 Jadi nanti ikuti tutorialnya harap teliti ya, bisa jadi ada sedikit tulisan yang berbeda
 antara perintah yang diberikan dan gambar visualisasinya. Terakhir, mungkin
 masih ada yang bertanya-tanya:
@@ -66,7 +66,7 @@ sebagai berikut:
 1. Buka repositori [_template_ proyek Tutorial 2](https://github.com/CSUI-Game-Development/tutorial-2-template) di GitHub.
    Pilih "Use this template" untuk membuat repositori baru berdasarkan _template_ tersebut ke dalam akun GitHub milikmu.
 2. Setelah membuat repositori Git baru berdasarkan _template_ proyek Tutorial 2, salin repositori Git proyek Tutorial 2 ke mesinmu.
-3. Unduh Godot dahulu. Pastikan kamu mengunduh Godot versi 3.5 (LTS).
+3. Unduh Godot dahulu. Pastikan kamu mengunduh Godot versi 4.3 (LTS).
    Kemudian _extract_ ke suatu lokasi di dalam _filesyste_ komputer.
 4. Jalankan Godot. Apabila Godot kamu merupakan instalasi baru (_fresh_), maka
    akan muncul _modal window_ yang menanyakan apakah kamu ingin membuka **Assets Library**.
@@ -125,8 +125,9 @@ sebagai berikut:
   Pada umumnya terdapat komponen **Transform** yang mengatur posisi, rotasi,
   dan skala dari objek yang dipilh. Selain itu, juga terdapat pengaturan
   spesifik tergantung dari tipe objek yang sedang dipilih.
+  Urutan atribut yang muncul pada tab ini berhubungan dengan urutan inheritence dari class tersebut, di mana class paling abstrak akan berada pada urutan terakhir. 
 - Node
-  _Tab_ terdiri dari dua bagian: **Signals** dan **Groups**. Signals mengandung
+  _Tab_ **jika anda sedang meng-select node pada tab _scene_** maka akan ditampilkan dua bagian: **Signals** dan **Groups**. Signals mengandung
   daftar _events_ atau sinyal sesuai dengan tipe objek yang sedang dipilh.
   Groups digunakan untuk mengelompokkan objek yang sedang dipilih ke dalam
   kelompok tertentu supaya memudahkan untuk mencari atau mengatur beberapa
@@ -142,7 +143,7 @@ sebagai berikut:
     di dalam game.
   - Monitor menampilkan _performance parameter_ dari game, seperti FPS (frame
     per second), _physics collisions_, dan lain-lain.
-  - Video Mem menampilkan penggunaan memori dari game yang sedang berjalan.
+  - Video RAM menampilkan penggunaan memori dari game yang sedang berjalan.
   - Misc menampilkan opsi-opsi _debug_ lainnya.
 - Audio
   _Tab_ yang membantu melakukan pengaturan audio dalam _game_.
@@ -153,18 +154,14 @@ sebagai berikut:
 Untuk mempercepat beberapa operasi pada Godot Editor, terdapat beberapa tombol
 _shortcut_ yang dapat kamu gunakan, seperti:
 
-- F1: Ganti _viewport_ ke mode 2D.
-- F2: Ganti _viewport_ ke mode 3D.
-- F3: Ganti _viewport_ menjadi _script editor_.
-- Shift + F1: Buka tampilan pencarian dokumentasi.
 - Q: Ganti mode manipulasi menjadi **Select**.
 - W: Ganti mode manipulasi menjadi **Move**.
 - E: Ganti mode manipulasi menjadi **Rotate**.
 - S: Ganti mode manipulasi menjadi **Scale**.
 - R: Ganti mode manipulasi menjadi **Ruler**
 
-Tombol-tombol _shortcut_ lainnya dapat dilihat di menu Editor > Editor
-Settings > Shortcuts.
+Tombol-tombol _shortcut_ lainnya dapat dilihat di menu **Editor > Editor
+Settings > Shortcuts**.
 
 Selanjutnya kamu akan berkenalan dengan konsep **Node** dan **Scene** yang
 merupakan komponen fundamental dalam game yang dibuat menggunakan Godot.
@@ -237,7 +234,9 @@ Perhatikan bagian-bagian penting dari _scene_ yang sedang dibuka:
    yang sedang dipilih melalui Viewport atau panel Scene. Pada gambar di atas,
    panel Inspector menampilkan atribut dari _node_ `Main`. Apabila kamu klik
    _tab_ **Node** di panel tersebut, maka akan muncul daftar fungsi _callback_
-   yang dimiliki oleh _node_.
+   yang dimiliki oleh _node_. Jika suatu saat anda mengalami kebingungan cara kerja node yang sedang anda seleksi, Anda bisa menekan tombol dibawah ini untuk membuka dokumentasinya.
+   ![Tombol dokumentasi](images/doc_button.png)
+
 4. **Viewport** menampilkan visualisasi dari _scene_ yang sedang dibuka. Saat
    ini ada kotak samar-samar dengan garis biru yang melambangkan area pandang
    game ketika game dijalankan kelak. Area dalam kotak bergaris biru di dalam
@@ -248,7 +247,7 @@ Perhatikan bagian-bagian penting dari _scene_ yang sedang dibuka:
    > dalam _scene_. Satu hal lagi yang perlu kamu ketahui adalah titik `(0, 0)`
    > pada sistem yang menampilkan citra di komputer umumnya mulai dari pojok
    > kiri atas bidang. Tidak seperti yang telah kamu pelajari dari matematika
-   > dasar, yaitu dari pojok kiri bawah bidang.
+   > dasar, yaitu dari pojok kiri bawah bidang. Selain itu, inkremen sumbu $x$ masih bersifat sama seperti di matematika dasar, yaitu semakin ke **kanan** akan semakin **positif** nilainya, tetapi untuk sumbu $y$ semakin ke **atas** akan semakin **negatif**.
 5. **Playtest Buttons** memiliki tombol untuk menjalankan _game loop_ pada
    proyek atau _scene_ yang sedang dibuka. Jika kamu menekan tombol **Play**
    (_shortcut_: F5), maka akan muncul _popup_ jika belum ada **Main Scene**.
@@ -308,7 +307,7 @@ paling dasar pada hirarki tipe _node_ dalam Godot. Semua tipe _node_ pasti
 merupakan anak atau turunan dari tipe `Node`. Pada kasus _node_ `BlueShip`,
 tipe _node_ `BlueShip` adalah `RigidBody2D`, dimana `RigidBody2D` adalah
 subtipe dari `PhysicsBody2D`, dan seterusnya hingga mencapai tipe paling dasar,
-yaitu `Node`. Hirarkinya ditampilkan secara _reverse-order_ di dalam panel
+yaitu `Node`. Seperti yang disebutkan sebelumnya, hirarkinya ditampilkan secara _reverse-order_ di dalam panel
 **Inspector**.
 
 > Catatan: Bagi kamu yang familiar dengan _game engine_ Unity, kamu akan sadar
@@ -325,7 +324,7 @@ dan jawablah pertanyaan-pertanyaan berikut:
 - _Root node_ dari _scene_ `BlueShip` dan `StonePlatform` menggunakan tipe yang
   berbeda. `BlueShip` menggunakan tipe `RigidBody2D`, sedangkan `StonePlatform`
   menggunakan tipe `StaticBody2D`. Apa perbedaan dari masing-masing tipe _node_?
-- Ubah nilai atribut `Mass` dan `Weight` pada tipe `RigidBody2D` secara
+- Ubah nilai atribut `Mass` pada tipe `RigidBody2D` secara
   bebas di _scene_ `BlueShip`, lalu coba jalankan _scene_ `MainLevel`. Apa yang
   terjadi?
 - Ubah nilai atribut `Disabled` pada tipe `CollisionShape2D` di _scene_
@@ -337,9 +336,6 @@ dan jawablah pertanyaan-pertanyaan berikut:
   `StonePlatform`, dan `StonePlatform2`. Mengapa nilai `Position` _node_
   `StonePlatform` dan `StonePlatform2` tidak sesuai dengan posisinya di dalam
   _scene_ (menurut Inspector) namun visualisasinya berada di posisi yang tepat?
-
-> Catatan: Jangan lupa ada _shortcut_ Shift + F1 untuk memunculkan dokumentasi tipe-tipe
-> _node_ pada Godot.
 
 Tuliskan hasil observasi kamu ke dalam berkas Markdown bernama `README.md` di repositori pengerjaan tutorial 2.
 Jangan lupa untuk membaca dokumentasi Godot untuk dapat mengelaborasikan jawaban dengan lebih rinci.
@@ -371,11 +367,11 @@ Lalu jangan lupa untuk menyimpan hasil pengerjaan tutorial seperti _scene_ baru 
 Kumpulkan semua berkasnya berkasnya ke dalam Git dan _push_ ke repositori Git pengerjaan tutorial.
 Apabila kamu mengerjakan latihan mandiri, pastikan _scene_ dan _node_ sudah tercatat masuk ke dalam repositori Git.
 
-Tenggat waktu pengumpulan adalah **21 Februari 2024 pukul 21:00**.
+Tenggat waktu pengumpulan adalah **21 Februari 2025 pukul 21:00**.
 
 ## Referensi
 
-- [Introduction to Godot](https://docs.godotengine.org/en/3.5/getting_started/introduction/index.html)
-- [Nodes and Scenes](https://docs.godotengine.org/en/3.5/getting_started/step_by_step/nodes_and_scenes.html)
+- [Introduction to Godot](https://docs.godotengine.org/en/4.3/getting_started/introduction/index.html)
+- [Nodes and Scenes](https://docs.godotengine.org/en/4.3/getting_started/step_by_step/nodes_and_scenes.html)
 - Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
   gasal 2021/2022 Fakultas Ilmu Komputer Universitas Indonesia.
