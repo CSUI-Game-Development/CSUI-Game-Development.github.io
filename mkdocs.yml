@@ -54,7 +54,7 @@ nav:
   - Tutorials:
     - tutorials/index.md
     - Tutorial 1 - Game Design Workshop: tutorials/tutorial-1/README.md
-  #   - Tutorial 2 - Introduction to Game Engine: tutorials/tutorial-2/README.md
+    - Tutorial 2 - Introduction to Game Engine: tutorials/tutorial-2/README.md
   #   - Tutorial 3 - Introduction to Game Programming: tutorials/tutorial-3/README.md
   #   - Tutorial 4 - Basic 2D Level Design: tutorials/tutorial-4/README.md
   #   - Tutorial 5 - Assets Creation & Integration: tutorials/tutorial-5/README.md
