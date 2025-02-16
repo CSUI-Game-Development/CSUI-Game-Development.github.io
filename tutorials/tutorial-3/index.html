@@ -576,7 +576,7 @@ Jika kamu masih ingat pengalaman belajar bahasa Python di kuliah pemrograman das
 Program Python dapat langsung berjalan tanpa melalui proses kompilasi terlebih dahulu.
 Contoh lain bahasa <em>script</em> adalah JavaScript.
 Kode JavaScript akan dijalankan oleh <em>runtime</em> seperti <em>engine</em> JavaScript di dalam <em>browser</em> atau <em>runtime</em> khusus untuk menjalankan kode JavaScript di luar browser seperti Node atau Deno.</p>
-<p><em>Engine</em> Godot versi 3 mendukung empat (4) bahasa pemrograman: GDScript, Visual Script, C#, dan C++.
+<p><em>Engine</em> Godot versi 4 mendukung empat (4) bahasa pemrograman: GDScript, Visual Script, C#, dan C++.
 Pada mata kuliah Game Development ini, kamu akan belajar sintaks dan cara penggunaan bahasa GDScript.
 Beberapa alasan mengapa GDScript dipilih sebagai bahasa pemrograman utama adalah:</p>
 <ul>
@@ -666,48 +666,55 @@ kita akan fokus menggunakan bahasa GDScript selama satu semester ini.</p>
 <span class="normal">71</span>
 <span class="normal">72</span>
 <span class="normal">73</span>
-<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code># example.gd
-
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code># Everything after &quot;#&quot; is a comment.
 # A file is a class!
 
-# Inheritance
+# (optional) icon to show in the editor dialogs:
+@icon(&quot;res://path/to/optional/icon.svg&quot;)
 
+# (optional) class definition:
+class_name MyClass
+
+# Inheritance:
 extends BaseClass
 
-# (optional) class definition with a custom icon
 
-class_name MyClass, &quot;res://path/to/optional/icon.svg&quot;
-
-# Member Variables
-
+# Member variables.
 var a = 5
 var s = &quot;Hello&quot;
 var arr = [1, 2, 3]
-var dict = {&quot;key&quot;: &quot;value&quot;, 2:3}
+var dict = {&quot;key&quot;: &quot;value&quot;, 2: 3}
+var other_dict = {key = &quot;value&quot;, other_key = 2}
 var typed_var: int
 var inferred_type := &quot;String&quot;
 
-# Constants
-
+# Constants.
 const ANSWER = 42
 const THE_NAME = &quot;Charly&quot;
 
-# Enums
-
+# Enums.
 enum {UNIT_NEUTRAL, UNIT_ENEMY, UNIT_ALLY}
 enum Named {THING_1, THING_2, ANOTHER_THING = -1}
 
-# Built-in Vector Types
-
+# Built-in vector types.
 var v2 = Vector2(1, 2)
 var v3 = Vector3(1, 2, 3)
 
-# Function
 
-func some_function(param1, param2):
-    var local_var = 5
+# Functions.
+func some_function(param1, param2, param3):
+    const local_const = 5
 
-    if param1 &lt; local_var:
+    if param1 &lt; local_const:
         print(param1)
     elif param2 &gt; 5:
         print(param2)
@@ -720,22 +727,33 @@ func some_function(param1, param2):
     while param2 != 0:
         param2 -= 1
 
-    var local_var2 = param1 + 3
-    return local_var2
+    match param3:
+        3:
+            print(&quot;param3 is 3!&quot;)
+        _:
+            print(&quot;param3 is not 3!&quot;)
 
-# Functions override functions with the same name on the base/parent class.
-# If you still want to call them, use &#39;.&#39; (like &#39;super&#39; in other languages).
+    var local_var = param1 + 3
+    return local_var
 
+
+# Functions override functions with the same name on the base/super class.
+# If you still want to call them, use &quot;super&quot;:
 func something(p1, p2):
-    .something(p1, p2)
+    super(p1, p2)
 
-# Inner Class
 
+# It&#39;s also possible to call another function in the super class:
+func other_something(p1, p2):
+    super.something(p1, p2)
+
+
+# Inner class
 class Something:
     var a = 10
 
-# Constructor
 
+# Constructor
 func _init():
     print(&quot;Constructed!&quot;)
     var lv = Something.new()
@@ -743,7 +761,7 @@ func _init():
 </code></pre></div></td></tr></table></div>
 <blockquote>
 <p>Catatan: contoh di atas diambil dari dokumentasi resmi Godot berikut:
-https://docs.godotengine.org/en/3.5/tutorials/scripting/gdscript/gdscript_basics.html</p>
+https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_basics.html</p>
 </blockquote>
 <p>Beberapa hal yang perlu kita bahas:</p>
 <ul>
@@ -763,7 +781,7 @@ https://docs.godotengine.org/en/3.5/tutorials/scripting/gdscript/gdscript_basics
 Pemain akan dapat menggerakkan sebuah objek ke kiri dan ke kanan serta melompat.
 Tutorial ini akan mendemonstrasikan:</p>
 <ul>
-<li>Membuat sebuah objek <code>Kinematic2D</code> dengan <em>child node</em> <code>Collision2D</code> dan <code>Sprite</code>.</li>
+<li>Membuat sebuah objek <code>CharacterBody2D</code> dengan <em>child node</em> <code>Collision2D</code> dan <code>Sprite2D</code>.</li>
 <li>Membuat <em>script</em> dan memasangkan <em>script</em> tersebut ke objek di dalam permainan.</li>
 <li>Implementasi <em>physics</em> dasar.</li>
 </ul>
@@ -776,16 +794,16 @@ Kemudian buka proyeknya menggunakan Godot.</p>
 Di dalam mode <em>workspace</em> 2D, kamu dapat melihat ada <em>ground</em> atau landasan yang melayang di dalam <em>scene</em>.
 Kita akan menaruh objek yang dapat bergerak disana.</p>
 <p><img alt="Tampilan Main.tscn" src="images/main_scene.png" /></p>
-<p>Buat <em>scene</em> baru dan tambahkan <em>root node</em> <code>Kinematic2D</code> pada <em>scene</em> tersebut.
+<p>Buat <em>scene</em> baru dan tambahkan <em>root node</em> <code>CharacterBody2D</code> pada <em>scene</em> tersebut.
 Ubah nama <em>node</em> tersebut menjadi <code>Player</code>.
-Tambahkan <em>child node</em> <code>Sprite</code> dan <code>CollisionShape2D</code> dengan menggunakan menu Add Child Node.</p>
-<p><img alt="Dialogue box New Scene" src="images/new-scene-menu.png" />
-<img alt="Dialogue box Node Selection" src="images/node-selection.png" />
-<img alt="Dialogue box Node Selection" src="images/child-node-selection.png" />
-<img alt="Susunan Scene" src="images/tree-structure.png" /></p>
+Tambahkan <em>child node</em> <code>Sprite2D</code> dan <code>CollisionShape2D</code> dengan menggunakan menu Add Child Node.</p>
+<p><img alt="Dialogue box New Scene" src="images/new-scene-menu.png" /></p>
+<p><img alt="Dialogue box Node Selection" src="images/node-selection.png" /></p>
+<p><img alt="Dialogue box Node Selection" src="images/child-node-selection.png" /></p>
+<p><img alt="Susunan Scene" src="images/tree-structure.png" /></p>
 <p>Pilih node CollisionShape2D dan buka panel Inspector. Tambahkan Shape pada node tersebut dengan memilih new RectangleShape2D.</p>
 <p><img alt="Inspector CollisionShape2D" src="images/collision-inspector.png" /></p>
-<p>Pilih node Sprite dan buka panel Inspector. Pada menu texture, pilih menu Load dan buka folder Assets, kemudian pilih salah satu dari sprite pesawat yang ada.</p>
+<p>Pilih node Sprite2D dan buka panel Inspector. Pada menu texture, pilih menu Load dan buka folder Assets, kemudian pilih salah satu dari sprite pesawat yang ada.</p>
 <p><img alt="Inspector Sprite" src="images/sprite-inspector.png" /></p>
 <p>Save Scene tersebut dalam folder Scenes. Objek ini akan menjadi target scripting.</p>
 <blockquote>
@@ -794,8 +812,8 @@ Tambahkan <em>child node</em> <code>Sprite</code> dan <code>CollisionShape2D</co
 <p>Tampilan Godot Editor terdiri dari beberapa panel yang akan dijelaskan pada subbab berikutnya.</p>
 <h3 id="making-a-script">Making a Script</h3>
 <p>Pada panel Scene, klik kanan pada node Player. Pilih Attach Script pada menu yang muncul. Akan muncul dialog untuk membuat script. Akan ada beberapa pilihan yang tersedia, diantaranya nama script, bahasa script, dll.</p>
-<p>Karena script akan dipasang pada KinematicBody2D, script otomatis meng-<em>inherit</em> class tersebut. Pada dasarnya, ini adalah skema dari GDScript, karena kita ingin menambahkan fungsionalitas baru pada node yang kita inginkan.</p>
-<p>Ubah nama script menjadi <code>Player.gd</code> kemudian simpan script pada folder <code>scenes</code>.</p>
+<p>Karena script akan dipasang pada CharacterBody2D, script otomatis meng-<em>inherit</em> class tersebut. Pada dasarnya, ini adalah skema dari GDScript, karena kita ingin menambahkan fungsionalitas baru pada node yang kita inginkan.</p>
+<p>Ubah nama script menjadi <code>Player.gd</code> kemudian simpan script pada folder <code>scenes</code>. Pastikan template yang digunakan adalah <code>Node:default</code> karena kita akan mengimplementasi <em>player movement</em> sendiri.</p>
 <p><img alt="Attach Script Box" src="images/attach-node-dialogue.png" /></p>
 <p>Script akan otomatis terbuka pada Godot Editor. Setiap script yang dibuat akan diberikan template:</p>
 <p><img alt="Script editor" src="images/script-editor.png" /></p>
@@ -822,23 +840,21 @@ Bagi yang sudah mengenal engine Unity dan/atau Unreal, kedua fungsi ini memiliki
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code>extends KinematicBody2D
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code>extends CharacterBody2D
 
-export (int) var speed = 400
-
-var velocity = Vector2()
-
-func get_input():
-    velocity = Vector2()
-    if Input.is_action_pressed(&#39;right&#39;):
-        velocity.x += speed
-    if Input.is_action_pressed(&#39;left&#39;):
-        velocity.x -= speed
+@export var walk_speed = 200
 
 func _physics_process(delta):
-    get_input()
-    velocity = move_and_slide(velocity)
+
+    if Input.is_action_pressed(&quot;ui_left&quot;):
+        velocity.x = -walk_speed
+    elif Input.is_action_pressed(&quot;ui_right&quot;):
+        velocity.x =  walk_speed
+    else:
+        velocity.x = 0
+
+    # &quot;move_and_slide&quot; already takes delta time into account.
+    move_and_slide()
 </code></pre></div></td></tr></table></div>
 <p>Jika kamu sedang mengambil atau pernah mengambil mata kuliah aljabar linier,
 maka kamu akan melihat salah satu manfaat dari ilmu yang dipelajari dari mata kuliah tersebut.</p>
@@ -851,12 +867,12 @@ Namun jangan khawatir, bukan berarti kamu harus mengimplementasikan struktur dat
 <em>Game engine</em> biasanya sudah menyertakan fungsi-fungsi terkait manipulasi objek di <em>standard library</em>.</p>
 <p>Mari mulai dengan contoh sederhana di tutorial ini, yaitu menggerakkan objek. Perhatikan hal-hal berikut:</p>
 <ol>
-<li><code>export (int) var speed = 400</code> merupakan deklarasi variabel. Export membuat variabel speed dapat diakses lewat visual editor.</li>
-<li><code>var velocity = Vector2()</code> adalah deklarasi private variable Vector2. Vector2 adalah tipe data Vector built-in Godot yang memiliki dua arah (x,y).</li>
-<li><code>get_input()</code> adalah wrapper function untuk membaca input kemudian menambahkan velocity (kecepatan) pada Player.</li>
+<li><code>@export var walk_speed = 200</code> merupakan deklarasi variabel. Export membuat variabel speed dapat diakses lewat <em>inspector</em>.</li>
+<li><code>velocity</code> adalah salah satu properties Vector2 dari CharacterBody2D yang menyatakan kecepatan dalam satuan pixels per second. Vector2 adalah tipe data Vector built-in Godot yang memiliki dua arah (x,y).</li>
+<li><code>move_and_slide()</code> adalah salah satu methods dari CharacterBody2D yang bertujuan menggerakkan body sesuai <em>velocity</em>. Jika body tersebut bertabrakan (<em>collide</em>) dengan body lain, body tersebut akan meluncur (<em>slide along</em>) sepanjang body lain daripada berhenti. Jika bertabrakan dengan CharacterBody2D atau RigidBody2D, body tersebut akan terpengaruh oleh gerakan body lainnya. Anda dapat menggunakan ini untuk membuat platform bergerak dan berputar, atau untuk membuat node mendorong node lainnya.</li>
 <li><code>Input.is_action_pressed(String signal)</code> merupakan fungsi bawaan Godot yang membaca input.</li>
 <li><code>_physics_processs(delta)</code> dipanggil secara berkala untuk membaca input.</li>
-<li><code>move_and_slide(Vector2 vector)</code> merupakan fungsi KinematicBody2D. Ketika fungsi ini dipanggil, KinematicBody2D akan bergerak sebanyak input Vector2.</li>
+<li><code>velocity.x = 0</code> memastikan bahwa Player akan berhenti apabila tidak ada tombol yang ditekan.</li>
 </ol>
 <blockquote>
 <p>Catatan: _physics_process(delta) tidak jauh berbeda dari _process(delta). Fungsi ini dipanggil secara berkala, namun memiliki waktu panggil yang konstan tanpa bergantung pada fps.</p>
@@ -864,9 +880,9 @@ Namun jangan khawatir, bukan berarti kamu harus mengimplementasikan struktur dat
 <p>Jalankan <em>scene</em> dan gunakan tombol panah arah. Player dapat bergerak secara horizontal.</p>
 <h3 id="latihan-implementasi-physics-sederhana-gravitasi-dan-loncat">Latihan: Implementasi <em>Physics</em> Sederhana (Gravitasi dan Loncat)</h3>
 <p>Jika dilihat, <code>Player</code> hanya bergerak horizontal dan tidak dipengaruhi gravitasi. Objek Player tetap diam diatas meskipun tidak berada pada suatu pijakan.
-Hal ini merupakan karakteristik dari <code>KinematicBody2D</code>, dimana <em>node</em> <strong>tidak</strong> dipengaruhi oleh <em>physics</em> yang tersedia dari <em>game engine</em>.
+Hal ini merupakan karakteristik dari <code>CharacterBody2D</code>, dimana <em>node</em> <strong>tidak</strong> dipengaruhi oleh <em>physics</em> yang tersedia dari <em>game engine</em>.
 Sedangkan untuk dapat membuat objek terpentaruh <em>physics</em>, maka seharusnya objek tersebut menggunakan <em>node</em> lain bertipe <code>RigidBody2D</code>.</p>
-<p>Salah satu alasan mengapa kita tidak memakai <code>RigidBody2D</code> yang dapat dipengaruhi physics Game Engine adalah konsistensi. Dengan memakai KinematicBody2D, objek yang digerakan oleh pemain akan selalu merespon terhadap input yang diberikan, dimana objek RigidBody2D akan mudah terpengaruh oleh physics diluar kendali pemain.</p>
+<p>Salah satu alasan mengapa kita tidak memakai <code>RigidBody2D</code> yang dapat dipengaruhi physics Game Engine adalah konsistensi. Dengan memakai CharacterBody2D, objek yang digerakan oleh pemain akan selalu merespon terhadap input yang diberikan, dimana objek RigidBody2D akan mudah terpengaruh oleh physics diluar kendali pemain.</p>
 <p>Apabila kita ingin membuat Player kita melompat, maka kita harus bisa membuat Player dipengaruhi gravitasi. Setidaknya, Player harus bisa jatuh. Untuk itu, kita harus menambahkan fungsi physics sendiri, karena kita tidak bisa menggunakan gravitasi Game Engine. Tambahkan baris berikut pada <code>Player.gd</code>:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -884,36 +900,28 @@ Sedangkan untuk dapat membuat objek terpentaruh <em>physics</em>, maka seharusny
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code>extends KinematicBody2D
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code>extends CharacterBody2D
 
-export (int) var speed = 400
-export (int) var GRAVITY = 1200
-
-const UP = Vector2(0,-1)
-
-var velocity = Vector2()
-
-func get_input():
-    velocity.x = 0
-    if Input.is_action_pressed(&#39;right&#39;):
-        velocity.x += speed
-    if Input.is_action_pressed(&#39;left&#39;):
-        velocity.x -= speed
+@export var gravity = 200.0
+@export var walk_speed = 200
 
 func _physics_process(delta):
-    velocity.y += delta * GRAVITY
-    get_input()
-    velocity = move_and_slide(velocity, UP)
+    velocity.y += delta * gravity
+
+    if Input.is_action_pressed(&quot;ui_left&quot;):
+        velocity.x = -walk_speed
+    elif Input.is_action_pressed(&quot;ui_right&quot;):
+        velocity.x =  walk_speed
+    else:
+        velocity.x = 0
+
+    # &quot;move_and_slide&quot; already takes delta time into account.
+    move_and_slide()
 </code></pre></div></td></tr></table></div>
 <p>Beberapa hal yang ditambahkan:</p>
 <ol>
-<li>Variabel <code>GRAVITY</code> sebagai angka arbitrer.</li>
-<li>Konstanta <code>UP</code> merupakan <em>shorthand</em> untuk Vector2 yang mengarah keatas. Pada Godot Engine, koordinat y negatif mengarah keatas.</li>
-<li><code>velocity.x = 0</code> memastikan bahwa Player akan berhenti apabila tidak ada tombol yang ditekan.</li>
-<li><code>velocity.y += delta * GRAVITY</code> merupakan fungsi gravitasi untuk Player. Setiap diproses, <code>velocity.y</code> Player ditambahkan sejumlah konstanta gravitasi (mengarah kebawah).</li>
+<li>Variabel <code>gravity</code> sebagai angka arbitrer.</li>
+<li><code>velocity.y += delta * gravity</code> merupakan fungsi gravitasi untuk Player. Setiap diproses, <code>velocity.y</code> Player ditambahkan sejumlah konstanta gravitasi (mengarah kebawah).</li>
 </ol>
 <p>Jalankan scene. Objek Player akan jatuh.</p>
 <p><img alt="Visualisasi Gravitasi" src="images/fall.gif" /></p>
@@ -935,27 +943,37 @@ func _physics_process(delta):
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code>extends KinematicBody2D
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code>extends CharacterBody2D
 
-export (int) var speed = 400
-export (int) var jump_speed = -600
-.
-.
-func get_input():
-    velocity.x = 0
-    if is_on_floor() and Input.is_action_just_pressed(&#39;up&#39;):
+@export var gravity = 200.0
+@export var walk_speed = 200
+@export var jump_speed = -300
+
+func _physics_process(delta):
+    velocity.y += delta * gravity
+
+    if is_on_floor() and Input.is_action_just_pressed(&#39;ui_up&#39;):
         velocity.y = jump_speed
-    if Input.is_action_pressed(&#39;right&#39;):
-        velocity.x += speed
-    if Input.is_action_pressed(&#39;left&#39;):
-        velocity.x -= speed
-.
-.
+
+    if Input.is_action_pressed(&quot;ui_left&quot;):
+        velocity.x = -walk_speed
+    elif Input.is_action_pressed(&quot;ui_right&quot;):
+        velocity.x =  walk_speed
+    else:
+        velocity.x = 0
+
+    # &quot;move_and_slide&quot; already takes delta time into account.
+    move_and_slide()
 </code></pre></div></td></tr></table></div>
 <p>Perhatikan bahwa:</p>
 <ol>
-<li><code>is_on_floor()</code> merupakan fungsi bawaan KinematicBody2D dimana node akan mengecek otomatis apabila Collider yang sedang bersentuhan merupakan floor atau bukan.</li>
-<li><code>Input.is_action_just_pressed('up')</code> merupakan fungsi input Godot Engine yang mengecek input pertama dari sebuah tombol.</li>
+<li><code>is_on_floor()</code> merupakan fungsi bawaan CharacterBody2D dimana node akan mengecek otomatis apabila Collider yang sedang bersentuhan merupakan floor atau bukan.</li>
+<li><code>Input.is_action_just_pressed('ui_up')</code> merupakan fungsi input Godot Engine yang mengecek input pertama dari sebuah tombol.</li>
 </ol>
 <p>Jalankan Scene. Player sekarang bisa melompat.</p>
 <p>Selamat, kamu telah menyelesaikan tutorial ini!</p>
@@ -994,10 +1012,11 @@ Kemudian, kumpulkan tautan ke repositori Git hasil pengerjaan tutorial 3 kamu di
 <p>Tenggat waktu pengumpulan adalah <strong>28 Februari 2024 pukul 21:00</strong>.</p>
 <h2 id="referensi">Referensi</h2>
 <ul>
-<li><a href="https://docs.godotengine.org/en/3.1/tutorials/physics/kinematic_character_2d.html">Kinematic Character (2D)</a></li>
-<li><a href="https://docs.godotengine.org/en/3.1/getting_started/step_by_step/scripting.html#scripting-a-scene">Scripting</a></li>
-<li><a href="https://docs.godotengine.org/en/3.1/tutorials/2d/2d_movement.html">2D Movement Overview</a></li>
+<li><a href="https://docs.godotengine.org/en/stable/tutorials/physics/kinematic_character_2d.html">Kinematic Character (2D)</a></li>
+<li><a href="https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_basics.html">Scripting</a></li>
+<li><a href="https://docs.godotengine.org/en/stable/tutorials/2d/2d_movement.html">2D Movement Overview</a></li>
 <li><a href="https://kenney.nl/assets/platformer-characters-1">Kenney Assets</a></li>
+<li><a href="https://docs.godotengine.org/en/stable/classes/class_characterbody2d.html">CharacterBody2D</a></li>
 <li>Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
   gasal 2020/2021 Fakultas Ilmu Komputer Universitas Indonesia.</li>
 </ul>
@@ -1007,7 +1026,7 @@ Kemudian, kumpulkan tautan ke repositori Git hasil pengerjaan tutorial 3 kamu di
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-02-22 02:38:22</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2025-02-16 16:45:34</span>
       
         <br>
         Created:
