@@ -702,11 +702,12 @@ Untuk mempersiapkan cat. Pada menu di bagian bawah, kalian perlu memilih Tileset
 <h2 id="latihan-membuat-kamera">Latihan: Membuat Kamera</h2>
 <p>Sekarang kita sudah memiliki sebuah level, namun jika scene di-<em>play</em> kamera akan diam di tempat awal dan membatasi apa yang bisa dilihat.
 Oleh karena itu kita akan membuat kamera yang akan mengikuti kemanapun mahluk pink itu pergi.</p>
-<p>Buka scene <code>scenes/Player.tscn</code>, tambah <em>node</em> <code>Camera2D</code> sebagai <em>child node</em> dari <code>Player</code>.
-Kemudian pada tab Inspector centang <code>Current</code>.</p>
+<p>Buka scene <code>scenes/Player.tscn</code>, tambah <em>node</em> <code>Camera2D</code> sebagai <em>child node</em> dari <code>Player</code>.</p>
 <p><img alt="Camera Inspector" src="images/Camera2D.png" /></p>
 <p>Sekarang kamera akan selalu mengikuti mahluk itu kemanapun ia pergi.</p>
 <p><img alt="Camera Following" src="images/CameraFollowing.gif" /></p>
+<p>Kalian dapat melakukan eksperimen mandiri terhadap pengaturan pada inspector <code>Camera2D</code>. <code>limit</code> yang berguna membatasi pergerakan <code>Camera2D</code>.</p>
+<p><img alt="Camera Limit" src="images/CameraLimit.png" /></p>
 <h2 id="latihan-membuat-kondisi-akhir-permainan-menggunakan-signal">Latihan: Membuat Kondisi Akhir Permainan Menggunakan Signal</h2>
 <p>Sebuah level tidak lengkap tanpa tujuan akhir, atau jika si mahluk terpleset dan jatuh ke jurang, dia hanya bisa berkontemplasi sampai akhir jaman.
 Supaya mahluk tersebut tidak bernasib sama seperti <a href="https://jojowiki.com/Kars">Kars</a>, mari kita buat zona untuk <em>lose</em> dan <em>win condition</em>.</p>
@@ -740,11 +741,11 @@ Jika sudah tekan tombol <code>Connect</code></p>
 <span class="normal">6</span>
 <span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>extends Area2D
 
-export var sceneName: String = &quot;Level 1&quot;
+@export var sceneName: String = &quot;Level 1&quot;
 
 func _on_Area_Trigger_body_entered(body):
     if body.get_name() == &quot;Player&quot;:
-        get_tree().change_scene(str(&quot;res://scenes/&quot; + sceneName + &quot;.tscn&quot;))
+        get_tree().change_scene_to_file(str(&quot;res://scenes/&quot; + sceneName + &quot;.tscn&quot;))
 </code></pre></div></td></tr></table></div>
 <p>Secara singkat fungsi tersebut akan dipicu setiap kali ada objek dengan tipe <code>PhysicsBody2D</code> yang masuk area collision.
 Jika objek tersebut adalah <code>Player</code>, maka ubah <em>root node</em> (<em>current scene</em>) dengan <em>scene</em> bernama <code>sceneName</code> yang tersimpan di dalam folder <code>scenes</code>.</p>
@@ -800,11 +801,11 @@ Jika butuh referensi, berikut ini adalah salah satu contoh <em>script</em> yang 
 <span class="normal">8</span>
 <span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">extends</span><span class="w"> </span><span class="n">Area2D</span>
 
-<span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">sceneName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;LoseScreen&quot;</span>
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">sceneName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;LoseScreen&quot;</span>
 
 <span class="k">func</span><span class="w"> </span><span class="n">_on_FallArea_body_entered</span><span class="p">(</span><span class="n">body</span><span class="p">):</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">body</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;Player&quot;</span><span class="p">:</span>
-<span class="w">        </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">change_scene</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="s2">&quot;res://scenes/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sceneName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;.tscn&quot;</span><span class="p">))</span>
+<span class="w">        </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">change_scene_to_file</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="s2">&quot;res://scenes/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sceneName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;.tscn&quot;</span><span class="p">))</span>
 <span class="w">    </span><span class="k">else</span><span class="p">:</span>
 <span class="w">        </span><span class="n">body</span><span class="o">.</span><span class="n">queue_free</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
@@ -842,28 +843,28 @@ Isi dari <em>script</em> tersebut adalah sebagai berikut:</p>
 <span class="normal">19</span>
 <span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">extends</span><span class="w"> </span><span class="n">Node2D</span>
 
-<span class="k">export</span><span class="w"> </span><span class="p">(</span><span class="n">PackedScene</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">obstacle</span>
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">obstacle</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">PackedScene</span>
 
 <span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">():</span>
 <span class="w">    </span><span class="n">repeat</span><span class="p">()</span>
 
 <span class="k">func</span><span class="w"> </span><span class="n">spawn</span><span class="p">():</span>
-<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">spawned</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obstacle</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">spawned</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obstacle</span><span class="o">.</span><span class="n">instantiate</span><span class="p">()</span>
 <span class="w">    </span><span class="n">get_parent</span><span class="p">()</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">spawned</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">spawn_pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">global_position</span>
-<span class="w">    </span><span class="n">spawn_pos</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawn_pos</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">rand_range</span><span class="p">(</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span>
+<span class="w">    </span><span class="n">spawn_pos</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawn_pos</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">randf_range</span><span class="p">(</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span>
 
 <span class="w">    </span><span class="n">spawned</span><span class="o">.</span><span class="n">global_position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawn_pos</span>
 
 <span class="k">func</span><span class="w"> </span><span class="n">repeat</span><span class="p">():</span>
 <span class="w">    </span><span class="n">spawn</span><span class="p">()</span>
-<span class="w">    </span><span class="nb">yield</span><span class="p">(</span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;timeout&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">await</span><span class="w"> </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">timeout</span>
 <span class="w">    </span><span class="n">repeat</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 <p>Penjelasan dari isi <em>script</em>:</p>
 <ul>
-<li><code>export (PackedScene) var obstacle</code> akan membuat variabel <code>obstacle</code> terdaftar di panel Inspector. Kamu nanti akan dapat mengisi variabel tersebut dengan <em>scene</em> objek ikan.</li>
+<li><code>@export var obstacle : PackedScene</code> akan membuat variabel <code>obstacle</code> terdaftar di panel Inspector. Kamu nanti akan dapat mengisi variabel tersebut dengan <em>scene</em> objek ikan.</li>
 <li>Fungsi <code>_ready()</code> memanggil fungsi <code>repeat()</code>. Fungsi <code>repeat()</code> akan dipanggil berulang kali selama permainan berjalan dengan interval antar pemanggilan <code>repeat()</code> selama 1 detik.</li>
 <li>Fungsi <code>repeat()</code> memanggil fungsi <code>spawn()</code>. Fungsi <code>spawn()</code> bertugas untuk melakukan instansiasi objek secara dinamis. Dalam hal ini, <em>scene</em> yang dikandung oleh variabel <code>obstacle</code> akan diinstansiasi di sebuah posisi acak pada sumbu X.</li>
 </ul>
@@ -914,7 +915,7 @@ Kemudian, kumpulkan tautan ke repositori Git hasil pengerjaan tutorial 4 kamu di
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2025-02-23 15:33:08</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2025-02-23 15:41:46</span>
       
         <br>
         Created:
