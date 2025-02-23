@@ -66,7 +66,9 @@ Kamu akan melihat ada suatu makhluk yang akan langsung jatuh ketika _scene_ dima
 
 Klik kanan pada _node_ `Level1` dan pilih "Add Child Node", kemudian pilih `TileMapLayer`.
 
-Setelah itu, anda perlu meng-klik `Tile Set` dan memilih opsi `new Tileset`![Tampilan inspector tilemaplayer](images/Tampilaninspectortilemaplayer.png)
+Setelah itu, anda perlu meng-klik `Tile Set` dan memilih opsi `new Tileset`
+
+![Tampilan inspector tilemaplayer](images/Tampilaninspectortilemaplayer.png)
 
 Setelah Tileset berhasil ditambahkan akan terlihat _grid_ samar-samar berwarna oranye pada _scene_ seperti gambar dibawah ini.
 (Jika tidak terjadi apa-apa, coba pilih _node_ `TileMap` pada scene tab)
@@ -138,7 +140,7 @@ Oleh karena itu kita akan membuat kamera yang akan mengikuti kemanapun mahluk pi
 Buka scene `scenes/Player.tscn`, tambah _node_ `Camera2D` sebagai _child node_ dari `Player`.
 Kemudian pada tab Inspector centang `Current`.
 
-![Camera Inspector](images/CameraInspector.png)
+![Camera Inspector](images/Camera2D.png)
 
 Sekarang kamera akan selalu mengikuti mahluk itu kemanapun ia pergi.
 
