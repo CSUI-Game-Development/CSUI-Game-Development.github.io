@@ -661,48 +661,39 @@ buka proyek Tutorial 4 menggunakan Godot.
 Kemudian buka <em>scene</em> <code>Level1.tscn</code> dan coba jalankan <em>playtest</em> pada <em>scene</em> tersebut.
 Kamu akan melihat ada suatu makhluk yang akan langsung jatuh ketika <em>scene</em> dimainkan.</p>
 <p><img alt="Tampilan Level 1.tscn" src="images/Level1Blank.png" /></p>
-<p>Klik kanan pada <em>node</em> <code>Level1</code> dan pilih "Add Child Node", kemudian pilih <code>TileMap</code>.</p>
-<p>Setelah <code>TileMap</code> berhasil ditambahkan akan terlihat <em>grid</em> samar-samar berwarna oranye pada <em>scene</em> dan muncul 1 tab baru disebelah <em>scene</em>.
-(Jika tidak terjadi apa-apa, coba pilih <em>node</em> <code>TileMap</code>)</p>
-<p><img alt="Tampilan TileMap Kosong" src="images/Level1TilemapAdd.png" /></p>
-<p>Pada tab Inspector, atur <code>Size</code> menjadi 128 untuk X dan Y.</p>
-<p><img alt="Tampilan TileMap Kosong" src="images/TilemapInspector.png" /></p>
+<p>Klik kanan pada <em>node</em> <code>Level1</code> dan pilih "Add Child Node", kemudian pilih <code>TileMapLayer</code>.</p>
+<p>Setelah itu, anda perlu meng-klik <code>Tile Set</code> dan memilih opsi <code>new Tileset</code><img alt="Tampilan inspector tilemaplayer" src="images/Tampilaninspectortilemaplayer.png" /></p>
+<p>Setelah Tileset berhasil ditambahkan akan terlihat <em>grid</em> samar-samar berwarna oranye pada <em>scene</em> seperti gambar dibawah ini.
+(Jika tidak terjadi apa-apa, coba pilih <em>node</em> <code>TileMap</code> pada scene tab)</p>
+<p><img alt="Tampilan TileMap Kosong" src="images/tampilantilemapsamar.png" /></p>
+<p>Pada tab Inspector, Tekanlah Tileset yang barusan Anda buat. Akan muncul atribut <code>tile size</code> atur <code>tile size</code> menjadi 128 untuk X dan Y, angka 128 ini berdasarkan dengan ukuran tiap tile anda, kasarnya Anda mengatakan kalau ukuran 1 tile adalah 128 pixel ke sumbu X, dan 128 pixel ke sumbu y.</p>
+<p><img alt="TileMapSudah128" src="images/TileMapSudah128.png" /></p>
 <h3 id="latihan-membuat-tile-map">Latihan: Membuat Tile Map</h3>
 <p>Jika diibaratkan dengan melukis, kita baru saja mempersiapkan kanvas dan kuas. Kita masih kekurangan cat untuk melukis.
-Untuk mempersiapkan cat, pada tab Inspector klik dropdown menu <code>TileSet</code> dan pilih <code>New TileSet</code>.</p>
-<p><img alt="New Tileset" src="images/TilemapNewTileset.png" /></p>
-<p>Lalu klik lagi dropdown tadi dan pilih <code>Edit</code>.</p>
-<p><img alt="New Tileset" src="images/TilemapEditTileset.png" /></p>
-<p>Akan muncul window baru dengan nama <code>TileSet</code>.</p>
-<p><img alt="TileSet Window" src="images/Level1TilesetEdit.png" /></p>
-<p>Lalu klik ikon plus di kiri bawah window tersebut dan pilih <code>assets/kenney_platformerpack/Spritesheets/*</code>.
-Dalam contoh ini digunakan <code>spritesheet_gr_dirt.png</code>, namun kamu bebas menggunakan yang tersedia atau menambah sendiri.
-Jika sudah maka akan tampil seperti berikut.</p>
-<p><img alt="TileSet Window 2" src="images/TilesetDirtNew.png" /></p>
-<p>Terdapat beberapa cara untuk membuat Tile Set:</p>
-<ul>
-<li><em>Single Tile</em> untuk <em>tile</em> satuan jika ingin memasukan setiap <em>tile</em> satu-persatu.</li>
-<li><em>Autotile</em> untuk <em>tile</em> yang bisa di automasikan pemilihannya berdasarkan <em>tile</em> sekelilingnya, contohnya pada game dengan tipe <em>top-down perspective</em>.</li>
-<li><em>Atlas</em> untuk <em>tile</em> yang bertipe sejenis dan akan lebih mudah diorganisir daripada menggunakan <em>single tile</em> berulang kali.</li>
-</ul>
-<p>Pada tutorial ini kita akan menggunakan <em>Atlas</em>.
-Klik <code>New Atlas</code>, lalu drag area yang akan dijadikan Tile Set.</p>
-<blockquote>
-<p>Tips: supaya hidup kamu mudah silakan menggunakan fitur <code>snap to grid</code> (Klik logo magnet).</p>
-</blockquote>
-<p><img alt="TileSet Window 3" src="images/TilesetDirtSelect.png" /></p>
-<p>Kemudian pada tab Inspector silakan isi nama sesuka hati dan atur <code>Subtile Size</code> ke 128 untuk X dan Y.
-Jika sudah jangan lupa untuk men-<em>save</em> Tile Set (penamaan bebas).</p>
-<p><img alt="TileSet Inspector" src="images/TilesetDirtInspector.png" /></p>
-<p>Supaya player dapat <em>collide</em> dengan tile, kita perlu menambahkan <em>collider</em> pada tile tersebut.
-Untuk melakukannya klik <code>Collision</code>, klik ke <em>subtile</em> yang dituju, klik ikon kotak (no 3)), dan akhirnya klik lagi <em>subtile</em> tersebut.</p>
-<p><img alt="TileSet Window 4" src="images/TilesetDirtCollision.png" /></p>
-<p>Untuk mengatur bentuk <em>collider</em> silakan geser <em>vertex</em> (lingkaran merah) sesuai keinginan.
-Ulangi langkah 2 sampai 4 untuk setiap <em>subtile</em>.
-Berikut contoh hasil pengaturan bentuk-bentuk <em>collider</em> pada setiap <em>subtile</em>:</p>
-<p><img alt="TileSet Window 4" src="images/TilesetDirtCollision2.png" /></p>
-<p>Jika sudah berhasil, klik node TileMap pada tab Scene dan Tile Set tadi akan tampil dan siap untuk digunakan. Selamat berkreasi.</p>
+Untuk mempersiapkan cat. Pada menu di bagian bawah, kalian perlu memilih Tileset.</p>
+<p><img alt="alt text" src="images/tombolmenutileset.png" /></p>
+<p>Setelah itu, kalian dapat membuka file <code>assets/kenney_platformerpack/Spritesheets/spritesheet_gr_dirt.png</code> dan mendragnya, ke dalam persegi berwarna biru gelap.</p>
+<p><img alt="alt text" src="images/lokasidraganddroptileset.png" /></p>
+<p>Setelah Anda drop filenya, akan muncul pop-up seperti ini. Untuk tutorial ini kami sarankan Anda memilih <strong>YES</strong>. Hal ini akan menyebabkan godot memotong spritesheet anda sesuai dengan ukuran tileset yang tadi anda tentukan (128x128). Jika Anda memilih <code>No</code> maka Anda bisa menentukan cara memotong tiap objek pada spritesheet sendiri. Ini berguna jika Anda memiliki objek yang berbentuk 2x1, dsb.
+<img alt="alt text" src="images/popup.png" /></p>
+<p>Untuk memulai menggambar dengan tileset yang Anda baru saja buat. Pilih kembali menu TileMap pada menu di bawah. Pilih lah tool Paint(D) pada toolbar TileMap, kemudian pilih salah satu tile Anda. Ketika sudah dipilih, silahkan lah mulai menggambar pada scene dengan menekan tombol kiri mouse, dan tombol kanan mouse untuk menghapus</p>
 <p><img alt="TileMap Painting" src="images/TilemapPainting.gif" /></p>
+<p>Anda mungkin sekarang bertanya-tanya, Jadi apa perbedaan antara tileset dan juga tilemap. Sederhananya, tileset menu dimana kita mempersiapkan cat yang akan kita gunakan untuk menggambar, seperti kolisi tiap tile, bentuk navigasi tiap tile, light ocullisionnya, dll. Sedangkan TileMap lebih berfokus pada canvas bagi tileset Anda, bagaimana Anda memposisikan tiap-tiap tile. </p>
+<p>Jika Anda sudah mencoba mem-<em>play scene</em> Level1.tscn atau membaca paragraf sebelumnya, Anda mungkin menyadari sesuatu. Tilemap yang kita buat belum memiliki kolisi. :O</p>
+<p>Supaya player dapat <em>collide</em> dengan tile, kita perlu menambahkan <em>collider</em> pada tile tersebut. Bagaimana cara kita melakukannya?</p>
+<p>Untuk melakukannya, kita perlu menambahkan layer physics terlebih dahulu dengan menekan tombol berikut pada tab Inspector TileMapLayer/TileSet.
+<img alt="addphysicslayer" src="images/addphysicslayer.png" /></p>
+<p>Jika Anda sudah menekan tombol tersebut, akan muncul tampilan seperti berikut</p>
+<p><img alt="hasil dari addphysicslayer" src="images/hasildariaddphysicslayer.png" /></p>
+<p>Anda disarankan untuk mencoba-coba mengubah settings pada physics layer. Untuk mencari tahu apa pengaruh kedua settings tersebut. Namun untuk sekarang, default setting sudah cukup.</p>
+<p>Lanjut ke tahapan selanjutnya untuk memberikan kolisi pada TileMap. Anda perlu berada pada menu TileSet, kemudian menekan menu paint. Disana akan terdapat dropdown bernama <code>Select a property editor</code>. Jika Anda menekan dropdownnya, akan terdapat opsi Physics Layer 0. Anda perlu memilih opsi tersebut.</p>
+<p><img alt="tambahinphysicslayer0" src="images/tambahinphysicslayer0.png" /></p>
+<p>Akan muncul tampilan seperti di bawah ini. </p>
+<p><img alt="menugambarkolisi" src="images/menugambarkolisi.png" /></p>
+<p>Pada bagian kiri, Anda dapat menggambar bentuk kolisi yang Anda inginkan selayaknya Anda membuat node CollisionPoligon2D. Anda dapat menambahkan node, menghapus node, dan juga menggesernya untuk membuat kolisi yang Anda suka.</p>
+<p>Ketika Anda sudah menggambar bentuk kolisi yang memuaskan bagi Anda, klik lah salah satu tile pada bagian kanan. Sekarang, tile tersebut akan mendapatkan kolisi yang Anda gambar barusan. Hati-hati saat menekan tile pada sisi kanan menu, karena tile yang ditekan akan langsung terupdate bentuk kolisinya dengan gambar terbaru Anda pada sisi kiri.</p>
+<p><img alt="menggambar" src="images/menggambar.gif" /></p>
+<p>Jika sudah berhasil, klik node TileMapLayer pada tab Scene dan Tile Set tadi akan tampil dan siap untuk digunakan. Selamat berkreasi.</p>
 <blockquote>
 <p>Note : Node TileMap di scale menjadi 0.5 pada X dan Y agar ukuran tile tidak terlalu besar dibanding player.
 (Tab Inspector &gt; Transform &gt; Scale)</p>
@@ -922,7 +913,7 @@ Kemudian, kumpulkan tautan ke repositori Git hasil pengerjaan tutorial 4 kamu di
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-02-29 01:49:08</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2025-02-23 08:44:39</span>
       
         <br>
         Created:
