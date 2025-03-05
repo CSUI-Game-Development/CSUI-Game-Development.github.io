@@ -120,79 +120,100 @@ Di sisi lain ```AnimationPlayer``` digunakan untuk membuat animasi yang lebih ko
 
 3. Selanjutnya adalah membuat **frame baru** untuk menempatkan sprite-sprite menjadi sebuah animasi
 
-    ![Frame Baru](images/Frame_Baru.jpg)
+    ![Frame Baru](images/Frame_Baru.png)
 
 4. Setelahnya akan keluar window dibagian bawah untuk membuat animasi. Beri nama pada animasi yang ingin kalian buat dengan menekan 2x pada tulisan default
 
-    ![Tampilan Animation Window](images/Tampilan_Animation_Window.jpg)
+    ![Tampilan Animation Window](images/Tampilan_Animation_Window.png)
 
 5. Di tutorial ini akan membuat contoh animasi berjalan menghadap kanan (nama animasinya jalan_kanan). Setelah memberi nama, selanjutnya adalah mengimport gambar untuk dijadikan animasi. Ada **dua teknik** yaitu dengan langsung memasukan file gambar yang berisi satu gambar utuh (button 1), atau dengan memasukan file spritesheet (button 2).
 
-    ![Tampilan Button Load](images/Tampilan_Button_Load.jpg)
+    ![Tampilan Button Load](images/Tampilan_Button_Load.png)
     > Note:
     >
     > - Import gambar dengan menggunakan button 1 hanya tinggal menekan button 1 dan memilih file gambar yang ingin di import (ingat, teknik ini akan mengimport keseluruhan gambar dalam file).
     > - Import gambar dengan button 2 sedikit berbeda. Disini pilih file yang berisi spritesheet dan akan muncul tampilan grid seperti dibawah ini.
     >
-    > ![Import Texture Spritesheet](images/Import_Texture_Spritesheet.jpg)
+    > ![Import Texture Spritesheet](images/Import_Texture_Spritesheet.png)
 
     Disini kalian harus mengatur banyaknya grid yang agar setiap satu grid mewakili satu gambar yang akan di import. Pada kasus ini ubah horizontal menjadi 9 (karena jumlah gambar pada satu baris ada 9), dan vertikal menjadi 3 (karena terdapat 3 baris). Selanjutnya pilih gambar dengan menekan grid yang diinginkan (disini bisa memilih multiple gambar).
 
-    ![Import Texture Spritesheet2](images/Import_Texture_Spritesheet2.jpg)
+    ![Import Texture Spritesheet2](images/Import_Texture_Spritesheet2.png)
 
 6. Selanjutnya untuk mencoba apakah animasi sudah seperti yang diinginkan dengan menceklis box playing pada inspector node animatedSprite. (jika animasi terlalu lambat, bisa menambahkan fps di bagian pojok kiri bawah diatas tombol output. Untuk pengulangan animasi, bisa mengaktifkan loop dibawah fps)
 
-    ![Playing FPS Loop](images/Playing_FPS_Loop.jpg)
+    ![Playing FPS Loop](images/Playing_FPS_Loop.png)
 
-7. Animasi telah siap digunakan. Tetapi jika kalian lihat, saat menjalankan scene posisi player akan mengikuti texture pertama pada animasi jalan_kanan. Maka dari itu sebaiknya kalian membuat beberapa animasi untuk kasus lainnya. Untuk menyatakan animasi mana yang menjadi inisiasi player saat main scene dijalankan, bisa mengaturnya pada properti animations yang berapa pada inspector node animatedSprite. (disini scene playernya diberinama player.tscn, dengan root node bernama player)
+7. Animasi telah siap digunakan. Tetapi jika kalian lihat, saat menjalankan scene posisi player akan mengikuti texture pertama pada animasi jalan_kanan. Maka dari itu sebaiknya kalian membuat beberapa animasi untuk kasus lainnya. Untuk menyatakan animasi mana yang menjadi inisiasi player saat main scene dijalankan, bisa mengaturnya pada properti `autoplay on load` yang berapa di samping loop button.
 
-    ![Scene Selesai](images/Scene_Selesai.jpg)
+    ![Scene Selesai](images/Scene_Selesai.png)
 
 8. Terakhir tentunya adalah membuat script untuk mengaktifkan animasi ini. Berikut adalah kode yang diambil dari Tutorial 3:
 
     ```gdscript
-    extends KinematicBody2D
+    extends CharacterBody2D
 
-    export (int) var speed = 400
-    export (int) var jump_speed = -600
-    export (int) var GRAVITY = 1200
+    @export var SPEED := 200
+    @export var JUMP_SPEED := -400
+    @export var GRAVITY := 1200
+    @onready var animplayer = $AnimatedSprite2D
 
     const UP = Vector2(0,-1)
 
-    var velocity = Vector2()
+    func _get_input():
+      if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+        velocity.y = JUMP_SPEED
 
-    func get_input():
-      velocity.x = 0
-      if is_on_floor() and Input.is_action_just_pressed('up'):
-        velocity.y = jump_speed
-      if Input.is_action_pressed('right'):
-        velocity.x += speed
-      if Input.is_action_pressed('left'):
-        velocity.x -= speed
+      # Get the input direction and handle the movement/deceleration.
+      # As good practice, you should replace UI actions with custom gameplay actions.
+      var direction := Input.get_axis("ui_left", "ui_right")
+      var animation = "idle"
+      if direction:
+        animation = "walk right"
+        velocity.x = direction * SPEED
+        if direction>0:
+          animplayer.flip_h = false
+        else:
+          animplayer.flip_h = true
+      else:
+        velocity.x = move_toward(velocity.x, 0, SPEED)
+      animplayer.play(animation)
 
-    func _physics_process(delta):
-      velocity.y += delta * GRAVITY
-      get_input()
-      velocity = move_and_slide(velocity, UP)
+      move_and_slide()
+      
+
+    func _physics_process(delta: float) -> void:
+      velocity.y += delta*GRAVITY
+      _get_input()
+      move_and_slide()
+
     ```
 
-9. Fungsi utama untuk mengaktifkan animasi adalah dengan `[nama_node_animatedSprite.play("nama_animasi")`. Coba perbarui fungsi `get_input()` dengan kode ini dan jalankan lagi main scene dengan menekan tombol keyboard kanan untuk menjalankan player.
+9. Fungsi utama untuk mengaktifkan animasi adalah dengan `animplayer.play(name: str)`. Coba perbarui fungsi `get_input()` dengan kode ini dan jalankan lagi main scene dengan menekan tombol keyboard kanan untuk menjalankan player.
 
     ```gdscript
-    func get_input():
-      var animation = "diri_kanan"
+    func _get_input():
+      if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+        velocity.y = JUMP_SPEED
 
-      velocity.x = 0
-      if is_on_floor() and Input.is_action_just_pressed('up'):
-        velocity.y = jump_speed
-      if Input.is_action_pressed('right'):
-        velocity.x += speed
-        animation = "jalan_kanan"
-      if Input.is_action_pressed('left'):
-        velocity.x -= speed
+      # Get the input direction and handle the movement/deceleration.
+      # As good practice, you should replace UI actions with custom gameplay actions.
+      var direction := Input.get_axis("ui_left", "ui_right")
+      var animation = "idle"
+      if direction:
+        animation = "walk right"
+        velocity.x = direction * SPEED
+        if direction>0:
+          animplayer.flip_h = false
+        else:
+          animplayer.flip_h = true
+      else:
+        velocity.x = move_toward(velocity.x, 0, SPEED)
+      
+      if animplayer.animation!=animation:
+        animplayer.play(animation)
 
-      if $AnimatedSprite.animation != animation:
-        $AnimatedSprite.play(animation)
+      move_and_slide()
     ```
 
      `$AnimatedSprite` merupakan nama dari node dengan tipe `AnimatedSprite`. Kalian bisa melengkapi program diatas menjadi animasi lengkap sampai menunduk, lompat, atau animasi lainnya.
@@ -203,7 +224,7 @@ Suara di dalam game merupakan pelengkap yang harus ada dalam setiap game. Suara 
 
 Suara dalam game biasa dibuat dengan menggunakan *sound editing tools*, seperti [FMOD](https://www.fmod.com/), [Wwise](https://www.audiokinetic.com/), dan [Audacity](https://www.audacityteam.org/) (Open Source). Dengan menggunakan *sound editing tools*, *game music composer* dapat membuat *game asset* mulai dari efek suara hingga musik yang mendukung penggambaran suasana game.
 
-Seperti dalam pembuatan visual, penggunaan *sound editing tools* tentunya juga membutuhkan keahlian tersendiri. Maka dari itu, ada alternatif lain untuk *coder* yang ingin menambahkan SFX dalam game, yaitu dengan menggunakan *free sound* dari internet. Berikut website sumber efek suara yang gratis.
+Seperti dalam pembuatan visual, penggunaan *sound editing tools* tentunya juga membutuhkan keahlian tersendiri. Maka dari itu, ada alternatif lain untuk *programmer* yang ingin menambahkan SFX dalam game, yaitu dengan menggunakan *free sound* dari internet. Berikut website sumber efek suara yang gratis.
 
 - https://kenney.nl/assets?q=audio
 - https://freesound.org/
@@ -214,7 +235,10 @@ Walaupun kalian menggunakan suara gratis dari sumber-sumber di atas, jangan lupa
 ### Introduction to Sound Editing Tools
 
 Sebelum mempelajari implementasi _sound_ di Godot, pertama-tama kita pelajari dulu salah satu *sound editing tools*.
-Tools yang digunakan kali ini adalah *tools open source*, yaitu **Audacity**. Sebelum memulai tutorial bagian ini, *download* dan *install* Audacity terlebih dahulu melalui [link berikut](https://www.audacityteam.org/download/).
+Tools yang digunakan kali ini adalah *tools open source*, yaitu **Audacity**. Sebelum memulai tutorial bagian ini, *download* dan *install* Audacity terlebih dahulu melalui [link berikut](https://www.audacityteam.org/download/). 
+> NOTE
+> Pada website audacity terbaru, terdapat beberapa pilihan cara untuk mengunduh audacity, jika kalian tidak ingin mengunduh dari MuseHub dan hanya menginginkan aplikasi audacitynya saja, silahkan pilih tombol yang dibawah
+![muse hub](images/musehub.png)
 
 Berikut tampilan dari Audacity:
 
@@ -232,7 +256,7 @@ Track ini dapat diisi dengan suara hasil **rekaman**. Untuk memulai rekaman, tek
 
 ![Record](images/Audacity_Record.jpg)
 
-Hasil rekaman akan otomatis terisi ke dalam track. Namun, saat ini suara tersebut masih penuh noise. Untuk mengurangi noise tersebut dapat menggunakan effect **_noise reduction_**. Pertama, select interval audio track yang akan diberi effect. Kemudian, pilih effects pada toolbar dan pilih noise reduction.
+Hasil rekaman akan otomatis terisi ke dalam track. Namun, saat ini suara tersebut masih penuh noise. Untuk mengurangi noise tersebut dapat menggunakan effect **Noise removal and repair/_noise reduction_**. Pertama, select interval audio track yang akan diberi effect. Kemudian, pilih effects pada toolbar dan pilih noise reduction.
 
 ![Noise Reduction](images/Audacity_NoiseReduction.jpg)
 
