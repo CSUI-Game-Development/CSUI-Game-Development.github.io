@@ -719,33 +719,33 @@ Metode ini juga lebih sering digunakan untuk membuat animasi pada karakter atau 
 </li>
 <li>
 <p>Selanjutnya adalah membuat <strong>frame baru</strong> untuk menempatkan sprite-sprite menjadi sebuah animasi</p>
-<p><img alt="Frame Baru" src="images/Frame_Baru.jpg" /></p>
+<p><img alt="Frame Baru" src="images/Frame_Baru.png" /></p>
 </li>
 <li>
 <p>Setelahnya akan keluar window dibagian bawah untuk membuat animasi. Beri nama pada animasi yang ingin kalian buat dengan menekan 2x pada tulisan default</p>
-<p><img alt="Tampilan Animation Window" src="images/Tampilan_Animation_Window.jpg" /></p>
+<p><img alt="Tampilan Animation Window" src="images/Tampilan_Animation_Window.png" /></p>
 </li>
 <li>
 <p>Di tutorial ini akan membuat contoh animasi berjalan menghadap kanan (nama animasinya jalan_kanan). Setelah memberi nama, selanjutnya adalah mengimport gambar untuk dijadikan animasi. Ada <strong>dua teknik</strong> yaitu dengan langsung memasukan file gambar yang berisi satu gambar utuh (button 1), atau dengan memasukan file spritesheet (button 2).</p>
-<p><img alt="Tampilan Button Load" src="images/Tampilan_Button_Load.jpg" /></p>
+<p><img alt="Tampilan Button Load" src="images/Tampilan_Button_Load.png" /></p>
 <blockquote>
 <p>Note:</p>
 <ul>
 <li>Import gambar dengan menggunakan button 1 hanya tinggal menekan button 1 dan memilih file gambar yang ingin di import (ingat, teknik ini akan mengimport keseluruhan gambar dalam file).</li>
 <li>Import gambar dengan button 2 sedikit berbeda. Disini pilih file yang berisi spritesheet dan akan muncul tampilan grid seperti dibawah ini.</li>
 </ul>
-<p><img alt="Import Texture Spritesheet" src="images/Import_Texture_Spritesheet.jpg" /></p>
+<p><img alt="Import Texture Spritesheet" src="images/Import_Texture_Spritesheet.png" /></p>
 </blockquote>
 <p>Disini kalian harus mengatur banyaknya grid yang agar setiap satu grid mewakili satu gambar yang akan di import. Pada kasus ini ubah horizontal menjadi 9 (karena jumlah gambar pada satu baris ada 9), dan vertikal menjadi 3 (karena terdapat 3 baris). Selanjutnya pilih gambar dengan menekan grid yang diinginkan (disini bisa memilih multiple gambar).</p>
-<p><img alt="Import Texture Spritesheet2" src="images/Import_Texture_Spritesheet2.jpg" /></p>
+<p><img alt="Import Texture Spritesheet2" src="images/Import_Texture_Spritesheet2.png" /></p>
 </li>
 <li>
 <p>Selanjutnya untuk mencoba apakah animasi sudah seperti yang diinginkan dengan menceklis box playing pada inspector node animatedSprite. (jika animasi terlalu lambat, bisa menambahkan fps di bagian pojok kiri bawah diatas tombol output. Untuk pengulangan animasi, bisa mengaktifkan loop dibawah fps)</p>
-<p><img alt="Playing FPS Loop" src="images/Playing_FPS_Loop.jpg" /></p>
+<p><img alt="Playing FPS Loop" src="images/Playing_FPS_Loop.png" /></p>
 </li>
 <li>
-<p>Animasi telah siap digunakan. Tetapi jika kalian lihat, saat menjalankan scene posisi player akan mengikuti texture pertama pada animasi jalan_kanan. Maka dari itu sebaiknya kalian membuat beberapa animasi untuk kasus lainnya. Untuk menyatakan animasi mana yang menjadi inisiasi player saat main scene dijalankan, bisa mengaturnya pada properti animations yang berapa pada inspector node animatedSprite. (disini scene playernya diberinama player.tscn, dengan root node bernama player)</p>
-<p><img alt="Scene Selesai" src="images/Scene_Selesai.jpg" /></p>
+<p>Animasi telah siap digunakan. Tetapi jika kalian lihat, saat menjalankan scene posisi player akan mengikuti texture pertama pada animasi jalan_kanan. Maka dari itu sebaiknya kalian membuat beberapa animasi untuk kasus lainnya. Untuk menyatakan animasi mana yang menjadi inisiasi player saat main scene dijalankan, bisa mengaturnya pada properti <code>autoplay on load</code> yang berapa di samping loop button.</p>
+<p><img alt="Scene Selesai" src="images/Scene_Selesai.png" /></p>
 </li>
 <li>
 <p>Terakhir tentunya adalah membuat script untuk mengaktifkan animasi ini. Berikut adalah kode yang diambil dari Tutorial 3:</p>
@@ -771,33 +771,57 @@ Metode ini juga lebih sering digunakan untuk membuat animasi pada karakter atau 
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">extends</span><span class="w"> </span><span class="n">KinematicBody2D</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">extends</span><span class="w"> </span><span class="n">CharacterBody2D</span>
 
-<span class="k">export</span><span class="w"> </span><span class="p">(</span><span class="nb nb-Type">int</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">400</span>
-<span class="k">export</span><span class="w"> </span><span class="p">(</span><span class="nb nb-Type">int</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">jump_speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">600</span>
-<span class="k">export</span><span class="w"> </span><span class="p">(</span><span class="nb nb-Type">int</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">GRAVITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1200</span>
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">SPEED</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">200</span>
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">JUMP_SPEED</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">400</span>
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">GRAVITY</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">1200</span>
+<span class="err">@</span><span class="k">onready</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">animplayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">AnimatedSprite2D</span>
 
 <span class="k">const</span><span class="w"> </span><span class="n">UP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">Vector2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="k">var</span><span class="w"> </span><span class="n">velocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">Vector2</span><span class="p">()</span>
+<span class="k">func</span><span class="w"> </span><span class="n">_get_input</span><span class="p">():</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_just_pressed</span><span class="p">(</span><span class="s2">&quot;ui_accept&quot;</span><span class="p">)</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">is_on_floor</span><span class="p">():</span>
+<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JUMP_SPEED</span>
 
-<span class="k">func</span><span class="w"> </span><span class="n">get_input</span><span class="p">():</span>
-<span class="w">  </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">is_on_floor</span><span class="p">()</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_just_pressed</span><span class="p">(</span><span class="s1">&#39;up&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jump_speed</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">speed</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">speed</span>
+<span class="w">  </span><span class="c1"># Get the input direction and handle the movement/deceleration.</span>
+<span class="w">  </span><span class="c1"># As good practice, you should replace UI actions with custom gameplay actions.</span>
+<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">direction</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">get_axis</span><span class="p">(</span><span class="s2">&quot;ui_left&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ui_right&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">animation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;idle&quot;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">direction</span><span class="p">:</span>
+<span class="w">    </span><span class="n">animation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;walk right&quot;</span>
+<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">direction</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">SPEED</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">direction</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+<span class="w">      </span><span class="n">animplayer</span><span class="o">.</span><span class="n">flip_h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span>
+<span class="w">    </span><span class="k">else</span><span class="p">:</span>
+<span class="w">      </span><span class="n">animplayer</span><span class="o">.</span><span class="n">flip_h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
+<span class="w">  </span><span class="k">else</span><span class="p">:</span>
+<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">move_toward</span><span class="p">(</span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">SPEED</span><span class="p">)</span>
+<span class="w">  </span><span class="n">animplayer</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">animation</span><span class="p">)</span>
 
-<span class="k">func</span><span class="w"> </span><span class="n">_physics_process</span><span class="p">(</span><span class="n">delta</span><span class="p">):</span>
-<span class="w">  </span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">delta</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">GRAVITY</span>
-<span class="w">  </span><span class="n">get_input</span><span class="p">()</span>
-<span class="w">  </span><span class="n">velocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">move_and_slide</span><span class="p">(</span><span class="n">velocity</span><span class="p">,</span><span class="w"> </span><span class="n">UP</span><span class="p">)</span>
+<span class="w">  </span><span class="n">move_and_slide</span><span class="p">()</span>
+
+
+<span class="k">func</span><span class="w"> </span><span class="n">_physics_process</span><span class="p">(</span><span class="n">delta</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">float</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">  </span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">delta</span><span class="o">*</span><span class="n">GRAVITY</span>
+<span class="w">  </span><span class="n">_get_input</span><span class="p">()</span>
+<span class="w">  </span><span class="n">move_and_slide</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 </li>
 <li>
-<p>Fungsi utama untuk mengaktifkan animasi adalah dengan <code>[nama_node_animatedSprite.play("nama_animasi")</code>. Coba perbarui fungsi <code>get_input()</code> dengan kode ini dan jalankan lagi main scene dengan menekan tombol keyboard kanan untuk menjalankan player.</p>
+<p>Fungsi utama untuk mengaktifkan animasi adalah dengan <code>animplayer.play(name: str)</code>. Coba perbarui fungsi <code>get_input()</code> dengan kode ini dan jalankan lagi main scene dengan menekan tombol keyboard kanan untuk menjalankan player.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -811,20 +835,36 @@ Metode ini juga lebih sering digunakan untuk membuat animasi pada karakter atau 
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">get_input</span><span class="p">():</span>
-<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">animation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;diri_kanan&quot;</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">_get_input</span><span class="p">():</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_just_pressed</span><span class="p">(</span><span class="s2">&quot;ui_accept&quot;</span><span class="p">)</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">is_on_floor</span><span class="p">():</span>
+<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JUMP_SPEED</span>
 
-<span class="w">  </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">is_on_floor</span><span class="p">()</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_just_pressed</span><span class="p">(</span><span class="s1">&#39;up&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jump_speed</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">speed</span>
-<span class="w">    </span><span class="n">animation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;jalan_kanan&quot;</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">speed</span>
+<span class="w">  </span><span class="c1"># Get the input direction and handle the movement/deceleration.</span>
+<span class="w">  </span><span class="c1"># As good practice, you should replace UI actions with custom gameplay actions.</span>
+<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">direction</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">get_axis</span><span class="p">(</span><span class="s2">&quot;ui_left&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ui_right&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">animation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;idle&quot;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">direction</span><span class="p">:</span>
+<span class="w">    </span><span class="n">animation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;walk right&quot;</span>
+<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">direction</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">SPEED</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">direction</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+<span class="w">      </span><span class="n">animplayer</span><span class="o">.</span><span class="n">flip_h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span>
+<span class="w">    </span><span class="k">else</span><span class="p">:</span>
+<span class="w">      </span><span class="n">animplayer</span><span class="o">.</span><span class="n">flip_h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
+<span class="w">  </span><span class="k">else</span><span class="p">:</span>
+<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">move_toward</span><span class="p">(</span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">SPEED</span><span class="p">)</span>
 
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">$</span><span class="n">AnimatedSprite</span><span class="o">.</span><span class="n">animation</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">animation</span><span class="p">:</span>
-<span class="w">    </span><span class="o">$</span><span class="n">AnimatedSprite</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">animation</span><span class="p">)</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">animplayer</span><span class="o">.</span><span class="n">animation</span><span class="o">!=</span><span class="n">animation</span><span class="p">:</span>
+<span class="w">    </span><span class="n">animplayer</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">animation</span><span class="p">)</span>
+
+<span class="w">  </span><span class="n">move_and_slide</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 <p><code>$AnimatedSprite</code> merupakan nama dari node dengan tipe <code>AnimatedSprite</code>. Kalian bisa melengkapi program diatas menjadi animasi lengkap sampai menunduk, lompat, atau animasi lainnya.</p>
 </li>
@@ -832,7 +872,7 @@ Metode ini juga lebih sering digunakan untuk membuat animasi pada karakter atau 
 <h2 id="aset-suara-audio">Aset Suara (Audio)</h2>
 <p>Suara di dalam game merupakan pelengkap yang harus ada dalam setiap game. Suara ini dapat menggambarkan suasana, seperti bahagia, sedih, mendebarkan, dan sebagainya. Dengan menambahkan suara yang sesuai, pengalaman pemain akan meningkat drastis.</p>
 <p>Suara dalam game biasa dibuat dengan menggunakan <em>sound editing tools</em>, seperti <a href="https://www.fmod.com/">FMOD</a>, <a href="https://www.audiokinetic.com/">Wwise</a>, dan <a href="https://www.audacityteam.org/">Audacity</a> (Open Source). Dengan menggunakan <em>sound editing tools</em>, <em>game music composer</em> dapat membuat <em>game asset</em> mulai dari efek suara hingga musik yang mendukung penggambaran suasana game.</p>
-<p>Seperti dalam pembuatan visual, penggunaan <em>sound editing tools</em> tentunya juga membutuhkan keahlian tersendiri. Maka dari itu, ada alternatif lain untuk <em>coder</em> yang ingin menambahkan SFX dalam game, yaitu dengan menggunakan <em>free sound</em> dari internet. Berikut website sumber efek suara yang gratis.</p>
+<p>Seperti dalam pembuatan visual, penggunaan <em>sound editing tools</em> tentunya juga membutuhkan keahlian tersendiri. Maka dari itu, ada alternatif lain untuk <em>programmer</em> yang ingin menambahkan SFX dalam game, yaitu dengan menggunakan <em>free sound</em> dari internet. Berikut website sumber efek suara yang gratis.</p>
 <ul>
 <li>https://kenney.nl/assets?q=audio</li>
 <li>https://freesound.org/</li>
@@ -841,7 +881,12 @@ Metode ini juga lebih sering digunakan untuk membuat animasi pada karakter atau 
 <p>Walaupun kalian menggunakan suara gratis dari sumber-sumber di atas, jangan lupa berikan credit yang sesuai sebagai bentuk apresiasi kepada pembuat audio.</p>
 <h3 id="introduction-to-sound-editing-tools">Introduction to Sound Editing Tools</h3>
 <p>Sebelum mempelajari implementasi <em>sound</em> di Godot, pertama-tama kita pelajari dulu salah satu <em>sound editing tools</em>.
-Tools yang digunakan kali ini adalah <em>tools open source</em>, yaitu <strong>Audacity</strong>. Sebelum memulai tutorial bagian ini, <em>download</em> dan <em>install</em> Audacity terlebih dahulu melalui <a href="https://www.audacityteam.org/download/">link berikut</a>.</p>
+Tools yang digunakan kali ini adalah <em>tools open source</em>, yaitu <strong>Audacity</strong>. Sebelum memulai tutorial bagian ini, <em>download</em> dan <em>install</em> Audacity terlebih dahulu melalui <a href="https://www.audacityteam.org/download/">link berikut</a>. </p>
+<blockquote>
+<p>NOTE
+Pada website audacity terbaru, terdapat beberapa pilihan cara untuk mengunduh audacity, jika kalian tidak ingin mengunduh dari MuseHub dan hanya menginginkan aplikasi audacitynya saja, silahkan pilih tombol yang dibawah
+<img alt="muse hub" src="images/musehub.png" /></p>
+</blockquote>
 <p>Berikut tampilan dari Audacity:</p>
 <p><img alt="Tampilan Audacity" src="images/Audacity.jpg" /></p>
 <p>Selanjutkan kita akan langsung praktik menyiapkan rekaman suara dan memasukkannya ke dalam Godot.</p>
@@ -850,7 +895,7 @@ Tools yang digunakan kali ini adalah <em>tools open source</em>, yaitu <strong>A
 <p><img alt="Add Stereo Track" src="images/Audacity_AddStereoTrack.jpg" /></p>
 <p>Track ini dapat diisi dengan suara hasil <strong>rekaman</strong>. Untuk memulai rekaman, tekan R atau tekan tombol rekaman. Jika sudah selesai merekam, tekan tombol stop.</p>
 <p><img alt="Record" src="images/Audacity_Record.jpg" /></p>
-<p>Hasil rekaman akan otomatis terisi ke dalam track. Namun, saat ini suara tersebut masih penuh noise. Untuk mengurangi noise tersebut dapat menggunakan effect <strong><em>noise reduction</em></strong>. Pertama, select interval audio track yang akan diberi effect. Kemudian, pilih effects pada toolbar dan pilih noise reduction.</p>
+<p>Hasil rekaman akan otomatis terisi ke dalam track. Namun, saat ini suara tersebut masih penuh noise. Untuk mengurangi noise tersebut dapat menggunakan effect <strong>Noise removal and repair/<em>noise reduction</em></strong>. Pertama, select interval audio track yang akan diberi effect. Kemudian, pilih effects pada toolbar dan pilih noise reduction.</p>
 <p><img alt="Noise Reduction" src="images/Audacity_NoiseReduction.jpg" /></p>
 <p>Selanjutnya tekan noise profile agar Audacity dapat mengetahui jenis noise yang akan difilter. Lalu pilih efek noise reduction lagi dari toolbar untuk memunculkan noise reduction settings dan atur sesuai kebutuhan. Jika sudah, klik OK. Audacity akan mengolah suara dan memfilter noise dari suara.</p>
 <p>Jika sudah selesai membuat audio, audio ini dapat diekspor ke bentuk yang dapat digunakan di Godot. Godot hanya support dua jenis audio file, yaitu <strong>wav</strong> dan <strong>ogg</strong>. Oleh karena itu, export audio dengan cara memilih file pada toolbar dan pilih export -&gt; export as wav.</p>
@@ -928,7 +973,7 @@ Kumpulkan tautan ke repositori Git hasil pengerjaan tutorial 5 kamu di slot peng
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-04-04 00:49:48</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2025-03-05 00:55:12</span>
       
         <br>
         Created:
