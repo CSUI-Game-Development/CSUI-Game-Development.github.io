@@ -66,7 +66,9 @@ Kamu akan melihat ada suatu makhluk yang akan langsung jatuh ketika _scene_ dima
 
 Klik kanan pada _node_ `Level1` dan pilih "Add Child Node", kemudian pilih `TileMapLayer`.
 
-Setelah itu, anda perlu meng-klik `Tile Set` dan memilih opsi `new Tileset`![Tampilan inspector tilemaplayer](images/Tampilaninspectortilemaplayer.png)
+Setelah itu, anda perlu meng-klik `Tile Set` dan memilih opsi `new Tileset`
+
+![Tampilan inspector tilemaplayer](images/Tampilaninspectortilemaplayer.png)
 
 Setelah Tileset berhasil ditambahkan akan terlihat _grid_ samar-samar berwarna oranye pada _scene_ seperti gambar dibawah ini.
 (Jika tidak terjadi apa-apa, coba pilih _node_ `TileMap` pada scene tab)
@@ -136,13 +138,17 @@ Sekarang kita sudah memiliki sebuah level, namun jika scene di-_play_ kamera aka
 Oleh karena itu kita akan membuat kamera yang akan mengikuti kemanapun mahluk pink itu pergi.
 
 Buka scene `scenes/Player.tscn`, tambah _node_ `Camera2D` sebagai _child node_ dari `Player`.
-Kemudian pada tab Inspector centang `Current`.
 
-![Camera Inspector](images/CameraInspector.png)
+
+![Camera Inspector](images/Camera2D.png)
 
 Sekarang kamera akan selalu mengikuti mahluk itu kemanapun ia pergi.
 
 ![Camera Following](images/CameraFollowing.gif)
+
+Kalian dapat melakukan eksperimen mandiri terhadap pengaturan pada inspector `Camera2D`. `limit` yang berguna membatasi pergerakan `Camera2D`.
+
+![Camera Limit](images/CameraLimit.png)
 
 ## Latihan: Membuat Kondisi Akhir Permainan Menggunakan Signal
 
@@ -189,11 +195,11 @@ Silakan tambah cuplikan dibawah pada _script_ tersebut. (Jangan lupa ganti nama 
 ```
 extends Area2D
 
-export var sceneName: String = "Level 1"
+@export var sceneName: String = "Level 1"
 
 func _on_Area_Trigger_body_entered(body):
     if body.get_name() == "Player":
-        get_tree().change_scene(str("res://scenes/" + sceneName + ".tscn"))
+        get_tree().change_scene_to_file(str("res://scenes/" + sceneName + ".tscn"))
 ```
 
 Secara singkat fungsi tersebut akan dipicu setiap kali ada objek dengan tipe `PhysicsBody2D` yang masuk area collision.
@@ -258,13 +264,14 @@ Jika butuh referensi, berikut ini adalah salah satu contoh _script_ yang mengimp
 ```gdscript
 extends Area2D
 
-export var sceneName = "LoseScreen"
+@export var sceneName = "LoseScreen"
 
 func _on_FallArea_body_entered(body):
 	if body.get_name() == "Player":
-		get_tree().change_scene(str("res://scenes/" + sceneName + ".tscn"))
+		get_tree().change_scene_to_file(str("res://scenes/" + sceneName + ".tscn"))
 	else:
 		body.queue_free()
+
 ```
 
 > Note: Jangan lupa untuk menempelkan (_attach_) _script_ yang baru kamu buat ke _scene_ objek ikan.
@@ -286,29 +293,29 @@ Isi dari _script_ tersebut adalah sebagai berikut:
 ```gdscript
 extends Node2D
 
-export (PackedScene) var obstacle
+@export var obstacle : PackedScene
 
 func _ready():
 	repeat()
 
 func spawn():
-	var spawned = obstacle.instance()
+	var spawned = obstacle.instantiate()
 	get_parent().add_child(spawned)
 
 	var spawn_pos = global_position
-	spawn_pos.x = spawn_pos.x + rand_range(-1000, 1000)
+	spawn_pos.x = spawn_pos.x + randf_range(-1000, 1000)
 
 	spawned.global_position = spawn_pos
 
 func repeat():
 	spawn()
-	yield(get_tree().create_timer(1), "timeout")
+	await get_tree().create_timer(1).timeout
 	repeat()
 ```
 
 Penjelasan dari isi _script_:
 
-- `export (PackedScene) var obstacle` akan membuat variabel `obstacle` terdaftar di panel Inspector. Kamu nanti akan dapat mengisi variabel tersebut dengan _scene_ objek ikan.
+- `@export var obstacle : PackedScene` akan membuat variabel `obstacle` terdaftar di panel Inspector. Kamu nanti akan dapat mengisi variabel tersebut dengan _scene_ objek ikan.
 - Fungsi `_ready()` memanggil fungsi `repeat()`. Fungsi `repeat()` akan dipanggil berulang kali selama permainan berjalan dengan interval antar pemanggilan `repeat()` selama 1 detik.
 - Fungsi `repeat()` memanggil fungsi `spawn()`. Fungsi `spawn()` bertugas untuk melakukan instansiasi objek secara dinamis. Dalam hal ini, _scene_ yang dikandung oleh variabel `obstacle` akan diinstansiasi di sebuah posisi acak pada sumbu X.
 

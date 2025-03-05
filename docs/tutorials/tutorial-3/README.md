@@ -143,19 +143,19 @@ func _init():
 ```
 
 > Catatan: contoh di atas diambil dari dokumentasi resmi Godot berikut:
-> https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_basics.html
+> https://docs.godotengine.org/en/4.3/tutorials/scripting/gdscript/gdscript_basics.html
 
 Beberapa hal yang perlu kita bahas:
 
 - Bahasa GDScript memiliki paradigma _object-oriented_ (OO) dan _imperative_.
   Sebuah _script_ akan memiliki hubungan _inheritance_ ke sebuah _superclass_.
-  Jika tidak mendeklarasikan _inheritance_ secara eksplisit, maka sebuah _class_ di GDScript secara implisit merupakan turunan dari sebuah _root superclass_ bernama [`Object`](https://docs.godotengine.org/en/3.5/classes/class_object.html).
+  Jika tidak mendeklarasikan _inheritance_ secara eksplisit, maka sebuah _class_ di GDScript secara implisit merupakan turunan dari sebuah _root superclass_ bernama [`Object`](https://docs.godotengine.org/en/4.3/classes/class_object.html).
 - Bahasa GDScript memiliki _type system_ yang bersifat _dynamic_.
   Kamu bisa mendeklarasikan variabel ataupun fungsi tanpa tipe data.
   Namun sangat disarankan untuk secara eksplisit tetap mendeklarasikan tipe data pada variabel dan fungsi.
   Tujuannya untuk membantu _autocompletion_ dan dokumentasi yang disediakan oleh _editor_.
 - Standar penulisan GDScript menyerupai Python. Misalnya, blok kode dibedakan menggunakan _indent_.
-  Untuk lebih lengkapnya, silakan merujuk ke dokumen [GDScript style guide](https://docs.godotengine.org/en/3.5/tutorials/scripting/gdscript/gdscript_styleguide.html).
+  Untuk lebih lengkapnya, silakan merujuk ke dokumen [GDScript style guide](https://docs.godotengine.org/en/4.3/tutorials/scripting/gdscript/gdscript_styleguide.html).
   Untuk mempermudah konsistensi penulisan kode di lingkungan pengembangan, kamu dapat merujuk ke berkas `.editorconfig` yang tersedia di _template_ Tutorial 3 serta memanfaatkan program Python bernama [`gdtoolkit`](https://pypi.org/project/gdtoolkit/) yang menyediakan _linter_ dan _code formatter_ GDScript.
 
 ## Basic 2D Plane Movement
@@ -397,10 +397,10 @@ Tenggat waktu pengumpulan adalah **28 Februari 2024 pukul 21:00**.
 
 ## Referensi
 
-- [Kinematic Character (2D)](https://docs.godotengine.org/en/stable/tutorials/physics/kinematic_character_2d.html)
-- [Scripting](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_basics.html)
-- [2D Movement Overview](https://docs.godotengine.org/en/stable/tutorials/2d/2d_movement.html)
+- [Kinematic Character (2D)](https://docs.godotengine.org/en/4.3/tutorials/physics/kinematic_character_2d.html)
+- [Scripting](https://docs.godotengine.org/en/4.3/tutorials/scripting/gdscript/gdscript_basics.html)
+- [2D Movement Overview](https://docs.godotengine.org/en/4.3/tutorials/2d/2d_movement.html)
 - [Kenney Assets](https://kenney.nl/assets/platformer-characters-1)
-- [CharacterBody2D](https://docs.godotengine.org/en/stable/classes/class_characterbody2d.html)
+- [CharacterBody2D](https://docs.godotengine.org/en/4.3/classes/class_characterbody2d.html)
 - Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
   gasal 2020/2021 Fakultas Ilmu Komputer Universitas Indonesia.
