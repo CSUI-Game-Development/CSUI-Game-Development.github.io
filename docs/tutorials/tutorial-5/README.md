@@ -1,8 +1,8 @@
 # Tutorial 5 - Assets Creation & Integration
 
 Selamat datang pada tutorial kelima kuliah Game Development.
-Pada tutorial kali ini, kamu akan mempelajari cara membuat _game asset_ sederhana menggunakan _tools_ yang sesuai kemudian mengintegrasikan ke game.
-Di akhir tutorial ini, diharapkan kamu paham dengan penggunaan _spritesheet_ dan _audio_ pada game 2D.
+
+Pada tutorial kali ini, kamu akan mempelajari cara membuat _game asset_ sederhana menggunakan _tools_ yang sesuai kemudian mengintegrasikan ke game. Di akhir tutorial ini, diharapkan kamu paham dengan penggunaan _spritesheet_ dan _audio_ pada game 2D.
 
 ## Daftar Isi
 
@@ -22,8 +22,7 @@ Di akhir tutorial ini, diharapkan kamu paham dengan penggunaan _spritesheet_ dan
 
 ### What Is Game Asset?
 
-Pada tutorial sebelumnya kita sudah membuat sebuah _level_ sederhana menggunakaan `TileMap` beserta mekanik kamera dan _trigger area_.
-Namun sebelum membuat suatu _level_ dalam game, dibutuhkan hal-hal yang menggambarkan tampilan dan suasana dalam game, yang lebih dikenal sebagai *Game Asset*.
+Pada tutorial sebelumnya kita sudah membuat sebuah _level_ sederhana menggunakaan `TileMap` beserta mekanik kamera dan _trigger area_. Namun sebelum membuat suatu _level_ dalam game, dibutuhkan hal-hal yang menggambarkan tampilan dan suasana dalam game, yang lebih dikenal sebagai *Game Asset*.
 
 Game asset meliputi:
 
@@ -38,18 +37,14 @@ Game asset meliputi:
     - BGM
     - SFX
 
-Sebagian besar _programmer_ tidak bertugas untuk mendesain visual dan mengaransemen musik,
-tetapi _programmer_ harus dapat mengimplementasikan _assets_ ke dalam game.
-Maka dari itu, tutorial ini akan menjelaskan tentang:
+Sebagian besar _programmer_ tidak bertugas untuk mendesain visual dan mengaransemen musik, tetapi _programmer_ harus dapat mengimplementasikan _assets_ ke dalam game. Maka dari itu, tutorial ini akan menjelaskan tentang:
 
 - Apa itu _spritesheet_ dan cara menggunakannya dalam animasi
 - Penggunaan _audio clip_ sebagai game sound effects
 
 ## Persiapan
 
-Tutorial ini akan **melanjutkan Tutorial 3**.
-Oleh sebab itu, silakan buka kembali hasil pekerjaan Tutorial 3 kamu.
-Kemudian, salin satu berkas _spritesheet_ dan satu berkas _audio_ dari tautan berikut ini ke dalam folder `assets` Tutorial 3:
+Tutorial ini akan **melanjutkan Tutorial 3**. Oleh sebab itu, silakan buka kembali hasil pekerjaan Tutorial 3 kamu. Kemudian, salin satu berkas _spritesheet_ dan satu berkas _audio_ dari tautan berikut ini ke dalam folder `assets` Tutorial 3:
 
 - [_Spritesheets_](https://github.com/CSUI-Game-Development/tutorial-5-template/blob/main/assets/spritesheet/player_tilesheet.png)
 - [_Audio_](https://github.com/CSUI-Game-Development/tutorial-5-template/raw/main/assets/sound/bgm.wav)
@@ -59,15 +54,11 @@ dan _push_  ke repositori daring Git kamu.
 
 ## Animasi Sprite Sheet
 
-```Sprite Sheet``` adalah file gambar *bitmap* yang berisi beberapa gambar yang lebih kecil dalam susunan *grid*.
-Dengan mengompilasi beberapa gambar menjadi satu berkas, kamu dapat membuat animasi hanya dengan memuat satu file.
-Efisiensi pemuatan ini dapat membantu dalam berbagai situasi, salah satunya *game development* dimana *performance* sangat penting dan sangat meminimalkan penggunaan *resource*.
+```Sprite Sheet``` adalah file gambar *bitmap* yang berisi beberapa gambar yang lebih kecil dalam susunan *grid*. Dengan mengompilasi beberapa gambar menjadi satu berkas, kamu dapat membuat animasi hanya dengan memuat satu file. Efisiensi pemuatan ini dapat membantu dalam berbagai situasi, salah satunya *game development* dimana *performance* sangat penting dan sangat meminimalkan penggunaan *resource*.
 
 ![Spritesheet](images/Spritesheet.png)
 
-Pembuatan *sprite sheet* tidak bergantung pada *tools*. Namun, *sprite sheet* lebih menekankan pada peletakan koordinat gambar pada satu berkas.
-Jika penempatan gambar per *frame* tidak rapih, sprite yang dihasilkan juga akan tidak sesuai dan terlihat aneh.
-Berikut *tools* untuk membuat *game assets* untuk dimasukkan ke dalam *sprite sheet*.
+Pembuatan *sprite sheet* tidak bergantung pada *tools*. Namun, *sprite sheet* lebih menekankan pada peletakan koordinat gambar pada satu berkas. Jika penempatan gambar per *frame* tidak rapih, sprite yang dihasilkan juga akan tidak sesuai dan terlihat aneh. Berikut *tools* untuk membuat *game assets* untuk dimasukkan ke dalam *sprite sheet*.
 
 - Pixel Art
     - [PiskelApp](https://www.piskelapp.com/)
@@ -80,9 +71,7 @@ Berikut *tools* untuk membuat *game assets* untuk dimasukkan ke dalam *sprite sh
     - [Procreate](https://procreate.art/)
     - [IbisPaint](https://ibispaint.com)
 
-Pembuatan aset secara manual tentu membutuhkan waktu dan keahlian.
-Saat ini sudah banyak tempat di Internet yang menyediakan aset-aset visual secara gratis.
-Walaupun gratis, jangan lupa membaca lisensi penggunaan aset tersebut!
+Pembuatan aset secara manual tentu membutuhkan waktu dan keahlian. Saat ini sudah banyak tempat di Internet yang menyediakan aset-aset visual secara gratis. Walaupun gratis, jangan lupa membaca lisensi penggunaan aset tersebut!
 
 Berikut adalah beberapa web yang menyediakan asset visual secara gratis.
 
@@ -92,13 +81,9 @@ Berikut adalah beberapa web yang menyediakan asset visual secara gratis.
 
 ### AnimatedSprite vs (AnimationPlayer + AnimationTree)
 
-Terdapat dua metode untuk membuat animasi dalam Godot, yaitu dengan menggunakan ```AnimatedSprite```
-atau dengan menggunakan ```AnimationPlayer``` bersama dengan ```AnimationTree```.
+Terdapat dua metode untuk membuat animasi dalam Godot, yaitu dengan menggunakan ```AnimatedSprite``` atau dengan menggunakan ```AnimationPlayer``` bersama dengan ```AnimationTree```.
 
-```AnimatedSprite``` memungkinkan kamu untuk membuat animasi dengan cara **mengganti gambar secara cepat**.
-Kecepatan pergantian *frame* gambar diatur dengan menggunakan satuan *frame per second*.
-Metode ini merupakan metode paling sederhana untuk membuat animasi di godot.
-Metode ini juga lebih sering digunakan untuk membuat animasi pada karakter atau *game objects*.
+```AnimatedSprite``` memungkinkan kamu untuk membuat animasi dengan cara **mengganti gambar secara cepat**. Kecepatan pergantian *frame* gambar diatur dengan menggunakan satuan *frame per second*. Metode ini merupakan metode paling sederhana untuk membuat animasi di godot. Metode ini juga lebih sering digunakan untuk membuat animasi pada karakter atau *game objects*.
 
 ![Animated Sprite](images/AnimatedSprite.png)
 
@@ -113,7 +98,7 @@ Di sisi lain ```AnimationPlayer``` digunakan untuk membuat animasi yang lebih ko
 
 ### Latihan: Membuat Animasi dengan AnimatedSprite
 
-1. Buka kembali project Tutorial 3 di Godot.
+1. Buka kembali project Tutorial **3** di Godot.
 2. Buat scene baru untuk membuat player dengan struktur seperti dibawah ini (jika sudah ada maka hanya perlu merubah node sprite menjadi ```AnimatedSprite```).
 
     ![Struktur Player](images/Struktur_Player.jpg)
@@ -234,8 +219,7 @@ Walaupun kalian menggunakan suara gratis dari sumber-sumber di atas, jangan lupa
 
 ### Introduction to Sound Editing Tools
 
-Sebelum mempelajari implementasi _sound_ di Godot, pertama-tama kita pelajari dulu salah satu *sound editing tools*.
-Tools yang digunakan kali ini adalah *tools open source*, yaitu **Audacity**. Sebelum memulai tutorial bagian ini, *download* dan *install* Audacity terlebih dahulu melalui [link berikut](https://www.audacityteam.org/download/). 
+Sebelum mempelajari implementasi _sound_ di Godot, pertama-tama kita pelajari dulu salah satu *sound editing tools*. Tools yang digunakan kali ini adalah *tools open source*, yaitu **Audacity**. Sebelum memulai tutorial bagian ini, *download* dan *install* Audacity terlebih dahulu melalui [link berikut](https://www.audacityteam.org/download/). 
 > NOTE
 > Pada website audacity terbaru, terdapat beberapa pilihan cara untuk mengunduh audacity, jika kalian tidak ingin mengunduh dari MuseHub dan hanya menginginkan aplikasi audacitynya saja, silahkan pilih tombol yang dibawah
 ![muse hub](images/musehub.png)
@@ -307,9 +291,7 @@ Klik *loop* lalu klik *reimport*. Godot akan mengimport audio ulang dengan menam
 
 ## Latihan Mandiri: Membuat dan Menambah Variasi Aset
 
-Silakan eksplorasi lebih lanjut mengenai animasi berdasarkan _spritesheet_ dan audio.
-Untuk latihan mandiri yang dikerjakan di akhir tutorial,
-kamu diharapkan untuk:
+Silakan eksplorasi lebih lanjut mengenai animasi berdasarkan _spritesheet_ dan audio. Untuk latihan mandiri yang dikerjakan di akhir tutorial, kamu diharapkan untuk:
 
 - [ ] Membuat minimal 1 (satu) objek baru di dalam permainan yang dilengkapi dengan animasi menggunakan _spritesheet_ selain yang disediakan tutorial. Silakan cari _spritesheet_ animasi di beberapa koleksi aset gratis seperti Kenney.
 - [ ] Membuat minimal 1 (satu) audio untuk efek suara (SFX) dan memasukkannya ke dalam permainan. Kamu dapat membuatnya sendiri atau mencari dari koleksi aset gratis.
@@ -340,12 +322,13 @@ Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:
 
 ## Pengumpulan
 
-Kumpulkan semua berkas pengerjaan tutorial dan latihan ke dalam Git dan push ke repositori Git **pengerjaan tutorial 3**,
-karena **tutorial 5 ini melanjutkan pengerjaan tutorial 3**.
+Kumpulkan semua berkas pengerjaan tutorial dan latihan ke dalam Git dan push ke repositori Git **pengerjaan tutorial 3**, karena **tutorial 5 ini melanjutkan pengerjaan tutorial 3**.
+
 Apabila kamu mengerjakan latihan mandiri, pastikan scene dan node sudah tercatat masuk ke dalam repositori Git.
+
 Kumpulkan tautan ke repositori Git hasil pengerjaan tutorial 5 kamu di slot pengumpulan yang tersedia di SCELE.
 
-Tenggat waktu pengumpulan adalah **13 Maret 2024 pukul 21:00**.
+Tenggat waktu pengumpulan adalah **14 Maret 2025 pukul 21:00**.
 
 ## Referensi
 
