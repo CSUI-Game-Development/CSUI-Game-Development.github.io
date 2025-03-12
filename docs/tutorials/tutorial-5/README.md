@@ -272,7 +272,7 @@ Audio yang sudah diexport dapat disimpan ke dalam folder `assets` pada project G
 
 Selain SFX, terdapat juga audio yang dapat menggambarkan suasana game, yaitu **Background Music**. Berikut cara mengimplementasikan BGM dalam game. Pertama buka level scene yang telah kamu buat. Kemudian tambahkan node ```AudioStreamPlayer``` sebagai child dari root node.
 
-![AudioStreamPlayer](images/BGMStep1_AddNodeAudioStreamPlayer.jpg)
+![AudioStreamPlayer](images/BGMStep1_AddNodeAudioStreamPlayer.png)
 
 Lihat pada tab inspector di sebelah kanan. Untuk menambahkan audio ke dalam node ```AudioStreamPlayer```, klik dropdown pada bagian stream dan pilih load.
 
@@ -284,7 +284,7 @@ Godot akan memunculkan *prompt* untuk memilih file. Pilih file `bgm.wav` pada di
 
 Setelah file audio dipilih, audio wave akan muncul pada bagian stream di tab inspector.
 
-![Audio Node Inspector Desc](images/BGMStep4_AudioNodeInspectorDesc.jpg)
+![Audio Node Inspector Desc](images/BGMStep4_AudioNodeInspectorDesc.png)
 
 Terdapat beberapa konfigurasi lainnya, yaitu:
 
@@ -301,7 +301,7 @@ Untuk penjelasan lebih lanjut mengenai `AudioStreamPlayer` dapat diakses di [doc
 
 Saat ini *audio* masih berjalan tanpa *looping*. Untuk membuat *audio looping*, pilih berkas `bgm.wav` pada tab **FileSystem** di sebelah kiri bawah. Kemudian, buka tab **Import** di sebelah kiri atas. Berikut tampilan dari tab **Import**:
 
-![Audio Import Settings](images/BGMStep5_ImportSettings.jpg)
+![Audio Import Settings](images/BGMStep5_ImportSettings.png)
 
 Klik *loop* lalu klik *reimport*. Godot akan mengimport audio ulang dengan menambahkan konfigurasi yang sudah dipilih sebelumnya. Tes apakah *audio* sudah *looping* dengan menjalankan *scene*.
 

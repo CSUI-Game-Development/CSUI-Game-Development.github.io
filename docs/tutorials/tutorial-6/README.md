@@ -130,12 +130,14 @@ Pada tab Inspector, atur **Constants** pada **Theme Overrides** sebagai berikut:
 
 ![Edit Custom Constants](./images/theme_overrides_constants.png)
 
-Kemudian pada Viewport, tekan menu **Layout** dan pilih opsi **Full Rect**.
+Kemudian pada Viewport, tekan menu **Layout**, pada attribut anchor preset, pilih opsi **Full Rect**.
 Ini dilakukan agar ukuran _container_ menyesuai ukuran _window_.
 
 ![Full Rect](images/FullRect.png)
 
-Sekarang masukkan elemen teks dan gambar ke dalam `MarginContainer`.
+Setelah itu masukan VBoxContainer di dalam MarginContainer.
+
+Sekarang masukkan elemen teks dan gambar ke dalam `VBoxContainer`.
 Untuk teks, gunakan _node_ `Label`, dan untuk gambar gunakan node `TextureRect`.
 Untuk contoh ini ada dua tombol, "New Game" dan "Stage Select", yang akan diimplementasikan menggunakan node `LinkButton`.
 
@@ -145,60 +147,28 @@ Saat selesai, mungkin struktur _scene_ dan _workspace_ kamu akan terlihat sepert
 
 ![Main Menu but no Font](images/MainMenuBeforeFont.PNG)
 
-Mungkin kamu akan menyadari bahwa tulisan pada `Label` dan `LinkButton` terlihat sangat kecil.
-Selain itu, _tab_ **Inspector** tidak memiliki pilihan ukuran atau jenis _font_.
-Hal ini disebabkan karena _engine_ Godot versi 3.5 **tidak memiliki fitur untuk mengubah ukuran dan jenis _font_ secara langsung**.
-
-_So, what do we do?_
-
-### Latihan: Membuat Custom Fonts
-
-Pada _engine_ Godot, kita harus menggunakan _custom font_ agar dapat mengatur _font_ dan ukurannya pada sebuah tulisan di dalam sebuah _node_.
-Misalnya pada _node_ `Label`, kita harus menggunakan objek _custom font_.
-
-Untuk tutorial ini, kita akan membuat `DynamicFont` menggunakan _font_ dengan ekstensi `.ttf`.
-Sudah disediakan beberapa berkas `.ttf` di folder `assets/Fonts/Raw/` pada [templat proyek Tutorial 6](https://github.com/CSUI-Game-Development/tutorial-6-template).
-
-> Catatan: Jika ingin mencari _font_ sendiri, bisa melalui situs web _font_ gratis seperti [di sini](https://www.1001fonts.com/free-fonts-for-commercial-use.html).
-
-Pertama, tekan tombol **Create Resource** pada tab Inspector.
-Kemudian buat sebuah `DynamicFont`, seperti yang tergambarkan pada _screenshot_ berikut:
-
-![Create Resource 1](images/CreateResource.png)
-![Create Resource 2](images/CreateResource2.PNG)
-
-Masih pada tab Inspector, cari pilihan **Font Data**, lalu tekan **Load** dan cari berkas `.ttf` yang ingin digunakan.
-Setelah itu, kamu dapat mengatur size sesuka hati pada opsi **Size** Tekan **Save**,
-dan simpan sebagai berkas `.tres` di folder `assets/Fonts` pengerjaan Tutorial 6.
-
-![Create Resource 3](images/CreateResource3.png)
-
-Untuk menggunakan _font_ tersebut, cari opsi **Custom Font** di tab Inspector pada _node_ `Label` atau `LinkButton`, lalu **Load Resource** yang baru saja dibuat.
-
-> Catatan: Seperti yang telah dijelaskan sebelumnya, tidak ada cara mengatur ukuran dan jenis _font_ secara langsung di _engine_ Godot versi 3.
-> Jika ingin membuat _font_ dengan tipe atau ukuran yang berbeda, harus membuat `DynamicFont` yang berbeda.
-
-Setelah menggunakan `DynamicFont` pada judul dan tombol, hasilnya terlihat seperti _screenshot_ berikut.
-Tombol **New Game** dan **Stage Select** diberi warna merah menggunakan `Custom Colors` pada tab Inspector:
-
-![Main Menu After Custom Font](images/MainMenuAfterFont.PNG)
-
-Masih belum terlihat rapi. Sekarang tambahkan _container_ sesuai visualisasi di atas tadi.
+Kamu pasti heran kenapa gambarnya besar sekali, kenapa tulisannya berada di pojok atas, dan kenapa semua tulisannya saling tumpang tindih. 
+Karena masih belum terlihat rapi, sekarang tambahkan _container_ sesuai visualisasi di atas tadi.
 Struktur _node_ dan _workspace_ seharusnya akan terlihat lebih rapi dan menyerupai _screenshot_ berikut:
 
 ![Main Menu After Containers](images/MainMenuAfterContainer.PNG)
 
-Agar judul dan tombol tidak terlalu berhimpitan, ubah **Margin** pada `VBoxContainer` _parent_.
-Kemudian, ubah **Alignment** , pilih opsi **Expand** pada _vertical_ di **Size Flags**.
-Lalu atur **Separation** pada **Theme Overrides** --> **Constants**.
+Agar tulisan dan gambar berada di tengah layar, pada HBoxContainer, ubah Alignment menjadi Center. Kemudian lakukan hal yang sama pada VBoxContainer. Untuk membuat gambar tidak tersquish, ubah StretchMode menjadi Keep dan ubah ContainerSizing.Vertical menjadi Shrink Center
 
-![Fix Bottom Margin](images/BottomMargin.png)
+![alt text](images/MainMenuAfterContainerAdjust.png)
 
-![Fixing the Buttons](images/VBoxFixing.PNG)
+Agar judul dan tombol tidak terlalu berhimpitan, ubah **Separation** pada `VBoxContainer` ThemeOverrides.
+
+Namun, pada saat ini tulisan judul dan tombol sangatlah membosankan. Hanya default font dari Godot. Apakah tidak ada cara untuk mengubahnya?? Apakah kita perlu membuat suatu objek khusus untuk tiap ukuran font yang kita perlukan. Untungnya pada Godot 4.3 sudah mudah mengubah style dari font. Kita hanya perlu mengubah konfigurasi ThemeOverrides pada node `Label` dan juga `LinkButton`
+
+![alt text](images/fontconfig.png)
+
+Untuk mengubah ukuran TextureRect, Anda bisa melakukan:
+Mengubah Strecth Mode menjadi KeepAspect pada `TextureRect`, mengubah `Container Sizing Horizontal` menjadi `Shrink Center`, Mengubah `Custom Minimum Size` sesuai keiinginan Anda.
 
 Selamat! Layar menu utama kamu sudah terlihat cukup rapi!
 
-![Main Menu Not Clickable Yet](images/MainMenuNoClick.gif)
+![alt text](images/finalmainmenu.png)
 
  Tapi masih belum _clickable_ tentunya.
  Bagaimana caranya agar saat kita menekan tombol "New Game" dia akan melempar kita ke level 1?
@@ -232,7 +202,7 @@ Berhasil! Sekarang tombol "New Game" kamu akan langsung membawa pemain ke level 
 
 _"Mengapa saat saya tekan play (F5) yang jalan pertama bukan main menu?"_
 Karena `MainMenu.tscn` belum diatur sebagai **Main Scene**.
-**Main Scene** dapat diubah di Project Settings -> Application -> Run -> Main Scene.
+**Main Scene** dapat diubah di Project -> Project Settings -> Application -> Run -> Main Scene.
 
 ![Change Main Scene](images/SetMainScene.png)
 
@@ -262,10 +232,10 @@ extends Node
 var lives = 3
 ```
 
-Pada Project Settings, cari tab Autoload, lalu tambahkan script `global.gd` (tekan _icon_ folder di sebelah tulisan **Node Name** lalu cari berkas _script_-nya).
-Setelah ditambahkan, akan muncul di dalam daftar. Pastikan kolom `Singleton` dalam kondisi aktif (_enabled_).
+Pada Project Settings, cari tab Globals, lalu tambahkan script `global.gd` (tekan _icon_ folder di sebelah tulisan **Node Name** lalu cari berkas _script_-nya).
+Setelah ditambahkan, akan muncul di dalam daftar. Pastikan kolom `Global Variable` dalam kondisi aktif (_enabled_).
 
-![Set Global Autoload](images/Autoload.PNG)
+![alt text](images/Autoload.png)
 
 Sekarang kita punya variable nyawa yang dapat diakses kapan saja. Mari kita tampilkan menggunakan _label_.
 
@@ -277,7 +247,6 @@ Sekarang kita punya variable nyawa yang dapat diakses kapan saja. Mari kita tamp
 
 Buat sebuah scene baru dan beri nama `Life Counter.tscn` dengan _root node_ sebuah `MarginContainer`.
 Buat sebuah _child node_ `Label`, lalu berikan _script_.
-Jangan lupa berikan _custom font_ kepada _node_ `Label`.
 
 ```gdscript
 extends Label
@@ -318,11 +287,11 @@ func _on_Area_Trigger_body_entered(body):
 	var current_scene = get_tree().get_current_scene().get_name()
 	if body.get_name() == "Player":
 		if current_scene == sceneName:
-			global.lives -=1
-		if (global.lives == 0):
+			Global.lives -=1
+		if (Global.lives == 0):
 			pass
 		else:
-			get_tree().change_scene(str("res://scenes/" + sceneName + ".tscn"))
+			get_tree().call_deferred("change_scene_to_file",(str("res://scenes/" + sceneName + ".tscn")))
 ```
 
 > _What's happening above?_ Karena transisi dari level 1 ke 2 menggunakan fungsi yang sama,
@@ -346,7 +315,7 @@ Silakan ubah warna sesuka hati.
 
 ![Setting Up Background Color](images/BackgroundColor.png)
 
-Tambahkan label bertuliskan "GAME OVER", dengan `DynamicFont` yang menurut kamu cocok, kemudian atur posisinya.
+Tambahkan label bertuliskan "GAME OVER", kemudian atur posisinya.
 Selesailah Game Over screen kita!
 
 ![Game Over Screen Finished](images/GameOverDesu.png)
@@ -354,7 +323,7 @@ Selesailah Game Over screen kita!
 Sekarang bagaimana caranya agar saat nyawa pemain 0 akan menampilkan layar ini? Pada `Area Trigger.gd` ubah baris `pass` menjadi:
 
 ```gdscript
-get_tree().change_scene(str("res://scenes/Game Over.tscn"))
+get_tree().change_scene_to_file(str("res://scenes/Game Over.tscn"))
 ```
 
 Berhasil! Sekarang saat player nyawanya habis, layar _game over_ akan muncul.
