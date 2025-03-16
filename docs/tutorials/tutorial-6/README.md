@@ -371,7 +371,7 @@ Jika melanjutkan Tutorial 4, jangan lupa untuk mengambil aset yang dibutuhkan da
 Apabila kamu mengerjakan latihan mandiri, pastikan _scene_ dan _node_ yang kamu buat dan ubah telah tercatat masuk ke dalam repositori Git.
 Kumpulkan tautan ke repositori Git hasil pengerjaan Tutorial 6 kamu di slot pengumpulan yang tersedia di SCELE.
 
-Tenggat waktu pengumpulan adalah **Rabu, 17 April 2024, pukul 21:00**.
+Tenggat waktu pengumpulan adalah **Jumat, 21 April 2025, pukul 21:00**.
 
 ## Referensi
 
