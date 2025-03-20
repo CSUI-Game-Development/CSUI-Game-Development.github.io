@@ -367,7 +367,7 @@ Pertama buat scene baru (nama bebas) dengan ```Area3D``` sebagai root node.
 
 ![New Area](images/AreaNode.jpg)
 
-Lalu tambahkan node ```CollisionShape3d``` sebagai child dari node ```Area``` tadi.
+Lalu tambahkan node ```CollisionShape3D``` sebagai child dari node ```Area``` tadi.
 Jangan lupa untuk membuat _collision shape_ pada node ```CollisionShape3D``` (Kamu seharusnya sudah pernah melakukannya pada tutorial sebelumnya) kali ini buat bentuk *Sphere*.
 
 ![Area Hierarchy](images/AreaMap.jpg)
@@ -419,6 +419,7 @@ Supaya ketika player jatuh ke jurang, scene akan di-reload.
 
 Selamat, tutorial ini sudah selesai!
 
+> Contoh ruangan (tidak perlu sama seperti ini):
 ![contoh room](images/backrooms.png)
 
 ## Latihan Mandiri: Eksplorasi Mechanics 3D
