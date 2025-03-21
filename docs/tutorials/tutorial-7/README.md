@@ -458,7 +458,7 @@ Jangan lupa untuk menjelaskan proses pengerjaan tutorial ini di dalam berkas `RE
 Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelaskan proses implementasi.
 Kemudian, _push_ riwayat _commit_-nya ke repositori Git pengerjaan Tutorial 7 dan kumpulkan tautan (URL) repositori Git kamu di slot pengumpulan yang tersedia di SCELE.
 
-Tenggat waktu pengumpulan adalah **Jumat, 28 April 2025, pukul 21:00**.
+Tenggat waktu pengumpulan adalah **Jumat, 28 Maret 2025, pukul 21:00**.
 
 ## Referensi
 
