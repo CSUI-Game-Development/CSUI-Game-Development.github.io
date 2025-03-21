@@ -318,6 +318,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -481,6 +485,26 @@
 
               
             
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tutorial-7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial 7 - Basic 3D Game Mechanics & Level Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -572,6 +596,13 @@
           <li class="md-nav__item">
   <a href="#tutorials-tutorial-6" class="md-nav__link">
     Tutorial 6 - Menu & In-Game GUI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorials-tutorial-7" class="md-nav__link">
+    Tutorial 7 - Basic 3D Game Mechanics & Level Design
   </a>
   
 </li>
@@ -2585,7 +2616,468 @@ Apa saja judul game yang bisa kamu kenali dari elemen GUI-nya pada <em>meme</em>
 Jika kamu mengenali satu atau lebih elemen GUI di <em>screenshot</em> tersebut, apa fungsi elemen GUI tersebut di game aslinya?</p>
 <blockquote>
 <p>Silakan didiskusikan dengan rekan-rekan sekelas ketika membahas materi mengenai <em>Interface</em> pada game, atau dijadikan bahan obrolan santai di grup pertemanan masing-masing.</p>
-</blockquote></section><h1 class='nav-section-title-end'>Ended: Tutorials</h1></div>
+</blockquote></section><section class="print-page" id="tutorials-tutorial-7"><h1 id="tutorials-tutorial-7-tutorial-7-basic-3d-game-mechanics-level-design">Tutorial 7 - Basic 3D Game Mechanics &amp; Level Design</h1>
+<p>Selamat datang pada tutorial ketujuh kuliah Game Development.
+Pada tutorial kali ini, kamu akan mempelajari cara membuat game dalam bentuk tiga dimensi (3D).
+Spesifiknya, kamu akan belajar mengimplementasikan <em>game mechanics</em> dan desain level sederhana di game 3D.</p>
+<p>Di akhir tutorial ini, diharapkan kamu paham cara menggunakan <em>node</em> 3D,
+mengimplementasikan interaksi objek di bidang 3D menggunakan teknik <em>raycast</em>,
+dan membuat level bidang 3D sederhana.</p>
+<h2 id="tutorials-tutorial-7-daftar-isi">Daftar Isi</h2>
+<ul>
+<li><a href="#tutorials-tutorial-7-tutorial-7---basic-3d-game-mechanics--level-design">Tutorial 7 - Basic 3D Game Mechanics &amp; Level Design</a></li>
+<li><a href="#tutorials-tutorial-7-daftar-isi">Daftar Isi</a></li>
+<li><a href="#tutorials-tutorial-7-pengantar">Pengantar</a><ul>
+<li><a href="#tutorials-tutorial-7-2d-vs-3d">2D vs 3D</a></li>
+<li><a href="#tutorials-tutorial-7-objectives--prerequisites">Objectives &amp; Prerequisites</a></li>
+</ul>
+</li>
+<li><a href="#tutorials-tutorial-7-latihan-basic-3d-plane-movement">Latihan: Basic 3D Plane Movement</a></li>
+<li><a href="#tutorials-tutorial-7-latihan-object-interaction">Latihan: Object Interaction</a></li>
+<li><a href="#tutorials-tutorial-7-latihan-membuat-level-3d-menggunakan-csg">Latihan: Membuat Level 3D Menggunakan CSG</a></li>
+<li><a href="#tutorials-tutorial-7-latihan-mandiri-eksplorasi-mechanics-3d">Latihan Mandiri: Eksplorasi Mechanics 3D</a></li>
+<li><a href="#tutorials-tutorial-7-skema-penilaian">Skema Penilaian</a></li>
+<li><a href="#tutorials-tutorial-7-pengumpulan">Pengumpulan</a></li>
+<li><a href="#tutorials-tutorial-7-referensi">Referensi</a></li>
+</ul>
+<h2 id="tutorials-tutorial-7-pengantar">Pengantar</h2>
+<blockquote>
+<p>Note: <a href="https://github.com/CSUI-Game-Development/tutorial-7-template">Templat proyek tutorial 7 tersedia di GitHub (klik)</a>.</p>
+</blockquote>
+<h3 id="tutorials-tutorial-7-2d-vs-3d">2D vs 3D</h3>
+<p>Pada tutorial yang dilakukan sebelum masa UTS, kita sudah membuat game dua dimensi (2D)
+dimana pemain dapat bergerak pada ruang dua dimensi. Pemain dapat bergerak ke atas,
+bawah, kiri, dan kanan. Pada game 3D, terdapat sumbu tambahan pada ruang koordinat,
+yaitu sumbu Z yang memberikan unsur kedalaman dan volume. Hal ini menyebabkan pengembangan
+game 3D agak berbeda dengan 2D. Menggambar objek tidak menggunakan <em>sprite</em>, tetapi menggunakan
+<em>tool</em> 3D khusus, yang kemudian di-<em>export</em> ke sebuah format agar dapat di-<em>import</em> ke Godot.
+<em>Physics</em> juga berbeda dalam penggunaannya karena menggunakan vektor 3D.</p>
+<p>Berikut adalah contoh perbedaan game 2D dan 3D.</p>
+<p><img alt="Risk of Rain" src="../tutorials/tutorial-7/images/riskofrain.jpg" />
+<img alt="Risk of Rain 2" src="../tutorials/tutorial-7/images/riskofrain2.jpg" /></p>
+<blockquote>
+<p>Risk of Rain (atas) dan Risk of Rain 2 (bawah)</p>
+</blockquote>
+<h3 id="tutorials-tutorial-7-objectives-prerequisites">Objectives &amp; Prerequisites</h3>
+<p>Pada tutorial ini kita akan membuat sebuah game <em>first-person</em> dimana pemain dapat bergerak,
+melompat, dan berinteraksi dengan objek.</p>
+<p>Dikarenakan pengembangan game 3D akan berbeda dengan 2D, perlu diketahui bahwa beberapa <em>node</em> yang sebelumnya
+digunakan pada pengembangan game 2D tidak akan bekerja pada space 3D, sehingga kalian harus menggunakan
+<em>node</em> yang dapat bekerja pada space 3D. Selain itu, kalian juga harus me-<em>review</em> kembali dasar-dasar
+pelajaran Aljabar Linear dan Fisika Dasar karena <em>physics</em> pada space 3D lebih kompleks dibandingkan
+dengan pada space 2D. Terakhir, terdapat koordinat baru, yaitu koordinat Z, yang digunakan untuk
+menunjukkan arah depan/belakang.</p>
+<h2 id="tutorials-tutorial-7-latihan-basic-3d-plane-movement">Latihan: Basic 3D Plane Movement</h2>
+<p>Kita ingin membuat sebuah karakter yang dikendalikan oleh pemain di dunia 3D. Untuk itu,
+kita akan membuat sebuah objek <code>CharacterBody</code> (mirip dengan <code>CharacterBody2D</code>) yang dapat bergerak ke semua arah dan dapat melompat.</p>
+<p>Buat sebuah <em>Scene</em> baru, tambahkan <em>node</em> <code>CharacterBody</code>, rename menjadi <em>Player</em>
+dan tambahkan <code>MeshInstance3D</code> dan <code>CollisionShape3D</code> sebagai <em>child node</em> dari <em>node</em>
+<em>Player</em>. Tambahkan satu lagi <em>child node</em> berupa <code>Node3D</code>, rename menjadi <em>Head</em>, dan
+tambahkan <code>Camera3D</code> sebagai <em>child node</em> dari <em>Head</em>.</p>
+<p><img alt="Susunan awal Player" src="../tutorials/tutorial-7/images/playertreeworaycast.png" /></p>
+<p>Pada node <code>CollisionShape3D</code>, pada tab <em>Inspector</em>, berikan sebuah <code>Shape</code> yaitu <code>CapsuleShape</code> untuk
+memberi <em>collision</em> pada pemain, lalu putar sebesar 90 derajat pada sumbu x.</p>
+<p><img alt="Collision Shape" src="../tutorials/tutorial-7/images/collisionshape.png" /></p>
+<p>Pada node <code>MeshInstance3D</code>, pada tab <em>Inspector</em>, berikan <em>mesh</em> dengan bentuk <code>CapsuleMesh</code> untuk
+memberi wujud pada pemain, lalu putar sebesar 90 derajat pada sumbu x.</p>
+<p><img alt="Mesh Instance" src="../tutorials/tutorial-7/images/meshinstance.png" /></p>
+<p>Pindahkan/translasikan <em>node Head</em> agar berada di ujung atas objek.</p>
+<p>Agar pemain dapat bergerak, tambahkan <em>script</em> pada <em>node Player</em> dengan isi sebagai berikut:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code>extends CharacterBody3D
+
+@export var speed: float = 10.0
+@export var acceleration: float = 5.0
+@export var gravity: float = 9.8
+@export var jump_power: float = 5.0
+@export var mouse_sensitivity: float = 0.3
+
+@onready var head: Node3D = $Head
+
+func _ready():
+    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _input(event):
+    if Input.is_action_just_pressed(&quot;ui_cancel&quot;):
+        Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func _physics_process(delta):
+    var movement_vector = Vector3.ZERO
+
+    if Input.is_action_pressed(&quot;movement_forward&quot;):
+        movement_vector -= head.basis.z
+    if Input.is_action_pressed(&quot;movement_backward&quot;):
+        movement_vector += head.basis.z
+    if Input.is_action_pressed(&quot;movement_left&quot;):
+        movement_vector -= head.basis.x
+    if Input.is_action_pressed(&quot;movement_right&quot;):
+        movement_vector += head.basis.x
+
+    movement_vector = movement_vector.normalized()
+
+    velocity.x = lerp(velocity.x, movement_vector.x * speed, acceleration * delta)
+    velocity.z = lerp(velocity.z, movement_vector.z * speed, acceleration * delta)
+
+    # Apply gravity
+    if not is_on_floor():
+        velocity.y -= gravity * delta
+
+    # Jumping
+    if Input.is_action_just_pressed(&quot;jump&quot;) and is_on_floor():
+        velocity.y = jump_power
+
+    move_and_slide()
+</code></pre></div></td></tr></table></div>
+<p>Pada <em>Project</em> &gt; <em>Project Settings</em>, pada tab <em>Input Map</em>, tambahkan action <code>movement_forward</code>,
+<code>movement_backward</code>, <code>movement_left</code>, <code>movement_right</code>, <code>jump</code> dan <code>interact</code> sebagai berikut
+apabila belum ada (akan digunakan nantinya):</p>
+<p><img alt="Input" src="../tutorials/tutorial-7/images/input.jpg" /></p>
+<p>Perhatikan bahwa:</p>
+<ol>
+<li><code>head_basis</code> merupakan vektor yang menunjukkan arah dari kepala pemain, sehingga jika
+   menekan input untuk menggerakan pemain, <code>movement_vector</code> akan berisi
+   arah sumbu x dari kepala pemain ketika bergerak ke kiri atau kanan, dan sumbu z dari kepala pemain
+   ketika bergerak ke depan atau belakang.</li>
+<li>Kita mengubah <code>movement_vector</code> menjadi <code>movement_vector.normalized()</code>, karena
+   jika diberikan input pada dua arah seperti ke depan dan ke kiri, maka pemain tidak akan
+   maju dua kali lebih cepat.</li>
+<li>Fungsi <code>lerp</code> berguna agar pergerakan pemain mulus sesuai dengan
+   <em>acceleration</em> dari pemain ketika menekan input.</li>
+<li>Fungsi <code>move_and_slide()</code> berfungsi untuk menggerakan pemain.</li>
+</ol>
+<p>Tambahkan <em>scene Player</em> ke <em>scene Level</em>, lalu coba jalankan <em>scene</em> tersebut. Pemain sudah dapat
+bergerak, namun pemain tidak dapat menggerakan kamera menggunakan <em>mouse</em> untuk menghadap arah lain. Untuk itu,
+tambahkan kode berikut:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code>...
+@onready var camera: Camera3D = $Head/Camera3D
+
+var camera_x_rotation: float = 0.0
+
+...
+
+func _input(event):
+    if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+        head.rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
+
+        var x_delta = event.relative.y * mouse_sensitivity
+        camera_x_rotation = clamp(camera_x_rotation + x_delta, -90.0, 90.0)
+        camera.rotation_degrees.x = -camera_x_rotation
+...
+</code></pre></div></td></tr></table></div>
+<p>Kode tersebut berguna untuk merotasikan <em>node Head</em> ketika mouse bergerak, dan juga mencegah rotasi melebihi
+90 derajat ketika melihat ke atas atau bawah.</p>
+<h2 id="tutorials-tutorial-7-latihan-object-interaction">Latihan: Object Interaction</h2>
+<p>Pada <em>scene Level</em>, terdapat sebuah node <em>switch</em> yang digunakan untuk menyalakan atau mematikan lampu <em>OmniLight3D</em>.
+Agar objek <em>switch</em> tersebut dapat dilakukan sebuah interaksi (seperti mematikan dan menyalakan), tambahkan 2 buah script berikut:</p>
+<blockquote>
+<p>Interactable.gd</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>extends Node
+
+class_name Interactable
+
+func interact():
+    pass
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>Switch.gd (attach script ini pada node StaticBody di Switch)</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code>extends Interactable
+
+@export var light : NodePath
+@export var on_by_default = true
+@export var energy_when_on = 10
+@export var energy_when_off = 3
+
+@onready var light_node : Light3D = get_node(light)
+
+var on = on_by_default
+
+func _ready():
+    light_node.energy = energy_when_on if on else energy_when_off
+
+func interact():
+    on = !on
+    light_node.energy = energy_when_on if on else energy_when_off
+</code></pre></div></td></tr></table></div>
+<p>Perhatikan bahwa kita meng<em>extend class</em> <code>Interactable</code> pada <em>Switch</em>, agar kode dapat digunakan kembali
+jika ingin membuat objek <code>Interactable</code> lain.</p>
+<p>Pada bagian <em>inspector</em>, attach <em>OmniLight3D</em> sebagai isi dari variable <em>Light</em>, seperti berikut:</p>
+<p><img alt="Static Body" src="../tutorials/tutorial-7/images/staticbody.png" /></p>
+<p>Agar pemain dapat berinteraksi dengan objek lain, kita dapat menggunakan <em>node</em> <code>RayCast3D</code>. <code>RayCast3D</code>
+merepresentasikan sebuah garis dari suatu titik ke titik lain, dan menkueri objek terdekat yang
+ditemuinya. Tambahkan <em>node</em> <code>RayCast3D</code> sebagai <em>child</em> dari <em>Camera3D</em> pemain. <strong>Pastikan
+<code>RayCast3D</code> menghadap arah yang sama dengan <code>Camera3D</code> dengan mengatur nilai <em>cast to</em> di <em>inspector</em> dan jangan lupa untuk meng-enable node <code>RayCast3D</code> melalui tab inspector.</strong></p>
+<p><img alt="Susunan Player" src="../tutorials/tutorial-7/images/playertree.png" /></p>
+<p>Pada <em>node</em> <code>RayCast3D</code>, tambahkan <em>script</em> sebagai berikut:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>extends RayCast3D
+
+var current_collider
+
+func _ready():
+    pass
+
+func _process(delta):
+    var collider = get_collider()
+
+    if is_colliding() and collider is Interactable:
+        if Input.is_action_just_pressed(&quot;interact&quot;):
+            collider.interact()
+</code></pre></div></td></tr></table></div>
+<p>Fungsi ini mengecek jika <code>RayCast3D</code> menyentuh sebuah objek lain yang berupa <em>Interactable</em>,
+dan pemain dapat menekan tombol <em>interact</em> (tombol E) untuk berinteraksi dengan objek tersebut. Dalam
+kasus ini, berinteraksi dengan <em>switch</em> akan mematikan atau menyalakan lampu.</p>
+<p><img alt="Demo Switch" src="../tutorials/tutorial-7/images/demoswitch.gif" /></p>
+<blockquote>
+<p>(opsional) Anda dapat membuat animasi tombol ditekan seperti di atas!</p>
+</blockquote>
+<h2 id="tutorials-tutorial-7-membuat-level-3d-menggunakan-constructive-solid-geometry">Membuat Level 3D Menggunakan Constructive Solid Geometry</h2>
+<p>Sekarang mari melihat sebuah fitur <em>engine</em> Godot yang dapat digunakan untuk membuat level 3D.
+Godot memiliki fitur Constructive Solid Geometry (CSG) yang dapat digunakan untuk membuat komposisi bentuk-bentuk 3D sederhana sehingga menghasilkan objek 3D.</p>
+<p>Godot menyediakan <em>node</em> CSG yang mempunyai 3 operasi boolean, diantaranya:</p>
+<ul>
+<li>Union: Penggabungan bentuk primitif dengan menghilangkan intersection.</li>
+<li>Intersection: Membuat sisa bentuk hasil penggabungan, sisanya dihilangkan.</li>
+<li>Substraction: Bentuk primitif kedua hasil gabungan dihilangkan dari yang
+pertama dengan bagian yang menempel pada bentuk 1 juga hilang.</li>
+</ul>
+<p>Contoh 3D level design dalam beberapa game:</p>
+<p><img alt="Legend of Zelda: Breath of The Wild" src="../tutorials/tutorial-7/images/BOTW.jpg" />
+<img alt="Kingdom Hearts III" src="../tutorials/tutorial-7/images/KHIII.jpg" /></p>
+<p>Untuk keperluan tutorial kali ini, CSG sudah cukup untuk membuat level 3D secara sederhana atau sekedar membuat <em>prototype</em> level 3D.
+Pada pengembangan game 3D yang lebih serius, CSG biasanya hanya digunakan untuk <em>blocking out</em>, atau membuat desain kasar dari sebuah level 3D.
+(Anggaplah seperti membuat <em>wireframe</em>, namun untuk desain levelnya).
+Barulah setelah itu, model 3D dari level sesungguhnya dimasukkan ke dalam level, menggantikan objek 3D primitf yang dibuat menggunakan CSG.</p>
+<h2 id="tutorials-tutorial-7-latihan-membuat-level-3d-menggunakan-csg">Latihan: Membuat Level 3D Menggunakan CSG</h2>
+<p>Buat <em>scene</em> baru dengan type <code>Node3D</code> dengan nama <code>Level 1</code>.
+Dalam <em>scene</em> tersebut, tambahkan player dengan <em>script</em> yang sudah kalian implementasikan.</p>
+<p>Klik kanan pada node <code>Level 1</code> dan pilih <code>Add Child Node</code>, kemudian pilih <code>Node3D</code>
+dan rename node tersebut menjadi <code>World 1</code>.</p>
+<p>Setelah World 1 selesai dibuat, save node tersebut menjadi sebuah scene baru dengan klik kanan
+pada node World 1 lalu klik <code>Save Branch As Scene</code> dengan nama <code>World 1.tscn</code>.</p>
+<p><img alt="Tampilan Level 1.tscn" src="../tutorials/tutorial-7/images/Level1Blank.png" /></p>
+<h3 id="tutorials-tutorial-7-empty-room">Empty Room</h3>
+<p>Masuk ke Editor Scene untuk World 1, disini kita akan memanfaatkan CSG untuk membuat ruangan kosong.
+Pada Node World 1, buat child node baru dengan memilih <code>CSGBox3D</code> dan beri nama <code>Room 1</code>.</p>
+<p>Pada tab Inspector cek <code>Flip Faces</code> untuk membuat mesh menjadi inverted seperti tampilan Box Kosong dan
+juga Cek <code>Use Collision</code> agar player tidak jatuh ketika berada di dalam ruangan, untuk sekarang Operation
+pada CSG yang kita buat masih menggunakan mode <code>Union</code>.</p>
+<p>Masih pada tab Inspector, ubah <code>Width</code>, <code>Height</code>, dan <code>Width</code> dalam CSGBox sesuai keinginanmu lalu
+atur posisi box pada <em>Viewport</em>.</p>
+<p><img alt="Example Room" src="../tutorials/tutorial-7/images/ExampleRoom.png" /></p>
+<p>Save Scene tersebut lalu kembali ke Scene <code>Level 1</code> dan coba Play.</p>
+<blockquote>
+<p>Note: Anda dapat menambahkan Node OmniLight3D atau DirectionalLigh3d untuk memudahkan pencahayaan pada saat membuat objek 3D.</p>
+</blockquote>
+<h3 id="tutorials-tutorial-7-making-3d-objects">Making 3D Objects</h3>
+<p>Saat ini game terlihat membosankan, tidak ada gimmick apapun dan hanya ada ruang kosong. Kali ini kita akan mencoba
+untuk membuat objek 3D untuk menghias room yang telah kita buat.</p>
+<p>Untuk memudahkan penglihatan pada <em>viewport</em>, anda dapat mengubah proyeksi menjadi <em>Orthogonal</em> dengan mengklik menu
+pojok kiri atas dalam <em>viewport</em>.</p>
+<p><img alt="Changing Projection" src="../tutorials/tutorial-7/images/ChangeProjection.jpg" /></p>
+<p>Buat sebuah 3D Scene baru dan beri nama <code>ObjLamp</code>. Tambahkan child node baru dengan memilih <code>CSGCombiner3D</code> dan
+beri nama <code>lamp</code>. <code>CSGCombiner3D</code> berfungsi sebagai tempat untuk mengatur komponen CSG di dalamnya, jangan lupa
+mencentang <code>Use Collision</code> karena objek yang akan dibuat merupakan benda padat.</p>
+<p>Dalam <code>lamp</code> masukkan child note untuk membentuk bagian lampu.</p>
+<ul>
+<li>Buat <code>CSGCylinder3D</code> dengan cek <em>cone</em> pada tab Inspector untuk bagian bawah lampu.</li>
+<li>Buat <code>CSGCylinder3D</code> dan atur ukuran pada tab Inspector untuk menjadi tiang lampu.</li>
+<li>Buat <code>CSGPolygon3D</code> dengan memilih Mode <em>Spin</em> pada tab Inspector, lalu ubah proyeksi menjadi <em>Front View</em> dan atur</li>
+</ul>
+<p>Titik pada polygon hingga membentuk trapesium untuk membentuk penutup lampu.</p>
+<p><img alt="CSG Lamp" src="../tutorials/tutorial-7/images/CSGLamp.png" /></p>
+<p>Setelah jadi, atur ketiga child node sehingga membentuk sebuah lampu! Save lalu masukkan Scene tersebut ke dalam Scene
+ World 1 dengan klik kanan pada Node World 1 pilih <code>Instance Child Scene</code>.</p>
+<h3 id="tutorials-tutorial-7-coloring-3d-objects">Coloring 3D Objects</h3>
+<p>Masuk kembali pada Scene <code>ObjLamp</code>. Untuk mewarnai penutup lampu, pilih CSGPolygon3D yang sudah dibuat lalu pada tab
+Inspector klik dropdown <code>Material</code> dan pilih <code>New StandardMaterial3D</code>.</p>
+<p><img alt="Inspector Material" src="../tutorials/tutorial-7/images/NewStandardMaterial.png" /></p>
+<p>Setelah StandardMaterial dipilih, klik gambar bola yang muncul pada menu <code>Material</code>. Disini anda dapat mengatur tekstur
+dari CSG yang dibuat, untuk sekarang klik menu <code>Albedo</code> dan ganti warna sesuai yang kalian inginkan.</p>
+<p><img alt="Albedo Change Color" src="../tutorials/tutorial-7/images/AlbedoColor.png" /></p>
+<p>Cara pewarnaan ini berlaku untuk semua objek CSG yang kalian buat kecuali <code>CSGCombiner3D</code>.</p>
+<h3 id="tutorials-tutorial-7-adding-obstacles">Adding Obstacles</h3>
+<p>Misalkan kita ingin menambahkan halangan untuk player dapat menuju goal seperti field yang berlubang atau jurang yang hanya dapat dilewati menggunakan function jump yang telah anda buat sebelumnya.</p>
+<p>Buka Scene <code>World 1</code>, lalu buat <code>CSGCombiner</code> baru dan centang <code>Use Collision</code> pada tab Inspector. Lalu masukkan Node <code>Room 1</code> ke dalam CSGCombiner yang telah dibuat. Tambahkan 2 <code>CSGBox</code> ke dalam CSGCombiner3D masing-masing akan menjadi room yang baru dan lubang. Atur sedemikian rupa menggunakan operation <code>Union</code> untuk membuat ruang baru dan lubang.</p>
+<p><img alt="Obstacle Mapping" src="../tutorials/tutorial-7/images/ObstacleMap.jpg" />
+<img alt="Obstacle" src="../tutorials/tutorial-7/images/obstacle.jpg" /></p>
+<p>Lalu tambahkan <code>CSGBox3D</code> lagi diluar CSGCombiner3D agar player bisa melompati lubang untuk menyebrang.</p>
+<p><img alt="Jumping Path" src="../tutorials/tutorial-7/images/path.jpg" /></p>
+<h3 id="tutorials-tutorial-7-adding-goal-condition">Adding Goal Condition</h3>
+<p>Sebelumnya kamu telah telah belajar menggunakan signals pada 2D level, kali ini kita akan mencoba menggunakan signals kembali untuk menambahkan goal condition.</p>
+<p>Pertama buat scene baru (nama bebas) dengan <code>Area3D</code> sebagai root node.</p>
+<p><img alt="New Area" src="../tutorials/tutorial-7/images/AreaNode.jpg" /></p>
+<p>Lalu tambahkan node <code>CollisionShape3D</code> sebagai child dari node <code>Area</code> tadi.
+Jangan lupa untuk membuat <em>collision shape</em> pada node <code>CollisionShape3D</code> (Kamu seharusnya sudah pernah melakukannya pada tutorial sebelumnya) kali ini buat bentuk <em>Sphere</em>.</p>
+<p><img alt="Area Hierarchy" src="../tutorials/tutorial-7/images/AreaMap.jpg" /></p>
+<p>Kemudian <em>attach</em> sebuah script pada node <code>Area3D</code> (penamaan bebas).
+Hapus semua baris kecuali baris pertama, kita akan menggunakan <em>Signals</em> untuk fitur ini.</p>
+<h3 id="tutorials-tutorial-7-using-signals">Using Signals</h3>
+<p>Pertama select node <code>Area3D</code> lalu buka tab <code>Node</code>.
+Lalu pada subtab <code>Signals</code> pilih <code>body_entered(Node body)</code> dan klik tombol <code>Connect</code> di kanan bawah tab tersebut.</p>
+<p><img alt="Signals" src="../tutorials/tutorial-7/images/AreaSignals.jpg" /></p>
+<p>Pastikan <code>Area3D</code> terpilih pada bagian <code>Connect To Node</code>, isi <code>Method In Node</code> dengan nama fungsi yang kamu inginkan atau biarkan default.
+Jika sudah tekan tombol <code>Connect</code></p>
+<p><img alt="Connect Signal" src="../tutorials/tutorial-7/images/AreaSignalAdd.jpg" /></p>
+<p>Maka script pada <code>Area3D</code> akan ditambah fungsi tersebut.</p>
+<p>Silakan tambah cuplikan dibawah pada script tersebut. (Jangan lupa ganti nama fungsi sesuai penamaan masing-masing)</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>extends Area3D
+
+@export var sceneName := &quot;Level 1&quot;
+
+func _on_Area_Trigger_body_entered(body):
+    if body.get_name() == &quot;Player&quot;:
+        get_tree().change_scene_to_file(str(&quot;res://scenes/&quot; + sceneName + &quot;.tscn&quot;))
+</code></pre></div></td></tr></table></div>
+<p>Secara singkat fungsi tersebut akan tereksekusi setiap ada object dengan tipe <code>Node</code> yang masuk area collision.
+Jika object tersebut adalah player, maka ubah root node (current scene) dengan variabel <code>sceneName</code>.</p>
+<h3 id="tutorials-tutorial-7-adding-it-to-the-level">Adding It to the Level</h3>
+<p>Save scene dan script tersebut (Mulai sekarang disebut <code>AreaTrigger</code>) dan buka kembali scene <code>Level 1.tscn</code>.</p>
+<p>Kemudian tambahkan scene <code>AreaTrigger</code> sebagai child dari sprite tersebut, silakan atur scaling sesuai keperluan.
+Jangan lupa ubah variable <code>Scene Name</code> menjadi "Win Screen".</p>
+<p><img alt="Camera Inspector" src="../tutorials/tutorial-7/images/AreaInspector.jpg" /></p>
+<p>Lakukan hal yang sama untuk area lubang namun dengan <code>Scene Name</code> diisi dengan "Level 1".
+Supaya ketika player jatuh ke jurang, scene akan di-reload.</p>
+<p>Selamat, tutorial ini sudah selesai!</p>
+<blockquote>
+<p>Contoh ruangan (tidak perlu sama seperti ini):
+<img alt="contoh room" src="../tutorials/tutorial-7/images/backrooms.png" /></p>
+</blockquote>
+<h2 id="tutorials-tutorial-7-latihan-mandiri-eksplorasi-mechanics-3d">Latihan Mandiri: Eksplorasi Mechanics 3D</h2>
+<p>Silakan lanjutkan pengerjaan tutorial dengan mengeksplorasi bagaimana mengimplementasikan <em>game mechanics</em> populer di game 3D.
+Berhubung game yang dicontohkan di tutorial ini adalah game dengan <em>genre</em> FPS (First-Person Shooter), maka silakan coba implementasikan salah satu dari <em>mechanics</em> berikut:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Pick up item &amp; inventory system -- Player dapat mengambil sebuah objek pada level dan menyimpannya dalam sebuah sistem inventori</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Sprinting &amp; crouching -- Player dapat memilih untuk jalan dengan kecepatan normal, berlari, atau berjalan sambil jongkok dengan kecepatan yang lebih lambat dari biasanya</li>
+</ul>
+<p>Jika masih ada waktu atau masih penasaran, beberapa hal yang bisa coba kamu implementasikan:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Membuat animasi objek 3D</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Membuat level 2 dari hasil pengerjaan tutorial</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Memoles estetika dari permainan (misal: menambahkan HUD, menambahkan aset 3D dari luar)</li>
+<li>Dan lain-lain. Silakan berkreasi!</li>
+</ul>
+<h2 id="tutorials-tutorial-7-skema-penilaian">Skema Penilaian</h2>
+<p>Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:</p>
+<ul>
+<li><strong>4</strong> (<em><strong>A</strong></em>) apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi tim pengajar.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan 2 (dua) <em>game mechanics</em> tambahan yang merupakan bagian dari Latihan Mandiri, ditambah dengan memoles (<em>polishing</em>) lebih lanjut permainannya.</li>
+<li><strong>3</strong> (<em><strong>B</strong></em>) apabila kamu hanya mengerjakan tutorial dan latihan sesuai dengan instruksi.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan 1 (satu) <em>game mechanics</em> tambahan yang merupakan bagian dari Latihan Mandiri.</li>
+<li><strong>2</strong> (<em><strong>C</strong></em>) apabila kamu hanya mengerjakan tutorial hingga tuntas.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan namun tidak mengerjakan Latihan Mandiri.</li>
+<li><strong>1</strong> (<em><strong>D</strong></em>) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.
+  Nilai ini dapat dicapai apabila belum tuntas mengerjakan Latihan.</li>
+<li><strong>0</strong> (<em><strong>E</strong></em>) apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.</li>
+</ul>
+<h2 id="tutorials-tutorial-7-pengumpulan">Pengumpulan</h2>
+<p>Kumpulkan semua berkas pengerjaan tutorial dan latihan ke repositori Git.
+Jangan lupa untuk menjelaskan proses pengerjaan tutorial ini di dalam berkas <code>README.md</code> yang tersimpan di repositori Git yang sama dengan pengerjaan tutorial.
+Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelaskan proses implementasi.
+Kemudian, <em>push</em> riwayat <em>commit</em>-nya ke repositori Git pengerjaan Tutorial 7 dan kumpulkan tautan (URL) repositori Git kamu di slot pengumpulan yang tersedia di SCELE.</p>
+<p>Tenggat waktu pengumpulan adalah <strong>Jumat, 28 Maret 2025, pukul 21:00</strong>.</p>
+<h2 id="tutorials-tutorial-7-referensi">Referensi</h2>
+<ul>
+<li><a href="http://docs.godotengine.org/en/3.1/tutorials/3d/index.html">Godot 3D Tutorial</a></li>
+<li><a href="http://docs.godotengine.org/en/3.1/tutorials/3d/fps_tutorial/index.html">Godot FPS Tutorial</a></li>
+<li><a href="https://www.kenney.nl/assets?q=3d">Kenney 3D Assets</a></li>
+<li>Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
+  gasal 2020/2021 Fakultas Ilmu Komputer Universitas Indonesia.</li>
+</ul></section><h1 class='nav-section-title-end'>Ended: Tutorials</h1></div>
 
 
 
