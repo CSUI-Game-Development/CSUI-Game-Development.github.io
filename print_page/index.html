@@ -2676,7 +2676,7 @@ dan tambahkan <code>MeshInstance3D</code> dan <code>CollisionShape3D</code> seba
 tambahkan <code>Camera3D</code> sebagai <em>child node</em> dari <em>Head</em>.</p>
 <p><img alt="Susunan awal Player" src="../tutorials/tutorial-7/images/playertreeworaycast.png" /></p>
 <p>Pada node <code>CollisionShape3D</code>, pada tab <em>Inspector</em>, berikan sebuah <code>Shape</code> yaitu <code>CapsuleShape</code> untuk
-memberi <em>collision</em> pada pemain, lalu putar sebesar 90 derajat pada sumbu x.</p>
+memberi <em>collision</em> pada pemain.</p>
 <p><img alt="Collision Shape" src="../tutorials/tutorial-7/images/collisionshape.png" /></p>
 <p>Pada node <code>MeshInstance3D</code>, pada tab <em>Inspector</em>, berikan <em>mesh</em> dengan bentuk <code>CapsuleMesh</code> untuk
 memberi wujud pada pemain, lalu putar sebesar 90 derajat pada sumbu x.</p>
@@ -2870,11 +2870,11 @@ func interact():
 var on = on_by_default
 
 func _ready():
-    light_node.energy = energy_when_on if on else energy_when_off
+    light_node.light_energy = energy_when_on if on else energy_when_off
 
 func interact():
     on = !on
-    light_node.energy = energy_when_on if on else energy_when_off
+    light_node.light_energy = energy_when_on if on else energy_when_off
 </code></pre></div></td></tr></table></div>
 <p>Perhatikan bahwa kita meng<em>extend class</em> <code>Interactable</code> pada <em>Switch</em>, agar kode dapat digunakan kembali
 jika ingin membuat objek <code>Interactable</code> lain.</p>
@@ -2883,7 +2883,7 @@ jika ingin membuat objek <code>Interactable</code> lain.</p>
 <p>Agar pemain dapat berinteraksi dengan objek lain, kita dapat menggunakan <em>node</em> <code>RayCast3D</code>. <code>RayCast3D</code>
 merepresentasikan sebuah garis dari suatu titik ke titik lain, dan menkueri objek terdekat yang
 ditemuinya. Tambahkan <em>node</em> <code>RayCast3D</code> sebagai <em>child</em> dari <em>Camera3D</em> pemain. <strong>Pastikan
-<code>RayCast3D</code> menghadap arah yang sama dengan <code>Camera3D</code> dengan mengatur nilai <em>cast to</em> di <em>inspector</em> dan jangan lupa untuk meng-enable node <code>RayCast3D</code> melalui tab inspector.</strong></p>
+<code>RayCast3D</code> menghadap arah yang sama dengan <code>Camera3D</code> dengan mengatur nilai <em>target position</em> di <em>inspector</em> dan jangan lupa untuk meng-enable node <code>RayCast3D</code> melalui tab inspector.</strong></p>
 <p><img alt="Susunan Player" src="../tutorials/tutorial-7/images/playertree.png" /></p>
 <p>Pada <em>node</em> <code>RayCast3D</code>, tambahkan <em>script</em> sebagai berikut:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -3069,7 +3069,7 @@ Berhubung game yang dicontohkan di tutorial ini adalah game dengan <em>genre</em
 Jangan lupa untuk menjelaskan proses pengerjaan tutorial ini di dalam berkas <code>README.md</code> yang tersimpan di repositori Git yang sama dengan pengerjaan tutorial.
 Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelaskan proses implementasi.
 Kemudian, <em>push</em> riwayat <em>commit</em>-nya ke repositori Git pengerjaan Tutorial 7 dan kumpulkan tautan (URL) repositori Git kamu di slot pengumpulan yang tersedia di SCELE.</p>
-<p>Tenggat waktu pengumpulan adalah <strong>Jumat, 28 Maret 2025, pukul 21:00</strong>.</p>
+<p>Tenggat waktu pengumpulan adalah <strong>Jumat, 28 April 2025, pukul 21:00</strong>.</p>
 <h2 id="tutorials-tutorial-7-referensi">Referensi</h2>
 <ul>
 <li><a href="http://docs.godotengine.org/en/3.1/tutorials/3d/index.html">Godot 3D Tutorial</a></li>
