@@ -69,7 +69,7 @@ tambahkan ```Camera3D``` sebagai *child node* dari *Head*.
 ![Susunan awal Player](images/playertreeworaycast.png)
 
 Pada node ```CollisionShape3D```, pada tab *Inspector*, berikan sebuah ```Shape``` yaitu ```CapsuleShape``` untuk
-memberi *collision* pada pemain, lalu putar sebesar 90 derajat pada sumbu x.
+memberi *collision* pada pemain.
 
 ![Collision Shape](images/collisionshape.png)
 
@@ -204,11 +204,11 @@ extends Interactable
 var on = on_by_default
 
 func _ready():
-	light_node.energy = energy_when_on if on else energy_when_off
+	light_node.light_energy = energy_when_on if on else energy_when_off
 
 func interact():
 	on = !on
-	light_node.energy = energy_when_on if on else energy_when_off
+	light_node.light_energy = energy_when_on if on else energy_when_off
 ```
 
 Perhatikan bahwa kita meng*extend class* ```Interactable``` pada *Switch*, agar kode dapat digunakan kembali
@@ -221,7 +221,7 @@ Pada bagian *inspector*, attach *OmniLight3D* sebagai isi dari variable *Light*,
 Agar pemain dapat berinteraksi dengan objek lain, kita dapat menggunakan *node* ```RayCast3D```. ```RayCast3D```
 merepresentasikan sebuah garis dari suatu titik ke titik lain, dan menkueri objek terdekat yang
 ditemuinya. Tambahkan *node* ```RayCast3D``` sebagai *child* dari *Camera3D* pemain. **Pastikan
-```RayCast3D``` menghadap arah yang sama dengan ```Camera3D``` dengan mengatur nilai *cast to* di *inspector* dan jangan lupa untuk meng-enable node ```RayCast3D``` melalui tab inspector.**
+```RayCast3D``` menghadap arah yang sama dengan ```Camera3D``` dengan mengatur nilai *target position* di *inspector* dan jangan lupa untuk meng-enable node ```RayCast3D``` melalui tab inspector.**
 
 ![Susunan Player](images/playertree.png)
 
@@ -458,7 +458,7 @@ Jangan lupa untuk menjelaskan proses pengerjaan tutorial ini di dalam berkas `RE
 Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelaskan proses implementasi.
 Kemudian, _push_ riwayat _commit_-nya ke repositori Git pengerjaan Tutorial 7 dan kumpulkan tautan (URL) repositori Git kamu di slot pengumpulan yang tersedia di SCELE.
 
-Tenggat waktu pengumpulan adalah **Jumat, 28 Maret 2025, pukul 21:00**.
+Tenggat waktu pengumpulan adalah **Jumat, 28 April 2025, pukul 21:00**.
 
 ## Referensi
 
