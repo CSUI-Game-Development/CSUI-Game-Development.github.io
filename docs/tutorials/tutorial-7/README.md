@@ -367,7 +367,7 @@ Pertama buat scene baru (nama bebas) dengan ```Area3D``` sebagai root node.
 
 ![New Area](images/AreaNode.jpg)
 
-Lalu tambahkan node ```CollisionShape3D``` sebagai child dari node ```Area``` tadi.
+Lalu tambahkan node ```CollisionShape3D``` sebagai child dari node ```Area3D``` tadi.
 Jangan lupa untuk membuat _collision shape_ pada node ```CollisionShape3D``` (Kamu seharusnya sudah pernah melakukannya pada tutorial sebelumnya) kali ini buat bentuk *Sphere*.
 
 ![Area Hierarchy](images/AreaMap.jpg)
