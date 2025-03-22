@@ -74,7 +74,7 @@ memberi *collision* pada pemain.
 ![Collision Shape](images/collisionshape.png)
 
 Pada node ```MeshInstance3D```, pada tab *Inspector*, berikan *mesh* dengan bentuk ```CapsuleMesh``` untuk
-memberi wujud pada pemain, lalu putar sebesar 90 derajat pada sumbu x.
+memberi wujud pada pemain.
 
 ![Mesh Instance](images/meshinstance.png)
 
