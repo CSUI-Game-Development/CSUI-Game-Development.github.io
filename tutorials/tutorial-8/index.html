@@ -589,8 +589,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#creating-a-trail-particle" class="md-nav__link">
-    Creating a Trail Particle
+  <a href="#creating-a-trail-particle-jalan" class="md-nav__link">
+    Creating a Trail Particle Jalan
   </a>
   
 </li>
@@ -710,95 +710,107 @@ silakan buat <em>branch</em> baru di repositori Git tutorial 6 yang akan berisi 
 <p><img alt="Hollow Knight" src="images/hollow-knight.gif" /></p>
 <p>Dalam game GTA V, polishing yang dapat dilihat pada scene <em>wasted</em> adalah effect slow-motion yang ada, perubahan color balancing untuk memberikan efek kalah/mati, hingga penggunaan sound fx yang sangat khas.</p>
 <p><img alt="GTA V" src="images/gta-wasted.gif" /></p>
+<p>Atau mungkin contoh yang lebih tidak terlihat adalah dalam Celeste dan berbagai platformer lainnya dimana terdapat banyak fitur tambahan untuk membuat pemain merasakan lebih nyaman dengan physics yang ada. Dapat dilihat pada video berikut</p>
+<p>vvvvvvvvvvvvvvvvvvvvvvv</p>
+<p>https://www.youtube.com/watch?v=ep_9RtAbwog&amp;t=184s</p>
 <h3 id="game-balancing">Game Balancing</h3>
 <p>Pada tutorial-4 kemarin, kamu sudah mempelajari mengenai basic 2D level design, dan mencoba untuk mendesain suatu level. Namun, apakah kamu yakin level yang kamu buat sudah pasti bisa diselesaikan oleh pemain? apakah kamu yakin level yang kamu buat tidak membuat pemain kesal dan akhirnya berhenti memainkan game kamu? Jika tidak, maka kamu perlu untuk memainkan kembali level yang kamu buat dan lakukan <em>Game Balancing</em> pada level tersebut. Banyak hal yang dapat dilakukan untuk melakukan <em>balancing</em> pada suatu level, mulai dari mengubah nilai-nilai yang digunakan dalam script yang digunakan, hingga mengubah level design yang sudah dibuat agar level lebih <em>balanced</em>.</p>
 <p>Berikut adalah beberapa contoh mengenai game balancing:</p>
 <p>Dalam game Cat Mario, level sengaja dibuat sangat susah karena game Cat Mario didesin untuk menjadi <em>Rage Game</em>. Namun dalam pembuatan levelnya, pasti tetap dilakukan balancing agar level yang dibuat dapat diselesaikan oleh pemain dalam keadaan <strong><em>Rage</em></strong> bukan sampai <strong><em>Rage Quit</em></strong>.</p>
 <p><img alt="Cat Mario" src="images/cat-mario.gif" /></p>
 <p>Dalam permainan League of Legends, balancing dilakukan setiap saat karena permainan MOBA memang merupakan game multiplayer yang dirancang agar menjadi game yang <a href="https://www.youtube.com/watch?v=e31OSVZF77w">Perfect Imbalance</a>, dimana balancing dilakukan agar permainan tetap menyenangkan bagi pemain dengan memberikan perubahan meta di setiap patch change-nya.</p>
-<p><img alt="League of Legends Patch Notes" src="images/patch-notes.png" /></p>
+<p><img alt="League of Legends Patch Notes Welcome to Noxus" src="images/patch-notes.png" /></p>
 <h2 id="latihan-creating-particles">Latihan: Creating Particles</h2>
 <h3 id="particles">Particles</h3>
-<p>Particles merupakan teknik dalam game development untuk menampilkan atau mensimulasikan efek physics yang kompleks, seperti api, asap dari api tersebut, hujan, dan lain-lain. dengan menggunakan particle, game developer dapat memberikan tampilan visual yang lebih detail dan lebih menarik kepada pemain. Dalam game engine Godot, disediakan Node particle untuk game 2D yaitu <code>Particles2D</code>. Dengan menggunakan node <code>Particles2D</code> kamu dapat membuat berbagai macam efek yang ingin kamu buat. Untuk melakukan itu kamu dapat bermain dengan properties yang ada pada node <code>Particles2D</code>, pada tutorial ini, kamu akan mencoba untuk membuat particle hujan abu pada level yang sudah disediakan, dan juga particle trail ketika player berjalan di level. Untuk penjelasan properties yang digunakan akan dijelaskan dengan sejalannya tutorial. Berikut adalah perbedaan hasil akhir yang diharapkan dengan level tanpa penggunaan particle:</p>
+<p>Particles merupakan teknik dalam game development untuk menampilkan atau mensimulasikan efek physics yang kompleks, seperti api, asap dari api tersebut, hujan, dan lain-lain. dengan menggunakan particle, game developer dapat memberikan tampilan visual yang lebih detail dan lebih menarik kepada pemain. Dalam game engine Godot, disediakan Node particle untuk game 2D yaitu <code>GPUParticles2D</code>. Dengan menggunakan node <code>GPUParticles2D</code> kamu dapat membuat berbagai macam efek yang ingin kamu buat. Untuk melakukan itu kamu dapat bermain dengan properties yang ada pada node <code>GPUParticles2D</code>, pada tutorial ini, kamu akan mencoba untuk membuat particle hujan pada level yang sudah disediakan, dan juga particle trail ketika player berjalan di level. Untuk penjelasan properties yang digunakan akan dijelaskan dengan sejalannya tutorial. Berikut adalah perbedaan hasil akhir yang diharapkan dengan level tanpa penggunaan particle:</p>
 <p><img alt="Keadaan Awal" src="images/keadaan-awal.gif" /></p>
 <p><img alt="Hasil Akhir" src="images/hasil-akhir.gif" /></p>
 <h3 id="creating-an-environment-particle">Creating an Environment Particle</h3>
-<p>Pertama, buka template Level 1 yang telah disediakan (atau gunakan level yang sudah kamu buat di tutorial 6 sebelumnya), lalu tambahkan node Particles2D kepada root Node yang ada.</p>
-<p><img alt="Add Node Particles2D" src="images/new-particles2d.png" /></p>
-<p>Ketika berhasil ditambahkan, node Particles2D akan menampilkan warning, hal ini dikarenakan kamu perlu menambahkan ParticlesMaterial kepada Node Particles2D agar dapat berjalan. Hal ini dapat ditemukan di tab inspector, <code>Process Material</code>, lalu tambahkan ParticlesMaterial yang baru.</p>
+<p>Pertama, buka template Level 1 yang telah disediakan (atau gunakan level yang sudah kamu buat di tutorial 6 sebelumnya), lalu tambahkan node GPUParticles2D kepada root Node yang ada.</p>
+<p><img alt="Add Node GPUParticles2D" src="images/new-particles2d.png" /></p>
+<p>Ketika berhasil ditambahkan, node GPUParticles2D akan menampilkan warning, hal ini dikarenakan kamu perlu menambahkan ParticlesMaterial kepada Node GPUParticles2D agar dapat berjalan. Hal ini dapat ditemukan di tab inspector, <code>Process Material</code>, lalu tambahkan ParticlesMaterial yang baru.</p>
 <p><img alt="New Particles Material" src="images/particles_material.png" /></p>
-<p>Sekarang kamu dapat melihat particlemu bejalan, namun hanya berupa titik-titik kecil yang berjatuhan, sekarang kita akan mengubah particle ini agar menjadi hujan abu yang kita inginkan. Karena kita ingin membuat hujan abu, kita ingin agar titik-titik particle yang kita punya berjumlah banyak, dan bertahan lama di layar. Untuk melakukan itu pada tab inspector, ubah <code>Amount</code> menjadi 500, <code>Lifetime</code> menjadi 4, dan <code>Speed Scale</code> menjadi 0.5.</p>
-<ul>
-<li>Properti <code>Amount</code> melambangkan banyaknya titik particle yang ingin kita punya.</li>
-<li>Properti <code>Lifetime</code> melambangkan lamanya suatu titik particle akan hidup di dunia game kita.</li>
-<li>Properti <code>Speed Scale</code> melambangkan kecepatan jalannya waktu untuk particle kita.</li>
-</ul>
-<p><img alt="Amount, Lifetime and Speed Scale" src="images/amount-lifetime-speed-scale.png" /></p>
-<p>Selanjutnya, kita ingin agar titik particle kita dapat terlihat dari kamera, sehingga kita perlu untuk mengubah ukuran dari particle kita. Klik <code>ParticlesMaterial</code> yang sudah kita tambahkan sebelumnya, lalu pada tab <code>Scale</code> ubah <code>Scale</code> menjadi 10 dan agar kita mendapat variasi ukuran, ubah <code>Scale Random</code> menjadi 0.5.</p>
+<p>Sekarang kamu dapat melihat particlemu bejalan, namun hanya berupa titik-titik kecil yang berjatuhan, sekarang kita akan mengubah particle ini agar menjadi hujan yang kita inginkan. (Perlu cukup zoom in untuk lihat)</p>
+<p><img alt="first-implemen-particle" src="images/first-implemen-particle.png" /></p>
+<p>Karena kita ingin membuat hujan, kita ingin agar titik-titik particle yang kita punya berjumlah banyak, dan bertahan lama di layar. Untuk melakukan itu pada tab inspector, ubah <code>Amount</code> menjadi 100, <code>Lifetime</code> menjadi 4.
+Pada Godot 4.3, lifetime mempengaruhi jumlah emisi per detiknya dengan rumus $(amount * amount_scale) / lifetime$. Something to know saja.
+<img alt="alt text" src="images/lokasi-amount-lifetime.png" />
+- Properti <code>Amount</code> melambangkan banyaknya titik particle yang ingin kita punya.
+- Properti <code>Lifetime</code> melambangkan lamanya suatu titik particle akan hidup di dunia game kita.</p>
+<p>Selanjutnya, kita ingin agar titik particle kita dapat terlihat dari kamera, sehingga kita perlu untuk mengubah ukuran dari particle kita. Klik <code>ParticlesMaterial</code> yang sudah kita tambahkan sebelumnya, lalu pada tab <code>Display/Scale</code> ubah <code>Scale max</code> menjadi 10. Dikarenakan perbedaan antara <code>scale min</code> dan <code>scale max</code>, maka ukurannya akan secara random dipilih dalam rentang tersebut saat intansiasi masing-masing partikel.</p>
 <ul>
 <li>Properti <code>Scale</code> melambangkan ukuran dari suatu titik particle.</li>
-<li>Properti <code>Scale Random</code> melabangkan range random dari titik particle yang akan dibuat. 0 menandakan tidak ada random scale, 1 menandakan banyak random scale.</li>
 </ul>
 <p><img alt="Scale" src="images/scale.png" /></p>
-<p>Selanjutnya, agar particle yang kita miliki tidak hanyak muncul dari suatu titik saja, kita akan mengubah area awal particle dari titik menjadi persegi panjang yang sangat panjang agar dapat menutupi seluruh level. Pada tab <code>Emission Shape</code>, ubah <code>Shape</code> menjadi box, dan ubah <code>Box Extents</code> value x menjadi 2000. Dari sini particle sudah mulai terlihat seperti hujan.</p>
+<p>Selanjutnya, agar particle yang kita miliki tidak hanyak muncul dari suatu titik saja, kita akan mengubah area awal particle dari titik menjadi persegi panjang yang sangat panjang agar dapat menutupi seluruh level. Pada tab <code>Spawn/Position</code>, ubah <code>Emision Shape</code> menjadi box, dan ubah <code>Emision Box Extents</code> value x menjadi 2000. Dari sini particle sudah mulai terlihat seperti hujan.</p>
 <p><img alt="Emission Shape" src="images/emission-shape.png" /></p>
-<p>Selanjutnya, agar particle yang kita punya terlihat seperti hujan abu, kita dapat mengubah warnanya. Pada tab <code>Color</code>, ubah warna menjadi warna abu (#A9A9A9).</p>
-<p><img alt="Color" src="images/color.png" /></p>
-<p>Selanjutnya, kita ingin agar hujan abu kita memiliki kecepatan yang lebih cepat agar menghasilkan ilusi hujan abu yang lebat. Untuk melakukan ini, pada tab <code>Direction</code>, ubah <code>Spread</code> menjadi 20 agar persebaran particle tidak terlalu jauh. Lalu pada tab <code>Gravity</code> ubah gravity x menjadi -500 dan gravity y menjadi 500 agar particle kita terpengaruh gravitasi ke arah kiri bawah. Lalu, pada tab <code>Initial Velocity</code>, ubah <code>Velocity</code> menjadi 500 agar particle kita sudah cepat dari awal mulai animasi particle.</p>
+<p>Selanjutnya, agar particle yang kita punya terlihat seperti hujan, kita dapat mengubah warnanya. Pada tab <code>Display/Color Curves</code>, ubah <code>Color</code> menjadi warna biru (#84a6b6). Jika kalian ingin mencoba mengubah atribut lain, sangat dipersilahkan untuk membuat particle yang lebih bagus dan dinamis.
+<img alt="Color" src="images/color.png" /></p>
+<p>Selanjutnya, kita ingin agar hujan kita memiliki kecepatan yang lebih cepat agar menghasilkan ilusi hujan yang lebat. Untuk melakukan ini, pada tab <code>Velocity</code>, ubah <code>Spread</code> menjadi 20 agar persebaran particle tidak terlalu jauh. Lalu pada tab <code>Accelerations/Gravity</code> ubah gravity x menjadi -500 dan gravity y menjadi 500 agar particle kita terpengaruh gravitasi ke arah kiri bawah.</p>
 <ul>
 <li>Properti <code>Spread</code> melambangkan derajat persebaran particle. 180 derajat menandakan particle akan keluar ke segala arah.</li>
 <li>Properti <code>Gravity</code> melambangkan besarang gravitasi yang diterima oleh titik particle kita.</li>
-<li>Properti <code>Velocity</code> melambangkan kecepatan awal titik particle ketika muncul di game.</li>
 </ul>
-<p><img alt="Spread, Gravity, and Velocity" src="images/spread-gravity-velocity.jpg" /></p>
-<p>Hmmm, kenapa particle yang sekarang ada pada awalnya muncul ke arah kanan terlebih dahulu? Itu karena dengan kita mengubah nilai <code>Velocity</code> menjadi lebih dari 0, particle yang kita punya akan dikenakan kecepatan sesuai dengan nilai <code>Velocity</code> ke arah kanan saja. Oleh karena itu kita harus merotasi particle kita agar arah particle ke arah kiri. Pada tab <code>Transform</code> pada Node2D, ubah rotation degrees menjadi 180. Lalu, pada tab <code>Drawing</code>, ubah <code>Local Coord</code> menjadi off.</p>
-<ul>
-<li>Properti <code>Transform</code> merupakan posisi dari Node2D.</li>
-<li>Properti <code>Local Coords</code> melambangkan sifat dari particle, dimana jika <code>on</code> particle akan begerak sesuai dengan pergerakan node, sedangkan jika <code>off</code> particle yang sudah dinyalakan akan tetap berjalan sesuai physics yang ada dengan menghiraukan posisi node.</li>
-</ul>
-<p><img alt="Transform" src="images/transform-1.png" />
-<img alt="Local Cords" src="images/local-coords.png" /></p>
-<p>Sepertinya particle yang sudah kita buat sudah mirip dengan hujan abu, coba kita liat dalam in-game.</p>
+<p>Sepertinya particle yang sudah kita buat sudah mirip dengan hujan, coba kita liat dalam in-game.</p>
 <p><img alt="Missing Particle" src="images/missing-particle-camera.gif" /></p>
-<p>Loh? kok ketika kita gerak particlenya hilang? Itu karena particle hanya akan ditampilkan jika drawing areanya berada di camera. Oleh karena itu kita harus mengubah drawing area particle kita dan juga posisinya. Pada tab <code>Drawing</code> ubah <code>Visibilty Rect</code> menjadi (-2000, -1000, 4000, 1000) untuk mengubah ukuran drawing area particle dan titik tengahnya. Lalu pada tab <code>Transform</code> ubah posisi x menjadi 1700 dan posisi y menjadi -200 agar particle berada di tengah level.</p>
+<p>Loh? kok ketika kita gerak particlenya hilang? Itu karena particle hanya akan ditampilkan jika drawing areanya berada di camera. Oleh karena itu kita harus mengubah drawing area particle kita dan juga posisinya. Pada tab <code>Drawing</code> ubah <code>Visibilty Rect</code> menjadi $w=2000$ dan $h=500$ untuk mengubah ukuran drawing area particle dan titik tengahnya. 
+Ingatlah kalau lokasi <code>Drawing area</code> ini lah yang menentukan apakah particle kalian di-render atau tidak, sehingga pastikan <code>position</code> dari drawing area masuk ke dalam kamera dalam game. </p>
 <ul>
 <li>Properti <code>Visibility Rect</code> melambangkan ukuran drawing area (visibility area) dari particle kita.</li>
 </ul>
 <p><img alt="Visibility Rect" src="images/visibility-rect.png" />
-<img alt="Transform" src="images/transform-2.png" /></p>
-<p>Sekarang, tinggal beberapa detail lagi yang akan kita buat. Yaitu merotasi titik particle agar tidak terlihat seperti kotak, dan membuat particle tidak menutupi sprite level ktia. Pada tab <code>Angle</code> ubah <code>Angle</code> menjadi 45, untuk merotasi kotak particle sebanyak 45 derajat. Lalu pada tab <code>Canvas Item</code>, <code>Visibility</code> ubah <code>Show behind parent</code> menjadi <code>on</code> agar particle kita berada di belakang sprite parent.</p>
+<img alt="alt text" src="image.png" /></p>
+<p>Sekarang, tinggal beberapa detail lagi yang akan kita buat. Yaitu memberikan trail pada particle particle agar tidak terlihat seperti kotak. Pada tab <code>Trail</code> ubah <code>Enabled</code> menjadi $True$, untuk memberikan ekor pada partikel.</p>
 <ul>
-<li>Properti <code>Angle</code> melambangkan rotasi dari titik particle kita.</li>
-<li>Properti <code>Show behind parent</code> merupakan properti dari CanvasItem untuk membuat sprite berada di belakang sprite parent.</li>
+<li>Properti <code>Trail</code> melambangkan ada tidaknya ekor dari partikel yang digenerasi.</li>
 </ul>
-<p><img alt="Angle" src="images/angle.png" />
-<img alt="Canvas Item" src="images/canvas-item.png" /></p>
-<p>Done! Sekarang particle sudah terlihat seperti hujan abu!</p>
-<p><img alt="Done Hujan Abu" src="images/done-abu.gif" /></p>
-<h3 id="creating-a-trail-particle">Creating a Trail Particle</h3>
-<p>Sekarang kita akan membuat particle trail saat player berjalan. Pertama buka scene <code>player.tscn</code>. Lalu tambahkan kembali Node Particles2D. Dan tambahkan kembali <code>ParticlesMaterial</code>. Berbeda dengan particle environment sebelumnya, untuk particle ini kita akan menggunakan aset yang disediakan. Pada tab <code>Texture</code>, ubah <code>Texture</code> menjadi menggunakan asset <code>Asserts/kenney_platformerpack/PNG/Particles/brickGrey_small.png</code>.
-- Properti <code>Texture</code> melambangkan texture yang ingin kita pakai untuk particle kita, jika tidak ada akan menggunakan kotak (seperti pada particle environment hujan abu)</p>
+<p><img alt="alt text" src="images/trail.png" /></p>
+<p>Done! Sekarang particle sudah terlihat seperti hujan!</p>
+<p><img alt="Done Hujan Abu" src="images/rain_done.gif" /></p>
+<p>Btw, kalian bisa mengganti tekstur dari partikel layaknya sebuah <code>Sprite2D</code>. Dengan konfigurasi sebelumnya, jika meng-assign <code>texture</code>denan icon.svg, kita akan mendapatkan tampilan seperti berikut.</p>
+<p><img alt="alt text" src="image.png" /></p>
+<p>Dalam implementasi aslinya, kalian bisa mengganti tekstur dengan snowflake sebagai contoh agar terlihat seperti sedang turun salju.</p>
+<h3 id="creating-a-trail-particle-jalan">Creating a Trail Particle Jalan</h3>
+<p>Sekarang kita akan membuat particle trail saat player berjalan. Pertama buka scene <code>player.tscn</code>. Lalu tambahkan kembali Node GPUParticles2D. Dan tambahkan kembali <code>ParticlesMaterial</code>. Berbeda dengan particle environment sebelumnya, untuk particle ini kita akan menggunakan aset yang disediakan. Pada tab <code>Texture</code>, ubah <code>Texture</code> menjadi menggunakan asset <code>Asserts/kenney_platformerpack/PNG/Particles/brickGrey_small.png</code>.
+- Properti <code>Texture</code> melambangkan texture yang ingin kita pakai untuk particle kita, jika tidak ada akan menggunakan kotak (seperti pada particle environment hujan)</p>
 <p><img alt="Texture" src="images/texture.png" /></p>
-<p>Selanjutnya, berbeda dengan sebelumnya, sekarang kita tidak ingin jumlah particle yang cukup banyak karena akan memenuhi trail kita, dan lifetime dari particle tidak perlu lama karena trail tidak akan lama berada di layar, oleh karena itu pada tab <code>Particles2D</code>, ubah <code>Amount</code> menjadi 4 dan <code>Lifetime</code> menjadi 0.5.</p>
-<p><img alt="Amount and Lifetime" src="images/trail-amount-lifetime.png" /></p>
-<p>Selanjutnya, agar particle muncul ke segala arah dan terbang ke atas, ubah <code>Gravity</code> nilai y menjadi -200, <code>Spread</code> menjadi 180 derajat, dan <code>Initial Velocity</code> menjadi 50.</p>
-<p><img alt="Spread and Gravity" src="images/trail-spread-gravity.jpg" /></p>
-<p>Selanjutya, agar particle tidak hanya muncul dari satu titik, ubah <code>Emission Shape</code> menjadi box dengan nilai x 30. Lalu pindahkan pula node Particles2D ke bagian kaki player, pada tab <code>Transform</code> ubah nilai y menjadi 30.</p>
-<p><img alt="Emission Shape" src="images/trail-emission-shape.png" />
-<img alt="Transform" src="images/trail-transform.png" /></p>
+<p>Selanjutnya, berbeda dengan sebelumnya, sekarang kita tidak ingin jumlah particle yang cukup banyak karena akan memenuhi trail kita, dan lifetime dari particle tidak perlu lama karena trail tidak akan lama berada di layar, oleh karena itu pada tab <code>GPUParticles2D</code>, ubah <code>Amount</code> menjadi 4 dan <code>Lifetime</code> menjadi 0.5.</p>
+<p>Selanjutnya, agar particle muncul ke segala arah dan terbang ke atas, ubah <code>Gravity</code> nilai y menjadi -200, Pada tab <code>Spawn/Velocity</code> terdapat atribut spread dan initial velocity. Ubah <code>Spread</code> menjadi 180 derajat, dan <code>Initial Velocity</code> menjadi 50.</p>
+<p><img alt="Spread and Gravity" src="images/trail-spread-gravity.png" /></p>
+<p>Selanjutya, agar particle tidak hanya muncul dari satu titik, ubah <code>Spawn/Position/Emission Shape</code> menjadi box dengan nilai <code>x</code> 30. Lalu pindahkan pula node GPUParticles2D ke bagian kaki player, pada tab <code>Transform</code> ubah nilai y menjadi 30.</p>
 <p>Selanjutnya, agar particle tidak terus mengikuti player, ubah <code>Local Coord</code> menjadi <code>off</code>.</p>
 <p><img alt="Local Coord" src="images/trail-local-coord.png" /></p>
 <p>Sekarang, karena sepertinya sudah terlihat bagus, kita coba mainkan di in-game.</p>
 <p><img alt="Trail is Always On" src="images/trail-always-on.gif" /></p>
-<p>Sepertinya sudah terlihat cukup bagus, sekarang masalahnya particle selalu berjalan, sedangkan kita hanya ingin particle berjalan ketika player berada di lantai dan sedang berjalan. Untuk melakukan itu kita dapat menggunakan script untuk mengatur kapan particle berjalan dengan mengganti atribut <code>Emission</code>, dimana atribut ini melambangkan keadaan particle berjalan atau tidak (mengeluarkan particle atau tidak). Untuk itu kita perlu mengubah script <code>Player.gd</code>. Tambahkan baris ini di bagian deklarasi variable:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">onready</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">particle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">get_node</span><span class="p">(</span><span class="s2">&quot;Particles2D&quot;</span><span class="p">)</span>
+<p>Sepertinya sudah terlihat cukup bagus, sekarang masalahnya particle selalu berjalan, sedangkan kita hanya ingin particle berjalan ketika player berada di lantai dan sedang berjalan. Untuk melakukan itu kita dapat menggunakan script untuk mengatur kapan particle berjalan dengan mengganti atribut <code>Emitting</code>, dimana atribut ini melambangkan keadaan particle berjalan atau tidak (mengeluarkan particle atau tidak). Untuk itu kita perlu mengubah script <code>Player.gd</code>. Tambahkan baris ini di bagian deklarasi variable:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="err">@</span><span class="k">onready</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">particle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">GPUParticles2D</span>
 </code></pre></div></td></tr></table></div>
-<p>Lalu tambahkan baris ini di fungsi <code>_process</code>:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="n">is_on_floor</span><span class="p">()</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="p">(</span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">)</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">)):</span>
-<span class="w">        </span><span class="n">particle</span><span class="o">.</span><span class="n">set_emitting</span><span class="p">(</span><span class="bp">true</span><span class="p">)</span>
+<p>Lalu ubah fungsi <code>get_input</code> menjadi:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">get_input</span><span class="p">():</span>
+<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">is_on_floor</span><span class="p">()</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_just_pressed</span><span class="p">(</span><span class="s1">&#39;jump&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jump_speed</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">speed</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">is_on_floor</span><span class="p">():</span>
+<span class="w">            </span><span class="n">particle</span><span class="o">.</span><span class="n">set_emitting</span><span class="p">(</span><span class="bp">true</span><span class="p">)</span>
+<span class="w">    </span><span class="k">elif</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">speed</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">is_on_floor</span><span class="p">():</span>
+<span class="w">            </span><span class="n">particle</span><span class="o">.</span><span class="n">set_emitting</span><span class="p">(</span><span class="bp">true</span><span class="p">)</span>
 <span class="w">    </span><span class="k">else</span><span class="p">:</span>
 <span class="w">        </span><span class="n">particle</span><span class="o">.</span><span class="n">set_emitting</span><span class="p">(</span><span class="bp">false</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -852,7 +864,7 @@ Jika kamu menggunakan kembali repositori Git tutorial 6, maka pastikan pekerjaan
 <h2 id="referensi">Referensi</h2>
 <ul>
 <li><a href="https://docs.godotengine.org/en/3.1/tutorials/2d/particle_systems_2d.html">Particle System 2D</a></li>
-<li><a href="https://docs.godotengine.org/en/3.1/classes/class_particles2d.html">Particles2D</a></li>
+<li><a href="https://docs.godotengine.org/en/3.1/classes/class_particles2d.html">GPUParticles2D</a></li>
 <li><a href="https://www.kenney.nl/assets/platformer-pack-redux">Kenney Assets</a></li>
 <li>Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
   gasal 2020/2021 Fakultas Ilmu Komputer Universitas Indonesia.</li>
@@ -863,7 +875,7 @@ Jika kamu menggunakan kembali repositori Git tutorial 6, maka pastikan pekerjaan
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-05-02 02:57:02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2025-03-27 16:29:47</span>
       
         <br>
         Created:
