@@ -25,11 +25,11 @@ Selamat datang pada tutorial kelima kuliah Game Development. Pada tutorial kali 
 
 > IMPORTANT: Untuk tutorial kali ini, diperbolehkan menggunakan [kode templat proyek game yang telah disediakan di GitHub (klik)](https://github.com/CSUI-Game-Development/tutorial-8-template)
 > **ATAU** melanjutkan dari yang sudah dikerjakan di tutorial 6 kemarin. Jika ingin melanjutkan tutorial 6 kemarin,
-> silakan buat _branch_ baru di repositori Git tutorial 6 yang akan berisi hasil pengerjaan tutorial ini.
+> silakan buat _branch_ baru di repositori Git tutorial 6 yang akan berisi hasil pengerjaan tutorial ini (misal: _branch_ `tutorial-8`).
 
 ### Game Polishing
 
-Selama mengerjakan tutorial game development ini, game yang sudah dibuat cukup sederhana. Mulai dari platformer 2D sederhana hingga first person (shooter?) 3D sederhana. Namun dalam game yang sudah dibuat masih belum ada "pemanis" yang diberikan ke pemain agar game yang dimainkan terlihat / terasa oleh pemain. Apa saja sih pemanisnya itu? Banyak hal yang dapat dilakukan oleh game developer agar dapat membuat game lebih menarik bagi pemain, hal ini dapat berupa visual ataupun audio. Dalam visual, game developer dapat membuat asset yang menarik bagi pemain, menggunakan post-processing agar asset yang ada lebih terlihat bersih, ataupun menambahkan detail-detail kecil berupa animasi ataupun particle yang dapat membuat game terlihat lebih dinamik.
+Selama mengerjakan tutorial game development ini, game yang sudah dibuat cukup sederhana. Mulai dari platformer 2D sederhana hingga first person (shooter?) 3D sederhana. Namun dalam game yang sudah dibuat masih belum ada "pemanis" yang diberikan ke pemain agar game yang dimainkan terlihat/terasa oleh pemain. Apa saja sih pemanisnya itu? Banyak hal yang dapat dilakukan oleh game developer agar dapat membuat game lebih menarik bagi pemain, hal ini dapat berupa visual ataupun audio. Dalam visual, game developer dapat membuat asset yang menarik bagi pemain, menggunakan post-processing agar asset yang ada lebih terlihat bersih, ataupun menambahkan detail-detail kecil berupa animasi ataupun particle yang dapat membuat game terlihat lebih dinamik.
 
 Berikut adalah beberapa contoh polishing yang ada dalam game-game populer:
 
@@ -41,11 +41,10 @@ Dalam game GTA V, polishing yang dapat dilihat pada scene _wasted_ adalah effect
 
 ![GTA V](images/gta-wasted.gif)
 
-Atau mungkin contoh yang lebih tidak terlihat adalah dalam Celeste dan berbagai platformer lainnya dimana terdapat banyak fitur tambahan untuk membuat pemain merasakan lebih nyaman dengan physics yang ada. Dapat dilihat pada video berikut
+Atau mungkin contoh yang lebih tidak terlihat adalah dalam Celeste dan berbagai platformer lainnya dimana terdapat banyak fitur tambahan untuk membuat pemain merasakan lebih nyaman dengan physics yang ada. Dapat dilihat pada video berikut:
 
-vvvvvvvvvvvvvvvvvvvvvvv
-
-https://www.youtube.com/watch?v=ep_9RtAbwog&t=184s
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ep_9RtAbwog?si=Eku2YbQafNTx7Rgt&amp;start=184" title="
+How to make a good platforming character (Developing 6)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### Game Balancing
 
@@ -60,6 +59,9 @@ Dalam game Cat Mario, level sengaja dibuat sangat susah karena game Cat Mario di
 Dalam permainan League of Legends, balancing dilakukan setiap saat karena permainan MOBA memang merupakan game multiplayer yang dirancang agar menjadi game yang [Perfect Imbalance](https://www.youtube.com/watch?v=e31OSVZF77w), dimana balancing dilakukan agar permainan tetap menyenangkan bagi pemain dengan memberikan perubahan meta di setiap patch change-nya.
 
 ![League of Legends Patch Notes Welcome to Noxus](images/patch-notes.png)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/e31OSVZF77w?si=GvMLMMKMcag9H-ZP" title="
+Perfect Imbalance - Why Unbalanced Design Creates Balanced Play - Extra Credits" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Latihan: Creating Particles
 
@@ -210,7 +212,7 @@ Hmm pemain sudah bisa melewati rintangan untuk mencapai akhir level. Namun seper
 
 Selamat, tutorial ini sudah selesai!
 
-## Latihan Mandiri: Rencana Polishing & Balancing Pada Game Proyek Kelompok
+<!-- ## Latihan Mandiri: Rencana Polishing & Balancing Pada Game Proyek Kelompok
 
 Pada tutorial kali ini, tidak ada latihan mandiri spesifik untuk berlatih mengenai _polishing_ dan _balancing_.
 Namun sebagai gantinya, kamu diminta untuk merefleksikan kegiatan _playtesting_ terbuka yang diadakan di area kantin gedung baru Fasilkom UI pekan lalu.
@@ -224,7 +226,7 @@ Kemudian harap jawab pertanyaan-pertanyaan berikut:
     - Misalnya, apakah ada tantangan di dalam game yang masih kurang tepat dengan kemampuan pemain pada level tertentu?
     - Atau, apakah ada rancangan level di dalam game yang dirasa terlalu membosankan bagi pemain?
 4. Dari jawaban kamu terhadap pertanyaan 1 hingga 3, tuliskan secara singkat, dalam bentuk _bullet points_, apa saja hal yang ingin kamu _polish_ dan _balance_?
-5. Untuk masing-masing poin di jawaban pertanyaan 4, jabarkan secara singkat (1 - 3 kalimat) mengenai rencana kerja kamu untuk mengimplementasikan usulan tersebut.
+5. Untuk masing-masing poin di jawaban pertanyaan 4, jabarkan secara singkat (1 - 3 kalimat) mengenai rencana kerja kamu untuk mengimplementasikan usulan tersebut. -->
 
 ## Skema Penilaian
 
@@ -248,7 +250,7 @@ Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelask
 Kemudian, _push_ riwayat _commit_-nya ke repositori Git pengerjaan tutorial 8 dan kumpulkan tautan (URL) repositori Git kamu di slot pengumpulan yang tersedia di SCELE.
 Jika kamu menggunakan kembali repositori Git tutorial 6, maka pastikan pekerjaan tutorial ini kamu taruh di dalam _branch_ baru!
 
-Tenggat waktu pengumpulan adalah **Rabu, 7 Mei 2024, pukul 21:00**.
+Tenggat waktu pengumpulan adalah **Rabu, 16 Mei 2025, pukul 21:00**.
 
 ## Referensi
 
