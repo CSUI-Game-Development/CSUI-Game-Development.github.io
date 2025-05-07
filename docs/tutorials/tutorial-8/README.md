@@ -233,7 +233,8 @@ Kemudian harap jawab pertanyaan-pertanyaan berikut:
 Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:
 
 - **4** (_**A**_) apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi tim pengajar.
-  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan menjawab seluruh pertanaan pada Latihan Mandiri.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan.
+  <!-- dan menjawab seluruh pertanyaan pada Latihan Mandiri -->
 - **3** (_**B**_) apabila kamu hanya mengerjakan tutorial dan latihan sesuai dengan instruksi.
   Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan menjawab pertanyaan 1 - 3 pada Latihan Mandiri.
 - **2** (_**C**_) apabila kamu hanya mengerjakan tutorial hingga tuntas.
