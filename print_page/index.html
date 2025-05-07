@@ -322,6 +322,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -505,6 +509,26 @@
 
               
             
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tutorial-8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial 8 - Game Polishing & Balancing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -603,6 +627,13 @@
           <li class="md-nav__item">
   <a href="#tutorials-tutorial-7" class="md-nav__link">
     Tutorial 7 - Basic 3D Game Mechanics & Level Design
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorials-tutorial-8" class="md-nav__link">
+    Tutorial 8 - Game Polishing & Balancing
   </a>
   
 </li>
@@ -3075,6 +3106,207 @@ Kemudian, <em>push</em> riwayat <em>commit</em>-nya ke repositori Git pengerjaan
 <li><a href="http://docs.godotengine.org/en/3.1/tutorials/3d/index.html">Godot 3D Tutorial</a></li>
 <li><a href="http://docs.godotengine.org/en/3.1/tutorials/3d/fps_tutorial/index.html">Godot FPS Tutorial</a></li>
 <li><a href="https://www.kenney.nl/assets?q=3d">Kenney 3D Assets</a></li>
+<li>Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
+  gasal 2020/2021 Fakultas Ilmu Komputer Universitas Indonesia.</li>
+</ul></section><section class="print-page" id="tutorials-tutorial-8"><h1 id="tutorials-tutorial-8-tutorial-8-game-polishing-balancing">Tutorial 8 - Game Polishing &amp; Balancing</h1>
+<p>Selamat datang pada tutorial kelima kuliah Game Development. Pada tutorial kali ini, kamu akan mempelajari cara apa yang dimaksud dengan <strong><em>Game Polishing</em></strong> dan juga <strong><em>Game Balancing</em></strong>. Dalam <strong><em>Game Polishing</em></strong> kamu akan belajar mengenai <strong><em>Particles</em></strong>. Sedangkan dalam <strong><em>Game Balancing</em></strong> kamu akan mencoba untuk melakukan <em>balancing</em> sederhana.</p>
+<h2 id="tutorials-tutorial-8-daftar-isi">Daftar isi</h2>
+<ul>
+<li><a href="#tutorials-tutorial-8-tutorial-8---game-polishing--balancing">Tutorial 8 - Game Polishing &amp; Balancing</a></li>
+<li><a href="#tutorials-tutorial-8-daftar-isi">Daftar Isi</a></li>
+<li><a href="#tutorials-tutorial-8-pengantar">Pengantar</a><ul>
+<li><a href="#tutorials-tutorial-8-game-polishing">Game Polishing</a></li>
+<li><a href="#tutorials-tutorial-8-game-balancing">Game Balancing</a></li>
+</ul>
+</li>
+<li><a href="#tutorials-tutorial-8-latihan-creating-particles">Latihan: Creating Particles</a><ul>
+<li><a href="#tutorials-tutorial-8-particles">Particles</a></li>
+<li><a href="#tutorials-tutorial-8-creating-an-environment-particle">Creating an Environment Particle</a></li>
+<li><a href="#tutorials-tutorial-8-creating-a-trail-particle">Creating a Trail Particle</a></li>
+</ul>
+</li>
+<li><a href="#tutorials-tutorial-8-latihan-game-balancing">Latihan: Game Balancing</a><ul>
+<li><a href="#tutorials-tutorial-8-balancing-spawn-rate">Balancing Spawn Rate</a></li>
+</ul>
+</li>
+<li><a href="#tutorials-tutorial-8-latihan-mandiri-rencana-polishing--balancing-pada-game-proyek-kelompok">Latihan Mandiri: Rencana Polishing &amp; Balancing Pada Game Proyek Kelompok</a></li>
+<li><a href="#tutorials-tutorial-8-skema-penilaian">Skema Penilaian</a></li>
+<li><a href="#tutorials-tutorial-8-pengumpulan">Pengumpulan</a></li>
+<li><a href="#tutorials-tutorial-8-referensi">Referensi</a></li>
+</ul>
+<h2 id="tutorials-tutorial-8-pengantar">Pengantar</h2>
+<blockquote>
+<p>IMPORTANT: Untuk tutorial kali ini, diperbolehkan menggunakan <a href="https://github.com/CSUI-Game-Development/tutorial-8-template">kode templat proyek game yang telah disediakan di GitHub (klik)</a>
+<strong>ATAU</strong> melanjutkan dari yang sudah dikerjakan di tutorial 6 kemarin. Jika ingin melanjutkan tutorial 6 kemarin,
+silakan buat <em>branch</em> baru di repositori Git tutorial 6 yang akan berisi hasil pengerjaan tutorial ini (misal: <em>branch</em> <code>tutorial-8</code>).</p>
+</blockquote>
+<h3 id="tutorials-tutorial-8-game-polishing">Game Polishing</h3>
+<p>Selama mengerjakan tutorial game development ini, game yang sudah dibuat cukup sederhana. Mulai dari platformer 2D sederhana hingga first person (shooter?) 3D sederhana. Namun dalam game yang sudah dibuat masih belum ada "pemanis" yang diberikan ke pemain agar game yang dimainkan terlihat/terasa oleh pemain. Apa saja sih pemanisnya itu? Banyak hal yang dapat dilakukan oleh game developer agar dapat membuat game lebih menarik bagi pemain, hal ini dapat berupa visual ataupun audio. Dalam visual, game developer dapat membuat asset yang menarik bagi pemain, menggunakan post-processing agar asset yang ada lebih terlihat bersih, ataupun menambahkan detail-detail kecil berupa animasi ataupun particle yang dapat membuat game terlihat lebih dinamik.</p>
+<p>Berikut adalah beberapa contoh polishing yang ada dalam game-game populer:</p>
+<p>Dalam game Hollow Knight, particle banyak digunakan untuk membuat animasi yang ada semakin menarik. Seperti contohnya particle saat menyerang, particle saat menghancurkan pintu ataupun membunuh musuh, hingga particle pada environment level.</p>
+<p><img alt="Hollow Knight" src="../tutorials/tutorial-8/images/hollow-knight.gif" /></p>
+<p>Dalam game GTA V, polishing yang dapat dilihat pada scene <em>wasted</em> adalah effect slow-motion yang ada, perubahan color balancing untuk memberikan efek kalah/mati, hingga penggunaan sound fx yang sangat khas.</p>
+<p><img alt="GTA V" src="../tutorials/tutorial-8/images/gta-wasted.gif" /></p>
+<p>Atau mungkin contoh yang lebih tidak terlihat adalah dalam Celeste dan berbagai platformer lainnya dimana terdapat banyak fitur tambahan untuk membuat pemain merasakan lebih nyaman dengan physics yang ada. Dapat dilihat pada video berikut:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ep_9RtAbwog?si=Eku2YbQafNTx7Rgt&amp;start=184" title="
+How to make a good platforming character (Developing 6)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<h3 id="tutorials-tutorial-8-game-balancing">Game Balancing</h3>
+<p>Pada tutorial-4 kemarin, kamu sudah mempelajari mengenai basic 2D level design, dan mencoba untuk mendesain suatu level. Namun, apakah kamu yakin level yang kamu buat sudah pasti bisa diselesaikan oleh pemain? apakah kamu yakin level yang kamu buat tidak membuat pemain kesal dan akhirnya berhenti memainkan game kamu? Jika tidak, maka kamu perlu untuk memainkan kembali level yang kamu buat dan lakukan <em>Game Balancing</em> pada level tersebut. Banyak hal yang dapat dilakukan untuk melakukan <em>balancing</em> pada suatu level, mulai dari mengubah nilai-nilai yang digunakan dalam script yang digunakan, hingga mengubah level design yang sudah dibuat agar level lebih <em>balanced</em>.</p>
+<p>Berikut adalah beberapa contoh mengenai game balancing:</p>
+<p>Dalam game Cat Mario, level sengaja dibuat sangat susah karena game Cat Mario didesin untuk menjadi <em>Rage Game</em>. Namun dalam pembuatan levelnya, pasti tetap dilakukan balancing agar level yang dibuat dapat diselesaikan oleh pemain dalam keadaan <strong><em>Rage</em></strong> bukan sampai <strong><em>Rage Quit</em></strong>.</p>
+<p><img alt="Cat Mario" src="../tutorials/tutorial-8/images/cat-mario.gif" /></p>
+<p>Dalam permainan League of Legends, balancing dilakukan setiap saat karena permainan MOBA memang merupakan game multiplayer yang dirancang agar menjadi game yang <a href="https://www.youtube.com/watch?v=e31OSVZF77w">Perfect Imbalance</a>, dimana balancing dilakukan agar permainan tetap menyenangkan bagi pemain dengan memberikan perubahan meta di setiap patch change-nya.</p>
+<p><img alt="League of Legends Patch Notes Welcome to Noxus" src="../tutorials/tutorial-8/images/patch-notes.png" /></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/e31OSVZF77w?si=GvMLMMKMcag9H-ZP" title="
+Perfect Imbalance - Why Unbalanced Design Creates Balanced Play - Extra Credits" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<h2 id="tutorials-tutorial-8-latihan-creating-particles">Latihan: Creating Particles</h2>
+<h3 id="tutorials-tutorial-8-particles">Particles</h3>
+<p>Particles merupakan teknik dalam game development untuk menampilkan atau mensimulasikan efek physics yang kompleks, seperti api, asap dari api tersebut, hujan, dan lain-lain. dengan menggunakan particle, game developer dapat memberikan tampilan visual yang lebih detail dan lebih menarik kepada pemain. Dalam game engine Godot, disediakan Node particle untuk game 2D yaitu <code>GPUParticles2D</code>. Dengan menggunakan node <code>GPUParticles2D</code> kamu dapat membuat berbagai macam efek yang ingin kamu buat. Untuk melakukan itu kamu dapat bermain dengan properties yang ada pada node <code>GPUParticles2D</code>, pada tutorial ini, kamu akan mencoba untuk membuat particle hujan pada level yang sudah disediakan, dan juga particle trail ketika player berjalan di level. Untuk penjelasan properties yang digunakan akan dijelaskan dengan sejalannya tutorial. Berikut adalah perbedaan hasil akhir yang diharapkan dengan level tanpa penggunaan particle:</p>
+<p><img alt="Keadaan Awal" src="../tutorials/tutorial-8/images/keadaan-awal.gif" /></p>
+<p><img alt="Hasil Akhir" src="../tutorials/tutorial-8/images/hasil-akhir.gif" /></p>
+<h3 id="tutorials-tutorial-8-creating-an-environment-particle">Creating an Environment Particle</h3>
+<p>Pertama, buka template Level 1 yang telah disediakan (atau gunakan level yang sudah kamu buat di tutorial 6 sebelumnya), lalu tambahkan node GPUParticles2D kepada root Node yang ada.</p>
+<p><img alt="Add Node GPUParticles2D" src="../tutorials/tutorial-8/images/new-particles2d.png" /></p>
+<p>Ketika berhasil ditambahkan, node GPUParticles2D akan menampilkan warning, hal ini dikarenakan kamu perlu menambahkan ParticlesMaterial kepada Node GPUParticles2D agar dapat berjalan. Hal ini dapat ditemukan di tab inspector, <code>Process Material</code>, lalu tambahkan ParticlesMaterial yang baru.</p>
+<p><img alt="New Particles Material" src="../tutorials/tutorial-8/images/particles_material.png" /></p>
+<p>Sekarang kamu dapat melihat particlemu bejalan, namun hanya berupa titik-titik kecil yang berjatuhan, sekarang kita akan mengubah particle ini agar menjadi hujan yang kita inginkan. (Perlu cukup zoom in untuk lihat)</p>
+<p><img alt="first-implemen-particle" src="../tutorials/tutorial-8/images/first-implemen-particle.png" /></p>
+<p>Karena kita ingin membuat hujan, kita ingin agar titik-titik particle yang kita punya berjumlah banyak, dan bertahan lama di layar. Untuk melakukan itu pada tab inspector, ubah <code>Amount</code> menjadi 100, <code>Lifetime</code> menjadi 4.
+Pada Godot 4.3, lifetime mempengaruhi jumlah emisi per detiknya dengan rumus $(amount * amount_scale) / lifetime$. Something to know saja.
+<img alt="alt text" src="../tutorials/tutorial-8/images/lokasi-amount-lifetime.png" />
+- Properti <code>Amount</code> melambangkan banyaknya titik particle yang ingin kita punya.
+- Properti <code>Lifetime</code> melambangkan lamanya suatu titik particle akan hidup di dunia game kita.</p>
+<p>Selanjutnya, kita ingin agar titik particle kita dapat terlihat dari kamera, sehingga kita perlu untuk mengubah ukuran dari particle kita. Klik <code>ParticlesMaterial</code> yang sudah kita tambahkan sebelumnya, lalu pada tab <code>Display/Scale</code> ubah <code>Scale max</code> menjadi 10. Dikarenakan perbedaan antara <code>scale min</code> dan <code>scale max</code>, maka ukurannya akan secara random dipilih dalam rentang tersebut saat intansiasi masing-masing partikel.</p>
+<ul>
+<li>Properti <code>Scale</code> melambangkan ukuran dari suatu titik particle.</li>
+</ul>
+<p><img alt="Scale" src="../tutorials/tutorial-8/images/scale.png" /></p>
+<p>Selanjutnya, agar particle yang kita miliki tidak hanyak muncul dari suatu titik saja, kita akan mengubah area awal particle dari titik menjadi persegi panjang yang sangat panjang agar dapat menutupi seluruh level. Pada tab <code>Spawn/Position</code>, ubah <code>Emision Shape</code> menjadi box, dan ubah <code>Emision Box Extents</code> value x menjadi 2000. Dari sini particle sudah mulai terlihat seperti hujan.</p>
+<p><img alt="Emission Shape" src="../tutorials/tutorial-8/images/emission-shape.png" /></p>
+<p>Selanjutnya, agar particle yang kita punya terlihat seperti hujan, kita dapat mengubah warnanya. Pada tab <code>Display/Color Curves</code>, ubah <code>Color</code> menjadi warna biru (#84a6b6). Jika kalian ingin mencoba mengubah atribut lain, sangat dipersilahkan untuk membuat particle yang lebih bagus dan dinamis.
+<img alt="Color" src="../tutorials/tutorial-8/images/color.png" /></p>
+<p>Selanjutnya, kita ingin agar hujan kita memiliki kecepatan yang lebih cepat agar menghasilkan ilusi hujan yang lebat. Untuk melakukan ini, pada tab <code>Velocity</code>, ubah <code>Spread</code> menjadi 20 agar persebaran particle tidak terlalu jauh. Lalu pada tab <code>Accelerations/Gravity</code> ubah gravity x menjadi -500 dan gravity y menjadi 500 agar particle kita terpengaruh gravitasi ke arah kiri bawah.</p>
+<ul>
+<li>Properti <code>Spread</code> melambangkan derajat persebaran particle. 180 derajat menandakan particle akan keluar ke segala arah.</li>
+<li>Properti <code>Gravity</code> melambangkan besarang gravitasi yang diterima oleh titik particle kita.</li>
+</ul>
+<p>Sepertinya particle yang sudah kita buat sudah mirip dengan hujan, coba kita liat dalam in-game.</p>
+<p><img alt="Missing Particle" src="../tutorials/tutorial-8/images/missing-particle-camera.gif" /></p>
+<p>Loh? kok ketika kita gerak particlenya hilang? Itu karena particle hanya akan ditampilkan jika drawing areanya berada di camera. Oleh karena itu kita harus mengubah drawing area particle kita dan juga posisinya. Pada tab <code>Drawing</code> ubah <code>Visibilty Rect</code> menjadi $w=2000$ dan $h=500$ untuk mengubah ukuran drawing area particle dan titik tengahnya. 
+Ingatlah kalau lokasi <code>Drawing area</code> ini lah yang menentukan apakah particle kalian di-render atau tidak, sehingga pastikan <code>position</code> dari drawing area masuk ke dalam kamera dalam game. </p>
+<ul>
+<li>Properti <code>Visibility Rect</code> melambangkan ukuran drawing area (visibility area) dari particle kita.</li>
+</ul>
+<p><img alt="Visibility Rect" src="../tutorials/tutorial-8/images/visibility-rect.png" />
+<img alt="alt text" src="../tutorials/tutorial-8/image.png" /></p>
+<p>Sekarang, tinggal beberapa detail lagi yang akan kita buat. Yaitu memberikan trail pada particle particle agar tidak terlihat seperti kotak. Pada tab <code>Trail</code> ubah <code>Enabled</code> menjadi $True$, untuk memberikan ekor pada partikel.</p>
+<ul>
+<li>Properti <code>Trail</code> melambangkan ada tidaknya ekor dari partikel yang digenerasi.</li>
+</ul>
+<p><img alt="alt text" src="../tutorials/tutorial-8/images/trail.png" /></p>
+<p>Done! Sekarang particle sudah terlihat seperti hujan!</p>
+<p><img alt="Done Hujan Abu" src="../tutorials/tutorial-8/images/rain_done.gif" /></p>
+<p>Btw, kalian bisa mengganti tekstur dari partikel layaknya sebuah <code>Sprite2D</code>. Dengan konfigurasi sebelumnya, jika meng-assign <code>texture</code>denan icon.svg, kita akan mendapatkan tampilan seperti berikut.</p>
+<p><img alt="alt text" src="../tutorials/tutorial-8/image.png" /></p>
+<p>Dalam implementasi aslinya, kalian bisa mengganti tekstur dengan snowflake sebagai contoh agar terlihat seperti sedang turun salju.</p>
+<h3 id="tutorials-tutorial-8-creating-a-trail-particle-jalan">Creating a Trail Particle Jalan</h3>
+<p>Sekarang kita akan membuat particle trail saat player berjalan. Pertama buka scene <code>player.tscn</code>. Lalu tambahkan kembali Node GPUParticles2D. Dan tambahkan kembali <code>ParticlesMaterial</code>. Berbeda dengan particle environment sebelumnya, untuk particle ini kita akan menggunakan aset yang disediakan. Pada tab <code>Texture</code>, ubah <code>Texture</code> menjadi menggunakan asset <code>Asserts/kenney_platformerpack/PNG/Particles/brickGrey_small.png</code>.
+- Properti <code>Texture</code> melambangkan texture yang ingin kita pakai untuk particle kita, jika tidak ada akan menggunakan kotak (seperti pada particle environment hujan)</p>
+<p><img alt="Texture" src="../tutorials/tutorial-8/images/texture.png" /></p>
+<p>Selanjutnya, berbeda dengan sebelumnya, sekarang kita tidak ingin jumlah particle yang cukup banyak karena akan memenuhi trail kita, dan lifetime dari particle tidak perlu lama karena trail tidak akan lama berada di layar, oleh karena itu pada tab <code>GPUParticles2D</code>, ubah <code>Amount</code> menjadi 4 dan <code>Lifetime</code> menjadi 0.5.</p>
+<p>Selanjutnya, agar particle muncul ke segala arah dan terbang ke atas, ubah <code>Gravity</code> nilai y menjadi -200, Pada tab <code>Spawn/Velocity</code> terdapat atribut spread dan initial velocity. Ubah <code>Spread</code> menjadi 180 derajat, dan <code>Initial Velocity</code> menjadi 50.</p>
+<p><img alt="Spread and Gravity" src="../tutorials/tutorial-8/images/trail-spread-gravity.png" /></p>
+<p>Selanjutya, agar particle tidak hanya muncul dari satu titik, ubah <code>Spawn/Position/Emission Shape</code> menjadi box dengan nilai <code>x</code> 30. Lalu pindahkan pula node GPUParticles2D ke bagian kaki player, pada tab <code>Transform</code> ubah nilai y menjadi 30.</p>
+<p>Selanjutnya, agar particle tidak terus mengikuti player, ubah <code>Local Coord</code> menjadi <code>off</code>.</p>
+<p><img alt="Local Coord" src="../tutorials/tutorial-8/images/trail-local-coord.png" /></p>
+<p>Sekarang, karena sepertinya sudah terlihat bagus, kita coba mainkan di in-game.</p>
+<p><img alt="Trail is Always On" src="../tutorials/tutorial-8/images/trail-always-on.gif" /></p>
+<p>Sepertinya sudah terlihat cukup bagus, sekarang masalahnya particle selalu berjalan, sedangkan kita hanya ingin particle berjalan ketika player berada di lantai dan sedang berjalan. Untuk melakukan itu kita dapat menggunakan script untuk mengatur kapan particle berjalan dengan mengganti atribut <code>Emitting</code>, dimana atribut ini melambangkan keadaan particle berjalan atau tidak (mengeluarkan particle atau tidak). Untuk itu kita perlu mengubah script <code>Player.gd</code>. Tambahkan baris ini di bagian deklarasi variable:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="err">@</span><span class="k">onready</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">particle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">GPUParticles2D</span>
+</code></pre></div></td></tr></table></div>
+<p>Lalu ubah fungsi <code>get_input</code> menjadi:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">get_input</span><span class="p">():</span>
+<span class="w">    </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">is_on_floor</span><span class="p">()</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_just_pressed</span><span class="p">(</span><span class="s1">&#39;jump&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jump_speed</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">speed</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">is_on_floor</span><span class="p">():</span>
+<span class="w">            </span><span class="n">particle</span><span class="o">.</span><span class="n">set_emitting</span><span class="p">(</span><span class="bp">true</span><span class="p">)</span>
+<span class="w">    </span><span class="k">elif</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">speed</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">is_on_floor</span><span class="p">():</span>
+<span class="w">            </span><span class="n">particle</span><span class="o">.</span><span class="n">set_emitting</span><span class="p">(</span><span class="bp">true</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span><span class="p">:</span>
+<span class="w">        </span><span class="n">particle</span><span class="o">.</span><span class="n">set_emitting</span><span class="p">(</span><span class="bp">false</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p><img alt="Trail Done" src="../tutorials/tutorial-8/images/trail-done.gif" /></p>
+<p>Done! Sekarang particle sudah terlihat seperti trail jalan player!</p>
+<h2 id="tutorials-tutorial-8-latihan-game-balancing">Latihan: Game Balancing</h2>
+<h3 id="tutorials-tutorial-8-balancing-spawn-rate">Balancing Spawn Rate</h3>
+<p>Sekarang kita akan mencoba untuk melakukan balancing pada game yang sudah kita buat. Untuk itu sudah disediakan template scene <code>Spawner.tscn</code>, masukkan scene tersebut ke Level 1, di akhir platform tengah (posisi transform x 1700 y 280). Lalu coba mainkan gamenya.</p>
+<p><img alt="Unbalanced" src="../tutorials/tutorial-8/images/unbalanced.gif" /></p>
+<p>Dapat dilihat bahwa kita sebagai pemain tidak dapat menyelesaikan permainan dikarenakan spawner terlalu banyak memunculkan musuh, sehingga pemain tidak dapat melompati tikus-tikus yang ada untuk menuju akhir level. Oleh karena itu perlu dilakukan game balancing terhadap game ini. Coba kamu mainkan lagi dan coba pikirkan apa yang kira kira membuat pemain tidak bisa melompati tikus-tikus yang ada. Setelah memainkan beberapa kali, semoga kamu menyadari bahwa karena terlalu banyak tikus dan <strong>Spawn Rate</strong> antar tikus terlalu kecil, membuat tidak ada celah yang dapat dimanfaatkan pemain untuk melewati rintangan tersebut. Dan jika kamu sudah melihat tab inspector pada Spawner, sudah disedikan variable <code>Spawn Rate</code> yang dapat diubah, coba ubah menjadi 2 detik dan coba mainkan kembali.</p>
+<p><img alt="Too Easy" src="../tutorials/tutorial-8/images/too-easy.gif" /></p>
+<p>Hmm pemain sudah bisa melewati rintangan untuk mencapai akhir level. Namun sepertinya pemain dapat melakukan hal itu dengan cukup mudah. Ingat, kita harus dapat membuat pemain berada dalam <a href="https://www.gamasutra.com/view/feature/166972/cognitive_flow_the_psychology_of_.php"><strong><em>FLOW</em></strong></a> agar pemain tidak merasa permainan terlalu mudah ataupun terlalu sulit. Oleh karena itu, silahkan cari nilai yang menurut kamu tepat sebagai <code>Spawn Rate</code>. Dalam tutorial ini, akan menggunakan nilai 1 sebagai <code>Spawn Rate</code> yang digunakan. Setelah kalian mencoba dan menemukan nilai <code>Spawn Rate</code> yang tepat menurut kalian, coba mainkan kembali untuk memastikan bahwa level sudah balanced.</p>
+<p><img alt="Balanced" src="../tutorials/tutorial-8/images/balanced.gif" /></p>
+<p>Selamat, tutorial ini sudah selesai!</p>
+<!-- ## Latihan Mandiri: Rencana Polishing & Balancing Pada Game Proyek Kelompok
+
+Pada tutorial kali ini, tidak ada latihan mandiri spesifik untuk berlatih mengenai _polishing_ dan _balancing_.
+Namun sebagai gantinya, kamu diminta untuk merefleksikan kegiatan _playtesting_ terbuka yang diadakan di area kantin gedung baru Fasilkom UI pekan lalu.
+
+Silakan ingat kembali pengalaman kamu pada kegiatan _playtesting_ pekan lalu dan evaluasi hasil _playtesting_ yang telah kamu kumpulkan bersama tim.
+Kemudian harap jawab pertanyaan-pertanyaan berikut:
+
+1. Apa saja hal-hal positif yang kamu identifikasi dari pengalaman para pemain ketika mencoba game kelompok?
+2. Apa saja hal-hal negatif (atau, _pain points_) yang kamu identifikasi dari pengalaman para pemain ketika mencoba game kelompok?
+3. Dari _feedback_-_feedback_ yang telah diperoleh, apakah ada isu yang terkait pencapaian kondisi _flow_ oleh pemain?
+    - Misalnya, apakah ada tantangan di dalam game yang masih kurang tepat dengan kemampuan pemain pada level tertentu?
+    - Atau, apakah ada rancangan level di dalam game yang dirasa terlalu membosankan bagi pemain?
+4. Dari jawaban kamu terhadap pertanyaan 1 hingga 3, tuliskan secara singkat, dalam bentuk _bullet points_, apa saja hal yang ingin kamu _polish_ dan _balance_?
+5. Untuk masing-masing poin di jawaban pertanyaan 4, jabarkan secara singkat (1 - 3 kalimat) mengenai rencana kerja kamu untuk mengimplementasikan usulan tersebut. -->
+
+<h2 id="tutorials-tutorial-8-skema-penilaian">Skema Penilaian</h2>
+<p>Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:</p>
+<ul>
+<li><strong>4</strong> (<em><strong>A</strong></em>) apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi tim pengajar.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan menjawab seluruh pertanaan pada Latihan Mandiri.</li>
+<li><strong>3</strong> (<em><strong>B</strong></em>) apabila kamu hanya mengerjakan tutorial dan latihan sesuai dengan instruksi.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan menjawab pertanyaan 1 - 3 pada Latihan Mandiri.</li>
+<li><strong>2</strong> (<em><strong>C</strong></em>) apabila kamu hanya mengerjakan tutorial hingga tuntas.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan namun tidak mengerjakan Latihan Mandiri.</li>
+<li><strong>1</strong> (<em><strong>D</strong></em>) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.
+  Nilai ini dapat dicapai apabila belum tuntas mengerjakan Latihan.</li>
+<li><strong>0</strong> (<em><strong>E</strong></em>) apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.</li>
+</ul>
+<h2 id="tutorials-tutorial-8-pengumpulan">Pengumpulan</h2>
+<p>Kumpulkan semua berkas pengerjaan tutorial dan latihan ke repositori Git.
+Jangan lupa untuk menjelaskan proses pengerjaan tutorial ini di dalam berkas <code>README.md</code> yang tersimpan di repositori Git.
+Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelaskan proses implementasi.
+Kemudian, <em>push</em> riwayat <em>commit</em>-nya ke repositori Git pengerjaan tutorial 8 dan kumpulkan tautan (URL) repositori Git kamu di slot pengumpulan yang tersedia di SCELE.
+Jika kamu menggunakan kembali repositori Git tutorial 6, maka pastikan pekerjaan tutorial ini kamu taruh di dalam <em>branch</em> baru!</p>
+<p>Tenggat waktu pengumpulan adalah <strong>Rabu, 16 Mei 2025, pukul 21:00</strong>.</p>
+<h2 id="tutorials-tutorial-8-referensi">Referensi</h2>
+<ul>
+<li><a href="https://docs.godotengine.org/en/3.1/tutorials/2d/particle_systems_2d.html">Particle System 2D</a></li>
+<li><a href="https://docs.godotengine.org/en/3.1/classes/class_particles2d.html">GPUParticles2D</a></li>
+<li><a href="https://www.kenney.nl/assets/platformer-pack-redux">Kenney Assets</a></li>
 <li>Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
   gasal 2020/2021 Fakultas Ilmu Komputer Universitas Indonesia.</li>
 </ul></section><h1 class='nav-section-title-end'>Ended: Tutorials</h1></div>
