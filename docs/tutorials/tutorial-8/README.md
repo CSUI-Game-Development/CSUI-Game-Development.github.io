@@ -89,7 +89,9 @@ Sekarang kamu dapat melihat particlemu bejalan, namun hanya berupa titik-titik k
 
 Karena kita ingin membuat hujan, kita ingin agar titik-titik particle yang kita punya berjumlah banyak, dan bertahan lama di layar. Untuk melakukan itu pada tab inspector, ubah ```Amount``` menjadi 100, ```Lifetime``` menjadi 4.
 Pada Godot 4.3, lifetime mempengaruhi jumlah emisi per detiknya dengan rumus $(amount * amount_scale) / lifetime$. Something to know saja.
+
 ![alt text](images/lokasi-amount-lifetime.png)
+
 - Properti ```Amount``` melambangkan banyaknya titik particle yang ingin kita punya.
 - Properti ```Lifetime``` melambangkan lamanya suatu titik particle akan hidup di dunia game kita.
 
@@ -104,6 +106,7 @@ Selanjutnya, agar particle yang kita miliki tidak hanyak muncul dari suatu titik
 ![Emission Shape](images/emission-shape.png)
 
 Selanjutnya, agar particle yang kita punya terlihat seperti hujan, kita dapat mengubah warnanya. Pada tab ```Display/Color Curves```, ubah ```Color``` menjadi warna biru (#84a6b6). Jika kalian ingin mencoba mengubah atribut lain, sangat dipersilahkan untuk membuat particle yang lebih bagus dan dinamis.
+
 ![Color](images/color.png)
 
 Selanjutnya, kita ingin agar hujan kita memiliki kecepatan yang lebih cepat agar menghasilkan ilusi hujan yang lebat. Untuk melakukan ini, pada tab ```Velocity```, ubah ```Spread``` menjadi 20 agar persebaran particle tidak terlalu jauh. Lalu pada tab ```Accelerations/Gravity``` ubah gravity x menjadi -500 dan gravity y menjadi 500 agar particle kita terpengaruh gravitasi ke arah kiri bawah.
@@ -236,11 +239,13 @@ Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:
   Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan.
   <!-- dan menjawab seluruh pertanyaan pada Latihan Mandiri -->
 - **3** (_**B**_) apabila kamu hanya mengerjakan tutorial dan latihan sesuai dengan instruksi.
-  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan menjawab pertanyaan 1 - 3 pada Latihan Mandiri.
-- **2** (_**C**_) apabila kamu hanya mengerjakan tutorial hingga tuntas.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan.
+   <!-- dan menjawab pertanyaan 1 - 3 pada Latihan Mandiri. -->
+- **2** (_**C**_) atau **1** (_**D**_) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.
+<!-- - **2** (_**C**_) apabila kamu hanya mengerjakan tutorial hingga tuntas.
   Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan namun tidak mengerjakan Latihan Mandiri.
 - **1** (_**D**_) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.
-  Nilai ini dapat dicapai apabila belum tuntas mengerjakan Latihan.
+  Nilai ini dapat dicapai apabila belum tuntas mengerjakan Latihan. -->
 - **0** (_**E**_) apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.
 
 ## Pengumpulan
