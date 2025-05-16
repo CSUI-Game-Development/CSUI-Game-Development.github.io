@@ -3174,10 +3174,12 @@ Perfect Imbalance - Why Unbalanced Design Creates Balanced Play - Extra Credits"
 <p>Sekarang kamu dapat melihat particlemu bejalan, namun hanya berupa titik-titik kecil yang berjatuhan, sekarang kita akan mengubah particle ini agar menjadi hujan yang kita inginkan. (Perlu cukup zoom in untuk lihat)</p>
 <p><img alt="first-implemen-particle" src="../tutorials/tutorial-8/images/first-implemen-particle.png" /></p>
 <p>Karena kita ingin membuat hujan, kita ingin agar titik-titik particle yang kita punya berjumlah banyak, dan bertahan lama di layar. Untuk melakukan itu pada tab inspector, ubah <code>Amount</code> menjadi 100, <code>Lifetime</code> menjadi 4.
-Pada Godot 4.3, lifetime mempengaruhi jumlah emisi per detiknya dengan rumus $(amount * amount_scale) / lifetime$. Something to know saja.
-<img alt="alt text" src="../tutorials/tutorial-8/images/lokasi-amount-lifetime.png" />
-- Properti <code>Amount</code> melambangkan banyaknya titik particle yang ingin kita punya.
-- Properti <code>Lifetime</code> melambangkan lamanya suatu titik particle akan hidup di dunia game kita.</p>
+Pada Godot 4.3, lifetime mempengaruhi jumlah emisi per detiknya dengan rumus $(amount * amount_scale) / lifetime$. Something to know saja.</p>
+<p><img alt="alt text" src="../tutorials/tutorial-8/images/lokasi-amount-lifetime.png" /></p>
+<ul>
+<li>Properti <code>Amount</code> melambangkan banyaknya titik particle yang ingin kita punya.</li>
+<li>Properti <code>Lifetime</code> melambangkan lamanya suatu titik particle akan hidup di dunia game kita.</li>
+</ul>
 <p>Selanjutnya, kita ingin agar titik particle kita dapat terlihat dari kamera, sehingga kita perlu untuk mengubah ukuran dari particle kita. Klik <code>ParticlesMaterial</code> yang sudah kita tambahkan sebelumnya, lalu pada tab <code>Display/Scale</code> ubah <code>Scale max</code> menjadi 10. Dikarenakan perbedaan antara <code>scale min</code> dan <code>scale max</code>, maka ukurannya akan secara random dipilih dalam rentang tersebut saat intansiasi masing-masing partikel.</p>
 <ul>
 <li>Properti <code>Scale</code> melambangkan ukuran dari suatu titik particle.</li>
@@ -3185,8 +3187,8 @@ Pada Godot 4.3, lifetime mempengaruhi jumlah emisi per detiknya dengan rumus $(a
 <p><img alt="Scale" src="../tutorials/tutorial-8/images/scale.png" /></p>
 <p>Selanjutnya, agar particle yang kita miliki tidak hanyak muncul dari suatu titik saja, kita akan mengubah area awal particle dari titik menjadi persegi panjang yang sangat panjang agar dapat menutupi seluruh level. Pada tab <code>Spawn/Position</code>, ubah <code>Emision Shape</code> menjadi box, dan ubah <code>Emision Box Extents</code> value x menjadi 2000. Dari sini particle sudah mulai terlihat seperti hujan.</p>
 <p><img alt="Emission Shape" src="../tutorials/tutorial-8/images/emission-shape.png" /></p>
-<p>Selanjutnya, agar particle yang kita punya terlihat seperti hujan, kita dapat mengubah warnanya. Pada tab <code>Display/Color Curves</code>, ubah <code>Color</code> menjadi warna biru (#84a6b6). Jika kalian ingin mencoba mengubah atribut lain, sangat dipersilahkan untuk membuat particle yang lebih bagus dan dinamis.
-<img alt="Color" src="../tutorials/tutorial-8/images/color.png" /></p>
+<p>Selanjutnya, agar particle yang kita punya terlihat seperti hujan, kita dapat mengubah warnanya. Pada tab <code>Display/Color Curves</code>, ubah <code>Color</code> menjadi warna biru (#84a6b6). Jika kalian ingin mencoba mengubah atribut lain, sangat dipersilahkan untuk membuat particle yang lebih bagus dan dinamis.</p>
+<p><img alt="Color" src="../tutorials/tutorial-8/images/color.png" /></p>
 <p>Selanjutnya, kita ingin agar hujan kita memiliki kecepatan yang lebih cepat agar menghasilkan ilusi hujan yang lebat. Untuk melakukan ini, pada tab <code>Velocity</code>, ubah <code>Spread</code> menjadi 20 agar persebaran particle tidak terlalu jauh. Lalu pada tab <code>Accelerations/Gravity</code> ubah gravity x menjadi -500 dan gravity y menjadi 500 agar particle kita terpengaruh gravitasi ke arah kiri bawah.</p>
 <ul>
 <li>Properti <code>Spread</code> melambangkan derajat persebaran particle. 180 derajat menandakan particle akan keluar ke segala arah.</li>
@@ -3292,12 +3294,18 @@ Kemudian harap jawab pertanyaan-pertanyaan berikut:
 </li>
 <li>
 <p><strong>3</strong> (<em><strong>B</strong></em>) apabila kamu hanya mengerjakan tutorial dan latihan sesuai dengan instruksi.
-  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan menjawab pertanyaan 1 - 3 pada Latihan Mandiri.</p>
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan.
+   <!-- dan menjawab pertanyaan 1 - 3 pada Latihan Mandiri. --></p>
 </li>
-<li><strong>2</strong> (<em><strong>C</strong></em>) apabila kamu hanya mengerjakan tutorial hingga tuntas.
-  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan namun tidak mengerjakan Latihan Mandiri.</li>
-<li><strong>1</strong> (<em><strong>D</strong></em>) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.
-  Nilai ini dapat dicapai apabila belum tuntas mengerjakan Latihan.</li>
+<li>
+<p><strong>2</strong> (<em><strong>C</strong></em>) atau <strong>1</strong> (<em><strong>D</strong></em>) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.</p>
+</li>
+</ul>
+<!-- - **2** (_**C**_) apabila kamu hanya mengerjakan tutorial hingga tuntas.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan namun tidak mengerjakan Latihan Mandiri.
+- **1** (_**D**_) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.
+  Nilai ini dapat dicapai apabila belum tuntas mengerjakan Latihan. -->
+<ul>
 <li><strong>0</strong> (<em><strong>E</strong></em>) apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.</li>
 </ul>
 <h2 id="tutorials-tutorial-8-pengumpulan">Pengumpulan</h2>
