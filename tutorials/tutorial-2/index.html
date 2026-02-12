@@ -497,7 +497,7 @@ diharapkan kamu paham dengan penggunaan Godot Editor, penerapan konsep
 Git daring.</p>
 <p>Sekadar mengingatkan, pastikan kamu:</p>
 <ul>
-<li>Telah mengunduh dan memasang <a href="https://godotengine.org/download/windows/">Godot v4.3</a>
+<li>Telah mengunduh dan memasang <a href="https://godotengine.org/download/windows/">Godot v4.6</a>
   edisi <strong>Stable</strong> sesuai dengan <em>development environment</em> yang kamu gunakan.</li>
 <li>Telah menjadi anggota kelompok tugas proyek akhir.</li>
 </ul>
@@ -518,13 +518,10 @@ Git daring.</p>
 </ul>
 <h2 id="pengantar">Pengantar</h2>
 <p>Tutorial ini disusun dengan mengambil beberapa referensi dari dokumentasi
-resmi <a href="https://docs.godotengine.org/en/4.3">Godot v4.3</a> dimana
+resmi <a href="https://docs.godotengine.org/en/4.6">Godot v4.6</a> dimana
 kamu akan mengikuti instruksi-instruksi di dalam dokumen ini untuk mengenal
 <em>game engine</em> Godot dan menggunakannya untuk membuat sebuah game sangat
-sederhana. Namun beberapa gambar yang ada di tutorial ini diambil dari Godot v4.3-stable.
-Jadi nanti ikuti tutorialnya harap teliti ya, bisa jadi ada sedikit tulisan yang berbeda
-antara perintah yang diberikan dan gambar visualisasinya. Terakhir, mungkin
-masih ada yang bertanya-tanya:
+sederhana. Terakhir, mungkin masih ada yang bertanya-tanya:
 "<em>Mengapa harus belajar menggunakan game engine seperti Godot, Unity, atau
 Unreal, untuk membuat game?</em>"</p>
 <p>Salah satu jawaban singkat dari pertanyaan di atas adalah <strong>software/component reuse</strong>.
@@ -548,94 +545,101 @@ sebagai berikut:</p>
 <li>Buka repositori <a href="https://github.com/CSUI-Game-Development/tutorial-2-template"><em>template</em> proyek Tutorial 2</a> di GitHub.
    Pilih "Use this template" untuk membuat repositori baru berdasarkan <em>template</em> tersebut ke dalam akun GitHub milikmu.</li>
 <li>Setelah membuat repositori Git baru berdasarkan <em>template</em> proyek Tutorial 2, salin repositori Git proyek Tutorial 2 ke mesinmu.</li>
-<li>Unduh Godot dahulu. Pastikan kamu mengunduh Godot versi 4.3 (LTS).
-   Kemudian <em>extract</em> ke suatu lokasi di dalam <em>filesyste</em> komputer.</li>
-<li>Jalankan Godot. Apabila Godot kamu merupakan instalasi baru (<em>fresh</em>), maka
-   akan muncul <em>modal window</em> yang menanyakan apakah kamu ingin membuka <strong>Assets Library</strong>.
-   Pilih <strong>Open Assets Library</strong>, lalu tunggu beberapa saat hingga proses
-   <em>loading</em> selesai dan pilih <em>tab</em> <strong>Projects</strong>.</li>
-</ol>
+<li>Unduh Godot dahulu. Pastikan kamu mengunduh Godot versi 4.6 (LTS).
+   Kemudian <em>extract</em> ke suatu lokasi di dalam <em>filesystem</em> komputer.</li>
+<li>
+<p>Jalankan Godot. Apabila Godot kamu merupakan instalasi baru (<em>fresh</em>) dan kamu menggunakan OS  Windows, maka
+   bisa jadi akan muncul <em>warning pop-up</em> dari Windows Defender yang muncul disebabkan oleh sertifikasi Godot yang baru dan masih dalam proses pendaftaran ke Windows (<a href="https://github.com/godotengine/godot/issues/110612">Github Issue</a>). Kamu tidak perlu khawatir, dan bisa lanjut dengan menekan <strong>More info</strong> kemudian <strong>Run anyway</strong>.</p>
 <blockquote>
 <p>Catatan: <strong>Assets Library</strong> adalah repositori aset siap pakai yang dapat
 digunakan dalam proyek game Godot. Bagi yang pernah menggunakan <em>game engine</em>
-Unity, fungsinya serupa dengan Unity Assets Store.
-5. Impor proyek game <code>T2</code>/<code>Tutorial 2</code> dengan menggunakan fitur <strong>Import</strong> di tampilan
-   Projects.</p>
+Unity, fungsinya serupa dengan Unity Assets Store.</p>
 </blockquote>
+</li>
+<li>
+<p>Setelah modal <em>Project Manager</em> muncul, impor proyek game <code>T2</code>/<code>Tutorial 2</code> dengan menggunakan fitur <strong>Import</strong> di tampilan Projects.</p>
+</li>
+</ol>
 <p><img alt="Animasi impor proyek game" src="images/import_project.gif" />
 6. Jika Godot sudah selesai impor proyek <code>T2</code>/<code>Tutorial 2</code>,
    maka akan muncul tampilan Godot Editor.
    Tampilan <em>default</em> Godot Editor dapat dilihat pada cuplikan gambar berikut:</p>
 <p><img alt="Tampilan default Godot Editor" src="images/default_godot_editor.png" /></p>
-<p>Tampilan Godot Editor di atas menampilkan ruang kerja (<em>workspace</em>) 3D.
-   Untuk kebutuhan tutorial ini, ganti <em>workspace</em> ke mode 2D dengan tombol
-   <em>shortcut</em> F1 atau klik tombol 2D yang berada di bagian atas <em>editor</em>.</p>
+<p>Tampilan Godot Editor di atas menampilkan ruang kerja (<em>workspace</em>) 3D. Tapi, jika kamu langsung impor proyek game <code>T2</code>/<code>Tutorial 2</code> dari template, seharusnya menu akan langsung menampilkan (<em>workspace</em>) 2D secara otomatis. Kamu juga bisa navigasi ke (<em>workspace</em>) 3D dengan menekan <em>Ctrl+F2</em> atau klik tombol 3D yang berada di bagian atas <em>editor</em>.</p>
 <p><img alt="Ilustrasi ganti mode workspace" src="images/switch_3d_2d.gif" /></p>
 <h2 id="antarmuka-godot-editor">Antarmuka Godot Editor</h2>
 <p><img alt="Tampilan Godot Editor dengan keterangan" src="images/annotated_godot_editor.png" /></p>
 <p>Tampilan Godot Editor terdiri dari beberapa panel yang akan dijelaskan
 sebagai berikut:</p>
 <ul>
-<li>Viewport
-  Jendela yang menampilkan <em>scene</em> dalam game, <em>code editor</em>, atau Asset
+<li><strong>Viewport</strong><br />
+  Jendela yang menampilkan <em>scene</em> dalam game, <em>code editor</em>, <em>playtest screen</em> atau Asset
   Library sesuai dengan apa yang dipilih pada Workspaces.</li>
-<li>Workspaces
-  Panel untuk mengganti apa yang ditampilkan pada Viewport. Ada 4 jenis:
-  2D, 3D, Script, dan AssetLib.</li>
+<li><strong>Workspaces</strong><br />
+  Panel untuk mengganti apa yang ditampilkan pada Viewport. Ada 5 jenis:
+  2D, 3D, Script, dan AssetLib.<ul>
 <li>2D menampilkan <em>scene</em> dengan tampilan dua dimensi.</li>
 <li>3D menampilkan <em>scene</em> dengan tampilan tiga dimensi.</li>
 <li>Script menampilkan <em>code editor</em> dan <em>debugger</em>.</li>
+<li>Game menampilkan layar game dari proyek anda saat dijalankan dengan <em>Run Project</em>.</li>
 <li>AssetLib menampilkan <em>library addons</em>, <em>scripts</em>, dan aset-aset gratis.</li>
-<li>Playtest Buttons
+</ul>
+</li>
+<li><strong>Playtest Buttons</strong><br />
   Panel untuk menjalankan proyek atau <em>scene</em>.</li>
-<li>FileSystem
-  <em>Tab</em> untuk mengatur dan menyusun berkas-berkas dan aset-aset di dalam proyek
-  yang sedang dibuka.</li>
-<li>Scene
-  <em>Tab</em> yang menampilkan hirarki dari objek-objek yang berada di dalam <em>scene</em>
+<li><strong>Scene</strong> <br />
+<em>Tab</em> yang menampilkan hirarki dari objek-objek yang berada di dalam <em>scene</em>
   yang sedang aktif.</li>
-<li>Import
+<li><strong>Import</strong><br />
   Jendela untuk melakukan pengaturan <em>import</em> pada berkas aset yang sedang
   dipilih.</li>
-<li>Inspector
+<li><strong>FileSystem</strong><br />
+<em>Tab</em> untuk mengatur dan menyusun berkas-berkas dan aset-aset di dalam proyek
+  yang sedang dibuka.</li>
+<li><strong>Inspector</strong> <br />
   Menampilkan rincian spesifik dari objek yang sedang dipilih dalam <em>scene</em>.
   Pada umumnya terdapat komponen <strong>Transform</strong> yang mengatur posisi, rotasi,
   dan skala dari objek yang dipilh. Selain itu, juga terdapat pengaturan
   spesifik tergantung dari tipe objek yang sedang dipilih.
-  Urutan atribut yang muncul pada tab ini berhubungan dengan urutan inheritence dari class tersebut, di mana class paling abstrak akan berada pada urutan terakhir. </li>
-<li>Node
-  <em>Tab</em> <strong>jika anda sedang meng-select node pada tab <em>scene</em></strong> maka akan ditampilkan dua bagian: <strong>Signals</strong> dan <strong>Groups</strong>. Signals mengandung
-  daftar <em>events</em> atau sinyal sesuai dengan tipe objek yang sedang dipilh.
+  Urutan atribut yang muncul pada tab ini berhubungan dengan urutan inheritance dari class tersebut, di mana class paling abstrak akan berada pada urutan terakhir. </li>
+<li><strong>Signals</strong><br />
+  Signals mengandung daftar <em>events</em> atau sinyal sesuai dengan tipe objek yang sedang dipilih.</li>
+<li><strong>Groups</strong><br />
   Groups digunakan untuk mengelompokkan objek yang sedang dipilih ke dalam
   kelompok tertentu supaya memudahkan untuk mencari atau mengatur beberapa
   objek serupa dalam satu kelompok.</li>
-<li>Output
+<li><strong>Output</strong><br />
   Menampilkan <em>console log</em> dari Godot Engine.</li>
-<li>Debugger
+<li><strong>Debugger</strong>  <br />
   Mengandung beberapa <em>tools</em> yang dapat digunakan untuk melakukan <em>debugging</em>
-  ketika menemui masalah dalam pengembangan. <em>Tools</em> yang tersedia adalah:</li>
-<li>Debugger menampilkan proses <em>runtime</em>.</li>
+  ketika menemui masalah dalam pengembangan. <em>Tools</em> yang tersedia adalah:<ul>
+<li>Stack Trace menampilkan proses <em>runtime</em>.</li>
 <li>Error menampilkan <em>error</em> yang muncul ketika menjalankan game.</li>
 <li>Profiler menampilkan <em>profile</em> dari setiap <em>function call</em> yang terjadi
-    di dalam game.</li>
+di dalam game.</li>
 <li>Monitor menampilkan <em>performance parameter</em> dari game, seperti FPS (frame
-    per second), <em>physics collisions</em>, dan lain-lain.</li>
+per second), <em>physics collisions</em>, dan lain-lain.</li>
 <li>Video RAM menampilkan penggunaan memori dari game yang sedang berjalan.</li>
 <li>Misc menampilkan opsi-opsi <em>debug</em> lainnya.</li>
-<li>Audio
-  <em>Tab</em> yang membantu melakukan pengaturan audio dalam <em>game</em>.</li>
-<li>Animation
+</ul>
+</li>
+<li><strong>Audio</strong> <br />
+<em>Tab</em> yang membantu melakukan pengaturan audio dalam <em>game</em>.</li>
+<li><strong>Animation</strong> <br />
   Jendela untuk membuat dan mengatur <em>timing</em> dan <em>keyframe</em> dari animasi
   yang digunakan.</li>
 </ul>
+<blockquote>
+<p>Catatan: Kamu juga bisa melihat detail lebih lanjut mengenai interface Godot di <a href="https://docs.godotengine.org/en/stable/getting_started/introduction/first_look_at_the_editor.html">sini</a>.</p>
+</blockquote>
 <p>Untuk mempercepat beberapa operasi pada Godot Editor, terdapat beberapa tombol
 <em>shortcut</em> yang dapat kamu gunakan, seperti:</p>
 <ul>
-<li>Q: Ganti mode manipulasi menjadi <strong>Select</strong>.</li>
-<li>W: Ganti mode manipulasi menjadi <strong>Move</strong>.</li>
-<li>E: Ganti mode manipulasi menjadi <strong>Rotate</strong>.</li>
-<li>S: Ganti mode manipulasi menjadi <strong>Scale</strong>.</li>
-<li>R: Ganti mode manipulasi menjadi <strong>Ruler</strong></li>
+<li><strong>Q</strong>: Ganti mode manipulasi menjadi <strong>Select</strong>.</li>
+<li><strong>W</strong>: Ganti mode manipulasi menjadi <strong>Move</strong>.</li>
+<li><strong>E</strong>: Ganti mode manipulasi menjadi <strong>Rotate</strong>.</li>
+<li><strong>R</strong>: Ganti mode manipulasi menjadi <strong>Scale</strong>.</li>
+<li><strong>M</strong>: Ganti mode manipulasi menjadi <strong>Ruler</strong></li>
 </ul>
 <p>Tombol-tombol <em>shortcut</em> lainnya dapat dilihat di menu <strong>Editor &gt; Editor
 Settings &gt; Shortcuts</strong>.</p>
@@ -693,7 +697,7 @@ dibuka.</p>
 <li>Panel <strong>Scene</strong> menampilkan hirarki <em>node</em> di dalam <em>scene</em> yang sedang
    dibuka. <em>Scene</em> <code>MainLevel</code> memiliki sebuah <em>root node</em> bernama <code>MainLevel</code>, dimana
    <em>node</em> tersebut memiliki tiga buah <em>child node</em>, yaitu <code>PlatformBlue</code>,
-   <code>BlueShip</code>, dan <code>ObjectiveArea</code>. Selanjutnya, masing-masing <code>PlatformBlue</code> dan <code>ObjectiveArea</code> juga memiliki dua <em>child node</em>.<blockquote>
+   <code>BlueShip</code>, dan <code>ObjectiveArea</code>. Selanjutnya, masing-masing <code>PlatformBlue</code> dan <code>ObjectiveArea</code> juga memiliki <em>child node</em>.<blockquote>
 <p>Catatan: Kamu juga dapat mengetahui <strong>Type</strong> dari suatu <em>node</em> dengan
 menaruh pointer mouse di atas nama <em>node</em>. Akan muncul <em>popup</em> yang
 menampilkan tipe <em>node</em> yang ada di bawah pointer.</p>
@@ -703,9 +707,13 @@ menampilkan tipe <em>node</em> yang ada di bawah pointer.</p>
 <p>Panel <strong>Inspector</strong> dapat menampilkan atribut (<em>properties</em>) dari <em>node</em>
    yang sedang dipilih melalui Viewport atau panel Scene. Pada gambar di atas,
    panel Inspector menampilkan atribut dari <em>node</em> <code>Main</code>. Apabila kamu klik
-   <em>tab</em> <strong>Node</strong> di panel tersebut, maka akan muncul daftar fungsi <em>callback</em>
+   <em>tab</em> <strong>Signals</strong> di panel tersebut, maka akan muncul daftar fungsi <em>callback</em>
    yang dimiliki oleh <em>node</em>. Jika suatu saat anda mengalami kebingungan cara kerja node yang sedang anda seleksi, Anda bisa menekan tombol dibawah ini untuk membuka dokumentasinya.
-   <img alt="Tombol dokumentasi" src="images/doc_button.png" /></p>
+<br />
+<p align="center">
+    <img src="images/doc_button.png" alt="Tombol Dokumentasi" width="30%">
+  </p>
+</p>
 </li>
 <li>
 <p><strong>Viewport</strong> menampilkan visualisasi dari <em>scene</em> yang sedang dibuka. Saat
@@ -718,7 +726,7 @@ terluar Viewport. <em>Ruler</em> tersebut memberikan informasi posisi koordinat
 dalam <em>scene</em>. Satu hal lagi yang perlu kamu ketahui adalah titik <code>(0, 0)</code>
 pada sistem yang menampilkan citra di komputer umumnya mulai dari pojok
 kiri atas bidang. Tidak seperti yang telah kamu pelajari dari matematika
-dasar, yaitu dari pojok kiri bawah bidang. Selain itu, inkremen sumbu $x$ masih bersifat sama seperti di matematika dasar, yaitu semakin ke <strong>kanan</strong> akan semakin <strong>positif</strong> nilainya, tetapi untuk sumbu $y$ semakin ke <strong>atas</strong> akan semakin <strong>negatif</strong>.</p>
+dasar, yaitu dari pojok kiri bawah bidang. Selain itu, inkremen sumbu <em>x</em> masih bersifat sama seperti di matematika dasar, yaitu semakin ke <strong>kanan</strong> akan semakin <strong>positif</strong> nilainya, tetapi untuk sumbu <em>y</em> semakin ke <strong>atas</strong> akan semakin <strong>negatif</strong>.</p>
 </blockquote>
 </li>
 <li><strong>Playtest Buttons</strong> memiliki tombol untuk menjalankan <em>game loop</em> pada
@@ -758,18 +766,20 @@ Fungsi <em>event handler</em>-nya dapat dilihat pada berkas <code>ObjectiveArea.
 <p>Tuliskan hasil observasi kamu ke dalam berkas Markdown bernama <code>README.md</code> di repositori pengerjaan tutorial 2.
 Jangan lupa untuk membaca dokumentasi Godot untuk dapat mengelaborasikan jawaban dengan lebih rinci.</p>
 <h2 id="latihan-memanipulasi-node-dan-scene">Latihan: Memanipulasi Node dan Scene</h2>
-<p>Sekarang coba kamu buka <em>scene</em> <code>BlueShip</code>. Tampilan Viewport dan beberapa
+<p>Sekarang coba kamu buka <em>scene</em> <code>BlueShip.tscn</code>. Tampilan Viewport dan beberapa
 panel lainnya akan berubah. Kamu akan melihat bahwa <em>scene</em> <code>BlueShip</code>
 memiliki sebuah <em>root node</em> bernama <code>BlueShip</code> dan memiliki dua buah
-<em>child node</em>, yaitu <code>Sprite</code> dan <code>CollisionShape2D</code>. Pilih <em>node</em> <code>BlueShip</code>
+<em>child node</em>, yaitu <code>Sprite2D</code> dan <code>CollisionShape2D</code>. Pilih <em>node</em> <code>BlueShip</code>
 dan fokus pada tampilan <strong>Inspector</strong>.</p>
-<p><img alt="Contoh tampilan inspector BlueShip" src="images/inspector.png" /></p>
+<p align="center">
+  <img src="images/inspector.png" alt="Tombol Dokumentasi" width="30%">
+</p>
+
 <p><strong>Inspector</strong> menampilkan semua atribut yang dimiliki oleh <em>node</em> <code>BlueShip</code>.
 Atribut-atribut yang dimiliki merupakan hasil dari hubungan <em>inheritance</em>
 dari hirarki tipe <em>node</em>. Jika kamu masih ingat <em>node</em> <code>MainLevel</code> di <em>scene</em>
 <code>MainLevel</code>, <em>node</em> tersebut adalah <em>node</em> dengan tipe <code>Node</code> dimana atributnya
-hanya ada dua, yaitu <code>Pause</code> dan <code>Script</code>. Tipe <code>Node</code> adalah tipe <em>node</em>
-paling dasar pada hirarki tipe <em>node</em> dalam Godot. Semua tipe <em>node</em> pasti
+hanya ada empat, yaitu <code>Process</code>, <code>Physics Interpolation</code>, <code>Auto Translate</code>, dan <code>Editor Description</code>. Tipe <code>Node</code> adalah tipe <em>node</em> paling dasar pada hirarki tipe <em>node</em> dalam Godot. Semua tipe <em>node</em> pasti
 merupakan anak atau turunan dari tipe <code>Node</code>. Pada kasus <em>node</em> <code>BlueShip</code>,
 tipe <em>node</em> <code>BlueShip</code> adalah <code>RigidBody2D</code>, dimana <code>RigidBody2D</code> adalah
 subtipe dari <code>PhysicsBody2D</code>, dan seterusnya hingga mencapai tipe paling dasar,
@@ -786,14 +796,14 @@ maka bisa gunakan <em>node</em> dengan tipe <code>Node2D</code> (atau ekuivalenn
 dan jawablah pertanyaan-pertanyaan berikut:</p>
 <ul>
 <li><em>Scene</em> <code>BlueShip</code> dan <code>StonePlatform</code> sama-sama memiliki sebuah <em>child node</em>
-  bertipe <code>Sprite</code>. Apa fungsi dari <em>node</em> bertipe <code>Sprite</code>?</li>
+  bertipe <code>Sprite2D</code>. Apa fungsi dari <em>node</em> bertipe <code>Sprite2D</code>?</li>
 <li><em>Root node</em> dari <em>scene</em> <code>BlueShip</code> dan <code>StonePlatform</code> menggunakan tipe yang
   berbeda. <code>BlueShip</code> menggunakan tipe <code>RigidBody2D</code>, sedangkan <code>StonePlatform</code>
   menggunakan tipe <code>StaticBody2D</code>. Apa perbedaan dari masing-masing tipe <em>node</em>?</li>
 <li>Ubah nilai atribut <code>Mass</code> pada tipe <code>RigidBody2D</code> secara
   bebas di <em>scene</em> <code>BlueShip</code>, lalu coba jalankan <em>scene</em> <code>MainLevel</code>. Apa yang
   terjadi?</li>
-<li>Ubah nilai atribut <code>Disabled</code> pada tipe <code>CollisionShape2D</code> di <em>scene</em>
+<li>Ubah nilai atribut <code>Disabled</code> milik node <code>CollisionShape2D</code> pada <em>scene</em>
   <code>StonePlatform</code>, lalu coba jalankan <em>scene</em> <code>MainLevel</code>. Apa yang terjadi?</li>
 <li>Pada <em>scene</em> <code>MainLevel</code>, coba manipulasi atribut <code>Position</code>, <code>Rotation</code>, dan <code>Scale</code>
   milik <em>node</em> <code>BlueShip</code> secara bebas. Apa yang terjadi pada visualisasi
@@ -813,7 +823,7 @@ Gunakan aset gambar pesawat dan landasan yang berbeda dari <code>BlueShip</code>
 <ol class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Objek pesawat baru.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Objek landasan baru.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Desain level yang berbeda dari level awal dengan menempatkan <code>ObjectiveArea</code> di pojok kanan atas atau pojok kana bawah area permainan di level baru.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Desain level yang berbeda dari level awal dengan menempatkan <code>ObjectiveArea</code> di pojok kanan atas atau pojok kanan bawah area permainan di level baru.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Silakan berkreasi jika ingin memoles level awal maupun level baru. Beberapa ide <em>polishing</em>:<ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Implementasi reset kondisi level ketika pesawatnya jatuh ke luar area permainan.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Implementasi transisi level awal ke level baru ketika pemain berhasil mencapai <code>ObjectiveArea</code>.
@@ -830,11 +840,11 @@ Teks ditulis dengan rapi menggunakan format <a href="https://docs.gitlab.com/ee/
 Lalu jangan lupa untuk menyimpan hasil pengerjaan tutorial seperti <em>scene</em> baru dan <em>script</em> baru.
 Kumpulkan semua berkasnya berkasnya ke dalam Git dan <em>push</em> ke repositori Git pengerjaan tutorial.
 Apabila kamu mengerjakan latihan mandiri, pastikan <em>scene</em> dan <em>node</em> sudah tercatat masuk ke dalam repositori Git.</p>
-<p>Tenggat waktu pengumpulan adalah <strong>21 Februari 2025 pukul 21:00</strong>.</p>
+<p>Tenggat waktu pengumpulan adalah <strong>19 Februari 2026 pukul 21:00</strong>.</p>
 <h2 id="referensi">Referensi</h2>
 <ul>
-<li><a href="https://docs.godotengine.org/en/4.3/getting_started/introduction/index.html">Introduction to Godot</a></li>
-<li><a href="https://docs.godotengine.org/en/4.3/getting_started/step_by_step/nodes_and_scenes.html">Nodes and Scenes</a></li>
+<li><a href="https://docs.godotengine.org/en/stable/getting_started/introduction/">Introduction to Godot</a></li>
+<li><a href="https://docs.godotengine.org/en/stable/getting_started/step_by_step/nodes_and_scenes.html">Nodes and Scenes</a></li>
 <li>Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
   gasal 2021/2022 Fakultas Ilmu Komputer Universitas Indonesia.</li>
 </ul>
@@ -844,7 +854,7 @@ Apabila kamu mengerjakan latihan mandiri, pastikan <em>scene</em> dan <em>node</
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2025-02-08 12:54:09</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2026-02-12 15:00:04</span>
       
         <br>
         Created:
