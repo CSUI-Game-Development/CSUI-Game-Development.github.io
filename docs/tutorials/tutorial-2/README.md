@@ -9,7 +9,7 @@ Git daring.
 
 Sekadar mengingatkan, pastikan kamu:
 
-- Telah mengunduh dan memasang [Godot v4.3](https://godotengine.org/download/windows/)
+- Telah mengunduh dan memasang [Godot v4.6](https://godotengine.org/download/windows/)
   edisi **Stable** sesuai dengan _development environment_ yang kamu gunakan.
 - Telah menjadi anggota kelompok tugas proyek akhir.
 
@@ -31,13 +31,10 @@ Sekadar mengingatkan, pastikan kamu:
 ## Pengantar
 
 Tutorial ini disusun dengan mengambil beberapa referensi dari dokumentasi
-resmi [Godot v4.3](https://docs.godotengine.org/en/4.3) dimana
+resmi [Godot v4.6](https://docs.godotengine.org/en/4.6) dimana
 kamu akan mengikuti instruksi-instruksi di dalam dokumen ini untuk mengenal
 _game engine_ Godot dan menggunakannya untuk membuat sebuah game sangat
-sederhana. Namun beberapa gambar yang ada di tutorial ini diambil dari Godot v4.3-stable.
-Jadi nanti ikuti tutorialnya harap teliti ya, bisa jadi ada sedikit tulisan yang berbeda
-antara perintah yang diberikan dan gambar visualisasinya. Terakhir, mungkin
-masih ada yang bertanya-tanya:
+sederhana. Terakhir, mungkin masih ada yang bertanya-tanya:
 "_Mengapa harus belajar menggunakan game engine seperti Godot, Unity, atau
 Unreal, untuk membuat game?_"
 
@@ -66,18 +63,15 @@ sebagai berikut:
 1. Buka repositori [_template_ proyek Tutorial 2](https://github.com/CSUI-Game-Development/tutorial-2-template) di GitHub.
    Pilih "Use this template" untuk membuat repositori baru berdasarkan _template_ tersebut ke dalam akun GitHub milikmu.
 2. Setelah membuat repositori Git baru berdasarkan _template_ proyek Tutorial 2, salin repositori Git proyek Tutorial 2 ke mesinmu.
-3. Unduh Godot dahulu. Pastikan kamu mengunduh Godot versi 4.3 (LTS).
-   Kemudian _extract_ ke suatu lokasi di dalam _filesyste_ komputer.
-4. Jalankan Godot. Apabila Godot kamu merupakan instalasi baru (_fresh_), maka
-   akan muncul _modal window_ yang menanyakan apakah kamu ingin membuka **Assets Library**.
-   Pilih **Open Assets Library**, lalu tunggu beberapa saat hingga proses
-   _loading_ selesai dan pilih _tab_ **Projects**.
-
-   > Catatan: **Assets Library** adalah repositori aset siap pakai yang dapat
-   > digunakan dalam proyek game Godot. Bagi yang pernah menggunakan _game engine_
-   > Unity, fungsinya serupa dengan Unity Assets Store.
-5. Impor proyek game `T2`/`Tutorial 2` dengan menggunakan fitur **Import** di tampilan
-   Projects.
+3. Unduh Godot dahulu. Pastikan kamu mengunduh Godot versi 4.6 (LTS).
+   Kemudian _extract_ ke suatu lokasi di dalam _filesystem_ komputer.
+4. Jalankan Godot. Apabila Godot kamu merupakan instalasi baru (_fresh_) dan kamu menggunakan OS  Windows, maka
+   bisa jadi akan muncul _warning pop-up_ dari Windows Defender yang muncul disebabkan oleh sertifikasi Godot yang baru dan masih dalam proses pendaftaran ke Windows ([Github Issue](https://github.com/godotengine/godot/issues/110612)). Kamu tidak perlu khawatir, dan bisa lanjut dengan menekan **More info** kemudian **Run anyway**.
+  > Catatan: **Assets Library** adalah repositori aset siap pakai yang dapat
+  > digunakan dalam proyek game Godot. Bagi yang pernah menggunakan _game engine_
+  > Unity, fungsinya serupa dengan Unity Assets Store.
+   
+5. Setelah modal _Project Manager_ muncul, impor proyek game `T2`/`Tutorial 2` dengan menggunakan fitur **Import** di tampilan Projects.
 
    ![Animasi impor proyek game](images/import_project.gif)
 6. Jika Godot sudah selesai impor proyek `T2`/`Tutorial 2`,
@@ -86,9 +80,7 @@ sebagai berikut:
 
    ![Tampilan default Godot Editor](images/default_godot_editor.png)
 
-   Tampilan Godot Editor di atas menampilkan ruang kerja (_workspace_) 3D.
-   Untuk kebutuhan tutorial ini, ganti _workspace_ ke mode 2D dengan tombol
-   _shortcut_ F1 atau klik tombol 2D yang berada di bagian atas _editor_.
+   Tampilan Godot Editor di atas menampilkan ruang kerja (_workspace_) 3D. Tapi, jika kamu langsung impor proyek game `T2`/`Tutorial 2` dari template, seharusnya menu akan langsung menampilkan (_workspace_) 2D secara otomatis. Kamu juga bisa navigasi ke (_workspace_) 3D dengan menekan *Ctrl+F2* atau klik tombol 3D yang berada di bagian atas *editor*.
 
    ![Ilustrasi ganti mode workspace](images/switch_3d_2d.gif)
 
@@ -99,66 +91,69 @@ sebagai berikut:
 Tampilan Godot Editor terdiri dari beberapa panel yang akan dijelaskan
 sebagai berikut:
 
-- Viewport
-  Jendela yang menampilkan _scene_ dalam game, _code editor_, atau Asset
+- **Viewport**  
+  Jendela yang menampilkan _scene_ dalam game, _code editor_, _playtest screen_ atau Asset
   Library sesuai dengan apa yang dipilih pada Workspaces.
-- Workspaces
-  Panel untuk mengganti apa yang ditampilkan pada Viewport. Ada 4 jenis:
+- **Workspaces**  
+  Panel untuk mengganti apa yang ditampilkan pada Viewport. Ada 5 jenis:
   2D, 3D, Script, dan AssetLib.
-  - 2D menampilkan _scene_ dengan tampilan dua dimensi.
-  - 3D menampilkan _scene_ dengan tampilan tiga dimensi.
-  - Script menampilkan _code editor_ dan _debugger_.
-  - AssetLib menampilkan _library addons_, _scripts_, dan aset-aset gratis.
-- Playtest Buttons
+    - 2D menampilkan _scene_ dengan tampilan dua dimensi.
+    - 3D menampilkan _scene_ dengan tampilan tiga dimensi.
+    - Script menampilkan _code editor_ dan _debugger_.
+    - Game menampilkan layar game dari proyek anda saat dijalankan dengan _Run Project_.
+    - AssetLib menampilkan _library addons_, _scripts_, dan aset-aset gratis.
+- **Playtest Buttons**  
   Panel untuk menjalankan proyek atau _scene_.
-- FileSystem
-  _Tab_ untuk mengatur dan menyusun berkas-berkas dan aset-aset di dalam proyek
-  yang sedang dibuka.
-- Scene
+- **Scene**   
   _Tab_ yang menampilkan hirarki dari objek-objek yang berada di dalam _scene_
   yang sedang aktif.
-- Import
+- **Import**  
   Jendela untuk melakukan pengaturan _import_ pada berkas aset yang sedang
   dipilih.
-- Inspector
+- **FileSystem**  
+  _Tab_ untuk mengatur dan menyusun berkas-berkas dan aset-aset di dalam proyek
+  yang sedang dibuka.
+- **Inspector**   
   Menampilkan rincian spesifik dari objek yang sedang dipilih dalam _scene_.
   Pada umumnya terdapat komponen **Transform** yang mengatur posisi, rotasi,
   dan skala dari objek yang dipilh. Selain itu, juga terdapat pengaturan
   spesifik tergantung dari tipe objek yang sedang dipilih.
-  Urutan atribut yang muncul pada tab ini berhubungan dengan urutan inheritence dari class tersebut, di mana class paling abstrak akan berada pada urutan terakhir. 
-- Node
-  _Tab_ **jika anda sedang meng-select node pada tab _scene_** maka akan ditampilkan dua bagian: **Signals** dan **Groups**. Signals mengandung
-  daftar _events_ atau sinyal sesuai dengan tipe objek yang sedang dipilh.
+  Urutan atribut yang muncul pada tab ini berhubungan dengan urutan inheritance dari class tersebut, di mana class paling abstrak akan berada pada urutan terakhir. 
+- **Signals**  
+  Signals mengandung daftar _events_ atau sinyal sesuai dengan tipe objek yang sedang dipilih.
+- **Groups**  
   Groups digunakan untuk mengelompokkan objek yang sedang dipilih ke dalam
   kelompok tertentu supaya memudahkan untuk mencari atau mengatur beberapa
   objek serupa dalam satu kelompok.
-- Output
+- **Output**  
   Menampilkan _console log_ dari Godot Engine.
-- Debugger
+- **Debugger**    
   Mengandung beberapa _tools_ yang dapat digunakan untuk melakukan _debugging_
   ketika menemui masalah dalam pengembangan. _Tools_ yang tersedia adalah:
-  - Debugger menampilkan proses _runtime_.
-  - Error menampilkan _error_ yang muncul ketika menjalankan game.
-  - Profiler menampilkan _profile_ dari setiap _function call_ yang terjadi
+    - Stack Trace menampilkan proses _runtime_.
+    - Error menampilkan _error_ yang muncul ketika menjalankan game.
+    - Profiler menampilkan _profile_ dari setiap _function call_ yang terjadi
     di dalam game.
-  - Monitor menampilkan _performance parameter_ dari game, seperti FPS (frame
+    - Monitor menampilkan _performance parameter_ dari game, seperti FPS (frame
     per second), _physics collisions_, dan lain-lain.
-  - Video RAM menampilkan penggunaan memori dari game yang sedang berjalan.
-  - Misc menampilkan opsi-opsi _debug_ lainnya.
-- Audio
+    - Video RAM menampilkan penggunaan memori dari game yang sedang berjalan.
+    - Misc menampilkan opsi-opsi _debug_ lainnya.
+- **Audio**   
   _Tab_ yang membantu melakukan pengaturan audio dalam _game_.
-- Animation
+- **Animation**   
   Jendela untuk membuat dan mengatur _timing_ dan _keyframe_ dari animasi
   yang digunakan.
+
+> Catatan: Kamu juga bisa melihat detail lebih lanjut mengenai interface Godot di [sini](https://docs.godotengine.org/en/stable/getting_started/introduction/first_look_at_the_editor.html).
 
 Untuk mempercepat beberapa operasi pada Godot Editor, terdapat beberapa tombol
 _shortcut_ yang dapat kamu gunakan, seperti:
 
-- Q: Ganti mode manipulasi menjadi **Select**.
-- W: Ganti mode manipulasi menjadi **Move**.
-- E: Ganti mode manipulasi menjadi **Rotate**.
-- S: Ganti mode manipulasi menjadi **Scale**.
-- R: Ganti mode manipulasi menjadi **Ruler**
+- **Q**: Ganti mode manipulasi menjadi **Select**.
+- **W**: Ganti mode manipulasi menjadi **Move**.
+- **E**: Ganti mode manipulasi menjadi **Rotate**.
+- **R**: Ganti mode manipulasi menjadi **Scale**.
+- **M**: Ganti mode manipulasi menjadi **Ruler**
 
 Tombol-tombol _shortcut_ lainnya dapat dilihat di menu **Editor > Editor
 Settings > Shortcuts**.
@@ -225,7 +220,7 @@ Perhatikan bagian-bagian penting dari _scene_ yang sedang dibuka:
 2. Panel **Scene** menampilkan hirarki _node_ di dalam _scene_ yang sedang
    dibuka. _Scene_ `MainLevel` memiliki sebuah _root node_ bernama `MainLevel`, dimana
    _node_ tersebut memiliki tiga buah _child node_, yaitu `PlatformBlue`,
-   `BlueShip`, dan `ObjectiveArea`. Selanjutnya, masing-masing `PlatformBlue` dan `ObjectiveArea` juga memiliki dua _child node_.
+   `BlueShip`, dan `ObjectiveArea`. Selanjutnya, masing-masing `PlatformBlue` dan `ObjectiveArea` juga memiliki _child node_.
    >
    > Catatan: Kamu juga dapat mengetahui **Type** dari suatu _node_ dengan
    > menaruh pointer mouse di atas nama _node_. Akan muncul _popup_ yang
@@ -233,9 +228,11 @@ Perhatikan bagian-bagian penting dari _scene_ yang sedang dibuka:
 3. Panel **Inspector** dapat menampilkan atribut (_properties_) dari _node_
    yang sedang dipilih melalui Viewport atau panel Scene. Pada gambar di atas,
    panel Inspector menampilkan atribut dari _node_ `Main`. Apabila kamu klik
-   _tab_ **Node** di panel tersebut, maka akan muncul daftar fungsi _callback_
+   _tab_ **Signals** di panel tersebut, maka akan muncul daftar fungsi _callback_
    yang dimiliki oleh _node_. Jika suatu saat anda mengalami kebingungan cara kerja node yang sedang anda seleksi, Anda bisa menekan tombol dibawah ini untuk membuka dokumentasinya.
-   ![Tombol dokumentasi](images/doc_button.png)
+  <p align="center">
+    <img src="images/doc_button.png" alt="Tombol Dokumentasi" width="30%">
+  </p>
 
 4. **Viewport** menampilkan visualisasi dari _scene_ yang sedang dibuka. Saat
    ini ada kotak samar-samar dengan garis biru yang melambangkan area pandang
@@ -247,7 +244,7 @@ Perhatikan bagian-bagian penting dari _scene_ yang sedang dibuka:
    > dalam _scene_. Satu hal lagi yang perlu kamu ketahui adalah titik `(0, 0)`
    > pada sistem yang menampilkan citra di komputer umumnya mulai dari pojok
    > kiri atas bidang. Tidak seperti yang telah kamu pelajari dari matematika
-   > dasar, yaitu dari pojok kiri bawah bidang. Selain itu, inkremen sumbu $x$ masih bersifat sama seperti di matematika dasar, yaitu semakin ke **kanan** akan semakin **positif** nilainya, tetapi untuk sumbu $y$ semakin ke **atas** akan semakin **negatif**.
+   > dasar, yaitu dari pojok kiri bawah bidang. Selain itu, inkremen sumbu _x_ masih bersifat sama seperti di matematika dasar, yaitu semakin ke **kanan** akan semakin **positif** nilainya, tetapi untuk sumbu _y_ semakin ke **atas** akan semakin **negatif**.
 5. **Playtest Buttons** memiliki tombol untuk menjalankan _game loop_ pada
    proyek atau _scene_ yang sedang dibuka. Jika kamu menekan tombol **Play**
    (_shortcut_: F5), maka akan muncul _popup_ jika belum ada **Main Scene**.
@@ -290,20 +287,21 @@ Jangan lupa untuk membaca dokumentasi Godot untuk dapat mengelaborasikan jawaban
 
 ## Latihan: Memanipulasi Node dan Scene
 
-Sekarang coba kamu buka _scene_ `BlueShip`. Tampilan Viewport dan beberapa
+Sekarang coba kamu buka _scene_ `BlueShip.tscn`. Tampilan Viewport dan beberapa
 panel lainnya akan berubah. Kamu akan melihat bahwa _scene_ `BlueShip`
 memiliki sebuah _root node_ bernama `BlueShip` dan memiliki dua buah
-_child node_, yaitu `Sprite` dan `CollisionShape2D`. Pilih _node_ `BlueShip`
+_child node_, yaitu `Sprite2D` dan `CollisionShape2D`. Pilih _node_ `BlueShip`
 dan fokus pada tampilan **Inspector**.
 
-![Contoh tampilan inspector BlueShip](images/inspector.png)
+<p align="center">
+  <img src="images/inspector.png" alt="Tombol Dokumentasi" width="30%">
+</p>
 
 **Inspector** menampilkan semua atribut yang dimiliki oleh _node_ `BlueShip`.
 Atribut-atribut yang dimiliki merupakan hasil dari hubungan _inheritance_
 dari hirarki tipe _node_. Jika kamu masih ingat _node_ `MainLevel` di _scene_
 `MainLevel`, _node_ tersebut adalah _node_ dengan tipe `Node` dimana atributnya
-hanya ada dua, yaitu `Pause` dan `Script`. Tipe `Node` adalah tipe _node_
-paling dasar pada hirarki tipe _node_ dalam Godot. Semua tipe _node_ pasti
+hanya ada empat, yaitu `Process`, `Physics Interpolation`, `Auto Translate`, dan `Editor Description`. Tipe `Node` adalah tipe _node_ paling dasar pada hirarki tipe _node_ dalam Godot. Semua tipe _node_ pasti
 merupakan anak atau turunan dari tipe `Node`. Pada kasus _node_ `BlueShip`,
 tipe _node_ `BlueShip` adalah `RigidBody2D`, dimana `RigidBody2D` adalah
 subtipe dari `PhysicsBody2D`, dan seterusnya hingga mencapai tipe paling dasar,
@@ -320,14 +318,14 @@ Sekarang coba kamu inspeksi _scene_-_scene_ pada contoh proyek tutorial 2
 dan jawablah pertanyaan-pertanyaan berikut:
 
 - _Scene_ `BlueShip` dan `StonePlatform` sama-sama memiliki sebuah _child node_
-  bertipe `Sprite`. Apa fungsi dari _node_ bertipe `Sprite`?
+  bertipe `Sprite2D`. Apa fungsi dari _node_ bertipe `Sprite2D`?
 - _Root node_ dari _scene_ `BlueShip` dan `StonePlatform` menggunakan tipe yang
   berbeda. `BlueShip` menggunakan tipe `RigidBody2D`, sedangkan `StonePlatform`
   menggunakan tipe `StaticBody2D`. Apa perbedaan dari masing-masing tipe _node_?
 - Ubah nilai atribut `Mass` pada tipe `RigidBody2D` secara
   bebas di _scene_ `BlueShip`, lalu coba jalankan _scene_ `MainLevel`. Apa yang
   terjadi?
-- Ubah nilai atribut `Disabled` pada tipe `CollisionShape2D` di _scene_
+- Ubah nilai atribut `Disabled` milik node `CollisionShape2D` pada _scene_
   `StonePlatform`, lalu coba jalankan _scene_ `MainLevel`. Apa yang terjadi?
 - Pada _scene_ `MainLevel`, coba manipulasi atribut `Position`, `Rotation`, dan `Scale`
   milik _node_ `BlueShip` secara bebas. Apa yang terjadi pada visualisasi
@@ -350,7 +348,7 @@ Pada level baru ini, diharapkan kamu dapat membuat:
 
 1. [ ] Objek pesawat baru.
 2. [ ] Objek landasan baru.
-3. [ ] Desain level yang berbeda dari level awal dengan menempatkan `ObjectiveArea` di pojok kanan atas atau pojok kana bawah area permainan di level baru.
+3. [ ] Desain level yang berbeda dari level awal dengan menempatkan `ObjectiveArea` di pojok kanan atas atau pojok kanan bawah area permainan di level baru.
 4. [ ] Silakan berkreasi jika ingin memoles level awal maupun level baru. Beberapa ide _polishing_:
     - [ ] Implementasi reset kondisi level ketika pesawatnya jatuh ke luar area permainan.
     - [ ] Implementasi transisi level awal ke level baru ketika pemain berhasil mencapai `ObjectiveArea`.
@@ -367,11 +365,11 @@ Lalu jangan lupa untuk menyimpan hasil pengerjaan tutorial seperti _scene_ baru 
 Kumpulkan semua berkasnya berkasnya ke dalam Git dan _push_ ke repositori Git pengerjaan tutorial.
 Apabila kamu mengerjakan latihan mandiri, pastikan _scene_ dan _node_ sudah tercatat masuk ke dalam repositori Git.
 
-Tenggat waktu pengumpulan adalah **21 Februari 2025 pukul 21:00**.
+Tenggat waktu pengumpulan adalah **19 Februari 2026 pukul 21:00**.
 
 ## Referensi
 
-- [Introduction to Godot](https://docs.godotengine.org/en/4.3/getting_started/introduction/index.html)
-- [Nodes and Scenes](https://docs.godotengine.org/en/4.3/getting_started/step_by_step/nodes_and_scenes.html)
+- [Introduction to Godot](https://docs.godotengine.org/en/stable/getting_started/introduction/)
+- [Nodes and Scenes](https://docs.godotengine.org/en/stable/getting_started/step_by_step/nodes_and_scenes.html)
 - Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
   gasal 2021/2022 Fakultas Ilmu Komputer Universitas Indonesia.
