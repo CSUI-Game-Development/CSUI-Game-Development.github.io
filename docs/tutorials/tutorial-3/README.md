@@ -1,4 +1,4 @@
-# Tutorial 3 - Introduction to Game Programming with GDScript for Implementing Basic 2D Game Mechanics
+# Tutorial 3 - _Introduction to Game Programming with GDScript for Implementing Basic 2D Game Mechanics_
 
 Selamat datang pada tutorial ketiga mata kuliah Game Development.
 Pada tutorial kali ini, kamu akan mempelajari sintaks bahasa utama _engine_ Godot, yaitu GDScript,
@@ -7,15 +7,15 @@ Di akhir tutorial ini, diharapkan kamu paham dengan penggunaan GDScript dan dapa
 
 ## Daftar Isi
 
-- [Tutorial 3 - Introduction to Game Programming with GDScript for Implementing Basic 2D Game Mechanics](#tutorial-3---introduction-to-game-programming-with-gdscript-for-implementing-basic-2d-game-mechanics)
+- [Tutorial 3 - _Introduction to Game Programming with GDScript for Implementing Basic 2D Game Mechanics_](#tutorial-3---introduction-to-game-programming-with-gdscript-for-implementing-basic-2d-game-mechanics)
   - [Daftar Isi](#daftar-isi)
   - [Pengantar](#pengantar)
-    - [Is Scripting an Instrument?](#is-scripting-an-instrument)
-    - [GDScript Example](#gdscript-example)
-  - [Basic 2D Plane Movement](#basic-2d-plane-movement)
-    - [Setting Things Up](#setting-things-up)
-    - [Making a Script](#making-a-script)
-    - [Latihan: Implementasi Pergerakan Horizontal Menggunakan Script](#latihan-implementasi-pergerakan-horizontal-menggunakan-script)
+    - [_Is Scripting an Instrument?_](#is-scripting-an-instrument)
+    - [_GDScript Example_](#gdscript-example)
+  - [_Basic 2D Plane Movement_](#basic-2d-plane-movement)
+    - [_Setting Things Up_](#setting-things-up)
+    - _[Making a Script_](#making-a-script)
+    - [Latihan: Implementasi Pergerakan Horizontal Menggunakan _Script_](#latihan-implementasi-pergerakan-horizontal-menggunakan-script)
     - [Latihan: Implementasi _Physics_ Sederhana (Gravitasi dan Loncat)](#latihan-implementasi-physics-sederhana-gravitasi-dan-loncat)
   - [Latihan Mandiri: Eksplorasi Mekanika Pergerakan](#latihan-mandiri-eksplorasi-mekanika-pergerakan)
   - [Skema Penilaian](#skema-penilaian)
@@ -24,7 +24,7 @@ Di akhir tutorial ini, diharapkan kamu paham dengan penggunaan GDScript dan dapa
 
 ## Pengantar
 
-### Is Scripting an Instrument?
+### _Is Scripting an Instrument?_
 
 Pekan lalu kita telah mencoba membuat objek sederhana sebagai _scene_ yang terdiri dari komposisi satu atau lebih _node_.
 Objek di dalam permainan bisa saja berupa objek statik yang tidak memiliki peran apapun di dalam permainan, seperti menjadi hiasan atau rintangan.
@@ -52,7 +52,7 @@ Beberapa alasan mengapa GDScript dipilih sebagai bahasa pemrograman utama adalah
 > Namun untuk keperluan pembelajaran bagi seluruh peserta kuliah,
 > kita akan fokus menggunakan bahasa GDScript selama satu semester ini.
 
-### GDScript Example
+### _GDScript Example_
 
 Contoh sebuah _script_ yang dituliskan dalam GDScript adalah berikut:
 
@@ -143,7 +143,7 @@ func _init():
 ```
 
 > Catatan: contoh di atas diambil dari dokumentasi resmi Godot berikut:
-> https://docs.godotengine.org/en/4.3/tutorials/scripting/gdscript/gdscript_basics.html
+> https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_basics.html
 
 Beberapa hal yang perlu kita bahas:
 
@@ -158,7 +158,7 @@ Beberapa hal yang perlu kita bahas:
   Untuk lebih lengkapnya, silakan merujuk ke dokumen [GDScript style guide](https://docs.godotengine.org/en/4.3/tutorials/scripting/gdscript/gdscript_styleguide.html).
   Untuk mempermudah konsistensi penulisan kode di lingkungan pengembangan, kamu dapat merujuk ke berkas `.editorconfig` yang tersedia di _template_ Tutorial 3 serta memanfaatkan program Python bernama [`gdtoolkit`](https://pypi.org/project/gdtoolkit/) yang menyediakan _linter_ dan _code formatter_ GDScript.
 
-## Basic 2D Plane Movement
+## _Basic 2D Plane Movement_
 
 Pada tutorial ini, kita akan mengimplementasikan mekanika dasar sebuah permainan berjenis (_genre_) _platformer_.
 Pemain akan dapat menggerakkan sebuah objek ke kiri dan ke kanan serta melompat.
@@ -168,7 +168,7 @@ Tutorial ini akan mendemonstrasikan:
 - Membuat _script_ dan memasangkan _script_ tersebut ke objek di dalam permainan.
 - Implementasi _physics_ dasar.
 
-### Setting Things Up
+### _Setting Things Up_
 
 Mulai tutorial ini dengan membuat salinan [repositori Git _template_ proyek Tutorial 3](https://github.com/CSUI-Game-Development/tutorial-3-template).
 Buka laman GitHub repositori Git _template_ proyek Tutorial 3, lalu klik "Use this template" untuk membuat salinan _repositori_ Git tersebut ke dalam akun GitHub pribadi.
@@ -179,15 +179,17 @@ Setelah berhasil membuka proyeknya menggunakan Godot, buka folder `scenes` dan b
 Di dalam mode _workspace_ 2D, kamu dapat melihat ada _ground_ atau landasan yang melayang di dalam _scene_.
 Kita akan menaruh objek yang dapat bergerak disana.
 
-![Tampilan Main.tscn](images/main_scene.png)
+![Tampilan Main.tscn](images/main-scene.png)
 
 Buat _scene_ baru dan tambahkan _root node_ `CharacterBody2D` pada _scene_ tersebut.
-Ubah nama _node_ tersebut menjadi `Player`.
-Tambahkan _child node_ `Sprite2D` dan `CollisionShape2D` dengan menggunakan menu Add Child Node.
+
 
 ![Dialogue box New Scene](images/new-scene-menu.png)
 
 ![Dialogue box Node Selection](images/node-selection.png)
+
+Ubah nama _node_ tersebut menjadi `Player`.
+Tambahkan _child node_ `Sprite2D` dan `CollisionShape2D` dengan menggunakan menu Add Child Node.
 
 ![Dialogue box Node Selection](images/child-node-selection.png)
 
@@ -207,7 +209,7 @@ Save Scene tersebut dalam folder Scenes. Objek ini akan menjadi target scripting
 
 Tampilan Godot Editor terdiri dari beberapa panel yang akan dijelaskan pada subbab berikutnya.
 
-### Making a Script
+### _Making a Script_
 
 Pada panel Scene, klik kanan pada node Player. Pilih Attach Script pada menu yang muncul. Akan muncul dialog untuk membuat script. Akan ada beberapa pilihan yang tersedia, diantaranya nama script, bahasa script, dll.
 
