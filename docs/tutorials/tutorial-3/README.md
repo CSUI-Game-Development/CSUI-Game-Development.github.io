@@ -395,7 +395,7 @@ Kumpulkan semua berkas pengerjaan tutorial dan latihan ke dalam Git dan _push_ k
 Apabila kamu mengerjakan latihan mandiri, pastikan _scene_ dan _node_ sudah tercatat masuk ke dalam repositori Git.
 Kemudian, kumpulkan tautan ke repositori Git hasil pengerjaan tutorial 3 kamu di slot pengumpulan yang tersedia di SCELE.
 
-Tenggat waktu pengumpulan adalah **28 Februari 2024 pukul 21:00**.
+Tenggat waktu pengumpulan adalah **27 Februari 2026 pukul 21:00**.
 
 ## Referensi
 
