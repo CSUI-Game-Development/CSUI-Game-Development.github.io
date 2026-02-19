@@ -365,7 +365,7 @@ Lalu jangan lupa untuk menyimpan hasil pengerjaan tutorial seperti _scene_ baru 
 Kumpulkan semua berkasnya berkasnya ke dalam Git dan _push_ ke repositori Git pengerjaan tutorial.
 Apabila kamu mengerjakan latihan mandiri, pastikan _scene_ dan _node_ sudah tercatat masuk ke dalam repositori Git.
 
-Tenggat waktu pengumpulan adalah **19 Februari 2026 pukul 21:00**.
+Tenggat waktu pengumpulan adalah **20 Februari 2026 pukul 21:00**.
 
 ## Referensi
 
