@@ -176,21 +176,26 @@ Jenis _Signals_ yang ada pada suatu node akan berbeda-beda tergantung tipe node 
 
 ### Using Signals
 
-Pertama pilih node `Area2D` lalu buka tab `Node`.
-Lalu pada subtab ```Signals``` pilih ```body_entered(PhysicsBody2D body)``` dan klik tombol ```Connect``` di kanan bawah tab tersebut.
+Pertama pilih node `Area2D` lalu tambahkan script dengan function ```_on_Area_Trigger_body_entered```
+
+```
+extends Area2D
+
+func _on_Area_Trigger_body_entered(body):
+	pass
+```
+![Signalsscript_before](images/AreaSignalScript.png)
+
+Buka tab `Node` dan pada subtab ```Signals```, pilih ```body_entered(PhysicsBody2D body)``` dan klik tombol ```Connect``` di kanan bawah tab tersebut.
 
 ![Signals](images/AreaSignals.png)
 
-Pastikan ```Area2D``` terpilih pada bagian ```Connect To Node```, isi ```Method In Node``` dengan nama fungsi yang kamu inginkan atau biarkan default.
+Pastikan ```Area2D``` terpilih pada bagian ```Connect To Node```, isi ```Method In Node``` dengan nama fungsi yang kamu inginkan, untuk kasus ini pilih ```_on_Area_Trigger_body_entered```.
 Jika sudah tekan tombol `Connect`
 
 ![Connect Signal](images/AreaSignalAdd.png)
 
-Maka script pada `Area2D` akan ditambah fungsi tersebut.
-
-![Area Script](images/AreaSignalScript.png)
-
-Silakan tambah cuplikan dibawah pada _script_ tersebut. (Jangan lupa ganti nama fungsi sesuai penamaan masing-masing)
+Sekarang, fungsi dengan nama yang sama (```_on_Area_Trigger_body_entered```) telah tersambung dengan signal. Silakan tambah cuplikan dibawah pada _script_ tersebut. (Jangan lupa ganti nama fungsi sesuai penamaan masing-masing)
 
 ```
 extends Area2D
@@ -201,6 +206,9 @@ func _on_Area_Trigger_body_entered(body):
     if body.get_name() == "Player":
         get_tree().change_scene_to_file(str("res://scenes/" + sceneName + ".tscn"))
 ```
+
+![Signalsscript_after](images/SignalScriptFinal.png)
+
 
 Secara singkat fungsi tersebut akan dipicu setiap kali ada objek dengan tipe `PhysicsBody2D` yang masuk area collision.
 Jika objek tersebut adalah `Player`, maka ubah _root node_ (_current scene_) dengan _scene_ bernama `sceneName` yang tersimpan di dalam folder `scenes`.
@@ -357,7 +365,7 @@ Kumpulkan semua berkas pengerjaan tutorial dan latihan ke dalam Git dan _push_ k
 Apabila kamu mengerjakan latihan mandiri, pastikan _scene_ dan _node_ sudah tercatat masuk ke dalam repositori Git.
 Kemudian, kumpulkan tautan ke repositori Git hasil pengerjaan tutorial 4 kamu di slot pengumpulan yang tersedia di SCELE.
 
-Tenggat waktu pengumpulan adalah **6 Maret 2024 pukul 21:00**.
+Tenggat waktu pengumpulan adalah **6 Maret 2026 pukul 21:00**.
 
 ## Referensi
 
