@@ -724,15 +724,22 @@ Kita akan menggunakan <em>Signals</em> untuk fitur ini.</p>
 Yang dimaksud dengan memberikan tanda disini adalah mengeksekusi suatu fungsi yang kita definisikan sendiri.
 Jenis <em>Signals</em> yang ada pada suatu node akan berbeda-beda tergantung tipe node tersebut.</p>
 <h3 id="using-signals">Using Signals</h3>
-<p>Pertama pilih node <code>Area2D</code> lalu buka tab <code>Node</code>.
-Lalu pada subtab <code>Signals</code> pilih <code>body_entered(PhysicsBody2D body)</code> dan klik tombol <code>Connect</code> di kanan bawah tab tersebut.</p>
+<p>Pertama pilih node <code>Area2D</code> lalu tambahkan script dengan function <code>_on_Area_Trigger_body_entered</code></p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>extends Area2D
+
+func _on_Area_Trigger_body_entered(body):
+    pass
+</code></pre></div></td></tr></table></div>
+<img alt="Signalsscript_before" src="images/AreaSignalScript.png" /></p>
+<p>Buka tab <code>Node</code> dan pada subtab <code>Signals</code>, pilih <code>body_entered(PhysicsBody2D body)</code> dan klik tombol <code>Connect</code> di kanan bawah tab tersebut.</p>
 <p><img alt="Signals" src="images/AreaSignals.png" /></p>
-<p>Pastikan <code>Area2D</code> terpilih pada bagian <code>Connect To Node</code>, isi <code>Method In Node</code> dengan nama fungsi yang kamu inginkan atau biarkan default.
+<p>Pastikan <code>Area2D</code> terpilih pada bagian <code>Connect To Node</code>, isi <code>Method In Node</code> dengan nama fungsi yang kamu inginkan, untuk kasus ini pilih <code>_on_Area_Trigger_body_entered</code>.
 Jika sudah tekan tombol <code>Connect</code></p>
 <p><img alt="Connect Signal" src="images/AreaSignalAdd.png" /></p>
-<p>Maka script pada <code>Area2D</code> akan ditambah fungsi tersebut.</p>
-<p><img alt="Area Script" src="images/AreaSignalScript.png" /></p>
-<p>Silakan tambah cuplikan dibawah pada <em>script</em> tersebut. (Jangan lupa ganti nama fungsi sesuai penamaan masing-masing)</p>
+<p>Sekarang, fungsi dengan nama yang sama (<code>_on_Area_Trigger_body_entered</code>) telah tersambung dengan signal. Silakan tambah cuplikan dibawah pada <em>script</em> tersebut. (Jangan lupa ganti nama fungsi sesuai penamaan masing-masing)</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -747,6 +754,7 @@ func _on_Area_Trigger_body_entered(body):
     if body.get_name() == &quot;Player&quot;:
         get_tree().change_scene_to_file(str(&quot;res://scenes/&quot; + sceneName + &quot;.tscn&quot;))
 </code></pre></div></td></tr></table></div>
+<p><img alt="Signalsscript_after" src="images/SignalScriptFinal.png" /></p>
 <p>Secara singkat fungsi tersebut akan dipicu setiap kali ada objek dengan tipe <code>PhysicsBody2D</code> yang masuk area collision.
 Jika objek tersebut adalah <code>Player</code>, maka ubah <em>root node</em> (<em>current scene</em>) dengan <em>scene</em> bernama <code>sceneName</code> yang tersimpan di dalam folder <code>scenes</code>.</p>
 <h3 id="adding-signals-to-the-level">Adding Signals to the Level</h3>
@@ -900,7 +908,7 @@ Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelask
 <p>Kumpulkan semua berkas pengerjaan tutorial dan latihan ke dalam Git dan <em>push</em> ke repositori Git pengerjaan tutorial 4.
 Apabila kamu mengerjakan latihan mandiri, pastikan <em>scene</em> dan <em>node</em> sudah tercatat masuk ke dalam repositori Git.
 Kemudian, kumpulkan tautan ke repositori Git hasil pengerjaan tutorial 4 kamu di slot pengumpulan yang tersedia di SCELE.</p>
-<p>Tenggat waktu pengumpulan adalah <strong>6 Maret 2024 pukul 21:00</strong>.</p>
+<p>Tenggat waktu pengumpulan adalah <strong>6 Maret 2026 pukul 21:00</strong>.</p>
 <h2 id="referensi">Referensi</h2>
 <ul>
 <li><a href="https://docs.godotengine.org/en/3.1/tutorials/2d/using_tilemaps.html">Tilemaps</a></li>
@@ -915,7 +923,7 @@ Kemudian, kumpulkan tautan ke repositori Git hasil pengerjaan tutorial 4 kamu di
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2025-02-23 15:41:46</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2026-02-26 17:03:29</span>
       
         <br>
         Created:
