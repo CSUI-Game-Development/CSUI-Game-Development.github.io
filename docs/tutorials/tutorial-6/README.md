@@ -24,7 +24,7 @@ serta unsur-unsur lain untuk menyusun menu dan antar muka dalam _game_.
 
 ## Pengantar
 
-> Penting! Untuk tutorial kali ini, silakan menggunakan [templat proyek yang telah disediakan di GitHub](https://github.com/CSUI-Game-Development/tutorial-6-template)
+> Penting! Untuk tutorial kali ini, silakan menggunakan [template proyek yang telah disediakan di GitHub](https://github.com/CSUI-Game-Development/tutorial-6-template)
 > **ATAU** melanjutkan dari pengerjaan proyek **Tutorial 4**.
 > Jika melanjutkan proyek **Tutorial 4**, silakan mengerjakan di repositori Git pengerjaan tutorial tersebut dan membuat _branch_ baru (misal: _branch_ `tutorial-6`).
 
@@ -121,57 +121,57 @@ Sedangkan sebelah kanan cukup kita berikan `CenterContainer` untuk gambar.
 > Namun container sangat membantu untuk visualisasi dan kerapihan.
 
 Mulai dengan membuat _scene_ baru. Karena _root node_ UI yang kita inginkan adalah container paling luar,
-atur _root node_ menjadi sebuah `MarginContainer`.
-Jangan lupa simpan (_save_) _scene_ tersebut, berikan nama `MainMenu.tscn`.
+pilih _root node type_ menjadi sebuah `MarginContainer` dan berikan nama scene `MainMenu.tscn`.
 
 ![New Margin Container for Main Menu](images/MarginContainer.PNG)
 
-Pada tab Inspector, atur **Constants** pada **Theme Overrides** sebagai berikut:
-
-![Edit Custom Constants](./images/theme_overrides_constants.png)
-
-Kemudian pada Viewport, tekan menu **Layout**, pada attribut anchor preset, pilih opsi **Full Rect**.
+Pada tab Inspector, tekan menu **Layout**. Kemudian atur properti **Anchors Preset**, pilih opsi **Full Rect**.
 Ini dilakukan agar ukuran _container_ menyesuai ukuran _window_.
 
 ![Full Rect](images/FullRect.png)
 
-Setelah itu masukan VBoxContainer di dalam MarginContainer.
+Setelah itu masukan sebuah _node_ VBoxContainer di dalam MarginContainer. Sesuai dengan visualisasi yang telah dilakukan di atas, kita menambahkan sebuah _node_ VBoxContainer lagi di dalam VBoxContainer yang pertama.
 
-Sekarang masukkan elemen teks dan gambar ke dalam `VBoxContainer`.
-Untuk teks, gunakan _node_ `Label`, dan untuk gambar gunakan node `TextureRect`.
-Untuk contoh ini ada dua tombol, "New Game" dan "Stage Select", yang akan diimplementasikan menggunakan node `LinkButton`.
+Sekarang masukkan elemen teks ke dalam `VBoxContainer`. Untuk teks, gunakan _node_ `Label`. Pada contoh ini, terdapat dua tombol yang diimplementasikan menggunakan node `LinkButton`.
 
-Untuk menambahkan teks pada `Label` atau `LinkButton` cukup menulis di tab Inspector bagian **Text**.
-Untuk menambahkan gambar kepada `TextureRect`, sama seperti menambahkan _texture_ di `Sprite` yaitu di tab Inspector bagian **Texture**.
-Saat selesai, mungkin struktur _scene_ dan _workspace_ kamu akan terlihat seperti _screenshot_ berikut:
+Untuk menambahkan atau mengubah teks pada `Label` atau `LinkButton` cukup menulis di tab Inspector properti **Text**.
+Kamu dapat menambahkan judul game pada `Label` dan menambahkan "New Game" dan "Stage Select" pada kedua tombol `LinkButton`.
 
-![Main Menu but no Font](images/MainMenuBeforeFont.PNG)
-
-Kamu pasti heran kenapa gambarnya besar sekali, kenapa tulisannya berada di pojok atas, dan kenapa semua tulisannya saling tumpang tindih. 
-Karena masih belum terlihat rapi, sekarang tambahkan _container_ sesuai visualisasi di atas tadi.
-Struktur _node_ dan _workspace_ seharusnya akan terlihat lebih rapi dan menyerupai _screenshot_ berikut:
-
-![Main Menu After Containers](images/MainMenuAfterContainer.PNG)
-
-Agar tulisan dan gambar berada di tengah layar, pada HBoxContainer, ubah Alignment menjadi Center. Kemudian lakukan hal yang sama pada VBoxContainer. Untuk membuat gambar tidak tersquish, ubah StretchMode menjadi Keep dan ubah ContainerSizing.Vertical menjadi Shrink Center
-
-![alt text](images/MainMenuAfterContainerAdjust.png)
-
-Agar judul dan tombol tidak terlalu berhimpitan, ubah **Separation** pada `VBoxContainer` ThemeOverrides.
-
-Namun, pada saat ini tulisan judul dan tombol sangatlah membosankan. Hanya default font dari Godot. Apakah tidak ada cara untuk mengubahnya?? Apakah kita perlu membuat suatu objek khusus untuk tiap ukuran font yang kita perlukan. Untungnya pada Godot 4.3 sudah mudah mengubah style dari font. Kita hanya perlu mengubah konfigurasi ThemeOverrides pada node `Label` dan juga `LinkButton`
+Jika sudah selesai, struktur _scene_ dan _workspace_ kamu akan terlihat seperti _screenshot_ berikut:
 
 ![alt text](images/fontconfig.png)
 
-Untuk mengubah ukuran TextureRect, Anda bisa melakukan:
-Mengubah Strecth Mode menjadi KeepAspect pada `TextureRect`, mengubah `Container Sizing Horizontal` menjadi `Shrink Center`, Mengubah `Custom Minimum Size` sesuai keiinginan Anda.
+Namun, pada saat ini tulisan judul dan tombol sangatlah membosankan, hanya default font dari Godot! Apakah tidak ada cara untuk mengubahnya??
+
+Untungnya pada Godot 4.6 sudah mudah mengubah font dari suatu elemen teks. Kamu hanya perlu mengubah konfigurasi ThemeOverrides pada node `Label` dan juga `LinkButton` dan _load_ file font yang kamu miliki. Kamu dapat load file dalam format TrueType Font (.ttf) atau OpenType Font (.otf). Pada contoh ini akan menggunakan font **CC Wild Words Roman.ttf** yang tersedia di folder assets template.
+
+![alt text](images/fontconfig.png)
+
+Sekarang, kita ingin menambahkan gambar agar MainMenu lebih menarik.
+
+Tambahkan sebuah _node_ `HBoxContainer` pada _root node_ dan masukkan _node_ `VBoxContainer` tadi ke dalamnya. Kemudian, tambahkan _node_ `CenterContainer` pada `HBoxContainer` dan menambahkan _node_ `TextureRect` pada _node_ `CenterContainer` tersebut.
+
+Cara menambahkan gambar pada `TextureRect` sama seperti menambahkan _texture_ di `Sprite`, yaitu di tab Inspector pada properti **Texture**. Pada contoh ini akan menggunakan gambar **spritesheet_alien.png** pada folder _assets/kenney_platformerpack/Spritesheets/_.
+
+Jika sudah selesai, struktur _scene_ dan _workspace_ kamu akan terlihat seperti _screenshot_ berikut:
+
+![Main Menu but no Font](images/MainMenuBeforeFont.PNG)
+
+Tetapi kenapa tulisannya berada di pojok atas, kenapa semua tulisannya saling tumpang tindih, dan kenapa ada tata letaknya masih berantakan??
+
+Agar tulisan dan gambar berada di tengah layar, pada HBoxContainer, ubah Alignment menjadi Center. Kemudian lakukan hal yang sama pada VBoxContainer dan ubah ContainerSizing.Vertical menjadi Shrink Center.
+
+![alt text](images/MainMenuAfterContainerAdjust.png)
+
+Agar judul dan tombol tidak terlalu berhimpitan, ubah **Separation** pada `VBoxContainer` ThemeOverrides. Kamu juga bisa mengatur Separation pada `HBoxContainer`.
+
+Untuk mengubah ukuran `TextureRect`, kamu bisa melakukan: Mengubah **Expand Mode** menjadi Ignore Size, mengubah **Strecth Mode** menjadi Keep Aspect Centered, dan mengubah **Custom Minimum Size** sesuai keiinginanmu.
 
 Selamat! Layar menu utama kamu sudah terlihat cukup rapi!
 
 ![alt text](images/finalmainmenu.png)
 
- Tapi masih belum _clickable_ tentunya.
- Bagaimana caranya agar saat kita menekan tombol "New Game" dia akan melempar kita ke level 1?
+Tapi masih belum _clickable_ tentunya. Bagaimana caranya agar saat kita menekan tombol "New Game" dia akan melempar kita ke level 1?
 
 ### Latihan: Clickable Menu
 
@@ -184,10 +184,10 @@ Gunakan cuplikan _script__ berikut sebagai _script_ yang ditempelkan pada `LinkB
 ```gdscript
 extends LinkButton
 
-export(String) var scene_to_load
+@export var scene_to_load: String
 
 func _on_New_Game_pressed():
-	get_tree().change_scene(str("res://scenes/" + scene_to_load + ".tscn"))
+	get_tree().change_scene_to_file(str("res://scenes/" + scene_to_load + ".tscn"))
 
 ```
 
@@ -220,11 +220,7 @@ Kita menggunakan _global variable_ untuk mendefinisikan nyawa player.
 Nyawa player akan disimpan permanen (_persist_) walaupun _scene_ baru dipanggil atau diulang-ulang.
 Variabel ini dapat dipanggil dari _script_ manapun.
 
-Pertama, klik kanan folder `scripts` lalu tekan **New Script**:
-
-![Create New Script](images/NewScript.PNG)
-
-Beri nama berkas _script_ tersebut `global.gd` lalu isi dengan _script_ berikut:
+Pertama, buat _script_ baru dengan nama `Global.gd` pada folder `scripts`. Kemudian, isi dengan _script_ berikut:
 
 ```gdscript
 extends Node
@@ -232,7 +228,7 @@ extends Node
 var lives = 3
 ```
 
-Pada Project Settings, cari tab Globals, lalu tambahkan script `global.gd` (tekan _icon_ folder di sebelah tulisan **Node Name** lalu cari berkas _script_-nya).
+Pada Project Settings, buka tab Globals, lalu tambahkan script `Global.gd` (tekan _icon_ folder lalu cari berkas _script_-nya).
 Setelah ditambahkan, akan muncul di dalam daftar. Pastikan kolom `Global Variable` dalam kondisi aktif (_enabled_).
 
 ![alt text](images/Autoload.png)
@@ -245,21 +241,24 @@ Sekarang kita punya variable nyawa yang dapat diakses kapan saja. Mari kita tamp
 
 ### GUI Scene
 
-Buat sebuah scene baru dan beri nama `Life Counter.tscn` dengan _root node_ sebuah `MarginContainer`.
+Buat sebuah _scene_ baru dan beri nama `Life Counter.tscn` dengan _root node_ sebuah `MarginContainer`.
+
+![alt text](images/Autoload.png)
+
 Buat sebuah _child node_ `Label`, lalu berikan _script_.
 
 ```gdscript
 extends Label
 
-func _process(delta):
-	self.text = "Lives : " + str(global.lives)
+func _process(delta: float) -> void:
+	self.text = "Lives : " + str(Global.lives)
 ```
 
-Struktur akan terlihat seperti ini (`MarginContainer` telah di-_rename_ menjadi "GUI"):
+Struktur akan terlihat seperti ini:
 
 ![GUI Structure](images/GUI.PNG)
 
-Pada `Level 1.tscn`, tambahkan sebuah `CanvasLayer` _node_ sebagai _child node_ dari _node_ utama.
+Pada _scene_ `Level 1.tscn`, tambahkan sebuah _node_ `CanvasLayer` sebagai _child node_ dari _root node_.
 `CanvasLayer` merupakan _node_ yang membuat sebuah layer 2D tersendiri untuk seluruh _child_-nya.
 `CanvasLayer` berguna untuk membuat _background_ untuk level, atau _user interface_ seperti yang akan kita buat sekarang.
 
@@ -276,12 +275,12 @@ Sekarang sudah muncul tampilan _life counter_ di kiri atas yang mengikuti bentuk
 Namun nyawa player belum berkurang ketika pemain mati.
 Waktunya melakukan sedikit _scripting_!
 
-Ubah script di `Area Trigger.gd` dengan kode berikut:
+Ubah script di `Area2D.gd` dengan kode berikut:
 
 ```gdscript
 extends Area2D
 
-export (String) var sceneName = "Level 1"
+@export var sceneName: String = "Level 1"
 
 func _on_Area_Trigger_body_entered(body):
 	var current_scene = get_tree().get_current_scene().get_name()
@@ -310,20 +309,23 @@ Visualisasi layar _game over_ di contoh tutorial ini berupa tulisan `GAME OVER` 
 Jika ingin menambahkan warna latar, kita dapat menggunakan _node_ `ColorRect`.
 
 Buatlah sebuah _scene_ baru dan beri nama `Game Over.tscn`, lalu atur sebuah `ColorRect` sebagai _root node_ di _scene_ tersebut.
+
+![Setting Up Background Color](images/BackgroundColor.png)
+
 Mirip seperti `MarginContainer` sebelumnya, pilih menu **Layout** pada _viewport_ dan pilih **Full Rect** agar kotak mengikuti ukuran _window_.
 Silakan ubah warna sesuka hati.
 
 ![Setting Up Background Color](images/BackgroundColor.png)
 
-Tambahkan label bertuliskan "GAME OVER", kemudian atur posisinya.
+Tambahkan label bertuliskan "GAME OVER", atur font dan ukuran teks, kemudian atur posisinya.
 Selesailah Game Over screen kita!
 
 ![Game Over Screen Finished](images/GameOverDesu.png)
 
-Sekarang bagaimana caranya agar saat nyawa pemain 0 akan menampilkan layar ini? Pada `Area Trigger.gd` ubah baris `pass` menjadi:
+Sekarang bagaimana caranya agar saat nyawa pemain 0 akan menampilkan layar ini? Pada _script_ `Area2D.gd` ubah baris `pass` menjadi:
 
 ```gdscript
-get_tree().change_scene_to_file(str("res://scenes/Game Over.tscn"))
+get_tree().change_scene_to_file("res://scenes/Game Over.tscn")
 ```
 
 Berhasil! Sekarang saat player nyawanya habis, layar _game over_ akan muncul.
@@ -371,7 +373,7 @@ Jika melanjutkan Tutorial 4, jangan lupa untuk mengambil aset yang dibutuhkan da
 Apabila kamu mengerjakan latihan mandiri, pastikan _scene_ dan _node_ yang kamu buat dan ubah telah tercatat masuk ke dalam repositori Git.
 Kumpulkan tautan ke repositori Git hasil pengerjaan Tutorial 6 kamu di slot pengumpulan yang tersedia di SCELE.
 
-Tenggat waktu pengumpulan adalah **Jumat, 21 April 2025, pukul 21:00**.
+Tenggat waktu pengumpulan adalah **Jumat, 13 Maret 2026, pukul 21:00**.
 
 ## Referensi
 
