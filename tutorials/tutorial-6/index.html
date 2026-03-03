@@ -725,26 +725,26 @@ pilih <em>root node type</em> menjadi sebuah <code>MarginContainer</code> dan be
 <p>Pada tab Inspector, tekan menu <strong>Layout</strong>. Kemudian atur properti <strong>Anchors Preset</strong>, pilih opsi <strong>Full Rect</strong>.
 Ini dilakukan agar ukuran <em>container</em> menyesuai ukuran <em>window</em>.</p>
 <p><img alt="Full Rect" src="images/2-FullRect.png" /></p>
-<p>Setelah itu masukan sebuah <em>node</em> VBoxContainer di dalam MarginContainer. Sesuai dengan visualisasi yang telah dilakukan di atas, kita menambahkan sebuah <em>node</em> VBoxContainer lagi di dalam VBoxContainer yang pertama.</p>
+<p>Setelah itu masukan sebuah <em>node</em> <code>VBoxContainer</code> di dalam MarginContainer. Sesuai dengan visualisasi yang telah dilakukan di atas, kita menambahkan sebuah <em>node</em> <code>VBoxContainer</code> lagi di dalam <code>VBoxContainer</code> yang pertama.</p>
 <p>Sekarang masukkan elemen teks ke dalam <code>VBoxContainer</code>. Untuk teks, gunakan <em>node</em> <code>Label</code>. Pada contoh ini, terdapat dua tombol yang diimplementasikan menggunakan node <code>LinkButton</code>.</p>
 <p>Untuk menambahkan atau mengubah teks pada <code>Label</code> atau <code>LinkButton</code> cukup menulis di tab Inspector properti <strong>Text</strong>.
 Kamu dapat menambahkan judul game pada <code>Label</code> dan menambahkan "New Game" dan "Stage Select" pada kedua tombol <code>LinkButton</code>.</p>
 <p>Jika sudah selesai, struktur <em>scene</em> dan <em>workspace</em> kamu akan terlihat seperti <em>screenshot</em> berikut:</p>
 <p><img alt="First Scene Structure" src="images/3-FirstStructure.png" /></p>
-<p>Namun, pada saat ini tulisan judul dan tombol sangatlah membosankan, hanya default font dari Godot! Apakah tidak ada cara untuk mengubahnya??</p>
-<p>Untungnya pada Godot 4.6 sudah mudah mengubah font dari suatu elemen teks. Kamu hanya perlu mengubah konfigurasi ThemeOverrides pada node <code>Label</code> dan juga <code>LinkButton</code> dan <em>load</em> file font yang kamu miliki. Kamu dapat load file dalam format TrueType Font (.ttf) atau OpenType Font (.otf). Pada contoh ini akan menggunakan font <strong>CC Wild Words Roman.ttf</strong> yang tersedia di folder assets template.</p>
+<p>Tetapi, pada saat ini tulisan judul dan tombol sangatlah membosankan, hanya default font dari Godot! Apakah tidak ada cara untuk mengubahnya??</p>
+<p>Untungnya pada Godot 4.6 sudah mudah mengubah font dari suatu elemen teks. Kamu hanya perlu mengubah konfigurasi <strong>ThemeOverrides</strong> pada node <code>Label</code> dan juga <code>LinkButton</code> dan <em>load</em> file font yang kamu miliki. Kamu dapat load file dalam format TrueType Font (.ttf) atau OpenType Font (.otf). Pada contoh ini akan menggunakan font <strong>CC Wild Words Roman.ttf</strong> yang tersedia di folder assets template.</p>
 <p><img alt="Configure Text Font" src="images/4-TextEdit.png" /></p>
 <p>Sekarang, kita ingin menambahkan gambar agar MainMenu lebih menarik.</p>
 <p>Tambahkan sebuah <em>node</em> <code>HBoxContainer</code> pada <em>root node</em> dan masukkan <em>node</em> <code>VBoxContainer</code> tadi ke dalamnya. Kemudian, tambahkan <em>node</em> <code>CenterContainer</code> pada <code>HBoxContainer</code> dan menambahkan <em>node</em> <code>TextureRect</code> pada <em>node</em> <code>CenterContainer</code> tersebut.</p>
 <p>Cara menambahkan gambar pada <code>TextureRect</code> sama seperti menambahkan <em>texture</em> di <code>Sprite</code>, yaitu di tab Inspector pada properti <strong>Texture</strong>. Pada contoh ini akan menggunakan gambar <strong>spritesheet_alien.png</strong> pada folder <em>assets/kenney_platformerpack/Spritesheets/</em>.</p>
 <p>Jika sudah selesai, struktur <em>scene</em> kamu akan terlihat seperti <em>screenshot</em> berikut:</p>
 <p><img alt="New Structure with Image" src="images/5-AddImage.png" /></p>
-<p>Tetapi kenapa tulisannya berada di pojok atas, kenapa semua tulisannya saling tumpang tindih, dan kenapa ada tata letaknya masih berantakan??</p>
-<p>Agar tulisan dan gambar berada di tengah layar, pada HBoxContainer, ubah Alignment menjadi Center. Kemudian lakukan hal yang sama pada VBoxContainer dan ubah ContainerSizing.Vertical menjadi Shrink Center.</p>
+<p>Tetapi kenapa tulisannya berada di pojok atas, kenapa semua tulisannya saling tumpang tindih, dan kenapa tata letaknya masih berantakan??</p>
+<p>Agar tulisan dan gambar berada di tengah layar, pada <code>HBoxContainer</code>, ubah <strong>Alignment</strong> menjadi Center. Kemudian lakukan hal yang sama pada <code>VBoxContainer</code> dan ubah ContainerSizing.Vertical menjadi Shrink Center.</p>
 <p><img alt="Configure Alignment" src="images/6-ConfigureAlignment.png" /></p>
-<p>Agar judul dan tombol tidak terlalu berhimpitan, ubah <strong>Separation</strong> pada <code>VBoxContainer</code> ThemeOverrides. Kamu juga bisa mengatur Separation pada <code>HBoxContainer</code>.</p>
+<p>Agar judul dan tombol tidak terlalu berhimpitan, ubah <strong>Separation</strong> pada ThemeOverrides di <em>node</em> <code>VBoxContainer</code> . Kamu juga bisa mengatur Separation pada <code>HBoxContainer</code>.</p>
 <p><img alt="Configure Separation" src="images/6-ConfigureSeparation.png" /></p>
-<p>Untuk mengubah ukuran <code>TextureRect</code>, kamu bisa melakukan: Mengubah <strong>Expand Mode</strong> menjadi Ignore Size, mengubah <strong>Strecth Mode</strong> menjadi Keep Aspect Centered, dan mengubah <strong>Custom Minimum Size</strong> sesuai keiinginanmu.</p>
+<p>Untuk mengubah ukuran gambar, pada <em>node</em> <code>TextureRect</code> kamu bisa melakukan: Mengubah <strong>Expand Mode</strong> menjadi Ignore Size, mengubah <strong>Stretch Mode</strong> menjadi Keep Aspect Centered, dan mengubah <strong>Custom Minimum Size</strong> sesuai keinginanmu.</p>
 <p><img alt="Configure Size" src="images/6-ConfigureSize.png" /></p>
 <p>Selamat! Layar menu utama kamu sudah terlihat cukup rapi!</p>
 <p><img alt="Final Main Menu" src="images/7-FinalMainMenu.png" /></p>
@@ -794,8 +794,7 @@ Variabel ini dapat dipanggil dari <em>script</em> manapun.</p>
 </code></pre></div></td></tr></table></div>
 <p>Pada Project Settings, buka tab Globals, lalu tambahkan script <code>Global.gd</code> (tekan <em>icon</em> folder lalu cari berkas <em>script</em>-nya).
 Setelah ditambahkan, akan muncul di dalam daftar. Pastikan kolom <code>Global Variable</code> dalam kondisi aktif (<em>enabled</em>).</p>
-<p><img alt="Before Add Global Variable" src="images/10-GlobalBefore.png" /></p>
-<p><img alt="After Add Global Variable" src="images/10-GlobalAfter.png" /></p>
+<p><img alt="Add Global Variable" src="images/10-GlobalVar.png" /></p>
 <p>Sekarang kita punya variable nyawa yang dapat diakses kapan saja. Mari kita tampilkan menggunakan <em>label</em>.</p>
 <blockquote>
 <p>Catatan: Bagi yang penasaran mengapa menggunakan <em>global variable</em> untuk contoh ini,
@@ -815,13 +814,13 @@ Maka <code>lives</code> disimpan dalam <em>global variable</em> agar tidak reset
 <span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lives : &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">Global</span><span class="o">.</span><span class="n">lives</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Struktur akan terlihat seperti ini:</p>
-<p><img alt="Life Counter Structure" src="images/11-NewSceneHierarchy.PNG" /></p>
+<p><img alt="Life Counter Structure" src="images/11-LifeCounterHierarchy.png" /></p>
 <p>Pada <em>scene</em> <code>Level 1.tscn</code>, tambahkan sebuah <em>node</em> <code>CanvasLayer</code> sebagai <em>child node</em> dari <em>root node</em>.
 <code>CanvasLayer</code> merupakan <em>node</em> yang membuat sebuah layer 2D tersendiri untuk seluruh <em>child</em>-nya.
 <code>CanvasLayer</code> berguna untuk membuat <em>background</em> untuk level, atau <em>user interface</em> seperti yang akan kita buat sekarang.</p>
 <p>Tambahkan <code>Life Counter.tscn</code> yang tadi kita buat sebagai <em>child node</em> dari <code>CanvasLayer</code>.
 Struktur <code>Level 1.tscn</code> akan terlihat seperti <em>screenshot</em> berikut:</p>
-<p><img alt="Level Updated with GUI" src="images/12-Level1UpdatedScene.PNG" /></p>
+<p><img alt="Level Updated with GUI" src="images/12-LevelUpdatedScene.png" /></p>
 <p>Coba jalankan <code>Level 1.tscn</code> kamu.
 Sekarang sudah muncul tampilan <em>life counter</em> di kiri atas yang mengikuti bentuk window yang ada.</p>
 <p><img alt="Level 1 No Life Loss" src="images/Level1NoLifeLoss.gif" /></p>
@@ -937,7 +936,7 @@ Jika kamu mengenali satu atau lebih elemen GUI di <em>screenshot</em> tersebut, 
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2026-03-03 05:00:45</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2026-03-03 05:23:27</span>
       
         <br>
         Created:
