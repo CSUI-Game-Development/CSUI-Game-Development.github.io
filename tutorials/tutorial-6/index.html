@@ -645,7 +645,7 @@ serta unsur-unsur lain untuk menyusun menu dan antar muka dalam <em>game</em>.</
 </ul>
 <h2 id="pengantar">Pengantar</h2>
 <blockquote>
-<p>Penting! Untuk tutorial kali ini, silakan menggunakan <a href="https://github.com/CSUI-Game-Development/tutorial-6-template">templat proyek yang telah disediakan di GitHub</a>
+<p>Penting! Untuk tutorial kali ini, silakan menggunakan <a href="https://github.com/CSUI-Game-Development/tutorial-6-template">template proyek yang telah disediakan di GitHub</a>
 <strong>ATAU</strong> melanjutkan dari pengerjaan proyek <strong>Tutorial 4</strong>.
 Jika melanjutkan proyek <strong>Tutorial 4</strong>, silakan mengerjakan di repositori Git pengerjaan tutorial tersebut dan membuat <em>branch</em> baru (misal: <em>branch</em> <code>tutorial-6</code>).</p>
 </blockquote>
@@ -719,37 +719,33 @@ Bahkan diperbolehkan jika kamu tidak ingin menggunakan container sama sekali unt
 Namun container sangat membantu untuk visualisasi dan kerapihan.</p>
 </blockquote>
 <p>Mulai dengan membuat <em>scene</em> baru. Karena <em>root node</em> UI yang kita inginkan adalah container paling luar,
-atur <em>root node</em> menjadi sebuah <code>MarginContainer</code>.
-Jangan lupa simpan (<em>save</em>) <em>scene</em> tersebut, berikan nama <code>MainMenu.tscn</code>.</p>
+pilih <em>root node type</em> menjadi sebuah <code>MarginContainer</code> dan berikan nama scene <code>MainMenu.tscn</code>.</p>
 <p><img alt="New Margin Container for Main Menu" src="images/MarginContainer.PNG" /></p>
-<p>Pada tab Inspector, atur <strong>Constants</strong> pada <strong>Theme Overrides</strong> sebagai berikut:</p>
-<p><img alt="Edit Custom Constants" src="images/theme_overrides_constants.png" /></p>
-<p>Kemudian pada Viewport, tekan menu <strong>Layout</strong>, pada attribut anchor preset, pilih opsi <strong>Full Rect</strong>.
+<p>Pada tab Inspector, tekan menu <strong>Layout</strong>. Kemudian atur properti <strong>Anchors Preset</strong>, pilih opsi <strong>Full Rect</strong>.
 Ini dilakukan agar ukuran <em>container</em> menyesuai ukuran <em>window</em>.</p>
 <p><img alt="Full Rect" src="images/FullRect.png" /></p>
-<p>Setelah itu masukan VBoxContainer di dalam MarginContainer.</p>
-<p>Sekarang masukkan elemen teks dan gambar ke dalam <code>VBoxContainer</code>.
-Untuk teks, gunakan <em>node</em> <code>Label</code>, dan untuk gambar gunakan node <code>TextureRect</code>.
-Untuk contoh ini ada dua tombol, "New Game" dan "Stage Select", yang akan diimplementasikan menggunakan node <code>LinkButton</code>.</p>
-<p>Untuk menambahkan teks pada <code>Label</code> atau <code>LinkButton</code> cukup menulis di tab Inspector bagian <strong>Text</strong>.
-Untuk menambahkan gambar kepada <code>TextureRect</code>, sama seperti menambahkan <em>texture</em> di <code>Sprite</code> yaitu di tab Inspector bagian <strong>Texture</strong>.
-Saat selesai, mungkin struktur <em>scene</em> dan <em>workspace</em> kamu akan terlihat seperti <em>screenshot</em> berikut:</p>
-<p><img alt="Main Menu but no Font" src="images/MainMenuBeforeFont.PNG" /></p>
-<p>Kamu pasti heran kenapa gambarnya besar sekali, kenapa tulisannya berada di pojok atas, dan kenapa semua tulisannya saling tumpang tindih. 
-Karena masih belum terlihat rapi, sekarang tambahkan <em>container</em> sesuai visualisasi di atas tadi.
-Struktur <em>node</em> dan <em>workspace</em> seharusnya akan terlihat lebih rapi dan menyerupai <em>screenshot</em> berikut:</p>
-<p><img alt="Main Menu After Containers" src="images/MainMenuAfterContainer.PNG" /></p>
-<p>Agar tulisan dan gambar berada di tengah layar, pada HBoxContainer, ubah Alignment menjadi Center. Kemudian lakukan hal yang sama pada VBoxContainer. Untuk membuat gambar tidak tersquish, ubah StretchMode menjadi Keep dan ubah ContainerSizing.Vertical menjadi Shrink Center</p>
-<p><img alt="alt text" src="images/MainMenuAfterContainerAdjust.png" /></p>
-<p>Agar judul dan tombol tidak terlalu berhimpitan, ubah <strong>Separation</strong> pada <code>VBoxContainer</code> ThemeOverrides.</p>
-<p>Namun, pada saat ini tulisan judul dan tombol sangatlah membosankan. Hanya default font dari Godot. Apakah tidak ada cara untuk mengubahnya?? Apakah kita perlu membuat suatu objek khusus untuk tiap ukuran font yang kita perlukan. Untungnya pada Godot 4.3 sudah mudah mengubah style dari font. Kita hanya perlu mengubah konfigurasi ThemeOverrides pada node <code>Label</code> dan juga <code>LinkButton</code></p>
+<p>Setelah itu masukan sebuah <em>node</em> VBoxContainer di dalam MarginContainer. Sesuai dengan visualisasi yang telah dilakukan di atas, kita menambahkan sebuah <em>node</em> VBoxContainer lagi di dalam VBoxContainer yang pertama.</p>
+<p>Sekarang masukkan elemen teks ke dalam <code>VBoxContainer</code>. Untuk teks, gunakan <em>node</em> <code>Label</code>. Pada contoh ini, terdapat dua tombol yang diimplementasikan menggunakan node <code>LinkButton</code>.</p>
+<p>Untuk menambahkan atau mengubah teks pada <code>Label</code> atau <code>LinkButton</code> cukup menulis di tab Inspector properti <strong>Text</strong>.
+Kamu dapat menambahkan judul game pada <code>Label</code> dan menambahkan "New Game" dan "Stage Select" pada kedua tombol <code>LinkButton</code>.</p>
+<p>Jika sudah selesai, struktur <em>scene</em> dan <em>workspace</em> kamu akan terlihat seperti <em>screenshot</em> berikut:</p>
 <p><img alt="alt text" src="images/fontconfig.png" /></p>
-<p>Untuk mengubah ukuran TextureRect, Anda bisa melakukan:
-Mengubah Strecth Mode menjadi KeepAspect pada <code>TextureRect</code>, mengubah <code>Container Sizing Horizontal</code> menjadi <code>Shrink Center</code>, Mengubah <code>Custom Minimum Size</code> sesuai keiinginan Anda.</p>
+<p>Namun, pada saat ini tulisan judul dan tombol sangatlah membosankan, hanya default font dari Godot! Apakah tidak ada cara untuk mengubahnya??</p>
+<p>Untungnya pada Godot 4.6 sudah mudah mengubah font dari suatu elemen teks. Kamu hanya perlu mengubah konfigurasi ThemeOverrides pada node <code>Label</code> dan juga <code>LinkButton</code> dan <em>load</em> file font yang kamu miliki. Kamu dapat load file dalam format TrueType Font (.ttf) atau OpenType Font (.otf). Pada contoh ini akan menggunakan font <strong>CC Wild Words Roman.ttf</strong> yang tersedia di folder assets template.</p>
+<p><img alt="alt text" src="images/fontconfig.png" /></p>
+<p>Sekarang, kita ingin menambahkan gambar agar MainMenu lebih menarik.</p>
+<p>Tambahkan sebuah <em>node</em> <code>HBoxContainer</code> pada <em>root node</em> dan masukkan <em>node</em> <code>VBoxContainer</code> tadi ke dalamnya. Kemudian, tambahkan <em>node</em> <code>CenterContainer</code> pada <code>HBoxContainer</code> dan menambahkan <em>node</em> <code>TextureRect</code> pada <em>node</em> <code>CenterContainer</code> tersebut.</p>
+<p>Cara menambahkan gambar pada <code>TextureRect</code> sama seperti menambahkan <em>texture</em> di <code>Sprite</code>, yaitu di tab Inspector pada properti <strong>Texture</strong>. Pada contoh ini akan menggunakan gambar <strong>spritesheet_alien.png</strong> pada folder <em>assets/kenney_platformerpack/Spritesheets/</em>.</p>
+<p>Jika sudah selesai, struktur <em>scene</em> dan <em>workspace</em> kamu akan terlihat seperti <em>screenshot</em> berikut:</p>
+<p><img alt="Main Menu but no Font" src="images/MainMenuBeforeFont.PNG" /></p>
+<p>Tetapi kenapa tulisannya berada di pojok atas, kenapa semua tulisannya saling tumpang tindih, dan kenapa ada tata letaknya masih berantakan??</p>
+<p>Agar tulisan dan gambar berada di tengah layar, pada HBoxContainer, ubah Alignment menjadi Center. Kemudian lakukan hal yang sama pada VBoxContainer dan ubah ContainerSizing.Vertical menjadi Shrink Center.</p>
+<p><img alt="alt text" src="images/MainMenuAfterContainerAdjust.png" /></p>
+<p>Agar judul dan tombol tidak terlalu berhimpitan, ubah <strong>Separation</strong> pada <code>VBoxContainer</code> ThemeOverrides. Kamu juga bisa mengatur Separation pada <code>HBoxContainer</code>.</p>
+<p>Untuk mengubah ukuran <code>TextureRect</code>, kamu bisa melakukan: Mengubah <strong>Expand Mode</strong> menjadi Ignore Size, mengubah <strong>Strecth Mode</strong> menjadi Keep Aspect Centered, dan mengubah <strong>Custom Minimum Size</strong> sesuai keiinginanmu.</p>
 <p>Selamat! Layar menu utama kamu sudah terlihat cukup rapi!</p>
 <p><img alt="alt text" src="images/finalmainmenu.png" /></p>
-<p>Tapi masih belum <em>clickable</em> tentunya.
- Bagaimana caranya agar saat kita menekan tombol "New Game" dia akan melempar kita ke level 1?</p>
+<p>Tapi masih belum <em>clickable</em> tentunya. Bagaimana caranya agar saat kita menekan tombol "New Game" dia akan melempar kita ke level 1?</p>
 <h3 id="latihan-clickable-menu">Latihan: Clickable Menu</h3>
 <p>Kita ingin agar saat tombol "New Game" ditekan, game akan menjalankan <em>scene</em> level pertama.
 Pada Tutorial 4, kita sudah belajar menggunakan <strong>Signal</strong>.
@@ -762,10 +758,10 @@ Sekarang kita akan menggunakannya lagi untuk menangani <em>event handler</em> ke
 <span class="normal">5</span>
 <span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">extends</span><span class="w"> </span><span class="n">LinkButton</span>
 
-<span class="k">export</span><span class="p">(</span><span class="nb nb-Type">String</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">scene_to_load</span>
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">scene_to_load</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span>
 
 <span class="k">func</span><span class="w"> </span><span class="n">_on_New_Game_pressed</span><span class="p">():</span>
-<span class="w">    </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">change_scene</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="s2">&quot;res://scenes/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">scene_to_load</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;.tscn&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">change_scene_to_file</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="s2">&quot;res://scenes/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">scene_to_load</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;.tscn&quot;</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
 <p>Kemudian pastikan <code>LinkButton</code> sedang dipilih dan lihat tab Inspector.
 Isi variabel <code>scene_to_load</code> pada tab Inspector dengan value "Level 1"</p>
@@ -786,16 +782,14 @@ Saat sudah tidak ada nyawa lagi, maka permainan usai (<em>game over</em>).</p>
 Kita menggunakan <em>global variable</em> untuk mendefinisikan nyawa player.
 Nyawa player akan disimpan permanen (<em>persist</em>) walaupun <em>scene</em> baru dipanggil atau diulang-ulang.
 Variabel ini dapat dipanggil dari <em>script</em> manapun.</p>
-<p>Pertama, klik kanan folder <code>scripts</code> lalu tekan <strong>New Script</strong>:</p>
-<p><img alt="Create New Script" src="images/NewScript.PNG" /></p>
-<p>Beri nama berkas <em>script</em> tersebut <code>global.gd</code> lalu isi dengan <em>script</em> berikut:</p>
+<p>Pertama, buat <em>script</em> baru dengan nama <code>Global.gd</code> pada folder <code>scripts</code>. Kemudian, isi dengan <em>script</em> berikut:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">extends</span><span class="w"> </span><span class="n">Node</span>
 
 <span class="k">var</span><span class="w"> </span><span class="n">lives</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
 </code></pre></div></td></tr></table></div>
-<p>Pada Project Settings, cari tab Globals, lalu tambahkan script <code>global.gd</code> (tekan <em>icon</em> folder di sebelah tulisan <strong>Node Name</strong> lalu cari berkas <em>script</em>-nya).
+<p>Pada Project Settings, buka tab Globals, lalu tambahkan script <code>Global.gd</code> (tekan <em>icon</em> folder lalu cari berkas <em>script</em>-nya).
 Setelah ditambahkan, akan muncul di dalam daftar. Pastikan kolom <code>Global Variable</code> dalam kondisi aktif (<em>enabled</em>).</p>
 <p><img alt="alt text" src="images/Autoload.png" /></p>
 <p>Sekarang kita punya variable nyawa yang dapat diakses kapan saja. Mari kita tampilkan menggunakan <em>label</em>.</p>
@@ -805,19 +799,20 @@ alasannya karena tiap kali <em>reload scene</em>, player juga ikut <em>reload</e
 Maka <code>lives</code> disimpan dalam <em>global variable</em> agar tidak reset saat <em>scene reload</em>.</p>
 </blockquote>
 <h3 id="gui-scene">GUI Scene</h3>
-<p>Buat sebuah scene baru dan beri nama <code>Life Counter.tscn</code> dengan <em>root node</em> sebuah <code>MarginContainer</code>.
-Buat sebuah <em>child node</em> <code>Label</code>, lalu berikan <em>script</em>.</p>
+<p>Buat sebuah <em>scene</em> baru dan beri nama <code>Life Counter.tscn</code> dengan <em>root node</em> sebuah <code>MarginContainer</code>.</p>
+<p><img alt="alt text" src="images/Autoload.png" /></p>
+<p>Buat sebuah <em>child node</em> <code>Label</code>, lalu berikan <em>script</em>.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">extends</span><span class="w"> </span><span class="n">Label</span>
 
-<span class="k">func</span><span class="w"> </span><span class="n">_process</span><span class="p">(</span><span class="n">delta</span><span class="p">):</span>
-<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lives : &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">global</span><span class="o">.</span><span class="n">lives</span><span class="p">)</span>
+<span class="k">func</span><span class="w"> </span><span class="n">_process</span><span class="p">(</span><span class="n">delta</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">float</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lives : &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">Global</span><span class="o">.</span><span class="n">lives</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>Struktur akan terlihat seperti ini (<code>MarginContainer</code> telah di-<em>rename</em> menjadi "GUI"):</p>
+<p>Struktur akan terlihat seperti ini:</p>
 <p><img alt="GUI Structure" src="images/GUI.PNG" /></p>
-<p>Pada <code>Level 1.tscn</code>, tambahkan sebuah <code>CanvasLayer</code> <em>node</em> sebagai <em>child node</em> dari <em>node</em> utama.
+<p>Pada <em>scene</em> <code>Level 1.tscn</code>, tambahkan sebuah <em>node</em> <code>CanvasLayer</code> sebagai <em>child node</em> dari <em>root node</em>.
 <code>CanvasLayer</code> merupakan <em>node</em> yang membuat sebuah layer 2D tersendiri untuk seluruh <em>child</em>-nya.
 <code>CanvasLayer</code> berguna untuk membuat <em>background</em> untuk level, atau <em>user interface</em> seperti yang akan kita buat sekarang.</p>
 <p>Tambahkan <code>Life Counter.tscn</code> yang tadi kita buat sebagai <em>child node</em> dari <code>CanvasLayer</code>.
@@ -828,7 +823,7 @@ Sekarang sudah muncul tampilan <em>life counter</em> di kiri atas yang mengikuti
 <p><img alt="Level 1 No Life Loss" src="images/Level1NoLifeLoss.gif" /></p>
 <p>Namun nyawa player belum berkurang ketika pemain mati.
 Waktunya melakukan sedikit <em>scripting</em>!</p>
-<p>Ubah script di <code>Area Trigger.gd</code> dengan kode berikut:</p>
+<p>Ubah script di <code>Area2D.gd</code> dengan kode berikut:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -843,7 +838,7 @@ Waktunya melakukan sedikit <em>scripting</em>!</p>
 <span class="normal">12</span>
 <span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">extends</span><span class="w"> </span><span class="n">Area2D</span>
 
-<span class="k">export</span><span class="w"> </span><span class="p">(</span><span class="nb nb-Type">String</span><span class="p">)</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">sceneName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Level 1&quot;</span>
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">sceneName</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Level 1&quot;</span>
 
 <span class="k">func</span><span class="w"> </span><span class="n">_on_Area_Trigger_body_entered</span><span class="p">(</span><span class="n">body</span><span class="p">):</span>
 <span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">current_scene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">get_current_scene</span><span class="p">()</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
@@ -867,15 +862,16 @@ Jika iya, nyawa berkurang satu. Baris <code>pass</code> di kondisi <code>global.
 <p>Untuk membuat layar <em>game over</em>, langkah-langkahnya sama dengan membuat layar menu utama.
 Visualisasi layar <em>game over</em> di contoh tutorial ini berupa tulisan <code>GAME OVER</code> dengan warna latar merah.
 Jika ingin menambahkan warna latar, kita dapat menggunakan <em>node</em> <code>ColorRect</code>.</p>
-<p>Buatlah sebuah <em>scene</em> baru dan beri nama <code>Game Over.tscn</code>, lalu atur sebuah <code>ColorRect</code> sebagai <em>root node</em> di <em>scene</em> tersebut.
-Mirip seperti <code>MarginContainer</code> sebelumnya, pilih menu <strong>Layout</strong> pada <em>viewport</em> dan pilih <strong>Full Rect</strong> agar kotak mengikuti ukuran <em>window</em>.
+<p>Buatlah sebuah <em>scene</em> baru dan beri nama <code>Game Over.tscn</code>, lalu atur sebuah <code>ColorRect</code> sebagai <em>root node</em> di <em>scene</em> tersebut.</p>
+<p><img alt="Setting Up Background Color" src="images/BackgroundColor.png" /></p>
+<p>Mirip seperti <code>MarginContainer</code> sebelumnya, pilih menu <strong>Layout</strong> pada <em>viewport</em> dan pilih <strong>Full Rect</strong> agar kotak mengikuti ukuran <em>window</em>.
 Silakan ubah warna sesuka hati.</p>
 <p><img alt="Setting Up Background Color" src="images/BackgroundColor.png" /></p>
-<p>Tambahkan label bertuliskan "GAME OVER", kemudian atur posisinya.
+<p>Tambahkan label bertuliskan "GAME OVER", atur font dan ukuran teks, kemudian atur posisinya.
 Selesailah Game Over screen kita!</p>
 <p><img alt="Game Over Screen Finished" src="images/GameOverDesu.png" /></p>
-<p>Sekarang bagaimana caranya agar saat nyawa pemain 0 akan menampilkan layar ini? Pada <code>Area Trigger.gd</code> ubah baris <code>pass</code> menjadi:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">change_scene_to_file</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="s2">&quot;res://scenes/Game Over.tscn&quot;</span><span class="p">))</span>
+<p>Sekarang bagaimana caranya agar saat nyawa pemain 0 akan menampilkan layar ini? Pada <em>script</em> <code>Area2D.gd</code> ubah baris <code>pass</code> menjadi:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">change_scene_to_file</span><span class="p">(</span><span class="s2">&quot;res://scenes/Game Over.tscn&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Berhasil! Sekarang saat player nyawanya habis, layar <em>game over</em> akan muncul.</p>
 <p><img alt="Game Over Desu" src="images/GameOverDesu.gif" /></p>
@@ -913,7 +909,7 @@ Ingat kembali instruksi di awal Tutorial 6, kamu dapat memilih membuat repositor
 Jika melanjutkan Tutorial 4, jangan lupa untuk mengambil aset yang dibutuhkan dari templat proyek Tutorial 6.</p>
 <p>Apabila kamu mengerjakan latihan mandiri, pastikan <em>scene</em> dan <em>node</em> yang kamu buat dan ubah telah tercatat masuk ke dalam repositori Git.
 Kumpulkan tautan ke repositori Git hasil pengerjaan Tutorial 6 kamu di slot pengumpulan yang tersedia di SCELE.</p>
-<p>Tenggat waktu pengumpulan adalah <strong>Jumat, 21 April 2025, pukul 21:00</strong>.</p>
+<p>Tenggat waktu pengumpulan adalah <strong>Jumat, 13 Maret 2026, pukul 21:00</strong>.</p>
 <h2 id="referensi">Referensi</h2>
 <ul>
 <li><a href="https://docs.godotengine.org/en/3.1/getting_started/step_by_step/ui_main_menu.html">Main Menu</a></li>
@@ -937,7 +933,7 @@ Jika kamu mengenali satu atau lebih elemen GUI di <em>screenshot</em> tersebut, 
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2025-03-16 07:47:14</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2026-03-03 04:29:34</span>
       
         <br>
         Created:
