@@ -132,7 +132,7 @@ Ini dilakukan agar ukuran _container_ menyesuai ukuran _window_.
 
 ![Full Rect](images/2-FullRect.png)
 
-Setelah itu masukan sebuah _node_ VBoxContainer di dalam MarginContainer. Sesuai dengan visualisasi yang telah dilakukan di atas, kita menambahkan sebuah _node_ VBoxContainer lagi di dalam VBoxContainer yang pertama.
+Setelah itu masukan sebuah _node_ `VBoxContainer` di dalam MarginContainer. Sesuai dengan visualisasi yang telah dilakukan di atas, kita menambahkan sebuah _node_ `VBoxContainer` lagi di dalam `VBoxContainer` yang pertama.
 
 Sekarang masukkan elemen teks ke dalam `VBoxContainer`. Untuk teks, gunakan _node_ `Label`. Pada contoh ini, terdapat dua tombol yang diimplementasikan menggunakan node `LinkButton`.
 
@@ -143,9 +143,9 @@ Jika sudah selesai, struktur _scene_ dan _workspace_ kamu akan terlihat seperti 
 
 ![First Scene Structure](images/3-FirstStructure.png)
 
-Namun, pada saat ini tulisan judul dan tombol sangatlah membosankan, hanya default font dari Godot! Apakah tidak ada cara untuk mengubahnya??
+Tetapi, pada saat ini tulisan judul dan tombol sangatlah membosankan, hanya default font dari Godot! Apakah tidak ada cara untuk mengubahnya??
 
-Untungnya pada Godot 4.6 sudah mudah mengubah font dari suatu elemen teks. Kamu hanya perlu mengubah konfigurasi ThemeOverrides pada node `Label` dan juga `LinkButton` dan _load_ file font yang kamu miliki. Kamu dapat load file dalam format TrueType Font (.ttf) atau OpenType Font (.otf). Pada contoh ini akan menggunakan font **CC Wild Words Roman.ttf** yang tersedia di folder assets template.
+Untungnya pada Godot 4.6 sudah mudah mengubah font dari suatu elemen teks. Kamu hanya perlu mengubah konfigurasi **ThemeOverrides** pada node `Label` dan juga `LinkButton` dan _load_ file font yang kamu miliki. Kamu dapat load file dalam format TrueType Font (.ttf) atau OpenType Font (.otf). Pada contoh ini akan menggunakan font **CC Wild Words Roman.ttf** yang tersedia di folder assets template.
 
 ![Configure Text Font](images/4-TextEdit.png)
 
@@ -159,17 +159,17 @@ Jika sudah selesai, struktur _scene_ kamu akan terlihat seperti _screenshot_ ber
 
 ![New Structure with Image](images/5-AddImage.png)
 
-Tetapi kenapa tulisannya berada di pojok atas, kenapa semua tulisannya saling tumpang tindih, dan kenapa ada tata letaknya masih berantakan??
+Tetapi kenapa tulisannya berada di pojok atas, kenapa semua tulisannya saling tumpang tindih, dan kenapa tata letaknya masih berantakan??
 
-Agar tulisan dan gambar berada di tengah layar, pada HBoxContainer, ubah Alignment menjadi Center. Kemudian lakukan hal yang sama pada VBoxContainer dan ubah ContainerSizing.Vertical menjadi Shrink Center.
+Agar tulisan dan gambar berada di tengah layar, pada `HBoxContainer`, ubah **Alignment** menjadi Center. Kemudian lakukan hal yang sama pada `VBoxContainer` dan ubah ContainerSizing.Vertical menjadi Shrink Center.
 
 ![Configure Alignment](images/6-ConfigureAlignment.png)
 
-Agar judul dan tombol tidak terlalu berhimpitan, ubah **Separation** pada `VBoxContainer` ThemeOverrides. Kamu juga bisa mengatur Separation pada `HBoxContainer`.
+Agar judul dan tombol tidak terlalu berhimpitan, ubah **Separation** pada ThemeOverrides di _node_ `VBoxContainer` . Kamu juga bisa mengatur Separation pada `HBoxContainer`.
 
 ![Configure Separation](images/6-ConfigureSeparation.png)
 
-Untuk mengubah ukuran `TextureRect`, kamu bisa melakukan: Mengubah **Expand Mode** menjadi Ignore Size, mengubah **Strecth Mode** menjadi Keep Aspect Centered, dan mengubah **Custom Minimum Size** sesuai keiinginanmu.
+Untuk mengubah ukuran gambar, pada _node_ `TextureRect` kamu bisa melakukan: Mengubah **Expand Mode** menjadi Ignore Size, mengubah **Stretch Mode** menjadi Keep Aspect Centered, dan mengubah **Custom Minimum Size** sesuai keinginanmu.
 
 ![Configure Size](images/6-ConfigureSize.png)
 
@@ -237,9 +237,7 @@ var lives = 3
 Pada Project Settings, buka tab Globals, lalu tambahkan script `Global.gd` (tekan _icon_ folder lalu cari berkas _script_-nya).
 Setelah ditambahkan, akan muncul di dalam daftar. Pastikan kolom `Global Variable` dalam kondisi aktif (_enabled_).
 
-![Before Add Global Variable](images/10-GlobalBefore.png)
-
-![After Add Global Variable](images/10-GlobalAfter.png)
+![Add Global Variable](images/10-GlobalVar.png)
 
 Sekarang kita punya variable nyawa yang dapat diakses kapan saja. Mari kita tampilkan menggunakan _label_.
 
@@ -264,7 +262,7 @@ func _process(delta: float) -> void:
 
 Struktur akan terlihat seperti ini:
 
-![Life Counter Structure](images/11-NewSceneHierarchy.PNG)
+![Life Counter Structure](images/11-LifeCounterHierarchy.png)
 
 Pada _scene_ `Level 1.tscn`, tambahkan sebuah _node_ `CanvasLayer` sebagai _child node_ dari _root node_.
 `CanvasLayer` merupakan _node_ yang membuat sebuah layer 2D tersendiri untuk seluruh _child_-nya.
@@ -273,7 +271,7 @@ Pada _scene_ `Level 1.tscn`, tambahkan sebuah _node_ `CanvasLayer` sebagai _chil
 Tambahkan `Life Counter.tscn` yang tadi kita buat sebagai _child node_ dari `CanvasLayer`.
 Struktur `Level 1.tscn` akan terlihat seperti _screenshot_ berikut:
 
-![Level Updated with GUI](images/12-Level1UpdatedScene.PNG)
+![Level Updated with GUI](images/12-LevelUpdatedScene.png)
 
 Coba jalankan `Level 1.tscn` kamu.
 Sekarang sudah muncul tampilan _life counter_ di kiri atas yang mengikuti bentuk window yang ada.
