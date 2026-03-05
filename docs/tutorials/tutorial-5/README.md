@@ -22,7 +22,7 @@ Pada tutorial kali ini, kamu akan mempelajari cara membuat _game asset_ sederhan
 
 ### What Is Game Asset?
 
-Pada tutorial sebelumnya kita sudah membuat sebuah _level_ sederhana menggunakaan `TileMap` beserta mekanik kamera dan _trigger area_. Namun sebelum membuat suatu _level_ dalam game, dibutuhkan hal-hal yang menggambarkan tampilan dan suasana dalam game, yang lebih dikenal sebagai *Game Asset*.
+Pada tutorial sebelumnya kita sudah membuat sebuah _level_ sederhana menggunakaan `TileMap` beserta mekanik kamera dan _trigger area_. Namun sebelum membuat suatu _level_ dalam game, dibutuhkan hal-hal yang menggambarkan tampilan dan suasana dalam game, yang lebih dikenal sebagai *Game Asset* :D
 
 Game asset meliputi:
 
@@ -73,7 +73,7 @@ Pembuatan *sprite sheet* tidak bergantung pada *tools*. Namun, *sprite sheet* le
 
 Pembuatan aset secara manual tentu membutuhkan waktu dan keahlian. Saat ini sudah banyak tempat di Internet yang menyediakan aset-aset visual secara gratis. Walaupun gratis, jangan lupa membaca lisensi penggunaan aset tersebut!
 
-Berikut adalah beberapa web yang menyediakan asset visual secara gratis.
+Berikut adalah beberapa web yang menyediakan asset visual secara gratis:
 
 - https://kenney.nl/assets
 - https://www.gameart2d.com/freebies.html
@@ -101,37 +101,35 @@ Di sisi lain ```AnimationPlayer``` digunakan untuk membuat animasi yang lebih ko
 1. Buka kembali project Tutorial **3** di Godot.
 2. Buat scene baru untuk membuat player dengan struktur seperti dibawah ini (jika sudah ada maka hanya perlu merubah node sprite menjadi ```AnimatedSprite```).
 
-    ![Struktur Player](images/Struktur_Player.jpg)
+    ![Struktur Player](images/NEW_strukturplayer.png)
 
 3. Selanjutnya adalah membuat **frame baru** untuk menempatkan sprite-sprite menjadi sebuah animasi
-
-    ![Frame Baru](images/Frame_Baru.png)
+  ![Frame Baru](images/NEW_FrameBaru2.png)
 
 4. Setelahnya akan keluar window dibagian bawah untuk membuat animasi. Beri nama pada animasi yang ingin kalian buat dengan menekan 2x pada tulisan default
-
-    ![Tampilan Animation Window](images/Tampilan_Animation_Window.png)
+    ![Tampilan Animation Window](images/NEW_TampilanAnimationWindow.png)
 
 5. Di tutorial ini akan membuat contoh animasi berjalan menghadap kanan (nama animasinya jalan_kanan). Setelah memberi nama, selanjutnya adalah mengimport gambar untuk dijadikan animasi. Ada **dua teknik** yaitu dengan langsung memasukan file gambar yang berisi satu gambar utuh (button 1), atau dengan memasukan file spritesheet (button 2).
 
-    ![Tampilan Button Load](images/Tampilan_Button_Load.png)
+    ![Tampilan Button Load](images/NEW_TampilanButtonLoad.png)
     > Note:
     >
     > - Import gambar dengan menggunakan button 1 hanya tinggal menekan button 1 dan memilih file gambar yang ingin di import (ingat, teknik ini akan mengimport keseluruhan gambar dalam file).
     > - Import gambar dengan button 2 sedikit berbeda. Disini pilih file yang berisi spritesheet dan akan muncul tampilan grid seperti dibawah ini.
     >
-    > ![Import Texture Spritesheet](images/Import_Texture_Spritesheet.png)
+    > ![Import Texture Spritesheet](images/NEW_ImportTextureSpritesheet.png)
 
     Disini kalian harus mengatur banyaknya grid yang agar setiap satu grid mewakili satu gambar yang akan di import. Pada kasus ini ubah horizontal menjadi 9 (karena jumlah gambar pada satu baris ada 9), dan vertikal menjadi 3 (karena terdapat 3 baris). Selanjutnya pilih gambar dengan menekan grid yang diinginkan (disini bisa memilih multiple gambar).
 
-    ![Import Texture Spritesheet2](images/Import_Texture_Spritesheet2.png)
+    ![Import Texture Spritesheet](images/NEW_ImportTextureSpritesheet2.png)
 
 6. Selanjutnya untuk mencoba apakah animasi sudah seperti yang diinginkan dengan menceklis box playing pada inspector node animatedSprite. (jika animasi terlalu lambat, bisa menambahkan fps di bagian pojok kiri bawah diatas tombol output. Untuk pengulangan animasi, bisa mengaktifkan loop dibawah fps)
 
-    ![Playing FPS Loop](images/Playing_FPS_Loop.png)
+    ![Playing FPS Loop](images/NEW_PlayingFPSLoop.png)
 
 7. Animasi telah siap digunakan. Tetapi jika kalian lihat, saat menjalankan scene posisi player akan mengikuti texture pertama pada animasi jalan_kanan. Maka dari itu sebaiknya kalian membuat beberapa animasi untuk kasus lainnya. Untuk menyatakan animasi mana yang menjadi inisiasi player saat main scene dijalankan, bisa mengaturnya pada properti `autoplay on load` yang berapa di samping loop button.
 
-    ![Scene Selesai](images/Scene_Selesai.png)
+    ![Auto Play On Load](images/NEW_AutoPlayOnLoadNew.png)
 
 8. Terakhir tentunya adalah membuat script untuk mengaktifkan animasi ini. Berikut adalah kode yang diambil dari Tutorial 3:
 
@@ -256,19 +254,19 @@ Audio yang sudah diexport dapat disimpan ke dalam folder `assets` pada project G
 
 Selain SFX, terdapat juga audio yang dapat menggambarkan suasana game, yaitu **Background Music**. Berikut cara mengimplementasikan BGM dalam game. Pertama buka level scene yang telah kamu buat. Kemudian tambahkan node ```AudioStreamPlayer``` sebagai child dari root node.
 
-![AudioStreamPlayer](images/BGMStep1_AddNodeAudioStreamPlayer.png)
+![AudioStreamPlayer](images/NEW_AddNodeAudioStreamPlayer.png)
 
 Lihat pada tab inspector di sebelah kanan. Untuk menambahkan audio ke dalam node ```AudioStreamPlayer```, klik dropdown pada bagian stream dan pilih load.
 
-![Load Audio](images/BGMStep2_LoadAudio.jpg)
+![Load Audio](images/NEW_LoadAudio.png)
 
 Godot akan memunculkan *prompt* untuk memilih file. Pilih file `bgm.wav` pada directory `res://assets/sound`
 
-![Locate Wav File](images/BGMStep3_LocateWavFile.jpg)
+![Locate Wav File](images/NEW_BGMStep1.png)
 
 Setelah file audio dipilih, audio wave akan muncul pada bagian stream di tab inspector.
 
-![Audio Node Inspector Desc](images/BGMStep4_AudioNodeInspectorDesc.png)
+![Audio Node Inspector Desc](images/NEW_BGMStep1.png)
 
 Terdapat beberapa konfigurasi lainnya, yaitu:
 
@@ -285,7 +283,7 @@ Untuk penjelasan lebih lanjut mengenai `AudioStreamPlayer` dapat diakses di [doc
 
 Saat ini *audio* masih berjalan tanpa *looping*. Untuk membuat *audio looping*, pilih berkas `bgm.wav` pada tab **FileSystem** di sebelah kiri bawah. Kemudian, buka tab **Import** di sebelah kiri atas. Berikut tampilan dari tab **Import**:
 
-![Audio Import Settings](images/BGMStep5_ImportSettings.png)
+![Audio Import Settings](images/NEW_ImportNode.png)
 
 Klik *loop* lalu klik *reimport*. Godot akan mengimport audio ulang dengan menambahkan konfigurasi yang sudah dipilih sebelumnya. Tes apakah *audio* sudah *looping* dengan menjalankan *scene*.
 
@@ -293,7 +291,7 @@ Klik *loop* lalu klik *reimport*. Godot akan mengimport audio ulang dengan menam
 
 Silakan eksplorasi lebih lanjut mengenai animasi berdasarkan _spritesheet_ dan audio. Untuk latihan mandiri yang dikerjakan di akhir tutorial, kamu diharapkan untuk:
 
-- [ ] Membuat minimal 1 (satu) objek baru di dalam permainan yang dilengkapi dengan animasi menggunakan _spritesheet_ selain yang disediakan tutorial. Silakan cari _spritesheet_ animasi di beberapa koleksi aset gratis seperti Kenney.
+- [ ] Membuat minimal 1 (satu) objek baru di dalam2 permainan yang dilengkapi dengan animasi menggunakan _spritesheet_ selain yang disediakan tutorial. Silakan cari _spritesheet_ animasi di beberapa koleksi aset gratis seperti Kenney.
 - [ ] Membuat minimal 1 (satu) audio untuk efek suara (SFX) dan memasukkannya ke dalam permainan. Kamu dapat membuatnya sendiri atau mencari dari koleksi aset gratis.
 - [ ] Membuat minimal 1 (satu) musik latar (_background music_) dan memasukkannya ke dalam permainan. Kamu dapat membuatnya sendiri atau mencari dari koleksi aset gratis.
 - [ ] Implementasikan interaksi antara objek baru tersebut dengan objek yang dikendalikan pemain. Misalnya, pemain dapat menciptakan atau menghilangkan objek baru tersebut ketika menekan suatu tombol atau tabrakan dengan objek lain di dunia permainan.
@@ -312,7 +310,7 @@ Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelask
 Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:
 
 - **4** (_**A**_) apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi tim pengajar.
-  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan Latihan Mandiri, ditambah dengan memoles (_polishing_) lebih lanjut permainannya.
+  Nilai ini dapat dicapai apabila mengerjakan **seluruh** Latihan dan Latihan Mandiri, ditambah dengan memoles (_polishing_) lebih lanjut permainannya dengan mengerjakan **semua** ide implementasi yang ada di latihan mandiri.
 - **3** (_**B**_) apabila kamu hanya mengerjakan tutorial dan latihan sesuai dengan instruksi.
   Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan dan Latihan Mandiri.
 - **2** (_**C**_) apabila kamu hanya mengerjakan tutorial hingga tuntas.
@@ -328,7 +326,7 @@ Apabila kamu mengerjakan latihan mandiri, pastikan scene dan node sudah tercatat
 
 Kumpulkan tautan ke repositori Git hasil pengerjaan tutorial 5 kamu di slot pengumpulan yang tersedia di SCELE.
 
-Tenggat waktu pengumpulan adalah **14 Maret 2025 pukul 21:00**.
+Tenggat waktu pengumpulan adalah **13 Maret 2026 pukul 21:00**.
 
 ## Referensi
 
