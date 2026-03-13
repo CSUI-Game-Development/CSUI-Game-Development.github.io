@@ -13,6 +13,8 @@
       
       
       
+        <link rel="prev" href="../tutorial-5/">
+      
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +22,7 @@
     
     
       
-        <title>Tutorial 6 - Menu and In-Game Graphical User Interface - Game Development @ Faculty of Computer Science Universitas Indonesia</title>
+        <title>Tutorial 6 - Menu & In-Game GUI - Game Development @ Faculty of Computer Science Universitas Indonesia</title>
       
     
     
@@ -113,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Tutorial 6 - Menu and In-Game Graphical User Interface
+              Tutorial 6 - Menu & In-Game GUI
             
           </span>
         </div>
@@ -195,10 +197,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../" class="md-tabs__link">
           
   
@@ -280,6 +284,8 @@
       
   
   
+    
+  
   
     
     
@@ -308,6 +314,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -315,12 +325,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           
@@ -342,7 +352,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Tutorials
@@ -446,6 +456,203 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Tutorial 6 - Menu & In-Game GUI
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial 6 - Menu & In-Game GUI
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#daftar-isi" class="md-nav__link">
+    Daftar Isi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pengantar" class="md-nav__link">
+    Pengantar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tampilan-antar-muka" class="md-nav__link">
+    Tampilan Antar Muka
+  </a>
+  
+    <nav class="md-nav" aria-label="Tampilan Antar Muka">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contoh-layar-menu-utama-layar-kondisi-menangkalah-dan-gui" class="md-nav__link">
+    Contoh Layar Menu Utama, Layar Kondisi Menang/Kalah, dan GUI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#latihan-membuat-menu-utama" class="md-nav__link">
+    Latihan: Membuat Menu Utama
+  </a>
+  
+    <nav class="md-nav" aria-label="Latihan: Membuat Menu Utama">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visualisasi" class="md-nav__link">
+    Visualisasi
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#membuat-containers-labels-dan-buttons" class="md-nav__link">
+    Membuat Containers, Labels, dan Buttons
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latihan-clickable-menu" class="md-nav__link">
+    Latihan: Clickable Menu
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#latihan-membuat-gui-life-counter" class="md-nav__link">
+    Latihan: Membuat GUI Life Counter
+  </a>
+  
+    <nav class="md-nav" aria-label="Latihan: Membuat GUI Life Counter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-variables" class="md-nav__link">
+    Global Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gui-scene" class="md-nav__link">
+    GUI Scene
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#latihan-membuat-layar-game-over" class="md-nav__link">
+    Latihan: Membuat Layar Game Over
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#latihan-mandiri-fitur-tambahan" class="md-nav__link">
+    Latihan Mandiri: Fitur Tambahan
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skema-penilaian" class="md-nav__link">
+    Skema Penilaian
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pengumpulan" class="md-nav__link">
+    Pengumpulan
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referensi" class="md-nav__link">
+    Referensi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selingan-menarik-intermezzo" class="md-nav__link">
+    Selingan Menarik (Intermezzo)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
