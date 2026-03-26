@@ -705,7 +705,7 @@ dan membuat level bidang 3D sederhana.</p>
 <p>Note: <a href="https://github.com/CSUI-Game-Development/tutorial-7-template">Templat proyek tutorial 7 tersedia di GitHub (klik)</a>.</p>
 </blockquote>
 <h3 id="2d-vs-3d">2D vs 3D</h3>
-<p>Pada tutorial yang dilakukan sebelum masa UTS, kita sudah membuat game dua dimensi (2D)
+<p>Pada tutorial sebelumnya, kita sudah membuat game dua dimensi (2D)
 dimana pemain dapat bergerak pada ruang dua dimensi. Pemain dapat bergerak ke atas,
 bawah, kiri, dan kanan. Pada game 3D, terdapat sumbu tambahan pada ruang koordinat,
 yaitu sumbu Z yang memberikan unsur kedalaman dan volume. Hal ini menyebabkan pengembangan
@@ -735,7 +735,8 @@ dan tambahkan <code>MeshInstance3D</code> dan <code>CollisionShape3D</code> seba
 <em>Player</em>. Tambahkan satu lagi <em>child node</em> berupa <code>Node3D</code>, rename menjadi <em>Head</em>, dan
 tambahkan <code>Camera3D</code> sebagai <em>child node</em> dari <em>Head</em>.</p>
 <p><img alt="Susunan awal Player" src="images/playertreeworaycast.png" /></p>
-<p>Pada node <code>CollisionShape3D</code>, pada tab <em>Inspector</em>, berikan sebuah <code>Shape</code> yaitu <code>CapsuleShape</code> untuk
+<p>Terlihat bahwa terdapat warning pada node <code>CollisionShape3D</code>, sesuai arahan warning tersebut, 
+kita perlu membuka tab <em>Inspector</em>, kemudian memberikan sebuah <code>Shape</code> yaitu <code>CapsuleShape</code> untuk
 memberi <em>collision</em> pada pemain.</p>
 <p><img alt="Collision Shape" src="images/collisionshape.png" /></p>
 <p>Pada node <code>MeshInstance3D</code>, pada tab <em>Inspector</em>, berikan <em>mesh</em> dengan bentuk <code>CapsuleMesh</code> untuk
@@ -832,7 +833,7 @@ func _physics_process(delta):
 <p>Pada <em>Project</em> &gt; <em>Project Settings</em>, pada tab <em>Input Map</em>, tambahkan action <code>movement_forward</code>,
 <code>movement_backward</code>, <code>movement_left</code>, <code>movement_right</code>, <code>jump</code> dan <code>interact</code> sebagai berikut
 apabila belum ada (akan digunakan nantinya):</p>
-<p><img alt="Input" src="images/input.jpg" /></p>
+<p><img alt="Input" src="images/input.png" /></p>
 <p>Perhatikan bahwa:</p>
 <ol>
 <li><code>head_basis</code> merupakan vektor yang menunjukkan arah dari kepala pemain, sehingga jika
@@ -863,7 +864,10 @@ tambahkan kode berikut:</p>
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code>...
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code>...
 @onready var camera: Camera3D = $Head/Camera3D
 
 var camera_x_rotation: float = 0.0
@@ -871,6 +875,9 @@ var camera_x_rotation: float = 0.0
 ...
 
 func _input(event):
+    if Input.is_action_just_pressed(&quot;ui_cancel&quot;):
+        Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
     if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
         head.rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
 
@@ -944,7 +951,8 @@ jika ingin membuat objek <code>Interactable</code> lain.</p>
 merepresentasikan sebuah garis dari suatu titik ke titik lain, dan menkueri objek terdekat yang
 ditemuinya. Tambahkan <em>node</em> <code>RayCast3D</code> sebagai <em>child</em> dari <em>Camera3D</em> pemain. <strong>Pastikan
 <code>RayCast3D</code> menghadap arah yang sama dengan <code>Camera3D</code> dengan mengatur nilai <em>target position</em> di <em>inspector</em> dan jangan lupa untuk meng-enable node <code>RayCast3D</code> melalui tab inspector.</strong></p>
-<p><img alt="Susunan Player" src="images/playertree.png" /></p>
+<p><img alt="Inspector RayCast3D" src="images/raycastinspector.png" />
+<img alt="Susunan Player" src="images/playertree.png" /></p>
 <p>Pada <em>node</em> <code>RayCast3D</code>, tambahkan <em>script</em> sebagai berikut:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1022,7 +1030,7 @@ atur posisi box pada <em>Viewport</em>.</p>
 untuk membuat objek 3D untuk menghias room yang telah kita buat.</p>
 <p>Untuk memudahkan penglihatan pada <em>viewport</em>, anda dapat mengubah proyeksi menjadi <em>Orthogonal</em> dengan mengklik menu
 pojok kiri atas dalam <em>viewport</em>.</p>
-<p><img alt="Changing Projection" src="images/ChangeProjection.jpg" /></p>
+<p><img alt="Changing Projection" src="images/ChangeProjection.png" /></p>
 <p>Buat sebuah 3D Scene baru dan beri nama <code>ObjLamp</code>. Tambahkan child node baru dengan memilih <code>CSGCombiner3D</code> dan
 beri nama <code>lamp</code>. <code>CSGCombiner3D</code> berfungsi sebagai tempat untuk mengatur komponen CSG di dalamnya, jangan lupa
 mencentang <code>Use Collision</code> karena objek yang akan dibuat merupakan benda padat.</p>
@@ -1030,9 +1038,8 @@ mencentang <code>Use Collision</code> karena objek yang akan dibuat merupakan be
 <ul>
 <li>Buat <code>CSGCylinder3D</code> dengan cek <em>cone</em> pada tab Inspector untuk bagian bawah lampu.</li>
 <li>Buat <code>CSGCylinder3D</code> dan atur ukuran pada tab Inspector untuk menjadi tiang lampu.</li>
-<li>Buat <code>CSGPolygon3D</code> dengan memilih Mode <em>Spin</em> pada tab Inspector, lalu ubah proyeksi menjadi <em>Front View</em> dan atur</li>
+<li>Buat <code>CSGPolygon3D</code> dengan memilih Mode <em>Spin</em> pada tab Inspector, lalu ubah proyeksi menjadi <em>Front View</em> dan atur titik pada polygon hingga membentuk trapesium untuk membentuk penutup lampu.</li>
 </ul>
-<p>Titik pada polygon hingga membentuk trapesium untuk membentuk penutup lampu.</p>
 <p><img alt="CSG Lamp" src="images/CSGLamp.png" /></p>
 <p>Setelah jadi, atur ketiga child node sehingga membentuk sebuah lampu! Save lalu masukkan Scene tersebut ke dalam Scene
  World 1 dengan klik kanan pada Node World 1 pilih <code>Instance Child Scene</code>.</p>
@@ -1047,26 +1054,26 @@ dari CSG yang dibuat, untuk sekarang klik menu <code>Albedo</code> dan ganti war
 <h3 id="adding-obstacles">Adding Obstacles</h3>
 <p>Misalkan kita ingin menambahkan halangan untuk player dapat menuju goal seperti field yang berlubang atau jurang yang hanya dapat dilewati menggunakan function jump yang telah anda buat sebelumnya.</p>
 <p>Buka Scene <code>World 1</code>, lalu buat <code>CSGCombiner</code> baru dan centang <code>Use Collision</code> pada tab Inspector. Lalu masukkan Node <code>Room 1</code> ke dalam CSGCombiner yang telah dibuat. Tambahkan 2 <code>CSGBox</code> ke dalam CSGCombiner3D masing-masing akan menjadi room yang baru dan lubang. Atur sedemikian rupa menggunakan operation <code>Union</code> untuk membuat ruang baru dan lubang.</p>
-<p><img alt="Obstacle Mapping" src="images/ObstacleMap.jpg" />
-<img alt="Obstacle" src="images/obstacle.jpg" /></p>
+<p><img alt="Obstacle Mapping" src="images/ObstacleMap.png" />
+<img alt="Obstacle" src="images/obstacle.png" /></p>
 <p>Lalu tambahkan <code>CSGBox3D</code> lagi diluar CSGCombiner3D agar player bisa melompati lubang untuk menyebrang.</p>
-<p><img alt="Jumping Path" src="images/path.jpg" /></p>
+<p><img alt="Jumping Path" src="images/path.png" /></p>
 <h3 id="adding-goal-condition">Adding Goal Condition</h3>
 <p>Sebelumnya kamu telah telah belajar menggunakan signals pada 2D level, kali ini kita akan mencoba menggunakan signals kembali untuk menambahkan goal condition.</p>
 <p>Pertama buat scene baru (nama bebas) dengan <code>Area3D</code> sebagai root node.</p>
-<p><img alt="New Area" src="images/AreaNode.jpg" /></p>
+<p><img alt="New Area" src="images/AreaNode.png" /></p>
 <p>Lalu tambahkan node <code>CollisionShape3D</code> sebagai child dari node <code>Area3D</code> tadi.
 Jangan lupa untuk membuat <em>collision shape</em> pada node <code>CollisionShape3D</code> (Kamu seharusnya sudah pernah melakukannya pada tutorial sebelumnya) kali ini buat bentuk <em>Sphere</em>.</p>
-<p><img alt="Area Hierarchy" src="images/AreaMap.jpg" /></p>
+<p><img alt="Area Hierarchy" src="images/AreaMap.png" /></p>
 <p>Kemudian <em>attach</em> sebuah script pada node <code>Area3D</code> (penamaan bebas).
 Hapus semua baris kecuali baris pertama, kita akan menggunakan <em>Signals</em> untuk fitur ini.</p>
 <h3 id="using-signals">Using Signals</h3>
 <p>Pertama select node <code>Area3D</code> lalu buka tab <code>Node</code>.
 Lalu pada subtab <code>Signals</code> pilih <code>body_entered(Node body)</code> dan klik tombol <code>Connect</code> di kanan bawah tab tersebut.</p>
-<p><img alt="Signals" src="images/AreaSignals.jpg" /></p>
+<p><img alt="Signals" src="images/AreaSignals.png" /></p>
 <p>Pastikan <code>Area3D</code> terpilih pada bagian <code>Connect To Node</code>, isi <code>Method In Node</code> dengan nama fungsi yang kamu inginkan atau biarkan default.
 Jika sudah tekan tombol <code>Connect</code></p>
-<p><img alt="Connect Signal" src="images/AreaSignalAdd.jpg" /></p>
+<p><img alt="Connect Signal" src="images/AreaSignalAdd.png" /></p>
 <p>Maka script pada <code>Area3D</code> akan ditambah fungsi tersebut.</p>
 <p>Silakan tambah cuplikan dibawah pada script tersebut. (Jangan lupa ganti nama fungsi sesuai penamaan masing-masing)</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1079,7 +1086,7 @@ Jika sudah tekan tombol <code>Connect</code></p>
 
 @export var sceneName := &quot;Level 1&quot;
 
-func _on_Area_Trigger_body_entered(body):
+func _on_body_entered(body: Node3D) -&gt; void:
     if body.get_name() == &quot;Player&quot;:
         get_tree().change_scene_to_file(str(&quot;res://scenes/&quot; + sceneName + &quot;.tscn&quot;))
 </code></pre></div></td></tr></table></div>
@@ -1089,7 +1096,7 @@ Jika object tersebut adalah player, maka ubah root node (current scene) dengan v
 <p>Save scene dan script tersebut (Mulai sekarang disebut <code>AreaTrigger</code>) dan buka kembali scene <code>Level 1.tscn</code>.</p>
 <p>Kemudian tambahkan scene <code>AreaTrigger</code> sebagai child dari sprite tersebut, silakan atur scaling sesuai keperluan.
 Jangan lupa ubah variable <code>Scene Name</code> menjadi "Win Screen".</p>
-<p><img alt="Camera Inspector" src="images/AreaInspector.jpg" /></p>
+<p><img alt="Camera Inspector" src="images/AreaInspector.png" /></p>
 <p>Lakukan hal yang sama untuk area lubang namun dengan <code>Scene Name</code> diisi dengan "Level 1".
 Supaya ketika player jatuh ke jurang, scene akan di-reload.</p>
 <p>Selamat, tutorial ini sudah selesai!</p>
@@ -1129,7 +1136,7 @@ Berhubung game yang dicontohkan di tutorial ini adalah game dengan <em>genre</em
 Jangan lupa untuk menjelaskan proses pengerjaan tutorial ini di dalam berkas <code>README.md</code> yang tersimpan di repositori Git yang sama dengan pengerjaan tutorial.
 Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelaskan proses implementasi.
 Kemudian, <em>push</em> riwayat <em>commit</em>-nya ke repositori Git pengerjaan Tutorial 7 dan kumpulkan tautan (URL) repositori Git kamu di slot pengumpulan yang tersedia di SCELE.</p>
-<p>Tenggat waktu pengumpulan adalah <strong>Jumat, 28 Maret 2025, pukul 21:00</strong>.</p>
+<p>Tenggat waktu pengumpulan adalah <strong>Jumat, 3 April 2026, pukul 21:00</strong>.</p>
 <h2 id="referensi">Referensi</h2>
 <ul>
 <li><a href="http://docs.godotengine.org/en/3.1/tutorials/3d/index.html">Godot 3D Tutorial</a></li>
@@ -1144,7 +1151,7 @@ Kemudian, <em>push</em> riwayat <em>commit</em>-nya ke repositori Git pengerjaan
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2025-03-22 06:48:15</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2026-03-26 19:10:13</span>
       
         <br>
         Created:
