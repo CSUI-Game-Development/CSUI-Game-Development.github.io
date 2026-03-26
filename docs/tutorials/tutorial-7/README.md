@@ -29,7 +29,7 @@ dan membuat level bidang 3D sederhana.
 
 ### 2D vs 3D
 
-Pada tutorial yang dilakukan sebelum masa UTS, kita sudah membuat game dua dimensi (2D)
+Pada tutorial sebelumnya, kita sudah membuat game dua dimensi (2D)
 dimana pemain dapat bergerak pada ruang dua dimensi. Pemain dapat bergerak ke atas,
 bawah, kiri, dan kanan. Pada game 3D, terdapat sumbu tambahan pada ruang koordinat,
 yaitu sumbu Z yang memberikan unsur kedalaman dan volume. Hal ini menyebabkan pengembangan
@@ -68,7 +68,8 @@ tambahkan ```Camera3D``` sebagai *child node* dari *Head*.
 
 ![Susunan awal Player](images/playertreeworaycast.png)
 
-Pada node ```CollisionShape3D```, pada tab *Inspector*, berikan sebuah ```Shape``` yaitu ```CapsuleShape``` untuk
+Terlihat bahwa terdapat warning pada node ```CollisionShape3D```, sesuai arahan warning tersebut, 
+kita perlu membuka tab *Inspector*, kemudian memberikan sebuah ```Shape``` yaitu ```CapsuleShape``` untuk
 memberi *collision* pada pemain.
 
 ![Collision Shape](images/collisionshape.png)
@@ -133,7 +134,7 @@ Pada *Project* > *Project Settings*, pada tab *Input Map*, tambahkan action `mov
 `movement_backward`, `movement_left`, `movement_right`, `jump` dan `interact` sebagai berikut
 apabila belum ada (akan digunakan nantinya):
 
-![Input](images/input.jpg)
+![Input](images/input.png)
 
 Perhatikan bahwa:
 
@@ -161,6 +162,9 @@ var camera_x_rotation: float = 0.0
 ...
 
 func _input(event):
+	if Input.is_action_just_pressed("ui_cancel"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		head.rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
 
@@ -223,6 +227,7 @@ merepresentasikan sebuah garis dari suatu titik ke titik lain, dan menkueri obje
 ditemuinya. Tambahkan *node* ```RayCast3D``` sebagai *child* dari *Camera3D* pemain. **Pastikan
 ```RayCast3D``` menghadap arah yang sama dengan ```Camera3D``` dengan mengatur nilai *target position* di *inspector* dan jangan lupa untuk meng-enable node ```RayCast3D``` melalui tab inspector.**
 
+![Inspector RayCast3D](images/raycastinspector.png)
 ![Susunan Player](images/playertree.png)
 
 Pada *node* ```RayCast3D```, tambahkan *script* sebagai berikut:
@@ -313,7 +318,7 @@ untuk membuat objek 3D untuk menghias room yang telah kita buat.
 Untuk memudahkan penglihatan pada *viewport*, anda dapat mengubah proyeksi menjadi *Orthogonal* dengan mengklik menu
 pojok kiri atas dalam *viewport*.
 
-![Changing Projection](images/ChangeProjection.jpg)
+![Changing Projection](images/ChangeProjection.png)
 
 Buat sebuah 3D Scene baru dan beri nama ```ObjLamp```. Tambahkan child node baru dengan memilih ```CSGCombiner3D``` dan
 beri nama ```lamp```. ```CSGCombiner3D``` berfungsi sebagai tempat untuk mengatur komponen CSG di dalamnya, jangan lupa
@@ -323,9 +328,7 @@ Dalam ```lamp``` masukkan child note untuk membentuk bagian lampu.
 
 - Buat ```CSGCylinder3D``` dengan cek *cone* pada tab Inspector untuk bagian bawah lampu.
 - Buat ```CSGCylinder3D``` dan atur ukuran pada tab Inspector untuk menjadi tiang lampu.
-- Buat ```CSGPolygon3D``` dengan memilih Mode *Spin* pada tab Inspector, lalu ubah proyeksi menjadi *Front View* dan atur
-
-Titik pada polygon hingga membentuk trapesium untuk membentuk penutup lampu.
+- Buat ```CSGPolygon3D``` dengan memilih Mode *Spin* pada tab Inspector, lalu ubah proyeksi menjadi *Front View* dan atur titik pada polygon hingga membentuk trapesium untuk membentuk penutup lampu.
 
 ![CSG Lamp](images/CSGLamp.png)
 
@@ -352,12 +355,12 @@ Misalkan kita ingin menambahkan halangan untuk player dapat menuju goal seperti 
 
 Buka Scene ```World 1```, lalu buat ```CSGCombiner``` baru dan centang ```Use Collision``` pada tab Inspector. Lalu masukkan Node ```Room 1``` ke dalam CSGCombiner yang telah dibuat. Tambahkan 2 ```CSGBox``` ke dalam CSGCombiner3D masing-masing akan menjadi room yang baru dan lubang. Atur sedemikian rupa menggunakan operation ```Union``` untuk membuat ruang baru dan lubang.
 
-![Obstacle Mapping](images/ObstacleMap.jpg)
-![Obstacle](images/obstacle.jpg)
+![Obstacle Mapping](images/ObstacleMap.png)
+![Obstacle](images/obstacle.png)
 
 Lalu tambahkan ```CSGBox3D``` lagi diluar CSGCombiner3D agar player bisa melompati lubang untuk menyebrang.
 
-![Jumping Path](images/path.jpg)
+![Jumping Path](images/path.png)
 
 ### Adding Goal Condition
 
@@ -365,12 +368,12 @@ Sebelumnya kamu telah telah belajar menggunakan signals pada 2D level, kali ini 
 
 Pertama buat scene baru (nama bebas) dengan ```Area3D``` sebagai root node.
 
-![New Area](images/AreaNode.jpg)
+![New Area](images/AreaNode.png)
 
 Lalu tambahkan node ```CollisionShape3D``` sebagai child dari node ```Area3D``` tadi.
 Jangan lupa untuk membuat _collision shape_ pada node ```CollisionShape3D``` (Kamu seharusnya sudah pernah melakukannya pada tutorial sebelumnya) kali ini buat bentuk *Sphere*.
 
-![Area Hierarchy](images/AreaMap.jpg)
+![Area Hierarchy](images/AreaMap.png)
 
 Kemudian _attach_ sebuah script pada node ```Area3D``` (penamaan bebas).
 Hapus semua baris kecuali baris pertama, kita akan menggunakan _Signals_ untuk fitur ini.
@@ -380,12 +383,12 @@ Hapus semua baris kecuali baris pertama, kita akan menggunakan _Signals_ untuk f
 Pertama select node ```Area3D``` lalu buka tab ```Node```.
 Lalu pada subtab ```Signals``` pilih ```body_entered(Node body)``` dan klik tombol ```Connect``` di kanan bawah tab tersebut.
 
-![Signals](images/AreaSignals.jpg)
+![Signals](images/AreaSignals.png)
 
 Pastikan ```Area3D``` terpilih pada bagian ```Connect To Node```, isi ```Method In Node``` dengan nama fungsi yang kamu inginkan atau biarkan default.
 Jika sudah tekan tombol ```Connect```
 
-![Connect Signal](images/AreaSignalAdd.jpg)
+![Connect Signal](images/AreaSignalAdd.png)
 
 Maka script pada ```Area3D``` akan ditambah fungsi tersebut.
 
@@ -397,7 +400,7 @@ extends Area3D
 
 @export var sceneName := "Level 1"
 
-func _on_Area_Trigger_body_entered(body):
+func _on_body_entered(body: Node3D) -> void:
 	if body.get_name() == "Player":
 		get_tree().change_scene_to_file(str("res://scenes/" + sceneName + ".tscn"))
 ```
@@ -412,7 +415,7 @@ Save scene dan script tersebut (Mulai sekarang disebut ```AreaTrigger```) dan bu
 Kemudian tambahkan scene ```AreaTrigger``` sebagai child dari sprite tersebut, silakan atur scaling sesuai keperluan.
 Jangan lupa ubah variable ```Scene Name``` menjadi "Win Screen".
 
-![Camera Inspector](images/AreaInspector.jpg)
+![Camera Inspector](images/AreaInspector.png)
 
 Lakukan hal yang sama untuk area lubang namun dengan ```Scene Name``` diisi dengan "Level 1".
 Supaya ketika player jatuh ke jurang, scene akan di-reload.
@@ -458,7 +461,7 @@ Jangan lupa untuk menjelaskan proses pengerjaan tutorial ini di dalam berkas `RE
 Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelaskan proses implementasi.
 Kemudian, _push_ riwayat _commit_-nya ke repositori Git pengerjaan Tutorial 7 dan kumpulkan tautan (URL) repositori Git kamu di slot pengumpulan yang tersedia di SCELE.
 
-Tenggat waktu pengumpulan adalah **Jumat, 28 Maret 2025, pukul 21:00**.
+Tenggat waktu pengumpulan adalah **Jumat, 3 April 2026, pukul 21:00**.
 
 ## Referensi
 
