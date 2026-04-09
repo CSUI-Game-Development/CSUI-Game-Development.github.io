@@ -1,6 +1,16 @@
 # Tutorial 8 - Game Polishing & Balancing
 
-Selamat datang pada tutorial kelima kuliah Game Development. Pada tutorial kali ini, kamu akan mempelajari cara apa yang dimaksud dengan ***Game Polishing*** dan juga ***Game Balancing***. Dalam ***Game Polishing*** kamu akan belajar mengenai ***Particles***. Sedangkan dalam ***Game Balancing*** kamu akan mencoba untuk melakukan *balancing* sederhana.
+Selamat datang pada tutorial kedelapan, terakhir di mata kuliah Game Development.
+
+Pada tutorial kali ini, kamu akan mempelajari apa yang dimaksud dengan ***Game Polishing*** dan juga ***Game Balancing***. Penasaran? Yuk ikuti tutorialnya
+
+***
+
+> **NOTICE**
+>
+> Untuk tutorial kali ini, diperbolehkan menggunakan [kode templat proyek game yang telah disediakan di GitHub (klik)](https://github.com/CSUI-Game-Development/tutorial-8-template)
+> **ATAU** melanjutkan dari yang sudah dikerjakan di tutorial 6 kemarin. Jika ingin melanjutkan tutorial 6 kemarin,
+> silakan buat _branch_ baru di repositori Git tutorial 6 yang akan berisi hasil pengerjaan tutorial ini (misal: _branch_ `tutorial-8`).😄
 
 ## Daftar isi
 
@@ -21,17 +31,38 @@ Selamat datang pada tutorial kelima kuliah Game Development. Pada tutorial kali 
   - [Referensi](#referensi)
 
 
-## Pengantar
+## Part 1: Game Polishing
 
-> IMPORTANT: Untuk tutorial kali ini, diperbolehkan menggunakan [kode templat proyek game yang telah disediakan di GitHub (klik)](https://github.com/CSUI-Game-Development/tutorial-8-template)
-> **ATAU** melanjutkan dari yang sudah dikerjakan di tutorial 6 kemarin. Jika ingin melanjutkan tutorial 6 kemarin,
-> silakan buat _branch_ baru di repositori Git tutorial 6 yang akan berisi hasil pengerjaan tutorial ini (misal: _branch_ `tutorial-8`).
+### Pengantar
 
-### Game Polishing
+Selama mengikuti tutorial-tutorial di kelas game development, kalian sudah membuat game cukup sederhana berupa platformer 2D dan first-person 3D.
+Namun, masih ada ... yang belum ....
 
-Selama mengerjakan tutorial game development ini, game yang sudah dibuat cukup sederhana. Mulai dari platformer 2D sederhana hingga first person (shooter?) 3D sederhana. Namun dalam game yang sudah dibuat masih belum ada "pemanis" yang diberikan ke pemain agar game yang dimainkan terlihat/terasa oleh pemain. Apa saja sih pemanisnya itu? Banyak hal yang dapat dilakukan oleh game developer agar dapat membuat game lebih menarik bagi pemain, hal ini dapat berupa visual ataupun audio. Dalam visual, game developer dapat membuat asset yang menarik bagi pemain, menggunakan post-processing agar asset yang ada lebih terlihat bersih, ataupun menambahkan detail-detail kecil berupa animasi ataupun particle yang dapat membuat game terlihat lebih dinamik.
+Game Feel
+
+Nah disini dimana Game Polishing datang. Game Polishing ... visual, audio, kontrol, dan lain sebagainya.
+
+Sebagai contoh,
+visuals: Models, Textures, Particles, Post-processing
+audio: Dynamic Score, Sound Feedback (e.g: footsteps, jump, hurt, win, dying)
+controls: Input Buffering (e.g: jump buffer, coyote time), Movement Acceleration (e.g: swimming in CALLISTO, Counter-Strike movement)
+
+Ada juga yang tidak berhubungan dengan "Game Feel" namun berkontribusi memberikan player experience yang lebih baik, contoh:
+controls rebinding (partial rebind, full rebind)
+audio controls (master volume, music volume, effects volume, dialogue volume)
+loading and transition screens (supaya tidak *jarring*)
+credits screen apabila list kontributor sudah banyak
+
+---
 
 Berikut adalah beberapa contoh polishing yang ada dalam game-game populer:
+
+HOLLOW KNIGHT -> PARTICLES, ANIMATION, AUDIO FEEDBACK
+-> mungkin ganti game 2D yang gw punya wkwkwk
+
+CELESTE -> JUMP BUFFER, COYOTE TIME
+
+COUNTER-STRIKE -> COUNTER-STRAFING, ACCELERATE/DECELERATE MOVEMENT
 
 Dalam game Hollow Knight, particle banyak digunakan untuk membuat animasi yang ada semakin menarik. Seperti contohnya particle saat menyerang, particle saat menghancurkan pintu ataupun membunuh musuh, hingga particle pada environment level.
 
@@ -46,7 +77,10 @@ Atau mungkin contoh yang lebih tidak terlihat adalah dalam Celeste dan berbagai 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ep_9RtAbwog?si=Eku2YbQafNTx7Rgt&amp;start=184" title="
 How to make a good platforming character (Developing 6)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-### Game Balancing
+
+## Part 2: Game Balancing
+
+### Pengantar
 
 Pada tutorial-4 kemarin, kamu sudah mempelajari mengenai basic 2D level design, dan mencoba untuk mendesain suatu level. Namun, apakah kamu yakin level yang kamu buat sudah pasti bisa diselesaikan oleh pemain? apakah kamu yakin level yang kamu buat tidak membuat pemain kesal dan akhirnya berhenti memainkan game kamu? Jika tidak, maka kamu perlu untuk memainkan kembali level yang kamu buat dan lakukan *Game Balancing* pada level tersebut. Banyak hal yang dapat dilakukan untuk melakukan _balancing_ pada suatu level, mulai dari mengubah nilai-nilai yang digunakan dalam script yang digunakan, hingga mengubah level design yang sudah dibuat agar level lebih _balanced_.
 
@@ -56,6 +90,10 @@ Dalam game Cat Mario, level sengaja dibuat sangat susah karena game Cat Mario di
 
 ![Cat Mario](images/cat-mario.gif)
 
+new:
+Deadlock
+
+prev:
 Dalam permainan League of Legends, balancing dilakukan setiap saat karena permainan MOBA memang merupakan game multiplayer yang dirancang agar menjadi game yang [Perfect Imbalance](https://www.youtube.com/watch?v=e31OSVZF77w), dimana balancing dilakukan agar permainan tetap menyenangkan bagi pemain dengan memberikan perubahan meta di setiap patch change-nya.
 
 ![League of Legends Patch Notes Welcome to Noxus](images/patch-notes.png)
@@ -118,8 +156,8 @@ Sepertinya particle yang sudah kita buat sudah mirip dengan hujan, coba kita lia
 
 ![Missing Particle](images/missing-particle-camera.gif)
 
-Loh? kok ketika kita gerak particlenya hilang? Itu karena particle hanya akan ditampilkan jika drawing areanya berada di camera. Oleh karena itu kita harus mengubah drawing area particle kita dan juga posisinya. Pada tab ```Drawing``` ubah ```Visibilty Rect``` menjadi $w=2000$ dan $h=500$ untuk mengubah ukuran drawing area particle dan titik tengahnya. 
-Ingatlah kalau lokasi ```Drawing area``` ini lah yang menentukan apakah particle kalian di-render atau tidak, sehingga pastikan ```position``` dari drawing area masuk ke dalam kamera dalam game. 
+Loh? kok ketika kita gerak particlenya hilang? Itu karena particle hanya akan ditampilkan jika drawing areanya berada di camera. Oleh karena itu kita harus mengubah drawing area particle kita dan juga posisinya. Pada tab ```Drawing``` ubah ```Visibilty Rect``` menjadi $w=2000$ dan $h=500$ untuk mengubah ukuran drawing area particle dan titik tengahnya.
+Ingatlah kalau lokasi ```Drawing area``` ini lah yang menentukan apakah particle kalian di-render atau tidak, sehingga pastikan ```position``` dari drawing area masuk ke dalam kamera dalam game.
 
 - Properti ```Visibility Rect``` melambangkan ukuran drawing area (visibility area) dari particle kita.
 
@@ -215,6 +253,11 @@ Hmm pemain sudah bisa melewati rintangan untuk mencapai akhir level. Namun seper
 
 Selamat, tutorial ini sudah selesai!
 
+new:
+latihan mandiri: extra polishing
+di tutorial ini, kalian sudah
+
+prev:
 <!-- ## Latihan Mandiri: Rencana Polishing & Balancing Pada Game Proyek Kelompok
 
 Pada tutorial kali ini, tidak ada latihan mandiri spesifik untuk berlatih mengenai _polishing_ dan _balancing_.
