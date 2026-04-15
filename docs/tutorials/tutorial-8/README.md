@@ -1,8 +1,8 @@
-# Tutorial 8 - Game Polishing & Balancing
+# Tutorial 8 - Game Feel, Polishing & Balancing
 
 Selamat datang pada tutorial kedelapan, terakhir di mata kuliah Game Development.
 
-Pada tutorial kali ini, kamu akan mempelajari apa yang dimaksud dengan ***Game Polishing*** dan juga ***Game Balancing***. Penasaran? Yuk ikuti tutorialnya
+Pada tutorial kali ini, kamu akan mempelajari apa yang dimaksud dengan ***Game Polishing*** dan ***Game Balancing***. Penasaran? Yuk ikuti tutorialnya
 
 ***
 
@@ -31,31 +31,38 @@ Pada tutorial kali ini, kamu akan mempelajari apa yang dimaksud dengan ***Game P
   - [Referensi](#referensi)
 
 
-## Part 1: Game Polishing
+## Part 1: Game Feel & Polishing
 
 ### Pengantar
 
-Selama mengikuti tutorial-tutorial di kelas game development, kalian sudah membuat game cukup sederhana berupa platformer 2D dan first-person 3D.
-Namun, masih ada ... yang belum ....
+<!--Selama mengerjakan tutorial game development ini, game yang sudah dibuat cukup sederhana.
+Mulai dari platformer 2D sederhana hingga first person (shooter?) 3D sederhana. Namun dalam
+game yang sudah dibuat masih belum ada "pemanis" yang diberikan ke pemain agar game yang
+dimainkan terlihat/terasa oleh pemain. Apa saja sih pemanisnya itu? Banyak hal yang dapat
+dilakukan oleh game developer agar dapat membuat game lebih menarik bagi pemain, hal ini
+dapat berupa visual ataupun audio. Dalam visual, game developer dapat membuat asset yang
+menarik bagi pemain, menggunakan post-processing agar asset yang ada lebih terlihat bersih,
+ataupun menambahkan detail-detail kecil berupa animasi ataupun particle yang dapat membuat
+game terlihat lebih dinamik.-->
 
-Game Feel
+**Game Feel** adalah konsep abstrak yang menunjuk ke "sensasi" (feel) yang dirasakan oleh
+pemain ketika memainkan game. Game feel yang baik memberikan pemain pengalaman yang menarik
+(engaging) dan "rewarding". Idealnya, game menarik untuk dimainkan bahkan ketika dalam
+bentuk yang paling sederhana tanpa plot, grafik, musik, dan level desain.
 
-Nah disini dimana Game Polishing datang. Game Polishing ... visual, audio, kontrol, dan lain sebagainya.
+**Game Polishing** refers to the act of enhancing the interaction within a game, often through
+adding visual effects, sound effects, animation, music, particles, etc. This process
+inadvertently also changes how the game "feels", thus connecting the two concepts.
+<!---- TODO needs translations-->
 
-Sebagai contoh,
+<!--Sebagai contoh,
 visuals: Models, Textures, Particles, Post-processing
 audio: Dynamic Score, Sound Feedback (e.g: footsteps, jump, hurt, win, dying)
-controls: Input Buffering (e.g: jump buffer, coyote time), Movement Acceleration (e.g: swimming in CALLISTO, Counter-Strike movement)
+controls: Input Buffering (e.g: jump buffer, coyote time), Movement Acceleration (e.g: swimming in CALLISTO, Counter-Strike movement)-->
 
-Ada juga yang tidak berhubungan dengan "Game Feel" namun berkontribusi memberikan player experience yang lebih baik, contoh:
-controls rebinding (partial rebind, full rebind)
-audio controls (master volume, music volume, effects volume, dialogue volume)
-loading and transition screens (supaya tidak *jarring*)
-credits screen apabila list kontributor sudah banyak
+Berikut beberapa contoh polishing yang mengubah game feel:
 
----
-
-Berikut adalah beberapa contoh polishing yang ada dalam game-game populer:
+<!--Berikut adalah beberapa contoh polishing yang ada dalam game-game populer:
 
 HOLLOW KNIGHT -> PARTICLES, ANIMATION, AUDIO FEEDBACK
 -> mungkin ganti game 2D yang gw punya wkwkwk
@@ -75,32 +82,39 @@ Dalam game GTA V, polishing yang dapat dilihat pada scene _wasted_ adalah effect
 Atau mungkin contoh yang lebih tidak terlihat adalah dalam Celeste dan berbagai platformer lainnya dimana terdapat banyak fitur tambahan untuk membuat pemain merasakan lebih nyaman dengan physics yang ada. Dapat dilihat pada video berikut:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ep_9RtAbwog?si=Eku2YbQafNTx7Rgt&amp;start=184" title="
-How to make a good platforming character (Developing 6)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+How to make a good platforming character (Developing 6)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>-->
 
+#### Response Polishing?
 
-## Part 2: Game Balancing
+...
 
-### Pengantar
+#### Visuals Polishing
 
-Pada tutorial-4 kemarin, kamu sudah mempelajari mengenai basic 2D level design, dan mencoba untuk mendesain suatu level. Namun, apakah kamu yakin level yang kamu buat sudah pasti bisa diselesaikan oleh pemain? apakah kamu yakin level yang kamu buat tidak membuat pemain kesal dan akhirnya berhenti memainkan game kamu? Jika tidak, maka kamu perlu untuk memainkan kembali level yang kamu buat dan lakukan *Game Balancing* pada level tersebut. Banyak hal yang dapat dilakukan untuk melakukan _balancing_ pada suatu level, mulai dari mengubah nilai-nilai yang digunakan dalam script yang digunakan, hingga mengubah level design yang sudah dibuat agar level lebih _balanced_.
+Visual effects, animasi
 
-Berikut adalah beberapa contoh mengenai game balancing:
+#### Audio Polishing
 
-Dalam game Cat Mario, level sengaja dibuat sangat susah karena game Cat Mario didesin untuk menjadi _Rage Game_. Namun dalam pembuatan levelnya, pasti tetap dilakukan balancing agar level yang dibuat dapat diselesaikan oleh pemain dalam keadaan ***Rage*** bukan sampai ***Rage Quit***.
+Background music, Sound effect
 
-![Cat Mario](images/cat-mario.gif)
+#### Tambahan: Polishing Non-Game Feel
 
-new:
-Deadlock
+Ada juga yang tidak berhubungan dengan "Game Feel" namun berkontribusi memberikan player experience yang lebih baik, contoh:
+controls rebinding (partial rebind, full rebind)
+audio controls (master volume, music volume, effects volume, dialogue volume)
+loading and transition screens (supaya tidak *jarring*)
+credits screen apabila list kontributor sudah banyak
 
-prev:
-Dalam permainan League of Legends, balancing dilakukan setiap saat karena permainan MOBA memang merupakan game multiplayer yang dirancang agar menjadi game yang [Perfect Imbalance](https://www.youtube.com/watch?v=e31OSVZF77w), dimana balancing dilakukan agar permainan tetap menyenangkan bagi pemain dengan memberikan perubahan meta di setiap patch change-nya.
+## Latihan: Menambahkan percepatan/perlambatan untuk pergerakan Player
 
-![League of Legends Patch Notes Welcome to Noxus](images/patch-notes.png)
+Selama mengerjakan tutorial game development ini, game yang sudah dibuat cukup sederhana.
+Mulai dari platformer 2D sederhana hingga first person (shooter?) 3D sederhana. Namun, ketika
+dimainkan, game tersebut masih terasa "hambar". Di tutorial ini, kita akan ...
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/e31OSVZF77w?si=GvMLMMKMcag9H-ZP" title="
-Perfect Imbalance - Why Unbalanced Design Creates Balanced Play - Extra Credits" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+## Latihan: Menambahkan Particles
 
+Setelah menambahkan...
+
+<!--
 ## Latihan: Creating Particles
 
 ### Particles
@@ -233,7 +247,26 @@ func get_input():
 
 ![Trail Done](images/trail-done.gif)
 
-Done! Sekarang particle sudah terlihat seperti trail jalan player!
+Done! Sekarang particle sudah terlihat seperti trail jalan player!-->
+
+## Part 2: Game Balancing
+
+### Pengantar
+
+Pada tutorial-4 kemarin, kamu sudah mempelajari mengenai basic 2D level design, dan mencoba untuk mendesain suatu level. Namun, apakah kamu yakin level yang kamu buat sudah pasti bisa diselesaikan oleh pemain? apakah kamu yakin level yang kamu buat tidak membuat pemain kesal dan akhirnya berhenti memainkan game kamu? Jika tidak, maka kamu perlu untuk memainkan kembali level yang kamu buat dan lakukan *Game Balancing* pada level tersebut. Banyak hal yang dapat dilakukan untuk melakukan _balancing_ pada suatu level, mulai dari mengubah nilai-nilai yang digunakan dalam script yang digunakan, hingga mengubah level design yang sudah dibuat agar level lebih _balanced_.
+
+Berikut adalah beberapa contoh mengenai game balancing:
+
+Dalam game Cat Mario, level sengaja dibuat sangat susah karena game Cat Mario didesin untuk menjadi _Rage Game_. Namun dalam pembuatan levelnya, pasti tetap dilakukan balancing agar level yang dibuat dapat diselesaikan oleh pemain dalam keadaan ***Rage*** bukan sampai ***Rage Quit***.
+
+![Cat Mario](images/cat-mario.gif)
+
+Dalam permainan League of Legends, balancing dilakukan setiap saat karena permainan MOBA memang merupakan game multiplayer yang dirancang agar menjadi game yang [Perfect Imbalance](https://www.youtube.com/watch?v=e31OSVZF77w), dimana balancing dilakukan agar permainan tetap menyenangkan bagi pemain dengan memberikan perubahan meta di setiap patch change-nya.
+
+![League of Legends Patch Notes Welcome to Noxus](images/patch-notes.png)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/e31OSVZF77w?si=GvMLMMKMcag9H-ZP" title="
+Perfect Imbalance - Why Unbalanced Design Creates Balanced Play - Extra Credits" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Latihan: Game Balancing
 
@@ -253,11 +286,6 @@ Hmm pemain sudah bisa melewati rintangan untuk mencapai akhir level. Namun seper
 
 Selamat, tutorial ini sudah selesai!
 
-new:
-latihan mandiri: extra polishing
-di tutorial ini, kalian sudah
-
-prev:
 <!-- ## Latihan Mandiri: Rencana Polishing & Balancing Pada Game Proyek Kelompok
 
 Pada tutorial kali ini, tidak ada latihan mandiri spesifik untuk berlatih mengenai _polishing_ dan _balancing_.
