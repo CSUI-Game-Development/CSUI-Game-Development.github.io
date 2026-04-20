@@ -30,7 +30,9 @@ Penasaran? Yuk ikuti tutorialnya
       - [Creating an Environment Particle](#creating-an-environment-particle)
       - [Creating a Trail Particle](#creating-a-trail-particle)
   - [Game Balancing](#game-balancing)
-    - [Pengantar](#pengantar)
+    - [Pengantar: Apa itu Game Balancing?](#pengantar-apa-itu-game-balancing)
+    - [Contoh: Balancing untuk _Rage Game_](#contoh-balancing-untuk-rage-game)
+    - [Contoh: Perfect Imbalance](#contoh-perfect-imbalance)
     - [Latihan 2: Game Balancing](#latihan-game-balancing)
       - [Balancing Spawn Rate](#balancing-spawn-rate)
   - [Skema Penilaian](#skema-penilaian)
@@ -248,17 +250,31 @@ func get_input():
 
 Done! Sekarang particle sudah terlihat seperti trail jalan player!-->
 
-## Part 2: Game Balancing
+## Game Balancing
 
-### Pengantar
+### Pengantar: Apa itu Game Balancing?
 
-Pada tutorial-4 kemarin, kamu sudah mempelajari mengenai basic 2D level design, dan mencoba untuk mendesain suatu level. Namun, apakah kamu yakin level yang kamu buat sudah pasti bisa diselesaikan oleh pemain? apakah kamu yakin level yang kamu buat tidak membuat pemain kesal dan akhirnya berhenti memainkan game kamu? Jika tidak, maka kamu perlu untuk memainkan kembali level yang kamu buat dan lakukan *Game Balancing* pada level tersebut. Banyak hal yang dapat dilakukan untuk melakukan _balancing_ pada suatu level, mulai dari mengubah nilai-nilai yang digunakan dalam script yang digunakan, hingga mengubah level design yang sudah dibuat agar level lebih _balanced_.
+<!--Pada tutorial-4 kemarin, kamu sudah mempelajari mengenai basic 2D level design, dan mencoba untuk mendesain suatu level. Namun, apakah kamu yakin level yang kamu buat sudah pasti bisa diselesaikan oleh pemain? apakah kamu yakin level yang kamu buat tidak membuat pemain kesal dan akhirnya berhenti memainkan game kamu? Jika tidak, maka kamu perlu untuk memainkan kembali level yang kamu buat dan lakukan *Game Balancing* pada level tersebut. Banyak hal yang dapat dilakukan untuk melakukan _balancing_ pada suatu level, mulai dari mengubah nilai-nilai yang digunakan dalam script yang digunakan, hingga mengubah level design yang sudah dibuat agar level lebih _balanced_.-->
 
-Berikut adalah beberapa contoh mengenai game balancing:
+Pada tutorial sebelumnya, kamu sudah mempelajari mengenai _basic 2D level_ design dan membuat
+suatu level dengan rintangan. Namun, apakah kamu yakin level tersebut sudah pasti bisa
+diselesaikan oleh pemain? Apakah pemain merasa level terlalu gampang atau kurang menantang?
+Jika jawaban kamu belum sesuai dengan harapan dari game desainer, maka kamu perlu melakukan
+Game Balancing pada level tersebut.
+
+Berbeda dengan Game Polishing yang hanya mengubah tampilan dari fitur yang ada di game,
+**Game Balancing** mengubah sistem yang ada di game. Hal ini bisa dilakukan dengan
+memodifikasi Rules, Complexity, Player Progression, Variables, dan lain sebagainya.
+
+Di bagian selanjutnya, kita akan melihat beberapa contoh mengenai game balancing:
+
+### Contoh: Balancing untuk _Rage Game_
 
 Dalam game Cat Mario, level sengaja dibuat sangat susah karena game Cat Mario didesin untuk menjadi _Rage Game_. Namun dalam pembuatan levelnya, pasti tetap dilakukan balancing agar level yang dibuat dapat diselesaikan oleh pemain dalam keadaan ***Rage*** bukan sampai ***Rage Quit***.
 
 ![Cat Mario](images/cat-mario.gif)
+
+### Contoh: Perfect Imbalance
 
 Dalam permainan League of Legends, balancing dilakukan setiap saat karena permainan MOBA memang merupakan game multiplayer yang dirancang agar menjadi game yang [Perfect Imbalance](https://www.youtube.com/watch?v=e31OSVZF77w), dimana balancing dilakukan agar permainan tetap menyenangkan bagi pemain dengan memberikan perubahan meta di setiap patch change-nya.
 
@@ -267,9 +283,9 @@ Dalam permainan League of Legends, balancing dilakukan setiap saat karena permai
 <iframe width="560" height="315" src="https://www.youtube.com/embed/e31OSVZF77w?si=GvMLMMKMcag9H-ZP" title="
 Perfect Imbalance - Why Unbalanced Design Creates Balanced Play - Extra Credits" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## Latihan: Game Balancing
+### Latihan: Game Balancing
 
-### Balancing Spawn Rate
+#### Balancing Spawn Rate
 
 Sekarang kita akan mencoba untuk melakukan balancing pada game yang sudah kita buat. Untuk itu sudah disediakan template scene ```Spawner.tscn```, masukkan scene tersebut ke Level 1, di akhir platform tengah (posisi transform x 1700 y 280). Lalu coba mainkan gamenya.
 
