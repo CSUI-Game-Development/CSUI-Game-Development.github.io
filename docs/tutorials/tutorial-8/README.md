@@ -64,7 +64,7 @@ game, misal lewat efek visual, efek suara, animasi, musik, partikel, dan lain se
 Polish adalah salah satu dari enam metrik Game Feel, sehingga proses Game Polishing akan
 mengubah pengalaman pemain ketika memainkan game.
 
-> We can think of polishing as giving more *feedback* for *interactions* in the game
+> We can think of polishing as giving more _feedback_ for _interactions_ in the game
 > without changing the underlying system.
 
 Di bagian selanjutnya, kita akan melihat beberapa contoh polishing yang diterapkan
@@ -74,10 +74,10 @@ di game-game populer:
 
 <!-- FOCUS ON VISUALS POLISH -->
 
-Di Celeste (2018), partikel, animasi, *camera shake*, dan efek visual lainnya
+Di Celeste (2018), partikel, animasi, _camera shake_, dan efek visual lainnya
 digunakan untuk menyampaikan interaksi yang dilakukan oleh pemain dengan game.
 Contohnya: (1) Berbagai partikel dan animasi ketika karakter digerakkan, (2)
-*camera shake* dan partikel ketika karakter tewas, dan (3) partikel pada
+_camera shake_ dan partikel ketika karakter tewas, dan (3) partikel pada
 environment level yang memberitahu arah rintangan arus angin.
 
 ![Berbagai partikel dan animasi ketika karakter digerakkan](assets/celeste_1.mp4)
@@ -101,8 +101,8 @@ mereka mendekati solusi dari puzzle.
 <!-- ini aku kurang yakin sihhh -->
 
 Ada juga yang sifat polishing yang tidak berhubungan dengan "Game Feel"
-namun tetap berkontribusi memberikan pemain *experience* yang lebih baik,
-misal opsi untuk mengubah *keybind* atau *control scheme* permainan atau opsi
+namun tetap berkontribusi memberikan pemain _experience_ yang lebih baik,
+misal opsi untuk mengubah _keybind_ atau _control scheme_ permainan atau opsi
 mengubah level audio sesuai tipenya serta mengaktifkan/menonaktifkan subtitel.
 
 ## Latihan: Menambahkan percepatan/perlambatan untuk pergerakan Player
