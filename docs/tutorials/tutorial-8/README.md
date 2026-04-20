@@ -1,39 +1,46 @@
-# Tutorial 8 - Game Feel, Polishing & Balancing
+# Tutorial 8 - Game Polishing & Balancing
 
 Selamat datang pada tutorial kedelapan, terakhir di mata kuliah Game Development.
 
-Pada tutorial kali ini, kamu akan mempelajari apa yang dimaksud dengan ***Game Polishing*** dan ***Game Balancing***. Penasaran? Yuk ikuti tutorialnya
+Pada tutorial kali ini, kamu akan mempelajari apa yang dimaksud dengan
+***Game Feel***, **Game Polishing** dan ***Game Balancing***.
+Penasaran? Yuk ikuti tutorialnya
 
 ***
 
 > **NOTICE**
 >
-> Untuk tutorial kali ini, diperbolehkan menggunakan [kode templat proyek game yang telah disediakan di GitHub (klik)](https://github.com/CSUI-Game-Development/tutorial-8-template)
-> **ATAU** melanjutkan dari yang sudah dikerjakan di tutorial 6 kemarin. Jika ingin melanjutkan tutorial 6 kemarin,
-> silakan buat _branch_ baru di repositori Git tutorial 6 yang akan berisi hasil pengerjaan tutorial ini (misal: _branch_ `tutorial-8`).😄
+> Untuk tutorial kali ini, diperbolehkan menggunakan
+> [kode templat proyek game yang telah disediakan di GitHub (klik)](https://github.com/CSUI-Game-Development/tutorial-8-template)
+> **ATAU** melanjutkan dari yang sudah dikerjakan di tutorial 6 kemarin.
+> Jika ingin melanjutkan tutorial 6 kemarin,
+> silakan buat _branch_ baru di repositori Git tutorial 6 yang akan berisi hasil
+> pengerjaan tutorial ini (misal: _branch_ `tutorial-8`).😄
 
 ## Daftar isi
 
 - [Tutorial 8 - Game Polishing & Balancing](#tutorial-8---game-polishing--balancing)
   - [Daftar Isi](#daftar-isi)
-  - [Pengantar](#pengantar)
-    - [Game Polishing](#game-polishing)
-    - [Game Balancing](#game-balancing)
-  - [Latihan: Creating Particles](#latihan-creating-particles)
-    - [Particles](#particles)
-    - [Creating an Environment Particle](#creating-an-environment-particle)
-    - [Creating a Trail Particle](#creating-a-trail-particle)
-  - [Latihan: Game Balancing](#latihan-game-balancing)
-    - [Balancing Spawn Rate](#balancing-spawn-rate)
-  - [Latihan Mandiri: Rencana Polishing & Balancing Pada Game Proyek Kelompok](#latihan-mandiri-rencana-polishing--balancing-pada-game-proyek-kelompok)
+  - [Game Polishing](#game-polishing)
+    - [Pengantar: Game Feel dan Polishing](#pengantar-game-feel-dan-polishing)
+    - [Contoh: Visual Polishing](#contoh-visual-polishing)
+    - [Contoh: Sound Polishing](#contoh-sound-polishing)
+    - [Latihan 1: Creating Particles](#latihan-creating-particles)
+      - [Particles](#particles)
+      - [Creating an Environment Particle](#creating-an-environment-particle)
+      - [Creating a Trail Particle](#creating-a-trail-particle)
+  - [Game Balancing](#game-balancing)
+    - [Pengantar](#pengantar)
+    - [Latihan 2: Game Balancing](#latihan-game-balancing)
+      - [Balancing Spawn Rate](#balancing-spawn-rate)
   - [Skema Penilaian](#skema-penilaian)
   - [Pengumpulan](#pengumpulan)
   - [Referensi](#referensi)
 
 
-## Part 1: Game Feel & Polishing
+## Game Polishing
 
-### Pengantar
+### Pengantar: Game Feel dan Polishing
 
 <!--Selama mengerjakan tutorial game development ini, game yang sudah dibuat cukup sederhana.
 Mulai dari platformer 2D sederhana hingga first person (shooter?) 3D sederhana. Namun dalam
@@ -45,64 +52,56 @@ menarik bagi pemain, menggunakan post-processing agar asset yang ada lebih terli
 ataupun menambahkan detail-detail kecil berupa animasi ataupun particle yang dapat membuat
 game terlihat lebih dinamik.-->
 
-**Game Feel** adalah konsep abstrak yang menunjuk ke "sensasi" (feel) yang dirasakan oleh
+**Game Feel** adalah konsep abstrak yang menunjuk ke "sensasi" (feel) yang dialami oleh
 pemain ketika memainkan game. Game feel yang baik memberikan pemain pengalaman yang menarik
 (engaging) dan "rewarding". Idealnya, game menarik untuk dimainkan bahkan ketika dalam
-bentuk yang paling sederhana tanpa plot, grafik, musik, dan level desain.
+bentuk yang paling sederhana.
 
-**Game Polishing** refers to the act of enhancing the interaction within a game, often through
-adding visual effects, sound effects, animation, music, particles, etc. This process
-inadvertently also changes how the game "feels", thus connecting the two concepts.
-<!---- TODO needs translations-->
+**Game Polishing** adalah proses "meningkatkan" (enhancing) interaksi yang ada di dalam
+game, misal lewat efek visual, efek suara, animasi, musik, partikel, dan lain sebagainya.
+Polish adalah salah satu dari enam metrik Game Feel, sehingga proses Game Polishing akan
+mengubah pengalaman pemain ketika memainkan game.
 
-<!--Sebagai contoh,
-visuals: Models, Textures, Particles, Post-processing
-audio: Dynamic Score, Sound Feedback (e.g: footsteps, jump, hurt, win, dying)
-controls: Input Buffering (e.g: jump buffer, coyote time), Movement Acceleration (e.g: swimming in CALLISTO, Counter-Strike movement)-->
+> We can think of polishing as giving more *feedback* for *interactions* in the game
+> without changing the underlying system.
 
-Berikut beberapa contoh polishing yang mengubah game feel:
+Di bagian selanjutnya, kita akan melihat beberapa contoh polishing yang diterapkan
+di game-game populer:
 
-<!--Berikut adalah beberapa contoh polishing yang ada dalam game-game populer:
+### Contoh: Visual Polishing
 
-HOLLOW KNIGHT -> PARTICLES, ANIMATION, AUDIO FEEDBACK
--> mungkin ganti game 2D yang gw punya wkwkwk
+<!-- FOCUS ON VISUALS POLISH -->
 
-CELESTE -> JUMP BUFFER, COYOTE TIME
+Di Celeste (2018), partikel, animasi, *camera shake*, dan efek visual lainnya
+digunakan untuk menyampaikan interaksi yang dilakukan oleh pemain dengan game.
+Contohnya: (1) Berbagai partikel dan animasi ketika karakter digerakkan, (2)
+*camera shake* dan partikel ketika karakter tewas, dan (3) partikel pada
+environment level yang memberitahu arah rintangan arus angin.
 
-COUNTER-STRIKE -> COUNTER-STRAFING, ACCELERATE/DECELERATE MOVEMENT
+![Berbagai partikel dan animasi ketika karakter digerakkan](assets/celeste_1.mp4)
 
-Dalam game Hollow Knight, particle banyak digunakan untuk membuat animasi yang ada semakin menarik. Seperti contohnya particle saat menyerang, particle saat menghancurkan pintu ataupun membunuh musuh, hingga particle pada environment level.
+![*Camera shake* dan partikel ketika karakter tewas](assets/celeste_2.mp4)
 
-![Hollow Knight](images/hollow-knight.gif)
+![Partikel pada environment level yang memberitahu arah rintangan arus angin](assets/celeste_3.mp4)
 
-Dalam game GTA V, polishing yang dapat dilihat pada scene _wasted_ adalah effect slow-motion yang ada, perubahan color balancing untuk memberikan efek kalah/mati, hingga penggunaan sound fx yang sangat khas.
+### Contoh: Sound Polishing
 
-![GTA V](images/gta-wasted.gif)
+<!-- FOCUS ON AUDIO POLISH -->
 
-Atau mungkin contoh yang lebih tidak terlihat adalah dalam Celeste dan berbagai platformer lainnya dimana terdapat banyak fitur tambahan untuk membuat pemain merasakan lebih nyaman dengan physics yang ada. Dapat dilihat pada video berikut:
+Di Portal 2 (2012), musik secara dinamis berubah sesuai aksi yang dilakukan
+pemain untuk menyelesaikan level. Hal ini memberikan petunjuk bagi pemain bahwa
+mereka mendekati solusi dari puzzle.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ep_9RtAbwog?si=Eku2YbQafNTx7Rgt&amp;start=184" title="
-How to make a good platforming character (Developing 6)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>-->
+![Portal 2 Dynamic Soundtrack](assets/portal2_dynamic_soundtrack.mp4)
 
-#### Response Polishing?
+### Tambahan: Polishing Non-Game Feel
 
-...
+<!-- ini aku kurang yakin sihhh -->
 
-#### Visuals Polishing
-
-Visual effects, animasi
-
-#### Audio Polishing
-
-Background music, Sound effect
-
-#### Tambahan: Polishing Non-Game Feel
-
-Ada juga yang tidak berhubungan dengan "Game Feel" namun berkontribusi memberikan player experience yang lebih baik, contoh:
-controls rebinding (partial rebind, full rebind)
-audio controls (master volume, music volume, effects volume, dialogue volume)
-loading and transition screens (supaya tidak *jarring*)
-credits screen apabila list kontributor sudah banyak
+Ada juga yang sifat polishing yang tidak berhubungan dengan "Game Feel"
+namun tetap berkontribusi memberikan pemain *experience* yang lebih baik,
+misal opsi untuk mengubah *keybind* atau *control scheme* permainan atau opsi
+mengubah level audio sesuai tipenya serta mengaktifkan/menonaktifkan subtitel.
 
 ## Latihan: Menambahkan percepatan/perlambatan untuk pergerakan Player
 
