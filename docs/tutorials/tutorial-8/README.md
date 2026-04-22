@@ -46,16 +46,6 @@ untuk suatu 2D platformer sederhana. Penasaran? Yuk ikuti tutorialnya 😄
 
 ### Pengantar: Game Feel dan Polishing
 
-<!--Selama mengerjakan tutorial game development ini, game yang sudah dibuat cukup sederhana.
-Mulai dari platformer 2D sederhana hingga first person (shooter?) 3D sederhana. Namun dalam
-game yang sudah dibuat masih belum ada "pemanis" yang diberikan ke pemain agar game yang
-dimainkan terlihat/terasa oleh pemain. Apa saja sih pemanisnya itu? Banyak hal yang dapat
-dilakukan oleh game developer agar dapat membuat game lebih menarik bagi pemain, hal ini
-dapat berupa visual ataupun audio. Dalam visual, game developer dapat membuat asset yang
-menarik bagi pemain, menggunakan post-processing agar asset yang ada lebih terlihat bersih,
-ataupun menambahkan detail-detail kecil berupa animasi ataupun particle yang dapat membuat
-game terlihat lebih dinamik.-->
-
 **Game Feel** adalah konsep abstrak yang menunjuk ke "sensasi" (feel) yang dialami oleh
 pemain ketika memainkan game. Game feel yang baik memberikan pemain pengalaman yang menarik
 (engaging) dan "rewarding". Idealnya, game menarik untuk dimainkan bahkan ketika dalam
@@ -74,8 +64,6 @@ di game-game populer:
 
 ### Contoh: Visual Polishing
 
-<!-- FOCUS ON VISUALS POLISH -->
-
 Di Celeste (2018), partikel, animasi, _camera shake_, dan efek visual lainnya
 digunakan untuk menyampaikan interaksi yang dilakukan oleh pemain dengan game.
 Contohnya: (1) Berbagai partikel dan animasi ketika karakter digerakkan, (2)
@@ -90,8 +78,6 @@ environment level yang memberitahu arah rintangan arus angin.
 
 ### Contoh: Sound Polishing
 
-<!-- FOCUS ON AUDIO POLISH -->
-
 Di Portal 2 (2012), musik secara dinamis berubah sesuai aksi yang dilakukan
 pemain untuk menyelesaikan level. Hal ini memberikan petunjuk bagi pemain bahwa
 mereka mendekati solusi dari puzzle. Perhatikan juga berbagai efek audio yang hadir
@@ -101,8 +87,6 @@ objek, dan menyalakan sensor laser.
 ![Portal 2 Dynamic Soundtrack](assets/portal2_dynamic_soundtrack.mp4)
 
 ### Tambahan: Polishing Non-Game Feel
-
-<!-- ini aku kurang yakin sihhh -->
 
 Ada juga yang sifat polishing yang tidak berhubungan dengan "Game Feel"
 namun tetap berkontribusi memberikan pemain _experience_ yang lebih baik,
@@ -119,8 +103,6 @@ game tersebut masih terasa "hambar".
 
 Di latihan ini, kita akan mencoba meningkatkan _Game Feel_ dengan cara menambahkan
 percepatan dan perlambatan pergerakan untuk pergerakan karakter pemain.
-
-<!--WHY ? explain to them but i cant find the words rn-->
 
 ### Memperbarui Player.gd
 
@@ -202,11 +184,7 @@ tertendang oleh kaki), ubah `Gravity` nilai y menjadi `-100`.
 Pada tab Spawn/Velocity terdapat atribut spread dan initial velocity.
 Ubah `Spread` menjadi `180` derajat, dan `Initial Velocity` menjadi `50`.
 
-<!--gravity and velocity-->
-
 ![Adjusting gravity and velocity](assets/gamepolishing_config1.png)
-
-<!--emission shape-->
 
 Selanjutya, supaya partikel tidak hanya muncul dari satu titik, buka kategori
 `Spawn/Position` dan ubah `Emission Shape` menjadi `Box` diikuti dengan ubah nilai x
@@ -214,7 +192,6 @@ Selanjutya, supaya partikel tidak hanya muncul dari satu titik, buka kategori
 
 ![Changing emission shape](assets/gamepolishing_config2.png)
 
-<!--final touches-->
 Untuk _finishing touches_, ubah `Time/Lifetime` menjadi `0.5` dan
 nilai y dari `Transform/Position` menjadi `40` supaya sesuai letak kaki karakter.
 
@@ -264,146 +241,9 @@ Done! Sekarang particle sudah terlihat seperti _trail_ lari karakter pemain!
 > Untuk informasi lebih lanjut tentang node `GPUParticles2D`, Anda dapat baca
 > dokumentasi di [GPUParticles2D — Godot Docs](https://docs.godotengine.org/en/stable/classes/class_gpuparticles2d.html)
 
-<!--
-## Latihan: Creating Particles
-
-### Particles
-
-Particles merupakan teknik dalam game development untuk menampilkan atau mensimulasikan efek physics yang kompleks, seperti api, asap dari api tersebut, hujan, dan lain-lain. dengan menggunakan particle, game developer dapat memberikan tampilan visual yang lebih detail dan lebih menarik kepada pemain. Dalam game engine Godot, disediakan Node particle untuk game 2D yaitu ```GPUParticles2D```. Dengan menggunakan node ```GPUParticles2D``` kamu dapat membuat berbagai macam efek yang ingin kamu buat. Untuk melakukan itu kamu dapat bermain dengan properties yang ada pada node ```GPUParticles2D```, pada tutorial ini, kamu akan mencoba untuk membuat particle hujan pada level yang sudah disediakan, dan juga particle trail ketika player berjalan di level. Untuk penjelasan properties yang digunakan akan dijelaskan dengan sejalannya tutorial. Berikut adalah perbedaan hasil akhir yang diharapkan dengan level tanpa penggunaan particle:
-
-![Keadaan Awal](images/keadaan-awal.gif)
-
-![Hasil Akhir](images/hasil-akhir.gif)
-
-### Creating an Environment Particle
-
-Pertama, buka template Level 1 yang telah disediakan (atau gunakan level yang sudah kamu buat di tutorial 6 sebelumnya), lalu tambahkan node GPUParticles2D kepada root Node yang ada.
-
-![Add Node GPUParticles2D](images/new-particles2d.png)
-
-Ketika berhasil ditambahkan, node GPUParticles2D akan menampilkan warning, hal ini dikarenakan kamu perlu menambahkan ParticlesMaterial kepada Node GPUParticles2D agar dapat berjalan. Hal ini dapat ditemukan di tab inspector, ```Process Material```, lalu tambahkan ParticlesMaterial yang baru.
-
-![New Particles Material](images/particles_material.png)
-
-Sekarang kamu dapat melihat particlemu bejalan, namun hanya berupa titik-titik kecil yang berjatuhan, sekarang kita akan mengubah particle ini agar menjadi hujan yang kita inginkan. (Perlu cukup zoom in untuk lihat)
-
-![first-implemen-particle](images/first-implemen-particle.png)
-
-Karena kita ingin membuat hujan, kita ingin agar titik-titik particle yang kita punya berjumlah banyak, dan bertahan lama di layar. Untuk melakukan itu pada tab inspector, ubah ```Amount``` menjadi 100, ```Lifetime``` menjadi 4.
-Pada Godot 4.3, lifetime mempengaruhi jumlah emisi per detiknya dengan rumus $(amount * amount_scale) / lifetime$. Something to know saja.
-
-![alt text](images/lokasi-amount-lifetime.png)
-
-- Properti ```Amount``` melambangkan banyaknya titik particle yang ingin kita punya.
-- Properti ```Lifetime``` melambangkan lamanya suatu titik particle akan hidup di dunia game kita.
-
-Selanjutnya, kita ingin agar titik particle kita dapat terlihat dari kamera, sehingga kita perlu untuk mengubah ukuran dari particle kita. Klik ```ParticlesMaterial``` yang sudah kita tambahkan sebelumnya, lalu pada tab ```Display/Scale``` ubah ```Scale max``` menjadi 10. Dikarenakan perbedaan antara ```scale min``` dan ```scale max```, maka ukurannya akan secara random dipilih dalam rentang tersebut saat intansiasi masing-masing partikel.
-
-- Properti ```Scale``` melambangkan ukuran dari suatu titik particle.
-
-![Scale](images/scale.png)
-
-Selanjutnya, agar particle yang kita miliki tidak hanyak muncul dari suatu titik saja, kita akan mengubah area awal particle dari titik menjadi persegi panjang yang sangat panjang agar dapat menutupi seluruh level. Pada tab ```Spawn/Position```, ubah ```Emision Shape``` menjadi box, dan ubah ```Emision Box Extents``` value x menjadi 2000. Dari sini particle sudah mulai terlihat seperti hujan.
-
-![Emission Shape](images/emission-shape.png)
-
-Selanjutnya, agar particle yang kita punya terlihat seperti hujan, kita dapat mengubah warnanya. Pada tab ```Display/Color Curves```, ubah ```Color``` menjadi warna biru (#84a6b6). Jika kalian ingin mencoba mengubah atribut lain, sangat dipersilahkan untuk membuat particle yang lebih bagus dan dinamis.
-
-![Color](images/color.png)
-
-Selanjutnya, kita ingin agar hujan kita memiliki kecepatan yang lebih cepat agar menghasilkan ilusi hujan yang lebat. Untuk melakukan ini, pada tab ```Velocity```, ubah ```Spread``` menjadi 20 agar persebaran particle tidak terlalu jauh. Lalu pada tab ```Accelerations/Gravity``` ubah gravity x menjadi -500 dan gravity y menjadi 500 agar particle kita terpengaruh gravitasi ke arah kiri bawah.
-
-- Properti ```Spread``` melambangkan derajat persebaran particle. 180 derajat menandakan particle akan keluar ke segala arah.
-- Properti ```Gravity``` melambangkan besarang gravitasi yang diterima oleh titik particle kita.
-
-Sepertinya particle yang sudah kita buat sudah mirip dengan hujan, coba kita liat dalam in-game.
-
-![Missing Particle](images/missing-particle-camera.gif)
-
-Loh? kok ketika kita gerak particlenya hilang? Itu karena particle hanya akan ditampilkan jika drawing areanya berada di camera. Oleh karena itu kita harus mengubah drawing area particle kita dan juga posisinya. Pada tab ```Drawing``` ubah ```Visibilty Rect``` menjadi $w=2000$ dan $h=500$ untuk mengubah ukuran drawing area particle dan titik tengahnya.
-Ingatlah kalau lokasi ```Drawing area``` ini lah yang menentukan apakah particle kalian di-render atau tidak, sehingga pastikan ```position``` dari drawing area masuk ke dalam kamera dalam game.
-
-- Properti ```Visibility Rect``` melambangkan ukuran drawing area (visibility area) dari particle kita.
-
-![Visibility Rect](images/visibility-rect.png)
-![alt text](image.png)
-
-Sekarang, tinggal beberapa detail lagi yang akan kita buat. Yaitu memberikan trail pada particle particle agar tidak terlihat seperti kotak. Pada tab ```Trail``` ubah ```Enabled``` menjadi $True$, untuk memberikan ekor pada partikel.
-
-- Properti ```Trail``` melambangkan ada tidaknya ekor dari partikel yang digenerasi.
-
-![alt text](images/trail.png)
-
-Done! Sekarang particle sudah terlihat seperti hujan!
-
-![Done Hujan Abu](images/rain_done.gif)
-
-Btw, kalian bisa mengganti tekstur dari partikel layaknya sebuah ```Sprite2D```. Dengan konfigurasi sebelumnya, jika meng-assign ```texture```denan icon.svg, kita akan mendapatkan tampilan seperti berikut.
-
-![alt text](image.png)
-
-Dalam implementasi aslinya, kalian bisa mengganti tekstur dengan snowflake sebagai contoh agar terlihat seperti sedang turun salju.
-
-
-
-### Creating a Trail Particle Jalan
-
-Sekarang kita akan membuat particle trail saat player berjalan. Pertama buka scene ```player.tscn```. Lalu tambahkan kembali Node GPUParticles2D. Dan tambahkan kembali ```ParticlesMaterial```. Berbeda dengan particle environment sebelumnya, untuk particle ini kita akan menggunakan aset yang disediakan. Pada tab ```Texture```, ubah ```Texture``` menjadi menggunakan asset ```Asserts/kenney_platformerpack/PNG/Particles/brickGrey_small.png```.
-- Properti ```Texture``` melambangkan texture yang ingin kita pakai untuk particle kita, jika tidak ada akan menggunakan kotak (seperti pada particle environment hujan)
-
-![Texture](images/texture.png)
-
-Selanjutnya, berbeda dengan sebelumnya, sekarang kita tidak ingin jumlah particle yang cukup banyak karena akan memenuhi trail kita, dan lifetime dari particle tidak perlu lama karena trail tidak akan lama berada di layar, oleh karena itu pada tab ```GPUParticles2D```, ubah ```Amount``` menjadi 4 dan ```Lifetime``` menjadi 0.5.
-
-Selanjutnya, agar particle muncul ke segala arah dan terbang ke atas, ubah ```Gravity``` nilai y menjadi -200, Pada tab ```Spawn/Velocity``` terdapat atribut spread dan initial velocity. Ubah ```Spread``` menjadi 180 derajat, dan ```Initial Velocity``` menjadi 50.
-
-![Spread and Gravity](images/trail-spread-gravity.png)
-
-Selanjutya, agar particle tidak hanya muncul dari satu titik, ubah ```Spawn/Position/Emission Shape``` menjadi box dengan nilai ```x``` 30. Lalu pindahkan pula node GPUParticles2D ke bagian kaki player, pada tab ```Transform``` ubah nilai y menjadi 30.
-
-Selanjutnya, agar particle tidak terus mengikuti player, ubah ```Local Coord``` menjadi ```off```.
-
-![Local Coord](images/trail-local-coord.png)
-
-Sekarang, karena sepertinya sudah terlihat bagus, kita coba mainkan di in-game.
-
-![Trail is Always On](images/trail-always-on.gif)
-
-Sepertinya sudah terlihat cukup bagus, sekarang masalahnya particle selalu berjalan, sedangkan kita hanya ingin particle berjalan ketika player berada di lantai dan sedang berjalan. Untuk melakukan itu kita dapat menggunakan script untuk mengatur kapan particle berjalan dengan mengganti atribut ```Emitting```, dimana atribut ini melambangkan keadaan particle berjalan atau tidak (mengeluarkan particle atau tidak). Untuk itu kita perlu mengubah script ```Player.gd```. Tambahkan baris ini di bagian deklarasi variable:
-
-```gdscript
-@onready var particle = $GPUParticles2D
-```
-
-Lalu ubah fungsi ```get_input``` menjadi:
-
-```gdscript
-func get_input():
-	velocity.x = 0
-	if is_on_floor() and Input.is_action_just_pressed('jump'):
-		velocity.y = jump_speed
-	if Input.is_action_pressed('right'):
-		velocity.x += speed
-		if is_on_floor():
-			particle.set_emitting(true)
-	elif Input.is_action_pressed('left'):
-		velocity.x -= speed
-		if is_on_floor():
-			particle.set_emitting(true)
-	else:
-		particle.set_emitting(false)
-
-```
-
-![Trail Done](images/trail-done.gif)
-
-Done! Sekarang particle sudah terlihat seperti trail jalan player!-->
-
 ## Game Balancing
 
 ### Pengantar: Apa itu Game Balancing?
-
-<!--Pada tutorial-4 kemarin, kamu sudah mempelajari mengenai basic 2D level design, dan mencoba untuk mendesain suatu level. Namun, apakah kamu yakin level yang kamu buat sudah pasti bisa diselesaikan oleh pemain? apakah kamu yakin level yang kamu buat tidak membuat pemain kesal dan akhirnya berhenti memainkan game kamu? Jika tidak, maka kamu perlu untuk memainkan kembali level yang kamu buat dan lakukan *Game Balancing* pada level tersebut. Banyak hal yang dapat dilakukan untuk melakukan _balancing_ pada suatu level, mulai dari mengubah nilai-nilai yang digunakan dalam script yang digunakan, hingga mengubah level design yang sudah dibuat agar level lebih _balanced_.-->
 
 Pada tutorial sebelumnya, kamu sudah mempelajari mengenai _basic 2D level_ design dan membuat
 suatu level dengan rintangan. Namun, apakah kamu yakin level tersebut sudah pasti bisa
@@ -467,46 +307,29 @@ kembali untuk memastikan bahwa level sudah _balanced_.
 
 Selamat, tutorial ini sudah selesai! 🥳
 
-<!-- ## Latihan Mandiri: Rencana Polishing & Balancing Pada Game Proyek Kelompok
-
-Pada tutorial kali ini, tidak ada latihan mandiri spesifik untuk berlatih mengenai _polishing_ dan _balancing_.
-Namun sebagai gantinya, kamu diminta untuk merefleksikan kegiatan _playtesting_ terbuka yang diadakan di area kantin gedung baru Fasilkom UI pekan lalu.
-
-Silakan ingat kembali pengalaman kamu pada kegiatan _playtesting_ pekan lalu dan evaluasi hasil _playtesting_ yang telah kamu kumpulkan bersama tim.
-Kemudian harap jawab pertanyaan-pertanyaan berikut:
-
-1. Apa saja hal-hal positif yang kamu identifikasi dari pengalaman para pemain ketika mencoba game kelompok?
-2. Apa saja hal-hal negatif (atau, _pain points_) yang kamu identifikasi dari pengalaman para pemain ketika mencoba game kelompok?
-3. Dari _feedback_-_feedback_ yang telah diperoleh, apakah ada isu yang terkait pencapaian kondisi _flow_ oleh pemain?
-    - Misalnya, apakah ada tantangan di dalam game yang masih kurang tepat dengan kemampuan pemain pada level tertentu?
-    - Atau, apakah ada rancangan level di dalam game yang dirasa terlalu membosankan bagi pemain?
-4. Dari jawaban kamu terhadap pertanyaan 1 hingga 3, tuliskan secara singkat, dalam bentuk _bullet points_, apa saja hal yang ingin kamu _polish_ dan _balance_?
-5. Untuk masing-masing poin di jawaban pertanyaan 4, jabarkan secara singkat (1 - 3 kalimat) mengenai rencana kerja kamu untuk mengimplementasikan usulan tersebut. -->
-
 ## Skema Penilaian
 
 Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:
 
 - **4** (_**A**_) apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi tim pengajar.
   Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan.
-  <!-- dan menjawab seluruh pertanyaan pada Latihan Mandiri -->
 - **3** (_**B**_) apabila kamu hanya mengerjakan tutorial dan latihan sesuai dengan instruksi.
   Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan.
-   <!-- dan menjawab pertanyaan 1 - 3 pada Latihan Mandiri. -->
 - **2** (_**C**_) atau **1** (_**D**_) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.
-<!-- - **2** (_**C**_) apabila kamu hanya mengerjakan tutorial hingga tuntas.
-  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan namun tidak mengerjakan Latihan Mandiri.
-- **1** (_**D**_) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.
-  Nilai ini dapat dicapai apabila belum tuntas mengerjakan Latihan. -->
 - **0** (_**E**_) apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.
 
 ## Pengumpulan
 
-Kumpulkan semua berkas pengerjaan tutorial dan latihan ke repositori Git.
-Jangan lupa untuk menjelaskan proses pengerjaan tutorial ini di dalam berkas `README.md` yang tersimpan di repositori Git.
-Cantumkan juga referensi-referensi yang digunakan sebagai acuan ketika menjelaskan proses implementasi.
-Kemudian, _push_ riwayat _commit_-nya ke repositori Git pengerjaan tutorial 8 dan kumpulkan tautan (URL) repositori Git kamu di slot pengumpulan yang tersedia di SCELE.
-Jika kamu menggunakan kembali repositori Git tutorial 6, maka pastikan pekerjaan tutorial ini kamu taruh di dalam _branch_ baru!
+Kumpulkan semua berkas pengerjaan tutorial dan latihan ke repositori GitHub.
+
+Jangan lupa untuk menjelaskan proses pengerjaan tutorial ini di dalam berkas `README.md` yang
+tersimpan di repositori GitHub. Cantumkan juga referensi-referensi yang digunakan sebagai acuan
+ketika menjelaskan proses implementasi.
+
+Kemudian, _push_ riwayat _commit_-nya ke repositori GitHub pengerjaan tutorial 8 dan kumpulkan
+tautan (URL) repositori GitHub kamu di slot pengumpulan yang tersedia di SCELE.
+Jika kamu menggunakan kembali repositori GitHub tutorial 6, maka pastikan pekerjaan tutorial ini
+kamu taruh di dalam _branch_ baru.
 
 Tenggat waktu pengumpulan adalah **Jum'at, 1 Mei 2025, pukul 21:00**.
 
