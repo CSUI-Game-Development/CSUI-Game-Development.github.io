@@ -797,19 +797,21 @@ di game-game populer:</p>
 <h3 id="contoh-visual-polishing">Contoh: Visual Polishing</h3>
 <p>Di Celeste (2018), partikel, animasi, <em>camera shake</em>, dan efek visual lainnya
 digunakan untuk menyampaikan interaksi yang dilakukan oleh pemain dengan game.
-Contohnya: (1) Berbagai partikel dan animasi ketika karakter digerakkan, (2)
-<em>camera shake</em> dan partikel ketika karakter tewas, dan (3) partikel pada
-environment level yang memberitahu arah rintangan arus angin.</p>
-<p><img alt="Berbagai partikel dan animasi ketika karakter digerakkan" src="assets/celeste_1.mp4" /></p>
-<p><img alt="*Camera shake* dan partikel ketika karakter tewas" src="assets/celeste_2.mp4" /></p>
-<p><img alt="Partikel pada environment level yang memberitahu arah rintangan arus angin" src="assets/celeste_3.mp4" /></p>
+Contohnya:</p>
+<p><img alt="Berbagai partikel dan animasi ketika karakter digerakkan" src="assets/celeste_1.gif" /></p>
+<p>(1) Berbagai partikel dan animasi ketika karakter digerakkan</p>
+<p><img alt="*Camera shake* dan partikel ketika karakter tewas" src="assets/celeste_2.gif" /></p>
+<p>(2) <em>Camera shake</em> dan partikel ketika karakter tewas</p>
+<p><img alt="Partikel pada environment level yang memberitahu arah rintangan arus angin" src="assets/celeste_3.gif" /></p>
+<p>(3) Partikel pada environment level yang memberitahu arah rintangan arus angin</p>
 <h3 id="contoh-sound-polishing">Contoh: Sound Polishing</h3>
-<p>Di Portal 2 (2012), musik secara dinamis berubah sesuai aksi yang dilakukan
+<p>Di Portal 2 (2011), musik secara dinamis berubah sesuai aksi yang dilakukan
 pemain untuk menyelesaikan level. Hal ini memberikan petunjuk bagi pemain bahwa
 mereka mendekati solusi dari puzzle. Perhatikan juga berbagai efek audio yang hadir
 pada tiap interaksi yang dilakukan oleh pemain seperti menembak portal, mengangkat
 objek, dan menyalakan sensor laser.</p>
-<p><img alt="Portal 2 Dynamic Soundtrack" src="assets/portal2_dynamic_soundtrack.mp4" /></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rZKz0PqpPVs?si=93UC1hY8-GJZ6XBv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 <h3 id="tambahan-polishing-non-game-feel">Tambahan: Polishing Non-Game Feel</h3>
 <p>Ada juga yang sifat polishing yang tidak berhubungan dengan "Game Feel"
 namun tetap berkontribusi memberikan pemain <em>experience</em> yang lebih baik,
@@ -819,7 +821,7 @@ mengubah level audio sesuai tipenya serta mengaktifkan/menonaktifkan subtitel.</
 <p>Selama mengerjakan tutorial game development ini, game yang sudah dibuat cukup sederhana.
 Mulai dari platformer 2D hingga first person 3D sederhana. Namun, ketika dimainkan,
 game tersebut masih terasa "hambar".</p>
-<p><img alt="Previous character movement" src="assets/gamefeel_before.mp4" /></p>
+<p><img alt="Previous character movement" src="assets/gamefeel_before.gif" /></p>
 <p>Di latihan ini, kita akan mencoba meningkatkan <em>Game Feel</em> dengan cara menambahkan
 percepatan dan perlambatan pergerakan untuk pergerakan karakter pemain.</p>
 <h3 id="memperbarui-playergd">Memperbarui Player.gd</h3>
@@ -866,7 +868,7 @@ sudah kamu buat di tutorial 6 sebelumnya</em>). Ubah variabel <code>speed</code>
 dokumentasi di <a href="https://docs.godotengine.org/en/stable/tutorials/math/interpolation.html">Interpolation — Godot Docs</a></p>
 </blockquote>
 <p>Sekarang, kita coba mainkan in-game.</p>
-<p><img alt="Updated character movement" src="assets/gamefeel_after.mp4" /></p>
+<p><img alt="Updated character movement" src="assets/gamefeel_after.gif" /></p>
 <p>Apabila kamu belum melihat perbedaannya, tidak masalah. Kita masih perlu menambahkan
 <strong><em>polishing</em></strong> untuk memberitahu pemain apakah karakter sedang berlari dalam kecepatan maksimum
 atau tidak.</p>
@@ -904,7 +906,7 @@ Ubah <code>Spread</code> menjadi <code>180</code> derajat, dan <code>Initial Vel
 nilai y dari <code>Transform/Position</code> menjadi <code>40</code> supaya sesuai letak kaki karakter.</p>
 <p><img alt="Final touches" src="assets/gamepolishing_config3.png" /></p>
 <p>Sekarang coba jalankan gamenya.</p>
-<p><img alt="Particles done" src="assets/gamepolishing_pass1.mp4" /></p>
+<p><img alt="Particles done" src="assets/gamepolishing_pass1.gif" /></p>
 <h3 id="menghubungkan-partikel-dengan-pergerakan-player">Menghubungkan Partikel dengan pergerakan Player</h3>
 <p>Partikel sudah berjalan dan dikonfigurasi, namun kita ingin partikel hanya ada ketika
 karakter sedang dalam keadaan berlari (velocity maksimal). Kita dapat mengatur kapan
@@ -936,7 +938,7 @@ sedang lari atau tidak seperti berikut:</p>
 <span class="w">    </span><span class="o">...</span>
 </code></pre></div></td></tr></table></div>
 <p>Done! Sekarang particle sudah terlihat seperti <em>trail</em> lari karakter pemain!</p>
-<p><img alt="Pass 2" src="assets/gamepolishing_pass2.mp4" /></p>
+<p><img alt="Pass 2" src="assets/gamepolishing_pass2.gif" /></p>
 <blockquote>
 <p>Untuk informasi lebih lanjut tentang node <code>GPUParticles2D</code>, Anda dapat baca
 dokumentasi di <a href="https://docs.godotengine.org/en/stable/classes/class_gpuparticles2d.html">GPUParticles2D — Godot Docs</a></p>
@@ -970,13 +972,13 @@ Perfect Imbalance - Why Unbalanced Design Creates Balanced Play - Extra Credits"
 <h3 id="balancing-spawn-rate">Balancing Spawn Rate</h3>
 <p>Sekarang, kita akan mencoba untuk melakukan balancing pada game yang sudah kita buat.
 Di template sudah disediakan satu platform dengan rintangan berupa Enemy Spawner.</p>
-<p><img alt="Unbalanced" src="assets/gamebalancing_unbalanced.mp4" /></p>
+<p><img alt="Unbalanced" src="assets/gamebalancing_unbalanced.gif" /></p>
 <p>Terlihat bahwa kita sebagai pemain tidak dapat melewati level karena <em>spawn rate</em>
 spawner terlalu agresif, sehingga pemain tidak dapat melompati tikus-tikus yang
 ada untuk menuju akhir level.
 Salah satu solusi adalah mengubah variabel <code>Spawn Rate</code> dari Spawner. Coba ubah
 dari nilai sebelumnya menjadi <code>5</code> detik dan mainkan kembali.</p>
-<p><img alt="Too Easy" src="assets/gamebalancing_tooeasy.mp4" /></p>
+<p><img alt="Too Easy" src="assets/gamebalancing_tooeasy.gif" /></p>
 <p>Hmmm... pemain sudah bisa melewati rintangan untuk mencapai akhir level.
 Namun sepertinya hal itu dapat dilakukan dengan cukup mudah.
 Ingat, kita harus dapat membuat pemain berada dalam <a href="https://www.gamasutra.com/view/feature/166972/cognitive_flow_the_psychology_of_.php"><strong><em>FLOW</em></strong></a>
@@ -984,7 +986,7 @@ agar pemain tidak merasa permainan terlalu mudah ataupun terlalu sulit.</p>
 <p>Oleh karena itu, silahkan bereksperimen nilai <code>Spawn Rate</code> yang menurut kamu tepat untuk game ini.
 Setelah kalian menemukan nilai <code>Spawn Rate</code> yang menurut kalian tepat, coba mainkan
 kembali untuk memastikan bahwa level sudah <em>balanced</em>.</p>
-<p><img alt="Balanced" src="assets/gamebalancing_balanced.mp4" /></p>
+<p><img alt="Balanced" src="assets/gamebalancing_balanced.gif" /></p>
 <p>Selamat, tutorial ini sudah selesai! 🥳</p>
 <h2 id="skema-penilaian">Skema Penilaian</h2>
 <p>Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:</p>
@@ -1022,7 +1024,7 @@ kamu taruh di dalam <em>branch</em> baru.</p>
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2026-04-22 17:03:10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2026-04-23 10:40:58</span>
       
         <br>
         Created:
