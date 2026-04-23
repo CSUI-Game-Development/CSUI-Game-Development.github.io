@@ -66,25 +66,29 @@ di game-game populer:
 
 Di Celeste (2018), partikel, animasi, _camera shake_, dan efek visual lainnya
 digunakan untuk menyampaikan interaksi yang dilakukan oleh pemain dengan game.
-Contohnya: (1) Berbagai partikel dan animasi ketika karakter digerakkan, (2)
-_camera shake_ dan partikel ketika karakter tewas, dan (3) partikel pada
-environment level yang memberitahu arah rintangan arus angin.
+Contohnya:
 
-![Berbagai partikel dan animasi ketika karakter digerakkan](assets/celeste_1.mp4)
+![Berbagai partikel dan animasi ketika karakter digerakkan](assets/celeste_1.gif)
 
-![*Camera shake* dan partikel ketika karakter tewas](assets/celeste_2.mp4)
+(1) Berbagai partikel dan animasi ketika karakter digerakkan
 
-![Partikel pada environment level yang memberitahu arah rintangan arus angin](assets/celeste_3.mp4)
+![*Camera shake* dan partikel ketika karakter tewas](assets/celeste_2.gif)
+
+(2) _Camera shake_ dan partikel ketika karakter tewas
+
+![Partikel pada environment level yang memberitahu arah rintangan arus angin](assets/celeste_3.gif)
+
+(3) Partikel pada environment level yang memberitahu arah rintangan arus angin
 
 ### Contoh: Sound Polishing
 
-Di Portal 2 (2012), musik secara dinamis berubah sesuai aksi yang dilakukan
+Di Portal 2 (2011), musik secara dinamis berubah sesuai aksi yang dilakukan
 pemain untuk menyelesaikan level. Hal ini memberikan petunjuk bagi pemain bahwa
 mereka mendekati solusi dari puzzle. Perhatikan juga berbagai efek audio yang hadir
 pada tiap interaksi yang dilakukan oleh pemain seperti menembak portal, mengangkat
 objek, dan menyalakan sensor laser.
 
-![Portal 2 Dynamic Soundtrack](assets/portal2_dynamic_soundtrack.mp4)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rZKz0PqpPVs?si=93UC1hY8-GJZ6XBv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### Tambahan: Polishing Non-Game Feel
 
@@ -99,7 +103,7 @@ Selama mengerjakan tutorial game development ini, game yang sudah dibuat cukup s
 Mulai dari platformer 2D hingga first person 3D sederhana. Namun, ketika dimainkan,
 game tersebut masih terasa "hambar".
 
-![Previous character movement](assets/gamefeel_before.mp4)
+![Previous character movement](assets/gamefeel_before.gif)
 
 Di latihan ini, kita akan mencoba meningkatkan _Game Feel_ dengan cara menambahkan
 percepatan dan perlambatan pergerakan untuk pergerakan karakter pemain.
@@ -141,7 +145,7 @@ func get_input():
 
 Sekarang, kita coba mainkan in-game.
 
-![Updated character movement](assets/gamefeel_after.mp4)
+![Updated character movement](assets/gamefeel_after.gif)
 
 Apabila kamu belum melihat perbedaannya, tidak masalah. Kita masih perlu menambahkan
 **_polishing_** untuk memberitahu pemain apakah karakter sedang berlari dalam kecepatan maksimum
@@ -199,7 +203,7 @@ nilai y dari `Transform/Position` menjadi `40` supaya sesuai letak kaki karakter
 
 Sekarang coba jalankan gamenya.
 
-![Particles done](assets/gamepolishing_pass1.mp4)
+![Particles done](assets/gamepolishing_pass1.gif)
 
 ### Menghubungkan Partikel dengan pergerakan Player
 
@@ -236,7 +240,7 @@ func _physics_process(delta):
 
 Done! Sekarang particle sudah terlihat seperti _trail_ lari karakter pemain!
 
-![Pass 2](assets/gamepolishing_pass2.mp4)
+![Pass 2](assets/gamepolishing_pass2.gif)
 
 > Untuk informasi lebih lanjut tentang node `GPUParticles2D`, Anda dapat baca
 > dokumentasi di [GPUParticles2D — Godot Docs](https://docs.godotengine.org/en/stable/classes/class_gpuparticles2d.html)
@@ -284,7 +288,7 @@ Perfect Imbalance - Why Unbalanced Design Creates Balanced Play - Extra Credits"
 Sekarang, kita akan mencoba untuk melakukan balancing pada game yang sudah kita buat.
 Di template sudah disediakan satu platform dengan rintangan berupa Enemy Spawner.
 
-![Unbalanced](assets/gamebalancing_unbalanced.mp4)
+![Unbalanced](assets/gamebalancing_unbalanced.gif)
 
 Terlihat bahwa kita sebagai pemain tidak dapat melewati level karena _spawn rate_
 spawner terlalu agresif, sehingga pemain tidak dapat melompati tikus-tikus yang
@@ -292,7 +296,7 @@ ada untuk menuju akhir level.
 Salah satu solusi adalah mengubah variabel `Spawn Rate` dari Spawner. Coba ubah
 dari nilai sebelumnya menjadi `5` detik dan mainkan kembali.
 
-![Too Easy](assets/gamebalancing_tooeasy.mp4)
+![Too Easy](assets/gamebalancing_tooeasy.gif)
 
 Hmmm... pemain sudah bisa melewati rintangan untuk mencapai akhir level.
 Namun sepertinya hal itu dapat dilakukan dengan cukup mudah.
@@ -303,7 +307,7 @@ Oleh karena itu, silahkan bereksperimen nilai `Spawn Rate` yang menurut kamu tep
 Setelah kalian menemukan nilai `Spawn Rate` yang menurut kalian tepat, coba mainkan
 kembali untuk memastikan bahwa level sudah _balanced_.
 
-![Balanced](assets/gamebalancing_balanced.mp4)
+![Balanced](assets/gamebalancing_balanced.gif)
 
 Selamat, tutorial ini sudah selesai! 🥳
 
