@@ -322,6 +322,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -505,6 +509,26 @@
 
               
             
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tutorial-8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial 8 - Game Polishing & Balancing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -603,6 +627,13 @@
           <li class="md-nav__item">
   <a href="#tutorials-tutorial-7" class="md-nav__link">
     Tutorial 7 - Basic 3D Game Mechanics & Level Design
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorials-tutorial-8" class="md-nav__link">
+    Tutorial 8 - Game Polishing & Balancing
   </a>
   
 </li>
@@ -3101,6 +3132,295 @@ Kemudian, <em>push</em> riwayat <em>commit</em>-nya ke repositori Git pengerjaan
 <li><a href="https://www.kenney.nl/assets?q=3d">Kenney 3D Assets</a></li>
 <li>Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
   gasal 2020/2021 Fakultas Ilmu Komputer Universitas Indonesia.</li>
+</ul></section><section class="print-page" id="tutorials-tutorial-8"><h1 id="tutorials-tutorial-8-tutorial-8-game-polishing-balancing">Tutorial 8 - Game Polishing &amp; Balancing</h1>
+<p>Selamat datang pada tutorial kedelapan, terakhir di mata kuliah Game Development.</p>
+<p>Pada tutorial kali ini, kamu akan mempelajari apa yang dimaksud dengan
+<strong>Game Polishing</strong> dan <strong><em>Game Balancing</em></strong>, dan juga mengimplementasikannya
+untuk suatu 2D platformer sederhana. Penasaran? Yuk ikuti tutorialnya 😄</p>
+<hr />
+<blockquote>
+<p><strong>NOTICE</strong></p>
+<p>Untuk tutorial kali ini, diperbolehkan menggunakan
+<a href="https://github.com/CSUI-Game-Development/tutorial-8-template">kode templat proyek game yang telah disediakan di GitHub (klik)</a>
+<strong>ATAU</strong> melanjutkan dari yang sudah dikerjakan di tutorial 6 kemarin.</p>
+<p>Jika ingin melanjutkan dari tutorial 6, silakan buat <em>branch</em> baru di repositori
+Git tutorial 6 yang akan berisi hasil pengerjaan tutorial ini
+(misal: <em>branch</em> <code>tutorial-8</code>).</p>
+</blockquote>
+<h2 id="tutorials-tutorial-8-daftar-isi">Daftar isi</h2>
+<ul>
+<li><a href="#tutorials-tutorial-8-tutorial-8---game-polishing--balancing">Tutorial 8 - Game Polishing &amp; Balancing</a></li>
+<li><a href="#tutorials-tutorial-8-daftar-isi">Daftar Isi</a></li>
+<li><a href="#tutorials-tutorial-8-game-polishing">Game Polishing</a><ul>
+<li><a href="#tutorials-tutorial-8-pengantar-game-feel-dan-polishing">Pengantar: Game Feel dan Polishing</a></li>
+<li><a href="#tutorials-tutorial-8-contoh-visual-polishing">Contoh: Visual Polishing</a></li>
+<li><a href="#tutorials-tutorial-8-contoh-sound-polishing">Contoh: Sound Polishing</a></li>
+</ul>
+</li>
+<li><a href="#tutorials-tutorial-8-latihan-1-menambahkan-percepatanperlambatan-untuk-pergerakan-player">Latihan 1: Menambahkan Percepatan/Perlambatan untuk Pergerakan Player</a><ul>
+<li><a href="#tutorials-tutorial-8-memperbarui-playergd">Memperbarui Player.gd</a></li>
+</ul>
+</li>
+<li><a href="#tutorials-tutorial-8-latihan-2-menambahkan-partikel-lari">Latihan 2: Menambahkan Partikel Lari</a><ul>
+<li><a href="#tutorials-tutorial-8-apa-itu-particles">Apa itu Particles?</a></li>
+<li><a href="#tutorials-tutorial-8-konfigurasi-partikel-lari">Konfigurasi Partikel Lari</a></li>
+<li><a href="#tutorials-tutorial-8-menghubungkan-partikel-dengan-pergerakan-player">Menghubungkan Partikel dengan pergerakan Player</a></li>
+</ul>
+</li>
+<li><a href="#tutorials-tutorial-8-game-balancing">Game Balancing</a><ul>
+<li><a href="#tutorials-tutorial-8-pengantar-apa-itu-game-balancing">Pengantar: Apa itu Game Balancing?</a></li>
+<li><a href="#tutorials-tutorial-8-contoh-balancing-untuk-rage-game">Contoh: Balancing untuk <em>Rage Game</em></a></li>
+<li><a href="#tutorials-tutorial-8-contoh-perfect-imbalance">Contoh: Perfect Imbalance</a></li>
+</ul>
+</li>
+<li><a href="#tutorials-tutorial-8-latihan-3-balancing-spawn-rate">Latihan 3: Balancing Spawn Rate</a></li>
+<li><a href="#tutorials-tutorial-8-skema-penilaian">Skema Penilaian</a></li>
+<li><a href="#tutorials-tutorial-8-pengumpulan">Pengumpulan</a></li>
+<li><a href="#tutorials-tutorial-8-referensi">Referensi</a></li>
+</ul>
+<h2 id="tutorials-tutorial-8-game-polishing">Game Polishing</h2>
+<h3 id="tutorials-tutorial-8-pengantar-game-feel-dan-polishing">Pengantar: Game Feel dan Polishing</h3>
+<p><strong>Game Feel</strong> adalah konsep abstrak yang menunjuk ke "sensasi" (feel) yang dialami oleh
+pemain ketika memainkan game. Game feel yang baik memberikan pemain pengalaman yang menarik
+(engaging) dan "rewarding". Idealnya, game menarik untuk dimainkan bahkan ketika dalam
+bentuk yang paling sederhana.</p>
+<p><strong>Game Polishing</strong> adalah proses "meningkatkan" (enhancing) interaksi yang ada di dalam
+game, misal lewat efek visual, efek suara, animasi, musik, partikel, dan lain sebagainya.
+Polish adalah salah satu dari enam metrik Game Feel, sehingga proses Game Polishing akan
+mengubah pengalaman pemain ketika memainkan game.</p>
+<blockquote>
+<p>We can think of polishing as giving more <em>feedback</em> for <em>interactions</em> in the game
+without changing the underlying system.</p>
+</blockquote>
+<p>Di bagian selanjutnya, kita akan melihat beberapa contoh polishing yang diterapkan
+di game-game populer:</p>
+<h3 id="tutorials-tutorial-8-contoh-visual-polishing">Contoh: Visual Polishing</h3>
+<p>Di Celeste (2018), partikel, animasi, <em>camera shake</em>, dan efek visual lainnya
+digunakan untuk menyampaikan interaksi yang dilakukan oleh pemain dengan game.
+Contohnya:</p>
+<p><img alt="Berbagai partikel dan animasi ketika karakter digerakkan" src="../tutorials/tutorial-8/assets/celeste_1.gif" /></p>
+<p>(1) Berbagai partikel dan animasi ketika karakter digerakkan</p>
+<p><img alt="*Camera shake* dan partikel ketika karakter tewas" src="../tutorials/tutorial-8/assets/celeste_2.gif" /></p>
+<p>(2) <em>Camera shake</em> dan partikel ketika karakter tewas</p>
+<p><img alt="Partikel pada environment level yang memberitahu arah rintangan arus angin" src="../tutorials/tutorial-8/assets/celeste_3.gif" /></p>
+<p>(3) Partikel pada environment level yang memberitahu arah rintangan arus angin</p>
+<h3 id="tutorials-tutorial-8-contoh-sound-polishing">Contoh: Sound Polishing</h3>
+<p>Di Portal 2 (2011), musik secara dinamis berubah sesuai aksi yang dilakukan
+pemain untuk menyelesaikan level. Hal ini memberikan petunjuk bagi pemain bahwa
+mereka mendekati solusi dari puzzle. Perhatikan juga berbagai efek audio yang hadir
+pada tiap interaksi yang dilakukan oleh pemain seperti menembak portal, mengangkat
+objek, dan menyalakan sensor laser.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rZKz0PqpPVs?si=93UC1hY8-GJZ6XBv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<h3 id="tutorials-tutorial-8-tambahan-polishing-non-game-feel">Tambahan: Polishing Non-Game Feel</h3>
+<p>Ada juga yang sifat polishing yang tidak berhubungan dengan "Game Feel"
+namun tetap berkontribusi memberikan pemain <em>experience</em> yang lebih baik,
+misal opsi untuk mengubah <em>keybind</em> atau <em>control scheme</em> permainan atau opsi
+mengubah level audio sesuai tipenya serta mengaktifkan/menonaktifkan subtitel.</p>
+<h2 id="tutorials-tutorial-8-latihan-1-menambahkan-percepatanperlambatan-untuk-pergerakan-player">Latihan 1: Menambahkan percepatan/perlambatan untuk pergerakan Player</h2>
+<p>Selama mengerjakan tutorial game development ini, kalian sudah membuat platformer
+2D sederhana dan juga first person 3D sederhana. Namun, ketika dimainkan,
+kedua game tersebut masih terasa "hambar".</p>
+<p><img alt="Previous character movement" src="../tutorials/tutorial-8/assets/gamefeel_before.gif" /></p>
+<p>Di latihan ini, kita akan mencoba meningkatkan <em>Game Feel</em> dengan cara menambahkan
+percepatan dan perlambatan pergerakan untuk karakter pemain.</p>
+<h3 id="tutorials-tutorial-8-memperbarui-playergd">Memperbarui Player.gd</h3>
+<p>Pertama, buka script <code>Player.gd</code> yang telah disediakan di template (<em>atau gunakan level yang
+sudah kamu buat di tutorial 6 sebelumnya</em>). Ubah variabel <code>speed</code> dari tipe <code>int</code> menjadi
+<code>float</code>, dan tambahkan konstanta <code>ACCELERATION</code> dan <code>DECELERATION</code> dengan value seperti berikut:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">...</span>
+<span class="k">const</span><span class="w"> </span><span class="n">ACCELERATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">400.0</span>
+<span class="k">const</span><span class="w"> </span><span class="n">DECELERATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">400.0</span>
+
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">speed</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">float</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">400.0</span>
+<span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+<p>Kemudian, ubah cara penetapan <code>velocity.x</code> di <code>get_input()</code> menjadi menggunakan fungsi <code>lerp()</code></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">get_input</span><span class="p">():</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">is_on_floor</span><span class="p">()</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_just_pressed</span><span class="p">(</span><span class="s2">&quot;jump&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="n">velocity</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jump_speed</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="n">sprite</span><span class="o">.</span><span class="n">flip_h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span>
+<span class="w">        </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">lerp</span><span class="p">(</span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">speed</span><span class="p">,</span><span class="w"> </span><span class="n">ACCELERATION</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">speed</span><span class="p">)</span><span class="w">  </span><span class="c1">## naik perlahan (kanan)</span>
+<span class="w">    </span><span class="k">elif</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="n">sprite</span><span class="o">.</span><span class="n">flip_h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
+<span class="w">        </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">lerp</span><span class="p">(</span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">speed</span><span class="p">,</span><span class="w"> </span><span class="n">ACCELERATION</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">speed</span><span class="p">)</span><span class="w">  </span><span class="c1">## naik perlahan (kiri)</span>
+<span class="w">    </span><span class="k">else</span><span class="p">:</span>
+<span class="w">        </span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">lerp</span><span class="p">(</span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="n">DECELERATION</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">speed</span><span class="p">)</span><span class="w">  </span><span class="c1">## turun perlahan</span>
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>Untuk informasi lebih lanjut tentang interpolasi menggunakan fungsi <code>lerp()</code>, baca
+dokumentasi di <a href="https://docs.godotengine.org/en/stable/tutorials/math/interpolation.html">Interpolation — Godot Docs</a></p>
+</blockquote>
+<p>Sekarang, kita coba mainkan in-game.</p>
+<p><img alt="Updated character movement" src="../tutorials/tutorial-8/assets/gamefeel_after.gif" /></p>
+<p>Apabila kamu belum melihat perbedaannya, tidak masalah. Kita masih perlu menambahkan
+<strong><em>polishing</em></strong> untuk memberitahu pemain apakah karakter sedang berlari dalam kecepatan maksimum
+atau tidak.</p>
+<h2 id="tutorials-tutorial-8-latihan-2-menambahkan-partikel-lari">Latihan 2: Menambahkan Partikel Lari</h2>
+<p>Setelah menambahkan mekanik tersebut, kita perlu mengkomunikasikan dengan pemain kapan karakter
+sedang "berlari". Kita dapat melakukan ini dengan menggunakan <strong>particles</strong> yang hanya muncul
+ketika <code>velocity</code> Player ekivalen dengan kecepatan maksimum <code>speed</code>.</p>
+<h3 id="tutorials-tutorial-8-apa-itu-particles">Apa itu Particles?</h3>
+<p>Particles merupakan teknik dalam game development untuk menampilkan atau mensimulasikan
+efek <em>physics</em> yang kompleks, seperti api, asap dari api tersebut, hujan, dan lain-lain.
+Dengan menggunakan particles, game developer dapat memberikan tampilan visual yang lebih
+detail dan lebih menarik kepada pemain.</p>
+<p>Dalam game engine Godot, disediakan Node particle untuk game 2D yaitu <code>GPUParticles2D</code>.
+Kita akan menggunakannya untuk mengimplementasikan <em>trail</em> ketika karakter berlari di level.</p>
+<h3 id="tutorials-tutorial-8-konfigurasi-partikel-lari">Konfigurasi Partikel Lari</h3>
+<p>Pertama, tambahkan node <code>GPUParticles2D</code> sebagai <em>child node</em> dari root node scene <code>Player</code>.
+Akan ada <em>warning</em> pada node tersebut karena kita perlu meng-assign properti <code>Process Material</code>
+untuk setiap node <code>GPUParticles2D</code>. Buka tab Inspector dan <em>assign</em> <code>ParticleProcessMaterial</code>
+baru untuk properti <code>Process Material</code>.</p>
+<p><img alt="Assigned process_material" src="../tutorials/tutorial-8/assets/gamepolishing_processmaterial.png" /></p>
+<p>Sekarang kamu dapat melihat partikelmu bejalan, namun tampilannya belum sesuai dengan partikel
+lari tujuan kita. <em>Assign</em> properti <code>Texture</code> menggunakan gambar di <code>assets/kenney_platformerpack/PNG/Particles/brickGrey_small.png</code>.</p>
+<p><img alt="Assigned texture" src="../tutorials/tutorial-8/assets/gamepolishing_texture.png" /></p>
+<p>Kembali ke <code>Process Material</code>, buka kategori <code>Velocity</code> dan <code>Accelerations/Gravity</code>.
+Supaya partikel muncul ke segala arah dan terbang ke atas (seperti partikel batu
+tertendang oleh kaki), ubah <code>Gravity</code> nilai y menjadi <code>-100</code>.</p>
+<p>Pada tab Spawn/Velocity terdapat atribut spread dan initial velocity.
+Ubah <code>Spread</code> menjadi <code>180</code> derajat, dan <code>Initial Velocity</code> menjadi <code>50</code>.</p>
+<p><img alt="Adjusting gravity and velocity" src="../tutorials/tutorial-8/assets/gamepolishing_config1.png" /></p>
+<p>Selanjutya, supaya partikel tidak hanya muncul dari satu titik, buka kategori
+<code>Spawn/Position</code> dan ubah <code>Emission Shape</code> menjadi <code>Box</code> diikuti dengan ubah nilai x
+<code>Emission Shape Scale</code> menjadi <code>30</code>.</p>
+<p><img alt="Changing emission shape" src="../tutorials/tutorial-8/assets/gamepolishing_config2.png" /></p>
+<p>Untuk <em>finishing touches</em>, ubah <code>Time/Lifetime</code> menjadi <code>0.5</code> dan
+nilai y dari <code>Transform/Position</code> menjadi <code>40</code> supaya sesuai letak kaki karakter.</p>
+<p><img alt="Final touches" src="../tutorials/tutorial-8/assets/gamepolishing_config3.png" /></p>
+<p>Sekarang coba jalankan gamenya.</p>
+<p><img alt="Particles done" src="../tutorials/tutorial-8/assets/gamepolishing_pass1.gif" /></p>
+<h3 id="tutorials-tutorial-8-menghubungkan-partikel-dengan-pergerakan-player">Menghubungkan Partikel dengan pergerakan Player</h3>
+<p>Partikel sudah berjalan dan dikonfigurasi, namun kita ingin partikel hanya ada ketika
+karakter sedang dalam keadaan berlari (velocity maksimal). Kita dapat mengatur kapan
+partikel terpancar dengan mengganti nilai dari atribut <code>Emitting</code> node partikel.</p>
+<p>Buka script <code>Player.gd</code> dan tambahkan baris berikut:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="err">@</span><span class="k">onready</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">particle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">GPUParticles2D</span>
+</code></pre></div></td></tr></table></div>
+<p>Lalu, buat fungsi baru untuk memunculkan/menyembunyikan partikel ketika karakter
+sedang lari atau tidak seperti berikut:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">set_particles</span><span class="p">():</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">velocity</span><span class="o">.</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">is_on_floor</span><span class="p">():</span>
+<span class="w">        </span><span class="n">particle</span><span class="o">.</span><span class="n">set_emitting</span><span class="p">(</span><span class="bp">true</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span><span class="p">:</span>
+<span class="w">        </span><span class="n">particle</span><span class="o">.</span><span class="n">set_emitting</span><span class="p">(</span><span class="bp">false</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Terakhir, tambahkan pemanggilan fungsi <code>set_particles()</code> di dalam <code>_physics_process()</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">_physics_process</span><span class="p">(</span><span class="n">delta</span><span class="p">):</span>
+<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="n">get_input</span><span class="p">()</span>
+<span class="w">    </span><span class="n">set_particles</span><span class="p">()</span>
+<span class="w">    </span><span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+<p>Done! Sekarang particle sudah terlihat seperti <em>trail</em> lari karakter pemain!</p>
+<p><img alt="Pass 2" src="../tutorials/tutorial-8/assets/gamepolishing_pass2.gif" /></p>
+<p>Bagaimana menurut kamu? Apakah <em>updated movement system</em> beserta partikel lari meningkatkan kualitas
+game? Tulis opinimu di dalam berkas <code>README.md</code> di root repositori pengerjaan tutorial 8.</p>
+<blockquote>
+<p>Untuk informasi lebih lanjut tentang node <code>GPUParticles2D</code>, Anda dapat baca
+dokumentasi di <a href="https://docs.godotengine.org/en/stable/classes/class_gpuparticles2d.html">GPUParticles2D — Godot Docs</a></p>
+</blockquote>
+<h2 id="tutorials-tutorial-8-game-balancing">Game Balancing</h2>
+<h3 id="tutorials-tutorial-8-pengantar-apa-itu-game-balancing">Pengantar: Apa itu Game Balancing?</h3>
+<p>Pada tutorial sebelumnya, kamu sudah mempelajari mengenai <em>basic 2D level</em> design dan membuat
+suatu level dengan rintangan. Namun, apakah kamu yakin level tersebut sudah pasti bisa
+diselesaikan oleh pemain? Apakah pemain merasa level terlalu gampang atau kurang menantang?
+Jika jawaban kamu belum sesuai dengan harapan dari game designer, maka kamu perlu melakukan
+Game Balancing pada level tersebut.</p>
+<p>Berbeda dengan Game Polishing yang hanya mengubah tampilan dari fitur yang ada di game,
+<strong>Game Balancing</strong> mengubah sistem yang ada di game. Hal ini bisa dilakukan dengan
+memodifikasi Rules, Complexity, Player Progression, Variables, dan lain sebagainya.</p>
+<p>Di bagian selanjutnya, kita akan melihat beberapa contoh mengenai game balancing:</p>
+<h3 id="tutorials-tutorial-8-contoh-balancing-untuk-rage-game">Contoh: Balancing untuk <em>Rage Game</em></h3>
+<p>Dalam game Cat Mario, level sengaja dibuat sangat susah karena game Cat Mario didesain untuk
+menjadi <em>Rage Game</em>. Namun dalam pembuatan levelnya, pasti tetap dilakukan balancing agar level
+yang dibuat dapat diselesaikan oleh pemain dalam keadaan <strong><em>Rage</em></strong> bukan sampai <strong><em>Rage Quit</em></strong>.</p>
+<p><img alt="Cat Mario" src="../tutorials/tutorial-8/images/cat-mario.gif" /></p>
+<h3 id="tutorials-tutorial-8-contoh-perfect-imbalance">Contoh: <em>Perfect Imbalance</em></h3>
+<p>Dalam permainan League of Legends, balancing dilakukan setiap saat karena permainan MOBA memang
+merupakan game multiplayer yang dirancang agar menjadi game yang <a href="https://www.youtube.com/watch?v=e31OSVZF77w">Perfect Imbalance</a>,
+dimana balancing dilakukan agar permainan tetap menyenangkan bagi pemain dengan memberikan
+perubahan meta di setiap patch <em>change</em>-nya.</p>
+<p><img alt="League of Legends Patch Notes Welcome to Noxus" src="../tutorials/tutorial-8/images/patch-notes.png" /></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/e31OSVZF77w?si=GvMLMMKMcag9H-ZP" title="
+Perfect Imbalance - Why Unbalanced Design Creates Balanced Play - Extra Credits" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<h2 id="tutorials-tutorial-8-latihan-3-balancing-spawn-rate">Latihan 3: Balancing Spawn Rate</h2>
+<h3 id="tutorials-tutorial-8-balancing-spawn-rate">Balancing Spawn Rate</h3>
+<p>Sekarang, kita akan mencoba untuk melakukan balancing pada game yang sudah kita buat.
+Di template sudah disediakan satu platform dengan rintangan berupa Enemy Spawner.</p>
+<p><img alt="Unbalanced" src="../tutorials/tutorial-8/assets/gamebalancing_unbalanced.gif" /></p>
+<p>Terlihat bahwa kita sebagai pemain tidak dapat melewati level karena <em>spawn rate</em>
+spawner terlalu agresif, sehingga pemain tidak dapat melompati tikus-tikus yang
+ada untuk menuju akhir level.
+Salah satu solusi adalah mengubah variabel <code>Spawn Rate</code> dari Spawner. Coba ubah
+dari nilai sebelumnya menjadi <code>5</code> detik dan mainkan kembali.</p>
+<p><img alt="Too Easy" src="../tutorials/tutorial-8/assets/gamebalancing_tooeasy.gif" /></p>
+<p>Hmmm... pemain sudah bisa melewati rintangan untuk mencapai akhir level.
+Namun sepertinya hal itu dapat dilakukan dengan cukup mudah.
+Ingat, kita harus dapat membuat pemain berada dalam <a href="https://www.gamasutra.com/view/feature/166972/cognitive_flow_the_psychology_of_.php"><strong><em>FLOW</em></strong></a>
+agar pemain tidak merasa permainan terlalu mudah ataupun terlalu sulit.</p>
+<p>Oleh karena itu, silahkan bereksperimen nilai <code>Spawn Rate</code> yang menurut kamu tepat untuk game ini.
+Setelah kalian menemukan nilai <code>Spawn Rate</code> yang menurut kalian tepat, coba mainkan
+kembali untuk memastikan bahwa level sudah <em>balanced</em>.</p>
+<p><img alt="Balanced" src="../tutorials/tutorial-8/assets/gamebalancing_balanced.gif" /></p>
+<p>Jangan lupa jelaskan secara ringkas nilai <code>Spawn Rate</code> yang dipilih atau <em>balancing</em>
+lainnya yang kamu lakukan di dalam berkas <code>README.md</code> di root repositori pengerjaan tutorial 8.</p>
+<p>Selamat, tutorial ini sudah selesai! 🥳</p>
+<h2 id="tutorials-tutorial-8-skema-penilaian">Skema Penilaian</h2>
+<p>Pada tutorial ini, ada empat kriteria nilai yang bisa diperoleh:</p>
+<ul>
+<li><strong>4</strong> (<em><strong>A</strong></em>) apabila kamu mengerjakan tutorial dan latihan melebihi dari ekspektasi tim pengajar.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan.</li>
+<li><strong>3</strong> (<em><strong>B</strong></em>) apabila kamu hanya mengerjakan tutorial dan latihan sesuai dengan instruksi.
+  Nilai ini dapat dicapai apabila mengerjakan seluruh Latihan.</li>
+<li><strong>2</strong> (<em><strong>C</strong></em>) atau <strong>1</strong> (<em><strong>D</strong></em>) apabila kamu hanya sekedar memulai tutorial dan belum tuntas.</li>
+<li><strong>0</strong> (<em><strong>E</strong></em>) apabila kamu tidak mengerjakan apapun atau tidak mengumpulkan.</li>
+</ul>
+<h2 id="tutorials-tutorial-8-pengumpulan">Pengumpulan</h2>
+<p>Kumpulkan semua berkas pengerjaan tutorial dan latihan ke repositori GitHub.</p>
+<p>Jangan lupa untuk menjelaskan proses pengerjaan tutorial ini di dalam berkas <code>README.md</code> yang
+tersimpan di repositori GitHub. Cantumkan juga referensi-referensi yang digunakan sebagai acuan
+ketika menjelaskan proses implementasi.</p>
+<p>Kemudian, <em>push</em> riwayat <em>commit</em>-nya ke repositori GitHub pengerjaan tutorial 8 dan kumpulkan
+tautan (URL) repositori GitHub kamu di slot pengumpulan yang tersedia di SCELE.
+Jika kamu menggunakan kembali repositori GitHub tutorial 6, maka pastikan pekerjaan tutorial ini
+kamu taruh di dalam <em>branch</em> baru.</p>
+<p>Tenggat waktu pengumpulan adalah <strong>Jum'at, 1 Mei 2025, pukul 21:00</strong>.</p>
+<h2 id="tutorials-tutorial-8-referensi">Referensi</h2>
+<ul>
+<li><a href="https://docs.godotengine.org/en/4.6/tutorials/2d/particle_systems_2d.html">2D particle systems</a></li>
+<li><a href="https://docs.godotengine.org/en/4.6/classes/class_gpuparticles2d.html">GPUParticles2D</a></li>
+<li><a href="https://www.kenney.nl/assets/platformer-pack-redux">Kenney Assets</a></li>
+<li>Materi tutorial pengenalan Godot Engine, kuliah Game Development semester
+  gasal 2020/2021 Fakultas Ilmu Komputer Universitas Indonesia.</li>
+<li>Materi tutorial Getting to Release: Game Polishing/Game Feel, kuliah Game Development
+  semester genap 2024/2025 Fakultas Ilmu Komputer Universitas Indonesia.</li>
 </ul></section><h1 class='nav-section-title-end'>Ended: Tutorials</h1></div>
 
 
