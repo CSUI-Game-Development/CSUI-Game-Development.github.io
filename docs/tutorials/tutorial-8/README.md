@@ -99,14 +99,14 @@ mengubah level audio sesuai tipenya serta mengaktifkan/menonaktifkan subtitel.
 
 ## Latihan 1: Menambahkan percepatan/perlambatan untuk pergerakan Player
 
-Selama mengerjakan tutorial game development ini, game yang sudah dibuat cukup sederhana.
-Mulai dari platformer 2D hingga first person 3D sederhana. Namun, ketika dimainkan,
-game tersebut masih terasa "hambar".
+Selama mengerjakan tutorial game development ini, kalian sudah membuat platformer
+2D sederhana dan juga first person 3D sederhana. Namun, ketika dimainkan,
+kedua game tersebut masih terasa "hambar".
 
 ![Previous character movement](assets/gamefeel_before.gif)
 
 Di latihan ini, kita akan mencoba meningkatkan _Game Feel_ dengan cara menambahkan
-percepatan dan perlambatan pergerakan untuk pergerakan karakter pemain.
+percepatan dan perlambatan pergerakan untuk karakter pemain.
 
 ### Memperbarui Player.gd
 
@@ -169,7 +169,7 @@ Kita akan menggunakannya untuk mengimplementasikan _trail_ ketika karakter berla
 
 ### Konfigurasi Partikel Lari
 
-Pertama, tambahkan node `GPUParticles2D` sebagai child node untuk root node di scene `Player`.
+Pertama, tambahkan node `GPUParticles2D` sebagai _child node_ dari root node scene `Player`.
 Akan ada _warning_ pada node tersebut karena kita perlu meng-assign properti `Process Material`
 untuk setiap node `GPUParticles2D`. Buka tab Inspector dan _assign_ `ParticleProcessMaterial`
 baru untuk properti `Process Material`.
@@ -242,6 +242,9 @@ Done! Sekarang particle sudah terlihat seperti _trail_ lari karakter pemain!
 
 ![Pass 2](assets/gamepolishing_pass2.gif)
 
+Bagaimana menurut kamu? Apakah _updated movement system_ beserta partikel lari meningkatkan kualitas
+game? Tulis opinimu di dalam berkas `README.md` di root repositori pengerjaan tutorial 8.
+
 > Untuk informasi lebih lanjut tentang node `GPUParticles2D`, Anda dapat baca
 > dokumentasi di [GPUParticles2D — Godot Docs](https://docs.godotengine.org/en/stable/classes/class_gpuparticles2d.html)
 
@@ -252,7 +255,7 @@ Done! Sekarang particle sudah terlihat seperti _trail_ lari karakter pemain!
 Pada tutorial sebelumnya, kamu sudah mempelajari mengenai _basic 2D level_ design dan membuat
 suatu level dengan rintangan. Namun, apakah kamu yakin level tersebut sudah pasti bisa
 diselesaikan oleh pemain? Apakah pemain merasa level terlalu gampang atau kurang menantang?
-Jika jawaban kamu belum sesuai dengan harapan dari game desainer, maka kamu perlu melakukan
+Jika jawaban kamu belum sesuai dengan harapan dari game designer, maka kamu perlu melakukan
 Game Balancing pada level tersebut.
 
 Berbeda dengan Game Polishing yang hanya mengubah tampilan dari fitur yang ada di game,
@@ -269,7 +272,7 @@ yang dibuat dapat diselesaikan oleh pemain dalam keadaan ***Rage*** bukan sampai
 
 ![Cat Mario](images/cat-mario.gif)
 
-### Contoh: Perfect Imbalance
+### Contoh: _Perfect Imbalance_
 
 Dalam permainan League of Legends, balancing dilakukan setiap saat karena permainan MOBA memang
 merupakan game multiplayer yang dirancang agar menjadi game yang [Perfect Imbalance](https://www.youtube.com/watch?v=e31OSVZF77w),
@@ -308,6 +311,9 @@ Setelah kalian menemukan nilai `Spawn Rate` yang menurut kalian tepat, coba main
 kembali untuk memastikan bahwa level sudah _balanced_.
 
 ![Balanced](assets/gamebalancing_balanced.gif)
+
+Jangan lupa jelaskan secara ringkas nilai `Spawn Rate` yang dipilih atau _balancing_
+lainnya yang kamu lakukan di dalam berkas `README.md` di root repositori pengerjaan tutorial 8.
 
 Selamat, tutorial ini sudah selesai! 🥳
 
